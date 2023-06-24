@@ -6,6 +6,9 @@ import {Link} from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -26,44 +29,74 @@ export function HomePage(){
                 width={230}
                 />  
             </Navbar.Brand>
-            <Nav className="ms-auto">
+{/*             <Nav className="ms-auto">
               <Nav.Link  className="navbar-text" href="#home"> USUARIO APELLIDO</Nav.Link>
-            </Nav>
+            </Nav> */}
+
+          <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
+                <NavDropdown.Item href="/login"> Cerrar Sesion</NavDropdown.Item>
+          </NavDropdown>
           </Container>
         </Navbar>
 
 
 
         {/* sidebar */}
-{/*         <div className="sidebar">
-          <Nav.Link href="#opcion1">Opción 1</Nav.Link>
-          <Nav.Link href="#opcion2">Opción 2</Nav.Link>
-          <Nav.Link href="#opcion3">Opción 3</Nav.Link>
-          <Nav.Link href="#opcion4">Opción 4</Nav.Link>
-        </div> */}
+    <div className='row'>
+      <div className="col-auto min-vh-100" style={{backgroundColor:"RGB(39, 39, 39)"}}>
+        <ul className="nav flex-column">
+          <li className="nav-item">
+            <a className="nav-link px-2" href="/">
+              <i className='bi bi-house side-bar-icon'></i>
+              <span className='ms-1 d-none d-sm-inline  side-bar-text'>
+                Home
+              </span>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link px-2">
+              <i className='bi bi-file-text side-bar-icon'></i>
+              <span className='ms-1 d-none d-sm-inline side-bar-text'>
+                Evidencias
+              </span>
+            </a>
+            <ul className="nav flex-column ml-3">
+              <li className="nav-item">
+                <a className="nav-link" href="/evidencia1" style={{color:"white"}}>
+                  Registrar Evidencia
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link " href="/evidencia2" style={{color:"white"}}>
+                  Evidencia Registrada
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link px-2" href="/">
+              <i className='bi bi-file-richtext side-bar-icon'></i>
+              <span className='ms-1 d-none d-sm-inline  side-bar-text'>
+                Informes
+              </span>
+            </a>
+            <ul className="nav flex-column ml-3">
+              <li className="nav-item  side-bar-text">
+                <a className="nav-link" href="/informe1" style={{color:"white"}}>
+                  Crear Informe
+                </a>
+              </li>
+              <li className="nav-item  side-bar-text">
+                <a className="nav-link" href="/informe2" style={{color:"white"}}>
+                  Observar Informe
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-        <div className='row'>
-                <div className="col-auto min-vh-100" style={{backgroundColor:"RGB(59, 59, 59)"}}>
-                    <ul className="nav flex-column">
-                    <li className="nav-item">
-                        <a className="nav-link px-2" href="/home">
-                        {/* <i className='bi bi-house'></i> */}
-                        <span className='ms-1 d-none d-sm-inline side-bar-text '>
-                            Evidencias
-                        </span>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link px-2" href="/home">
-                        {/* <i className='bi bi-house'></i> */}
-                        <span className='ms-1 d-none d-sm-inline side-bar-text '>
-                            Informes
-                        </span>
-                        </a>
-                    </li>
-                    </ul>
-                </div>
-        </div>
     </div>
 
   );
