@@ -6,3 +6,17 @@
 .navbar-text {
     color: white;
 }
+
+
+ul {
+    margin:0;
+    padding:0
+}
+
+ul li a:hover{
+    cursor:pointer
+}
+
+.side-bar-text {
+    color:white
+}
