@@ -9,7 +9,7 @@ export const getAllTasks = () => {
 }
 
 
-export const getTask = (id) => tasksApi.get(`/${id}`);
+export const getTask = (id) => tasksApi.get(`/${id}/`);
 
 
 export const createTask = (task) => tasksApi.post("/", task);
