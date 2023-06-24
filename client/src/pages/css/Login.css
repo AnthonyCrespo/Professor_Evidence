@@ -1,0 +1,45 @@
+.login-container {
+    background: url('../images/fondo_yt.jpg') center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-box { /* Iniciar sesion box */
+    background: RGBA(34, 98, 143, 0.8);
+    padding: 60px;
+    border-radius: 20px;
+    text-align: center;
+    opacity: 15
+  }
+  
+  .login-box h2 { /* Iniciar sesion text */
+    margin-bottom: 20px;
+    color: RGB(255,255,255)
+  }
+  
+  .login-box input {  /* Usuario y Contraseña fields */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    background: RGBA(255,255,255,0.9);
+    border-radius: 20px;
+    border:0px
+
+  }
+  
+  .login-box button { /* Ingresar button */
+    width: 100%;
+    padding: 10px;
+    background-color: #3c3c3c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .login-box button:hover { /* Ingresar button hover */
+    background-color: RGB(32, 167, 209)
+  }
+  
