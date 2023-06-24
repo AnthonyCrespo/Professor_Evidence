@@ -17,22 +17,20 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 export function HomePage(){
     return (
 
-        <div>
+            <Container fluid>
             {/* ------------  navbar -------------  */}
             <Navbar className="SAED-navbar">
                 <Container className="d-flex justify-content-between align-items-center">
-                    <Navbar.Brand className="me-auto">
+                    <Navbar.Brand>
                         <img src="/logo.png" alt="logo" width={230} />
                     </Navbar.Brand>
-
                     <Nav>
-                    <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
+                        <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
                         <NavDropdown.Item href="/login">Cerrar Sesion</NavDropdown.Item>
-                    </NavDropdown>
+                        </NavDropdown>
                     </Nav>
                 </Container>
             </Navbar>
-
 
             {/* -----------  navbar end -------------  */}
 
@@ -109,7 +107,7 @@ export function HomePage(){
                 </div>
             </div>
             
-        </div>
+        </Container>
 
   );
 }
