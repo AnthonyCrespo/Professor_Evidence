@@ -24,3 +24,10 @@ ul li a:hover{
 .side-bar-icon {
     color: RGB(34, 98, 143)
 }
+
+
+
+.li-sidebar{
+    margin-top: 20;
+    margin-bottom: 20;
+}

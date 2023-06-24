@@ -44,8 +44,10 @@ export function HomePage(){
         {/* sidebar */}
     <div className='row'>
       <div className="col-auto min-vh-100" style={{backgroundColor:"RGB(39, 39, 39)"}}>
-        <ul className="nav flex-column">
-          <li className="nav-item">
+        <ul className="nav flex-column mt-3">
+
+        {/* -------Home option ------- */}
+          <li className="nav-item mt-2">
             <a className="nav-link px-2" href="/">
               <i className='bi bi-house side-bar-icon'></i>
               <span className='ms-1 d-none d-sm-inline  side-bar-text'>
@@ -53,9 +55,12 @@ export function HomePage(){
               </span>
             </a>
           </li>
-          <li className="nav-item">
+        
+        {/* -------Evidencias option ------- */}
+
+          <li className="nav-item mt-2">
             <a className="nav-link px-2">
-              <i className='bi bi-file-text side-bar-icon'></i>
+              <i className='bi bi-file-text side-bar-icon '></i>
               <span className='ms-1 d-none d-sm-inline side-bar-text'>
                 Evidencias
               </span>
@@ -73,7 +78,9 @@ export function HomePage(){
               </li>
             </ul>
           </li>
-          <li className="nav-item">
+
+        {/* -------Informes option ------- */}
+          <li className="nav-item mt-2">
             <a className="nav-link px-2" href="/">
               <i className='bi bi-file-richtext side-bar-icon'></i>
               <span className='ms-1 d-none d-sm-inline  side-bar-text'>
