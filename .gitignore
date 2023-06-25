@@ -1,2 +1,2 @@
-./venv
-./client/node_modules
+/venv
+/client/node_modules
