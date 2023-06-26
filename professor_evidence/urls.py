@@ -13,5 +13,5 @@ router.register(r'Report',views.ReportView, 'Report')
 
 urlpatterns = [
     path("api_2/v1/",include(router.urls) ),
-    path('professor_evidence/',include_docs_urls(title="Evidence API"))
+    path('docs/',include_docs_urls(title="Evidence API"))
 ]
