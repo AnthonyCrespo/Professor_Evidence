@@ -31,6 +31,8 @@ const tasksApi = axios.create({
 
 export const getActivitiesType = () => tasksApi.get('/Activity_Type/');
 
+export const getEvidencesType = () => tasksApi.get('/Evidence_Type/');
+
 
 export const getAllTasks = () => {
     return tasksApi.get("/"); 

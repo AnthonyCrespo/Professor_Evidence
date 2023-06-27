@@ -3,7 +3,7 @@ import { Base } from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import {ActivitiesType} from '../components/ActivitiesType'
-
+import {EvidencesType} from '../components/EvidencesType'
 export function Register_evidence() {
   return (
     <Base>
@@ -20,7 +20,8 @@ export function Register_evidence() {
         </Form.Group> */}
         <ActivitiesType/>
 
-
+        <EvidencesType/>
+        
         <Form.Group className="mt-4">
           <Form.Label>Evidencia:</Form.Label>
           <Form.Select>
