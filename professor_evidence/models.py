@@ -6,16 +6,18 @@ from django.db import models
 class Semester(models.Model):
     # Primary Keys are generated automatically
     # semester_id = models.CharField(max_length=50)
+    semester_name = models.TextField(max_length=200, default="SM")
     date_start = models.DateField(auto_now=False, auto_now_add=False)
     date_end = models.DateField(auto_now=False, auto_now_add=False)
     def __str__(self):
-        return self.date_start
+        return self.semester_name
 
 class School(models.Model):
     # school_id = models.CharField(max_length=50)
     school_name = models.TextField(max_length=200)
+    school_abbreviation = models.TextField(max_length=200, default=school_name)
     def __str__(self):
-        return self.school_name
+        return self.school_abbreviation
 
 class Career(models.Model):
     # career_id = models.CharField(max_length=50)
@@ -54,18 +56,18 @@ class Activity_Type(models.Model):
     def __str__(self):
         return self.activity_type
 
-class Evidence(models.Model):
+class Evidence_Type(models.Model):
     # evidence_id = models.CharField(max_length=50)
-    activity_repot_id = models.CharField(max_length=50)
-    evidence_type = models.CharField(max_length=50)
+    activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
+    evidence_type = models.CharField(max_length=250)
     def __str__(self):
         return self.evidence_type
 
 class Document(models.Model):
     # document_id = models.CharField(max_length=50)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    activity_type_id = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
-    evidence_id = models.ForeignKey(Evidence, on_delete=models.CASCADE)
+    activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
+    evidence_type = models.ForeignKey(Evidence_Type, on_delete=models.CASCADE)
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     document_comment = models.TextField(blank=True)
     document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
@@ -77,6 +79,7 @@ class Activity_Report(models.Model):
     # activity_report_id = models.CharField(max_length=50)
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+    document_id = models.ForeignKey(Document, on_delete=models.CASCADE, default=1)
     activity_report_summary = models.TextField(max_length=200)
     activity_report_hoursPerWeek = models.FloatField()
     activity_report_hoursPerWeekIntersemester = models.FloatField()
@@ -87,7 +90,7 @@ class Activity_Report(models.Model):
 class Report(models.Model):
     # report_id = models.CharField(max_length=50)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    activity_report_id = models.ForeignKey(Activity_Report, verbose_name="General Activities", on_delete=models.CASCADE)
+    activity_report_id = models.ForeignKey(Activity_Report, on_delete=models.CASCADE)
 
     # Note: Multiple Foreign Keys are not allowed, that is why only 1 activity_report_id will
     # appear in the class of the report. However, we can manage to include in the final document
