@@ -2,13 +2,15 @@ import React from 'react';
 import { Base } from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {ActivitiesType} from '../components/ActivitiesType'
+
 
 export function Registered_evidences() {
   return (
     <Base>
     <h1>Evidencias Registradas</h1>
     <Form className="w-50">
-        <Form.Group className="mt-4">
+{/*         <Form.Group className="mt-4">
           <Form.Label>Tipo de actividad:</Form.Label>
           <Form.Select>
             <option value="opcion1">Opción 1</option>
@@ -16,7 +18,9 @@ export function Registered_evidences() {
             <option value="opcion3">Opción 3</option>
             <option value="opcion4">Opción 4</option>
           </Form.Select>
-        </Form.Group>
+        </Form.Group> */}
+
+        <ActivitiesType/>
 
         <Form.Group className="mt-4">
           <Form.Label>Evidencia:</Form.Label>
