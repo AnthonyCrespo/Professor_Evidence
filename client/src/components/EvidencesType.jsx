@@ -25,7 +25,7 @@ export function EvidencesType() {
   return (
 
     <Form.Group className="mt-4">
-      <Form.Label>Tipo de Evidencia:</Form.Label>
+      <Form.Label>Evidencia:</Form.Label>
       <Form.Select>
         {evidences.map(opcion => (
           <option key={opcion.id} value={opcion.evidence_type}>{opcion.evidence_type}</option>
