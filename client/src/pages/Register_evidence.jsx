@@ -5,7 +5,7 @@ import { Base } from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 /* import {ActivitiesType} from '../components/ActivitiesType' */
-import {EvidencesType} from '../components/EvidencesType'
+/* import {EvidencesType} from '../components/EvidencesType' */
 
 
 /* ------------- Import Functions from API ------------------ */
@@ -29,7 +29,6 @@ export function Register_evidence() {
     useEffect(() => {
       async function loadEvidencesType() {
         const res = await getEvidencesType();
-        console.log(parseInt(selectedActivity))
         const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
         setEvidences(filteredEvidences);
       }
@@ -39,65 +38,44 @@ export function Register_evidence() {
 
   return (
     <Base>
-    <h1>Registrar Evidencia</h1>
-{/*    <Form className="w-50">
-         <Form.Group className="mt-4">
-          <Form.Label>Tipo de actividad:</Form.Label>
-          <Form.Select>
-            <option value="opcion1">Opción 1</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
-            <option value="opcion4">Opción 4</option>
-          </Form.Select>
-        </Form.Group> */}
-{/*         <ActivitiesType/> */}
-
-    {/*-----------------------------------------------------  */}
-    {/*---------------- Activities Type --------------------  */}
-    {/*-----------------------------------------------------  */}
-    <Form className="w-50">
-        <Form.Group className="mt-4">
-          <Form.Label>Tipo de actividad:</Form.Label>
-          <Form.Select value={selectedActivity} onChange={(e) => setSelectedActivity(e.target.value)}>
-            {activities.map(opcion => (
-              <option key={opcion.id} value={opcion.id}>{opcion.activity_type}</option>
-            ))}
-        </Form.Select>
-    </Form.Group>
+          <h1>Registrar Evidencia</h1>
+          <Form className="w-50">
+              {/*-----------------------------------------------------  */}
+              {/*---------------- Activities Type --------------------  */}
+              {/*-----------------------------------------------------  */}
+              <Form.Group className="mt-4">
+                    <Form.Label>Tipo de actividad:</Form.Label>
+                    <Form.Select value={selectedActivity} onChange={(e) => setSelectedActivity(e.target.value)}>
+                      {activities.map(opcion => (
+                        <option key={opcion.id} value={opcion.id}>{opcion.activity_type}</option>
+                      ))}
+                  </Form.Select>
+              </Form.Group>
 
 
-    {/*-----------------------------------------------------  */}
-    {/*---------------- Evidences Type --------------------  */}
-    {/*-----------------------------------------------------  */}
-    <Form.Group className="mt-4">
-          <Form.Label>Evidencia:</Form.Label>
-          <Form.Select>
-            {evidences.map(opcion => (
-              <option key={opcion.id} value={opcion.id}>{opcion.evidence_type}</option>
-            ))}
-          </Form.Select>
-    </Form.Group>
+              {/*-----------------------------------------------------  */}
+              {/*------------------- Evidences Type ------------------  */}
+              {/*-----------------------------------------------------  */}
+              <Form.Group className="mt-4">
+                    <Form.Label>Evidencia:</Form.Label>
+                    <Form.Select>
+                      {evidences.map(opcion => (
+                        <option key={opcion.id} value={opcion.id}>{opcion.evidence_type}</option>
+                      ))}
+                    </Form.Select>
+              </Form.Group>
+              
 
-{/*         <EvidencesType/> */}
-        
-{/*         <Form.Group className="mt-4">
-          <Form.Label>Evidencia:</Form.Label>
-          <Form.Select>
-            <option value="opcion1">Opción 1</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
-            <option value="opcion4">Opción 4</option>
-            <option value="opcion5">Opción 5</option>
-          </Form.Select>
-        </Form.Group> */}
+              {/*-----------------------------------------------------  */}
+              {/*---------------------- Documents --------------------  */}
+              {/*-----------------------------------------------------  */}
+              <Form.Group className="mt-4">
+                <Form.Label>Documentos de respaldo:</Form.Label>
+                <Form.Control type="file" />
+              </Form.Group>
 
-        <Form.Group className="mt-4">
-          <Form.Label>Documentos de respaldo:</Form.Label>
-          <Form.Control type="file" />
-        </Form.Group>
-
-        <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
-      </Form>
+              <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
+          </Form>
     </Base>
   );
 }
