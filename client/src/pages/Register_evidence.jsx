@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { Base } from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {Typeahead} from 'react-bootstrap-typeahead'
+
 /* import {ActivitiesType} from '../components/ActivitiesType' */
 /* import {EvidencesType} from '../components/EvidencesType' */
 
@@ -17,6 +19,7 @@ export function Register_evidence() {
     const [activities, setActivities] = useState([]);
     const [selectedActivity, setSelectedActivity] = useState(1);
     const [evidences, setEvidences] = useState([]);
+    const [selectedEvidence, setSelectedEvidence] = useState("");
 
     useEffect(() => {
       async function loadActivitiesType() {
@@ -32,6 +35,7 @@ export function Register_evidence() {
         const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
         setEvidences(filteredEvidences);
       }
+      setSelectedEvidence("");
       loadEvidencesType();
     }, [selectedActivity]);
 
@@ -56,15 +60,18 @@ export function Register_evidence() {
               {/*-----------------------------------------------------  */}
               {/*------------------- Evidences Type ------------------  */}
               {/*-----------------------------------------------------  */}
+
               <Form.Group className="mt-4">
                     <Form.Label>Evidencia:</Form.Label>
-                    <Form.Select>
-                      {evidences.map(opcion => (
-                        <option key={opcion.id} value={opcion.id}>{opcion.evidence_type}</option>
-                      ))}
-                    </Form.Select>
+                    <Typeahead
+                      id="evidences"
+                      labelKey="evidence_type"
+                      onChange={setSelectedEvidence}
+                      options={evidences}
+                      placeholder="Evidence"
+                      selected={selectedEvidence.evidence_type}
+                    />
               </Form.Group>
-              
 
               {/*-----------------------------------------------------  */}
               {/*---------------------- Documents --------------------  */}
