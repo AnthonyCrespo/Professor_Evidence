@@ -33,6 +33,7 @@ export function Registered_evidences() {
       setActivities(activitiesWithAllOption);
     }
     loadActivitiesType();
+    /* setSelectedActivity(0) */
   }, []);
 
   useEffect(() => {
@@ -55,6 +56,7 @@ export function Registered_evidences() {
     }
   
     loadEvidencesType();
+    setSelectedEvidence(0)
   }, [selectedActivity]);
   
 
@@ -74,27 +76,37 @@ export function Registered_evidences() {
   } = useForm();
 
   const onSubmit = handleSubmit(async (data) => {
+
     const evidence_data = {
 /*       document_comment: " ", */
      /*  document_uploadDate: formattedDate, */
 /*       document_pathToFile: data.document_pathToFile[0].name, */
       professor_id: "1317858973",
-      activity_type: parseInt(data.activity_type),
-      evidence_type: parseInt(data.evidence_type),
-      semester_id: parseInt(data.semester)
+      activity_type: parseInt(selectedActivity),//parseInt(data.activity_type),
+      evidence_type: parseInt(selectedEvidence),//parseInt(data.evidence_type),
+      semester_id: parseInt(selectedSemester)// parseInt(data.semester)
     };
 
     const res = await getDocuments();
     let filteredDocuments = []
     if (parseInt(selectedActivity) === 0){
           if (parseInt(selectedEvidence) === 0){
+/*             console.log("ESTE ES EL TIPO DE ACTIVIDAD " + selectedActivity)
+            console.log("ESTE ES EL TIPO DE EVIDENCIA " + selectedEvidence)
+            console.log("ESTE ES EL SEMESTRE " + selectedSemester)
+            console.log(evidence_data.professor_id)
+            console.log(parseInt(evidence_data.semester_id)) */
             filteredDocuments = res.data.filter(document => 
-                                                document.professor_id === evidence_data.professor_id)
-                                              }
+                                                document.professor_id === evidence_data.professor_id &&
+                                                document.semester_id === evidence_data.semester_id)
+                                              
+                                                console.log(filteredDocuments)}
+                    
           else {
             filteredDocuments = res.data.filter(document => 
                                                 document.professor_id === evidence_data.professor_id  &&
-                                                document.evidence_type === evidence_data.evidence_type )
+                                                document.evidence_type === evidence_data.evidence_type &&
+                                                document.semester_id === evidence_data.semester_id )
                                               }        
     }
     else {
