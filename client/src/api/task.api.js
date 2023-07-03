@@ -34,6 +34,10 @@ export const getEvidencesType = () => tasksApi.get('/Evidence_Type/');
 export const getSemesters = () => tasksApi.get('/Semester/');
 
 
+
+export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence);
+
+
 export const getAllTasks = () => {
     return tasksApi.get("/"); 
 }

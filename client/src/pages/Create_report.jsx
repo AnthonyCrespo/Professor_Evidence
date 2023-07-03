@@ -16,12 +16,12 @@ export function Create_report() {
 
         <Form.Group className="mt-4">
           <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-          <Form.Control type="number" />
+          <Form.Control type="number" min="0" max="1000" />
         </Form.Group>
 
         <Form.Group className="mt-4 mb-4">
           <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-          <Form.Control type="number" />
+          <Form.Control type="number" min="0" max="1000"  />
         </Form.Group>
       </>
     );
