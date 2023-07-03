@@ -74,7 +74,7 @@ export function Register_evidence() {
         document_comment: " ",
         document_uploadDate: formattedDate,
         document_pathToFile: data.document_pathToFile[0].name,
-        professor_id: 1,
+        professor_id: "1317858973",
         activity_type: parseInt(data.activity_type),
         evidence_type: parseInt(data.evidence_type),
         semester_id: 1
