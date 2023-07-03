@@ -3,6 +3,11 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .serializer import *
 from .models import *
+# from django.shortcuts import render, redirect
+# from django.contrib.auth.models import User
+# from django.contrib.auth import authenticate, login, logout
+# from django.contrib.auth.decorators import login_required
+# from django.http import HttpResponse
 
 # Create your views here.
 
@@ -45,6 +50,22 @@ class Semester_CareerView(viewsets.ModelViewSet):
 class Activity_TypeView(viewsets.ModelViewSet):
     serializer_class = Activity_TypeSerializer
     queryset = Activity_Type.objects.all()
+
+class Activity_Report_TeachingView(viewsets.ModelViewSet):
+    serializer_class = Activity_Report_TeachingSerializer
+    queryset = Activity_Report_Teaching.objects.all()
+
+class Activity_Report_InvestigationView(viewsets.ModelViewSet):
+    serializer_class = Activity_Report_InvestigationSerializer
+    queryset = Activity_Report_Investigation.objects.all()
+
+class Activity_Report_VinculationView(viewsets.ModelViewSet):
+    serializer_class = Activity_Report_VinculationSerializer
+    queryset = Activity_Report_Vinculation.objects.all()
+
+class Activity_Report_ManagementView(viewsets.ModelViewSet):
+    serializer_class = Activity_Report_ManagementSerializer
+    queryset = Activity_Report_Management.objects.all()
     
 class Evidence_TypeView(viewsets.ModelViewSet):
     queryset = Evidence_Type.objects.all()
