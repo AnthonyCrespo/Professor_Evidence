@@ -1,0 +1,1393 @@
+[
+    {
+        "model": "semester",
+        "pk": 1,
+        "fields": {
+            "semester_name": "S01_2023",
+            "date_start": "2023-04-17",
+            "date_end": "2023-08-13"
+        }
+    },
+    {
+        "model": "school",
+        "pk": 1,
+        "fields": {
+            "school_name": "Escuela de Ciencias Matemáticas y Tecnología Informática",
+            "school_abbreviation": "ECMTI"
+        }
+    },
+    {
+        "model": "school",
+        "pk": 2,
+        "fields": {
+            "school_name": "Escuela de Ciencias Biológicas e Ingeniería",
+            "school_abbreviation": "ECBI"
+        }
+    },
+    {
+        "model": "school",
+        "pk": 3,
+        "fields": {
+            "school_name": "Escuela de Ciencias Físicas y Nanotecnología",
+            "school_abbreviation": "ECFN"
+        }
+    },
+    {
+        "model": "school",
+        "pk": 4,
+        "fields": {
+            "school_name": "Escuela de Ciencias Químicas e Ingeniería",
+            "school_abbreviation": "ECQI"
+        }
+    },
+    {
+        "model": "school",
+        "pk": 5,
+        "fields": {
+            "school_name": "Escuela de Ciencias Geológicas e Ingeniería",
+            "school_abbreviation": "ECGI"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 1,
+        "fields": {
+            "school_id": 1,
+            "career_name": "Matemáticas"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 2,
+        "fields": {
+            "school_id": 1,
+            "career_name": "Computación"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 3,
+        "fields": {
+            "school_id": 2,
+            "career_name": "Biología"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 4,
+        "fields": {
+            "school_id": 2,
+            "career_name": "Biomedicina"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 5,
+        "fields": {
+            "school_id": 3,
+            "career_name": "Ingeniería en Nanotecnología"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 6,
+        "fields": {
+            "school_id": 3,
+            "career_name": "Física"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 7,
+        "fields": {
+            "school_id": 4,
+            "career_name": "Materiales"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 8,
+        "fields": {
+            "school_id": 4,
+            "career_name": "Química"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 9,
+        "fields": {
+            "school_id": 5,
+            "career_name": "Agroindustria"
+        }
+    },
+    {
+        "model": "career",
+        "pk": 10,
+        "fields": {
+            "school_id": 5,
+            "career_name": "Geología"
+        }
+    },
+    {
+        "model": "professor",
+        "pk": 1,
+        "fields": {
+            "career_id": 1,
+            "professor_degree": "PhD",
+            "professor_names": "Patricio Joshue",
+            "professor_lastnames": "Mendoza Núñez",
+            "professor_denomination": "Profesor"
+        }
+    },
+    {
+        "model": "professor",
+        "pk": 2,
+        "fields": {
+            "career_id": 5,
+            "professor_degree": "PhD",
+            "professor_names": "Ronald Patricio",
+            "professor_lastnames": "Mendoza Núñez",
+            "professor_denomination": "Profesor"
+        }
+    },
+    {
+        "model": "activity_type",
+        "pk": 1,
+        "fields": {
+            "activity_type": "Docencia"
+        }
+    },
+    {
+        "model": "activity_type",
+        "pk": 2,
+        "fields": {
+            "activity_type": "Vinculación"
+        }
+    },
+    {
+        "model": "activity_type",
+        "pk": 3,
+        "fields": {
+            "activity_type": "Investigación"
+        }
+    },
+    {
+        "model": "activity_type",
+        "pk": 4,
+        "fields": {
+            "activity_type": "Gestión"
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 1,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Impartir clases, seminarios, talleres, entre otros."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 2,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Planificar y actualizar contenidos de clases, seminarios, talleres, entre otros."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 3,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Diseñar y elaborar material didáctico, guías docentes o syllabus."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 4,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Diseñar y elaborar textos."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 5,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Orientar y acompañar a los estudiantes a través de tutorías, individuales o grupales."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 6,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Realizar visitas de campo, tutorías, docencia en servicio y formación dual."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 7,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Llevar a cabo la dirección, tutorías, seguimiento y evaluación de prácticas o pasantías preprofesionales."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 8,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Preparar, elaborar, aplicar y calificar exámenes, trabajos y prácticas."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 9,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Efectuar la dirección y tutoría de trabajos para la obtención del título."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 10,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Direccionar y participar en proyectos de experimentación e innovación docente."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 11,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Diseñar e impartir cursos de educación continua o de capacitación y actualización."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 12,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Participar y organizar colectivos académicos de debate, capacitación o intercambio de metodologías y experiencias de enseñanza."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 13,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Llevar a cabo el uso pedagógico de la investigación formativa y la sistematización como soporte o parte de la enseñanza."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 14,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Coordinar los aprendizajes prácticos y de laboratorio."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 15,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Impulsar procesos de cooperación y desarrollo."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 16,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Prestar la asistencia técnica, de servicios especializados, así como la participación en consultorías que generen beneficio a la colectividad."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 17,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Impartir cursos de educación continua, capacitación, actualización y certificación de competencias."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 18,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Prestar servicios a la sociedad tales como el análisis de laboratorio especializado, el peritaje, la revisión técnica documental, entre otros."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 19,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Fomentar la constitución, desarrollo y fortalecimiento de organizaciones de la sociedad civil, redes y demás espacios de participación ciudadana."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 20,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Organizar o participar en actividades de divulgación, democratización y distribución del saber."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 21,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Promocionar la internacionalización de la comunidad académica superior e impulso de las relaciones internacionales."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 22,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Desarrollar proyectos de innovación que permitan aplicar los conocimientos generados en las IES, en proyectos productivos o de beneficio social."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 23,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Dar guía y seguimiento a estudiantes que participen en proyectos de vinculación y evaluar prácticas preprofesionales de servicio comunitario desarrolladas en dichos proyectos."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 24,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Diseñar, direccionar y ejecutar proyectos de investigación básica, aplicada, tecnológica y en artes, o proyectos de vinculación articulados a la investigación, que supongan creación, innovación, difusión y transferencia de los resultados obtenidos."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 25,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Realizar investigación para la comprensión, recuperación, fortalecimiento y potenciación de los saberes ancestrales."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 26,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Diseñar, elaborar y poner en marcha metodologías, instrumentos, protocolos o procedimientos operativos o de investigación."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 27,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Investigar en laboratorios, centros documentales y demás instalaciones habilitadas para esta función, así como en entornos sociales."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 28,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Participar en congresos, seminarios y conferencias para la presentación de avances y resultados de sus investigaciones."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 29,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Participar en congresos, seminarios y conferencias para la presentación de avances y resultados de sus investigaciones."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 30,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Diseñar y participar en redes y programas de investigación local, nacional e internacional."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 31,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Participar en comités o consejos académicos y editoriales de revistas científicas y académicas indexadas y/o arbitradas."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 32,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Llevar a cabo la difusión de resultados y beneficios sociales de la investigación, a través de publicaciones, producciones artísticas, actuaciones, conciertos, creación u organización de instalaciones y de exposiciones, entre otros."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 33,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Direccionar o participar en colectivos académicos de debate para la presentación de avances y resultados de investigaciones."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 34,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Desempeñar las funciones como rector, vicerrector o integrante del órgano colegiado superior."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 35,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Desempeñar las funciones o cargos de decano, subdecano o similar jerarquía."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 36,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Dirigir escuelas, departamentos, centros o institutos de investigación."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 37,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Dirigir y/o coordinar carreras o programas."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 38,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Dirigir y/o gestionar los procesos de docencia, investigación y vinculación con la sociedad en sus distintos niveles de organización académica e institucional."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 39,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Organizar y/o dirigir eventos académicos nacionales o internacionales."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 40,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Desempeñar cargos tales como: editor académico, director o miembro editorial de una publicación."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 41,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Diseñar proyectos de carreras y programas de estudios de grado y posgrado."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 42,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar como delegado institucional en organismos públicos u otros que forman parte del Sistema de Educación Superior, así como sociedades científicas o académicas."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 43,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar como evaluador o facilitador académico externo del CES, el CACES, el órgano Rector de la Política Pública de Educación Superior u otro organismo público de investigación o desarrollo tecnológico."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 44,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar como representante del estamento de profesores e investigadores de acuerdo con el estatuto de la IES particular en las sesiones del órgano colegiado superior."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 45,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Integrar en calidad de Consejero Académico de los organismos que rigen el Sistema de Educación Superior (CES y CACES); en estos casos, se reconocerá la dedicación como equivalente a tiempo completo."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 46,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Ejercer cargos de nivel jerárquico superior en el órgano Rector de la Política Pública de Educación Superior; en estos casos se reconocerá la dedicación como equivalente a tiempo completo."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 47,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Formar parte de COMISIONES académicas en escuelas."
+        }
+    },
+    {
+        "model": "evidence_type",
+        "pk": 48,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar en capacitaciones de formación pedagógica."
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add semester",
+            "content_type": 1,
+            "codename": "add_semester"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change semester",
+            "content_type": 1,
+            "codename": "change_semester"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete semester",
+            "content_type": 1,
+            "codename": "delete_semester"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view semester",
+            "content_type": 1,
+            "codename": "view_semester"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add school",
+            "content_type": 2,
+            "codename": "add_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change school",
+            "content_type": 2,
+            "codename": "change_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete school",
+            "content_type": 2,
+            "codename": "delete_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view school",
+            "content_type": 2,
+            "codename": "view_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add career",
+            "content_type": 3,
+            "codename": "add_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change career",
+            "content_type": 3,
+            "codename": "change_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete career",
+            "content_type": 3,
+            "codename": "delete_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view career",
+            "content_type": 3,
+            "codename": "view_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add professor",
+            "content_type": 4,
+            "codename": "add_professor"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change professor",
+            "content_type": 4,
+            "codename": "change_professor"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete professor",
+            "content_type": 4,
+            "codename": "delete_professor"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view professor",
+            "content_type": 4,
+            "codename": "view_professor"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add semester_ school",
+            "content_type": 5,
+            "codename": "add_semester_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change semester_ school",
+            "content_type": 5,
+            "codename": "change_semester_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete semester_ school",
+            "content_type": 5,
+            "codename": "delete_semester_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view semester_ school",
+            "content_type": 5,
+            "codename": "view_semester_school"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add semester_ career",
+            "content_type": 6,
+            "codename": "add_semester_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change semester_ career",
+            "content_type": 6,
+            "codename": "change_semester_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete semester_ career",
+            "content_type": 6,
+            "codename": "delete_semester_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view semester_ career",
+            "content_type": 6,
+            "codename": "view_semester_career"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add activity_ type",
+            "content_type": 7,
+            "codename": "add_activity_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change activity_ type",
+            "content_type": 7,
+            "codename": "change_activity_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete activity_ type",
+            "content_type": 7,
+            "codename": "delete_activity_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view activity_ type",
+            "content_type": 7,
+            "codename": "view_activity_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add evidence_ type",
+            "content_type": 8,
+            "codename": "add_evidence_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change evidence_ type",
+            "content_type": 8,
+            "codename": "change_evidence_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete evidence_ type",
+            "content_type": 8,
+            "codename": "delete_evidence_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view evidence_ type",
+            "content_type": 8,
+            "codename": "view_evidence_type"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 33,
+        "fields": {
+            "name": "Can add document",
+            "content_type": 9,
+            "codename": "add_document"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 34,
+        "fields": {
+            "name": "Can change document",
+            "content_type": 9,
+            "codename": "change_document"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 35,
+        "fields": {
+            "name": "Can delete document",
+            "content_type": 9,
+            "codename": "delete_document"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 36,
+        "fields": {
+            "name": "Can view document",
+            "content_type": 9,
+            "codename": "view_document"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 37,
+        "fields": {
+            "name": "Can add activity_ report",
+            "content_type": 10,
+            "codename": "add_activity_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 38,
+        "fields": {
+            "name": "Can change activity_ report",
+            "content_type": 10,
+            "codename": "change_activity_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 39,
+        "fields": {
+            "name": "Can delete activity_ report",
+            "content_type": 10,
+            "codename": "delete_activity_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 40,
+        "fields": {
+            "name": "Can view activity_ report",
+            "content_type": 10,
+            "codename": "view_activity_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 41,
+        "fields": {
+            "name": "Can add report",
+            "content_type": 11,
+            "codename": "add_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 42,
+        "fields": {
+            "name": "Can change report",
+            "content_type": 11,
+            "codename": "change_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 43,
+        "fields": {
+            "name": "Can delete report",
+            "content_type": 11,
+            "codename": "delete_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 44,
+        "fields": {
+            "name": "Can view report",
+            "content_type": 11,
+            "codename": "view_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 45,
+        "fields": {
+            "name": "Can add task",
+            "content_type": 12,
+            "codename": "add_task"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 46,
+        "fields": {
+            "name": "Can change task",
+            "content_type": 12,
+            "codename": "change_task"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 47,
+        "fields": {
+            "name": "Can delete task",
+            "content_type": 12,
+            "codename": "delete_task"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 48,
+        "fields": {
+            "name": "Can view task",
+            "content_type": 12,
+            "codename": "view_task"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 49,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 13,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 50,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 13,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 51,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 13,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 52,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 13,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 53,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 14,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 54,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 14,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 55,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 14,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 56,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 14,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 57,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 15,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 58,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 15,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 59,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 15,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 60,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 15,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 61,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 16,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 62,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 16,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 63,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 16,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 64,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 16,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 65,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 17,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 66,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 17,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 67,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 17,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 68,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 17,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 69,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 18,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 70,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 18,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 71,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 18,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 72,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 18,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 73,
+        "fields": {
+            "name": "Can add evidence",
+            "content_type": 8,
+            "codename": "add_evidence"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 74,
+        "fields": {
+            "name": "Can change evidence",
+            "content_type": 8,
+            "codename": "change_evidence"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 75,
+        "fields": {
+            "name": "Can delete evidence",
+            "content_type": 8,
+            "codename": "delete_evidence"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 76,
+        "fields": {
+            "name": "Can view evidence",
+            "content_type": 8,
+            "codename": "view_evidence"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "semester"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "school"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "career"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "professor"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "semester_school"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "semester_career"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "activity_type"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "evidence_type"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "document"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "activity_report"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 11,
+        "fields": {
+            "app_label": "professor_evidence",
+            "model": "report"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 12,
+        "fields": {
+            "app_label": "tasks",
+            "model": "task"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 13,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 14,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 15,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 16,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 17,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 18,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    }
+]

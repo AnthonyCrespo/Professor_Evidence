@@ -1,4 +1,14 @@
+# Django Web Framework
 django
+
+# Core API
 coreapi
+
+# Django Rest Framework - Used to design API logic
 djangorestframework
+
+# Django Cors Headers - Used to enable CORS headers in API responses, and allow requests to be made to your API server from other origins.
 django-cors-headers
+
+# Database adapter for developers to connect databases to python
+psycopg2

@@ -51,7 +51,12 @@ class Evidence_TypeSerializer(serializers.ModelSerializer):
         model = Evidence_Type
         fields = '__all__'
 
-class Activity_ReportSerializer(serializers.ModelSerializer):
+class Professor_DenominationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Activity_Report
+        model = Professor_Denomination
         fields = '__all__'
+
+# class Activity_ReportSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Activity_Report
+#         fields = '__all__'

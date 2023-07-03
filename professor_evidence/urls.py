@@ -14,7 +14,8 @@ router.register(r'Document',views.DocumentView, 'Document')
 router.register(r'Evidence_Type',views.Evidence_TypeView, 'Evidence_Type')
 router.register(r'Report',views.ReportView, 'Report')
 router.register(r'Activity_Type',views.Activity_TypeView, 'Activity_Type')
-router.register(r'Activity_Report',views.Activity_ReportView, 'Activity_Repor')
+router.register(r'Professor_Denomination',views.Professor_DenominationView, 'Professor_Denomination')
+# router.register(r'Activity_Report',views.Activity_ReportView, 'Activity_Repor')
 
 urlpatterns = [
     path("api_2/v1/",include(router.urls) ),

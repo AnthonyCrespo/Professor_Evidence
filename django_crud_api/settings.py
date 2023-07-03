@@ -81,8 +81,18 @@ WSGI_APPLICATION = 'django_crud_api.wsgi.application'
 
 DATABASES = {
     'default': {
+
+        # SQLite Database
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+
+        # PostgreSQL Database
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'Professor_Evidence',
+        # 'USER': 'postgres',
+        # 'PASSWORD': '303134',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 

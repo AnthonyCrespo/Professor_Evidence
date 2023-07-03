@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 # Table for the Semester to know when does it starts and ends
 class Semester(models.Model):
     # Primary Keys are generated automatically
@@ -26,13 +27,19 @@ class Career(models.Model):
     def __str__(self):
         return self.career_name
 
+class Professor_Denomination(models.Model):
+    # professor_denomination_id = models.CharField(max_length=50)
+    denomination = models.TextField(max_length=200)
+    def __str__(self):
+        return self.denomination
+
 class Professor(models.Model):
-    # professor_id = models.CharField(max_length=50)
+    professor_id = models.CharField(primary_key=True, max_length=50)
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE)
     professor_degree = models.TextField(max_length=200)
     professor_names = models.TextField(max_length=200)
     professor_lastnames = models.TextField(max_length=200)
-    professor_denomination = models.TextField(max_length=200)
+    professor_denomination = models.ForeignKey(Professor_Denomination, on_delete=models.CASCADE)
     def __str__(self):
         return self.professor_names
 
@@ -75,7 +82,7 @@ class Document(models.Model):
     def __str__(self):
         return self.document_pathToFile
 
-class Activity_Report(models.Model):
+class Activity_Report_Teaching(models.Model):
     # activity_report_id = models.CharField(max_length=50)
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
@@ -83,29 +90,62 @@ class Activity_Report(models.Model):
     activity_report_summary = models.TextField(max_length=200)
     activity_report_hoursPerWeek = models.FloatField()
     activity_report_hoursPerWeekIntersemester = models.FloatField()
-    activity_report_conclusion = models.TextField(max_length=200)
+    def __str__(self):
+        return self.activity_report_summary
+    
+class Activity_Report_Investigation(models.Model):
+    # activity_report_id = models.CharField(max_length=50)
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+    document_id = models.ForeignKey(Document, on_delete=models.CASCADE, default=1)
+    activity_report_summary = models.TextField(max_length=200)
+    activity_report_hoursPerWeek = models.FloatField()
+    activity_report_hoursPerWeekIntersemester = models.FloatField()
+    def __str__(self):
+        return self.activity_report_summary
+
+class Activity_Report_Vinculation(models.Model):
+    # activity_report_id = models.CharField(max_length=50)
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+    document_id = models.ForeignKey(Document, on_delete=models.CASCADE, default=1)
+    activity_report_summary = models.TextField(max_length=200)
+    activity_report_hoursPerWeek = models.FloatField()
+    activity_report_hoursPerWeekIntersemester = models.FloatField()
+    def __str__(self):
+        return self.activity_report_summary
+
+class Activity_Report_Management(models.Model):
+    # activity_report_id = models.CharField(max_length=50)
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+    document_id = models.ForeignKey(Document, on_delete=models.CASCADE, default=1)
+    activity_report_summary = models.TextField(max_length=200)
+    activity_report_hoursPerWeek = models.FloatField()
+    activity_report_hoursPerWeekIntersemester = models.FloatField()
     def __str__(self):
         return self.activity_report_summary
 
 class Report(models.Model):
     # report_id = models.CharField(max_length=50)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    activity_report_id = models.ForeignKey(Activity_Report, on_delete=models.CASCADE)
+    # activity_report_id = models.ForeignKey(Activity_Report, on_delete=models.CASCADE)
 
     # Note: Multiple Foreign Keys are not allowed, that is why only 1 activity_report_id will
     # appear in the class of the report. However, we can manage to include in the final document
     # all the 4 activities of the professors.
     
-    # activity_report_teaching_id = models.ForeignKey(Activity_Report, verbose_name="Teaching Activity", on_delete=models.CASCADE)
-    # activity_report_management_id = models.ForeignKey(Activity_Report, verbose_name="Management Activity", on_delete=models.CASCADE)
-    # activity_report_vinculation_id = models.ForeignKey(Activity_Report, verbose_name="Vinculation Activity", on_delete=models.CASCADE)
-    # activity_report_investigation_id = models.ForeignKey(Activity_Report, verbose_name="Investigation Activity", on_delete=models.CASCADE)
+    activity_report_teaching_id = models.ForeignKey(Activity_Report_Teaching, verbose_name="Teaching Activity", on_delete=models.CASCADE, default=1)
+    activity_report_management_id = models.ForeignKey(Activity_Report_Management, verbose_name="Management Activity", on_delete=models.CASCADE, default=1)
+    activity_report_vinculation_id = models.ForeignKey(Activity_Report_Vinculation, verbose_name="Vinculation Activity", on_delete=models.CASCADE, default=1)
+    activity_report_investigation_id = models.ForeignKey(Activity_Report_Investigation, verbose_name="Investigation Activity", on_delete=models.CASCADE, default=1)
     
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     report_name = models.TextField(max_length=200)
     report_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
     report_professorComment = models.TextField(max_length=200)
     report_revisorComment = models.TextField(max_length=200)
+    report_conclusion = models.TextField(max_length=200, blank=True)
     report_reviewedBy = models.ForeignKey(Semester_Career, on_delete=models.CASCADE)
     report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
     report_isApproved = models.BooleanField(default = False)
