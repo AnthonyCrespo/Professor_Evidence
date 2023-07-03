@@ -1,7 +1,7 @@
 /* import {TaskList} from '../components/TaskList' */
 
 import React from 'react';
-import './css/Base.css'; // Archivo CSS para estilos personalizados
+import './css/Base.css';
 import {Link} from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
