@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Base } from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-/* import {ActivitiesType} from '../components/ActivitiesType' */
-/* import {EvidencesType} from '../components/EvidencesType' */
+import Table from 'react-bootstrap/Table';
 import { useForm } from 'react-hook-form';
 
 /* ------------- Import Functions from API ------------------ */
@@ -13,6 +12,7 @@ import { getActivitiesType } from '../api/task.api';
 import { getEvidencesType } from '../api/task.api';
 import { getSemesters } from '../api/task.api';
 import { getDocuments } from '../api/task.api';
+import Container from 'react-bootstrap/esm/Container';
 
 export function Registered_evidences() {
   const [activities, setActivities] = useState([]);
@@ -22,7 +22,6 @@ export function Registered_evidences() {
   const [semesters, setSemesters] = useState([]);
   const [selectedSemester, setSelectedSemester] = useState(1);
   const [documents, setDocuments] = useState([]);
-  const [selectedDocument, setSelectedDocument] = useState(1);
 
   useEffect(() => {
     async function loadActivitiesType() {
@@ -124,6 +123,7 @@ export function Registered_evidences() {
                                             document.semester_id === evidence_data.semester_id)
                                           }
                                         }
+    setDocuments(filteredDocuments)
     console.log(filteredDocuments)
     //navigate("/home/")
     })
@@ -196,6 +196,31 @@ export function Registered_evidences() {
 
         <Button className="mt-4" variant="primary" type="submit">Buscar</Button>
       </Form>
+                         
+      <br/>
+      <h5>Documentos subidos: </h5>
+      <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Actividad</th>
+          <th>Evidencia</th>
+          <th>Documento</th>
+          <th>Fecha</th>
+          <th>Comentario</th>
+        </tr>
+      </thead>
+      <tbody>
+        {documents.map((item) => (
+          <tr key={item.id}>
+            <td>{activities.find((element) => element.id === item.activity_type).activity_type}</td>
+            <td>{evidences.find((element) => element.id === item.evidence_type).evidence_type}</td>
+            <td>{item.document_pathToFile}</td>
+            <td>{item.document_uploadDate}</td>
+            <td>{item.document_comment}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
     </Base>
   );
 }
