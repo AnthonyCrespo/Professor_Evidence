@@ -19,6 +19,7 @@ router.register(r'Activity_Report_Teaching',views.Activity_Report_TeachingView, 
 router.register(r'Activity_Report_Investigation',views.Activity_Report_InvestigationView, 'Activity_Report_Investigation')
 router.register(r'Activity_Report_Vinculation',views.Activity_Report_VinculationView, 'Activity_Report_Vinculation')
 router.register(r'Activity_Report_Management',views.Activity_Report_ManagementView, 'Activity_Report_Management')
+router.register(r'UserAccountView',views.UserAccountView, 'UserAccountView')
 # router.register(r'Activity_Report',views.Activity_ReportView, 'Activity_Repor')
 
 urlpatterns = [

@@ -10,5 +10,32 @@ djangorestframework
 # Django Cors Headers - Used to enable CORS headers in API responses, and allow requests to be made to your API server from other origins.
 django-cors-headers
 
+# Django Simple JWT
+djangorestframework-simplejwt
+
 # Database adapter for developers to connect databases to python
 psycopg2
+psycopg2-binary
+
+djoser
+
+# asgiref
+# certifi
+# cffi
+# chardet
+# cryptography
+# defusedxml
+# django-templated-mail
+# idna
+# oauthlib
+# pycparser
+# PyJWT
+# python3-openid
+# pytz
+# requests
+# requests-oauthlib
+# six
+# social-auth-app-django
+# social-auth-core
+# sqlparse
+# urllib3
