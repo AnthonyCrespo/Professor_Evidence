@@ -103,9 +103,6 @@ DATABASES = {
 }
 
 # Email credentials
-# email = professor.evidence.2023@gmail.com
-# password = Professor@Evidence.2023
-# app password = koakqzkdepmuqmgb
 
 # EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
