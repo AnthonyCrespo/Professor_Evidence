@@ -202,8 +202,8 @@ export function Registered_evidences() {
       <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Actividad</th>
-          <th>Evidencia</th>
+{/*           <th>Actividad</th>
+          <th>Evidencia</th> */}
           <th>Documento</th>
           <th>Fecha</th>
           <th>Comentario</th>
@@ -212,8 +212,8 @@ export function Registered_evidences() {
       <tbody>
         {documents.map((item) => (
           <tr key={item.id}>
-            <td>{activities.find((element) => element.id === item.activity_type).activity_type}</td>
-            <td>{evidences.find((element) => element.id === item.evidence_type).evidence_type}</td>
+{/*             <td>{activities.find((element) => element.id === item.activity_type).activity_type}</td>
+            <td>{evidences.find((element) => element.id === item.evidence_type).evidence_type}</td> */}
             <td>{item.document_pathToFile}</td>
             <td>{item.document_uploadDate}</td>
             <td>{item.document_comment}</td>
