@@ -75,8 +75,8 @@ export function Register_evidence() {
         document_uploadDate: formattedDate,
         document_pathToFile: data.document_pathToFile[0].name,
         professor_id: "1317858973",
-        activity_type: parseInt(data.activity_type),
-        evidence_type: parseInt(data.evidence_type),
+        activity_type: parseInt(selectedActivity),//parseInt(data.activity_type),
+        evidence_type: parseInt(selectedEvidence),//parseInt(data.evidence_type),
         semester_id: 1
       };
 
@@ -165,7 +165,7 @@ export function Register_evidence() {
                              }}
                   {...register('document_pathToFile', { required: true })}
                 />
-                {errors.document_pathToFile && <span>Un documento es requerido.</span>}
+                {errors.document_pathToFile && <span>Se requiere subir un documento.</span>}
             </Form.Group>
 
               <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
