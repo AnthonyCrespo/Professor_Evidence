@@ -54,28 +54,28 @@ class Semester(models.Model):
     semester_name = models.TextField(max_length=200, default="SM")
     date_start = models.DateField(auto_now=False, auto_now_add=False)
     date_end = models.DateField(auto_now=False, auto_now_add=False)
-    # def __str__(self):
-    #     return self.semester_name
+    def __str__(self):
+        return self.semester_name
 
 class School(models.Model):
     # school_id = models.CharField(max_length=50)
     school_name = models.TextField(max_length=200)
     school_abbreviation = models.TextField(max_length=200, default=school_name)
-    # def __str__(self):
-    #     return self.school_abbreviation
+    def __str__(self):
+        return self.school_abbreviation
 
 class Career(models.Model):
     # career_id = models.CharField(max_length=50)
     school_id = models.ForeignKey(School, on_delete=models.CASCADE)
     career_name = models.TextField(max_length=200)
-    # def __str__(self):
-    #     return self.career_name
+    def __str__(self):
+        return self.career_name
 
 class Professor_Denomination(models.Model):
     # professor_denomination_id = models.CharField(max_length=50)
     denomination = models.TextField(max_length=200)
-    # def __str__(self):
-    #     return self.denomination
+    def __str__(self):
+        return self.denomination
 
 class Professor(models.Model):
     professor_id = models.CharField(primary_key=True, max_length=50)
@@ -84,35 +84,35 @@ class Professor(models.Model):
     professor_names = models.TextField(max_length=200)
     professor_lastnames = models.TextField(max_length=200)
     professor_denomination = models.ForeignKey(Professor_Denomination, on_delete=models.CASCADE)
-    # def __str__(self):
-    #     return self.professor_names
+    def __str__(self):
+        return self.professor_names
 
 class Semester_School(models.Model):
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     school_id = models.ForeignKey(School, on_delete=models.CASCADE)
     dean_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    # def __str__(self):
-    #     return self.dean_id
+    def __str__(self):
+        return str(self.dean_id)
 
 class Semester_Career(models.Model):
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE)
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     coordinator_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    # def __str__(self):
-    #     return self.coordinator_id
+    def __str__(self):
+        return str(self.coordinator_id)
 
 class Activity_Type(models.Model):
     # activity_type_id = models.CharField(max_length=50)
     activity_type = models.TextField(max_length=200)
-    # def __str__(self):
-    #     return self.activity_type
+    def __str__(self):
+        return self.activity_type
 
 class Evidence_Type(models.Model):
     # evidence_id = models.CharField(max_length=50)
     activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
     evidence_type = models.CharField(max_length=250)
-    # def __str__(self):
-    #     return self.evidence_type
+    def __str__(self):
+        return self.evidence_type
 
 class Document(models.Model):
     # document_id = models.CharField(max_length=50)
@@ -123,8 +123,8 @@ class Document(models.Model):
     document_comment = models.TextField(blank=True)
     document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
     document_pathToFile = models.TextField(max_length=200)
-    # def __str__(self):
-    #     return self.document_pathToFile
+    def __str__(self):
+        return str(self.id)
 
 class Activity_Report_Teaching(models.Model):
     # activity_report_id = models.CharField(max_length=50)
@@ -134,8 +134,8 @@ class Activity_Report_Teaching(models.Model):
     activity_report_summary = models.TextField(max_length=200)
     activity_report_hoursPerWeek = models.FloatField()
     activity_report_hoursPerWeekIntersemester = models.FloatField()
-    # def __str__(self):
-    #     return self.activity_report_summary
+    def __str__(self):
+        return str(self.id)
     
 class Activity_Report_Investigation(models.Model):
     # activity_report_id = models.CharField(max_length=50)
@@ -145,8 +145,8 @@ class Activity_Report_Investigation(models.Model):
     activity_report_summary = models.TextField(max_length=200)
     activity_report_hoursPerWeek = models.FloatField()
     activity_report_hoursPerWeekIntersemester = models.FloatField()
-    # def __str__(self):
-    #     return self.activity_report_summary
+    def __str__(self):
+        return str(self.id)
 
 class Activity_Report_Vinculation(models.Model):
     # activity_report_id = models.CharField(max_length=50)
@@ -156,8 +156,8 @@ class Activity_Report_Vinculation(models.Model):
     activity_report_summary = models.TextField(max_length=200)
     activity_report_hoursPerWeek = models.FloatField()
     activity_report_hoursPerWeekIntersemester = models.FloatField()
-    # def __str__(self):
-    #     return self.activity_report_summary
+    def __str__(self):
+        return str(self.id)
 
 class Activity_Report_Management(models.Model):
     # activity_report_id = models.CharField(max_length=50)
@@ -167,8 +167,8 @@ class Activity_Report_Management(models.Model):
     activity_report_summary = models.TextField(max_length=200)
     activity_report_hoursPerWeek = models.FloatField()
     activity_report_hoursPerWeekIntersemester = models.FloatField()
-    # def __str__(self):
-    #     return self.activity_report_summary
+    def __str__(self):
+        return str(self.id)
 
 class Report(models.Model):
     # report_id = models.CharField(max_length=50)
@@ -194,5 +194,5 @@ class Report(models.Model):
     report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
     report_isApproved = models.BooleanField(default = False)
     report_pathToFile = models.TextField(max_length=200)
-    # def __str__(self):
-    #     return self.report_pathToFile
+    def __str__(self):
+        return self.report_name
