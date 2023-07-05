@@ -54,21 +54,21 @@ class Activity_TypeView(viewsets.ModelViewSet):
     serializer_class = Activity_TypeSerializer
     queryset = Activity_Type.objects.all()
 
-class Activity_Report_TeachingView(viewsets.ModelViewSet):
-    serializer_class = Activity_Report_TeachingSerializer
-    queryset = Activity_Report_Teaching.objects.all()
+# class Activity_Report_TeachingView(viewsets.ModelViewSet):
+#     serializer_class = Activity_Report_TeachingSerializer
+#     queryset = Activity_Report_Teaching.objects.all()
 
-class Activity_Report_InvestigationView(viewsets.ModelViewSet):
-    serializer_class = Activity_Report_InvestigationSerializer
-    queryset = Activity_Report_Investigation.objects.all()
+# class Activity_Report_InvestigationView(viewsets.ModelViewSet):
+#     serializer_class = Activity_Report_InvestigationSerializer
+#     queryset = Activity_Report_Investigation.objects.all()
 
-class Activity_Report_VinculationView(viewsets.ModelViewSet):
-    serializer_class = Activity_Report_VinculationSerializer
-    queryset = Activity_Report_Vinculation.objects.all()
+# class Activity_Report_VinculationView(viewsets.ModelViewSet):
+#     serializer_class = Activity_Report_VinculationSerializer
+#     queryset = Activity_Report_Vinculation.objects.all()
 
-class Activity_Report_ManagementView(viewsets.ModelViewSet):
-    serializer_class = Activity_Report_ManagementSerializer
-    queryset = Activity_Report_Management.objects.all()
+# class Activity_Report_ManagementView(viewsets.ModelViewSet):
+#     serializer_class = Activity_Report_ManagementSerializer
+#     queryset = Activity_Report_Management.objects.all()
     
 class Evidence_TypeView(viewsets.ModelViewSet):
     queryset = Evidence_Type.objects.all()

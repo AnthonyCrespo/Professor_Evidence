@@ -28,15 +28,16 @@ const tasksApi = axios.create({
     baseURL: 'http://localhost:8000/professor_evidence/api_2/v1/'
 })
 
-
+/* ------------------ GET --------------------------- */
 export const getActivitiesType = () => tasksApi.get('/Activity_Type/');
 export const getEvidencesType = () => tasksApi.get('/Evidence_Type/');
 export const getSemesters = () => tasksApi.get('/Semester/');
 export const getDocuments = () => tasksApi.get('/Document/');
 
 
-
+/* ------------------ POST --------------------------- */
 export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence);
+export const createrReport = (report) => tasksApi.post("/Report/", report);
 
 
 export const getAllTasks = () => {

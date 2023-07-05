@@ -67,25 +67,25 @@ class Evidence_TypeSerializer(serializers.ModelSerializer):
         model = Evidence_Type
         fields = '__all__'
 
-class Activity_Report_TeachingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Activity_Report_Teaching
-        fields = '__all__'
+# class Activity_Report_TeachingSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Activity_Report_Teaching
+#         fields = '__all__'
 
-class Activity_Report_InvestigationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Activity_Report_Investigation
-        fields = '__all__'
+# class Activity_Report_InvestigationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Activity_Report_Investigation
+#         fields = '__all__'
 
-class Activity_Report_VinculationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Activity_Report_Vinculation
-        fields = '__all__'
+# class Activity_Report_VinculationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Activity_Report_Vinculation
+#         fields = '__all__'
 
-class Activity_Report_ManagementSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Activity_Report_Management
-        fields = '__all__'
+# class Activity_Report_ManagementSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Activity_Report_Management
+#         fields = '__all__'
 
 class Professor_DenominationSerializer(serializers.ModelSerializer):
     class Meta:

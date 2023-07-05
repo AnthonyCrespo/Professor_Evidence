@@ -126,49 +126,49 @@ class Document(models.Model):
     def __str__(self):
         return str(self.id)
 
-class Activity_Report_Teaching(models.Model):
-    # activity_report_id = models.CharField(max_length=50)
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-    activity_report_summary = models.TextField(max_length=200)
-    activity_report_hoursPerWeek = models.FloatField()
-    activity_report_hoursPerWeekIntersemester = models.FloatField()
-    def __str__(self):
-        return str(self.id)
+# class Activity_Report_Teaching(models.Model):
+#     # activity_report_id = models.CharField(max_length=50)
+#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
+#     activity_report_summary = models.TextField(max_length=200)
+#     activity_report_hoursPerWeek = models.FloatField()
+#     activity_report_hoursPerWeekIntersemester = models.FloatField()
+#     def __str__(self):
+#         return str(self.id)
     
-class Activity_Report_Investigation(models.Model):
-    # activity_report_id = models.CharField(max_length=50)
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-    activity_report_summary = models.TextField(max_length=200)
-    activity_report_hoursPerWeek = models.FloatField()
-    activity_report_hoursPerWeekIntersemester = models.FloatField()
-    def __str__(self):
-        return str(self.id)
+# class Activity_Report_Investigation(models.Model):
+#     # activity_report_id = models.CharField(max_length=50)
+#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
+#     activity_report_summary = models.TextField(max_length=200)
+#     activity_report_hoursPerWeek = models.FloatField()
+#     activity_report_hoursPerWeekIntersemester = models.FloatField()
+#     def __str__(self):
+#         return str(self.id)
 
-class Activity_Report_Vinculation(models.Model):
-    # activity_report_id = models.CharField(max_length=50)
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-    activity_report_summary = models.TextField(max_length=200)
-    activity_report_hoursPerWeek = models.FloatField()
-    activity_report_hoursPerWeekIntersemester = models.FloatField()
-    def __str__(self):
-        return str(self.id)
+# class Activity_Report_Vinculation(models.Model):
+#     # activity_report_id = models.CharField(max_length=50)
+#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
+#     activity_report_summary = models.TextField(max_length=200)
+#     activity_report_hoursPerWeek = models.FloatField()
+#     activity_report_hoursPerWeekIntersemester = models.FloatField()
+#     def __str__(self):
+#         return str(self.id)
 
-class Activity_Report_Management(models.Model):
-    # activity_report_id = models.CharField(max_length=50)
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-    activity_report_summary = models.TextField(max_length=200)
-    activity_report_hoursPerWeek = models.FloatField()
-    activity_report_hoursPerWeekIntersemester = models.FloatField()
-    def __str__(self):
-        return str(self.id)
+# class Activity_Report_Management(models.Model):
+#     # activity_report_id = models.CharField(max_length=50)
+#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
+#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
+#     activity_report_summary = models.TextField(max_length=200)
+#     activity_report_hoursPerWeek = models.FloatField()
+#     activity_report_hoursPerWeekIntersemester = models.FloatField()
+#     def __str__(self):
+#         return str(self.id)
 
 class Report(models.Model):
     # report_id = models.CharField(max_length=50)
@@ -179,10 +179,26 @@ class Report(models.Model):
     # appear in the class of the report. However, we can manage to include in the final document
     # all the 4 activities of the professors.
     
-    activity_report_teaching_id = models.ForeignKey(Activity_Report_Teaching, verbose_name="Teaching Activity", on_delete=models.CASCADE)
-    activity_report_management_id = models.ForeignKey(Activity_Report_Management, verbose_name="Management Activity", on_delete=models.CASCADE)
-    activity_report_vinculation_id = models.ForeignKey(Activity_Report_Vinculation, verbose_name="Vinculation Activity", on_delete=models.CASCADE)
-    activity_report_investigation_id = models.ForeignKey(Activity_Report_Investigation, verbose_name="Investigation Activity", on_delete=models.CASCADE)
+    # activity_report_teaching_id = models.ForeignKey(Activity_Report_Teaching, verbose_name="Teaching Activity", on_delete=models.CASCADE)
+    # activity_report_management_id = models.ForeignKey(Activity_Report_Management, verbose_name="Management Activity", on_delete=models.CASCADE)
+    # activity_report_vinculation_id = models.ForeignKey(Activity_Report_Vinculation, verbose_name="Vinculation Activity", on_delete=models.CASCADE)
+    # activity_report_investigation_id = models.ForeignKey(Activity_Report_Investigation, verbose_name="Investigation Activity", on_delete=models.CASCADE)
+    teaching_report_summary = models.TextField(max_length=200)
+    teaching_report_hoursPerWeek = models.FloatField()
+    teaching_report_hoursPerWeekIntersemester = models.FloatField()
+    
+    management_report_summary = models.TextField(max_length=200)
+    management_report_hoursPerWeek = models.FloatField()
+    management_report_hoursPerWeekIntersemester = models.FloatField()
+    
+    vinculation_report_summary = models.TextField(max_length=200)
+    vinculationt_report_hoursPerWeek = models.FloatField()
+    vinculation_report_hoursPerWeekIntersemester = models.FloatField()
+        
+    investigation_report_summary = models.TextField(max_length=200)
+    investigation_report_hoursPerWeek = models.FloatField()
+    investigation_report_hoursPerWeekIntersemester = models.FloatField()
+    
     
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     report_name = models.TextField(max_length=200)
