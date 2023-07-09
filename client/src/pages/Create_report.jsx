@@ -4,7 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-
+import Tab from 'react-bootstrap/Tab';
+import Nav from 'react-bootstrap/Nav';
 
 import { getActivitiesType } from '../api/task.api';
 import { createrReport } from '../api/task.api';
@@ -127,27 +128,46 @@ export function Create_report() {
             </Form.Group>
           </React.Fragment>
         ))} */}
-            <h2>Docencia</h2>
-            <Form.Group className="mt-4">
-              <Form.Label>Resumen:</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3} 
-                value={form.teaching_report_summary}
-                onChange={(e) => {
-                  setValue('teaching_report_summary', e.target.value);
-                  setForm(prevForm => ({
-                    ...prevForm,
-                    teaching_report_summary: e.target.value
-                  }));
-                }}
-/* '                {...register('teaching_report_summary', { required: true })}' */
-              />
-              {errors.teaching_report_summary && <span>Este campo es obligatorio</span>}
-            </Form.Group>
+<Tab.Container defaultActiveKey="docencia">
+  <Nav variant="tabs">
+    <Nav.Item>
+      <Nav.Link eventKey="docencia">Docencia</Nav.Link>
+    </Nav.Item>
+    <Nav.Item>
+      <Nav.Link eventKey="vinculacion">Vinculación</Nav.Link>
+    </Nav.Item>
+    <Nav.Item>
+      <Nav.Link eventKey="investigacion">Investigación</Nav.Link>
+    </Nav.Item>
+    <Nav.Item>
+      <Nav.Link eventKey="gestion">Gestión</Nav.Link>
+    </Nav.Item>
+    <Nav.Item>
+      <Nav.Link eventKey="conclusiones">Conclusiones</Nav.Link>
+    </Nav.Item>
+  </Nav>
 
+  <Tab.Content>
+      <Tab.Pane eventKey="docencia">
+      <Form.Group className="mt-4">
+                <Form.Label>Resumen:</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3} 
+                  value={form.teaching_report_summary}
+                  onChange={(e) => {
+                    setValue('teaching_report_summary', e.target.value);
+                    setForm(prevForm => ({
+                      ...prevForm,
+                      teaching_report_summary: e.target.value
+                    }));
+                  }}
+  /* '                {...register('teaching_report_summary', { required: true })}' */
+                />
+                {errors.teaching_report_summary && <span>Este campo es obligatorio</span>}
+      </Form.Group>
 
-            <Form.Group className="mt-4">
+      <Form.Group className="mt-4">
               <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
               <Form.Control type="number" min="0" max="100" 
                                              value={form.teaching_report_hoursPerWeek}
@@ -168,47 +188,51 @@ export function Create_report() {
                                           }));
                                           }}
                                                           />
-            </Form.Group>
-
-            <h2>Vinculación</h2>
-            <Form.Group className="mt-4">
-              <Form.Label>Resumen:</Form.Label>
-              <Form.Control as="textarea" rows={3} 
-                               value={form.vinculation_report_summary}
-                               onChange={(e) => {setForm(prevForm => ({
-                                ...prevForm,
-                                vinculation_report_summary: e.target.value
-                              }));
-                              }}
-              />
-            </Form.Group>
-
-            <Form.Group className="mt-4">
-              <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-              <Form.Control type="number" min="0" max="100" 
-                                             value={form.vinculationt_report_hoursPerWeek}
-                                             onChange={(e) => {setForm(prevForm => ({
-                                              ...prevForm,
-                                              vinculationt_report_hoursPerWeek: parseInt(e.target.value)
-                                            }));
-                                            }}/>
-            </Form.Group>
-
-            <Form.Group className="mt-4 mb-4">
-              <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-              <Form.Control type="number" min="0" max="100" 
-                                            value={form.vinculation_report_hoursPerWeekIntersemester}
-                                            onChange={(e) => {setForm(prevForm => ({
-                                            ...prevForm,
-                                            vinculation_report_hoursPerWeekIntersemester: parseInt(e.target.value)
-                                          }));
-                                          }}
-                                                          />
-            </Form.Group>
+      </Form.Group>
+    </Tab.Pane>
 
 
-            <h2>Investigación</h2>
-            <Form.Group className="mt-4">
+    <Tab.Pane eventKey="vinculacion">
+        <Form.Group className="mt-4">
+                  <Form.Label>Resumen:</Form.Label>
+                  <Form.Control as="textarea" rows={3} 
+                                  value={form.vinculation_report_summary}
+                                  onChange={(e) => {setForm(prevForm => ({
+                                    ...prevForm,
+                                    vinculation_report_summary: e.target.value
+                                  }));
+                                  }}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mt-4">
+                  <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
+                  <Form.Control type="number" min="0" max="100" 
+                                                value={form.vinculationt_report_hoursPerWeek}
+                                                onChange={(e) => {setForm(prevForm => ({
+                                                  ...prevForm,
+                                                  vinculationt_report_hoursPerWeek: parseInt(e.target.value)
+                                                }));
+                                                }}/>
+                </Form.Group>
+
+                <Form.Group className="mt-4 mb-4">
+                  <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
+                  <Form.Control type="number" min="0" max="100" 
+                                                value={form.vinculation_report_hoursPerWeekIntersemester}
+                                                onChange={(e) => {setForm(prevForm => ({
+                                                ...prevForm,
+                                                vinculation_report_hoursPerWeekIntersemester: parseInt(e.target.value)
+                                              }));
+                                              }}
+                                                              />
+        </Form.Group>
+
+    </Tab.Pane>
+
+
+    <Tab.Pane eventKey="investigacion">
+    <Form.Group className="mt-4">
               <Form.Label>Resumen:</Form.Label>
               <Form.Control as="textarea" rows={3} 
                                value={form.investigation_report_summary}
@@ -242,43 +266,49 @@ export function Create_report() {
                                           }}
                                                           />
             </Form.Group>
-            <h2>Gestión</h2>
-            <Form.Group className="mt-4">
-              <Form.Label>Resumen:</Form.Label>
-              <Form.Control as="textarea" rows={3} 
-                               value={form.management_report_summary}
-                               onChange={(e) => {setForm(prevForm => ({
-                                ...prevForm,
-                                management_report_summary: e.target.value
-                              }));
-                              }}
-              />
-            </Form.Group>
+    </Tab.Pane>
 
-            <Form.Group className="mt-4">
-              <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-              <Form.Control type="number" min="0" max="100" 
-                                             value={form.management_report_hoursPerWeek}
-                                             onChange={(e) => {setForm(prevForm => ({
+
+    <Tab.Pane eventKey="gestion">
+      <Form.Group className="mt-4">
+                <Form.Label>Resumen:</Form.Label>
+                <Form.Control as="textarea" rows={3} 
+                                value={form.management_report_summary}
+                                onChange={(e) => {setForm(prevForm => ({
+                                  ...prevForm,
+                                  management_report_summary: e.target.value
+                                }));
+                                }}
+                />
+              </Form.Group>
+
+              <Form.Group className="mt-4">
+                <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
+                <Form.Control type="number" min="0" max="100" 
+                                              value={form.management_report_hoursPerWeek}
+                                              onChange={(e) => {setForm(prevForm => ({
+                                                ...prevForm,
+                                                management_report_hoursPerWeek: parseInt(e.target.value)
+                                              }));
+                                              }}/>
+              </Form.Group>
+
+              <Form.Group className="mt-4 mb-4">
+                <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
+                <Form.Control type="number" min="0" max="100" 
+                                              value={form.management_report_hoursPerWeekIntersemester}
+                                              onChange={(e) => {setForm(prevForm => ({
                                               ...prevForm,
-                                              management_report_hoursPerWeek: parseInt(e.target.value)
+                                              management_report_hoursPerWeekIntersemester: parseInt(e.target.value)
                                             }));
-                                            }}/>
-            </Form.Group>
+                                            }}
+                                                            />
+      </Form.Group>
+    </Tab.Pane>
 
-            <Form.Group className="mt-4 mb-4">
-              <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-              <Form.Control type="number" min="0" max="100" 
-                                            value={form.management_report_hoursPerWeekIntersemester}
-                                            onChange={(e) => {setForm(prevForm => ({
-                                            ...prevForm,
-                                            management_report_hoursPerWeekIntersemester: parseInt(e.target.value)
-                                          }));
-                                          }}
-                                                          />
-            </Form.Group>
-          <h2 className = "h2_conclusiones">Conclusiones</h2>
-          <Form.Group className="mt-4">
+    
+    <Tab.Pane eventKey="conclusiones">
+      <Form.Group className="mt-4">
             <Form.Label>Conclusiones:</Form.Label>
             <Form.Control as="textarea" rows={3} 
                                            value={form.report_conclusion}
@@ -287,10 +317,14 @@ export function Create_report() {
                                             report_conclusion: e.target.value
                                           }));
                                           }}/>
-          </Form.Group>
-
+      </Form.Group>
+      <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
+    </Tab.Pane>
+    
+  </Tab.Content>
+</Tab.Container>
           
-          <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
+
         </Form>
     <br/>
     </Base>
