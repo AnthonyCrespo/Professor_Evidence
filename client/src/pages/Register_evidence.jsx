@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import {Typeahead} from 'react-bootstrap-typeahead'
 import { useForm } from 'react-hook-form';
+import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
 /* import {ActivitiesType} from '../components/ActivitiesType' */
 /* import {EvidencesType} from '../components/EvidencesType' */
@@ -17,6 +18,9 @@ import { getEvidencesType } from '../api/task.api';
 import { createEvidence } from '../api/task.api';
 
 export function Register_evidence() {
+
+
+    const [options, setOptions] = useState([]);
 
     const [activities, setActivities] = useState([]);
     const [selectedActivity, setSelectedActivity] = useState(1);
@@ -50,10 +54,21 @@ export function Register_evidence() {
         const res = await getEvidencesType();
         const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
         setEvidences(filteredEvidences);
+        console.log(evidences)
       }
       loadEvidencesType();
     }, [selectedActivity]);
 
+
+
+    useEffect(() => {
+      const loadedOptions = evidences.map(evidence => ({
+        value: evidence.id,
+        label: evidence.evidence_type
+      }));
+  
+      setOptions(loadedOptions);
+    }, [selectedActivity]);
 
     const handleSelectedEvidenceChange = (selected) => {
       console.log('Selected Evidence:', selected);
@@ -115,20 +130,24 @@ export function Register_evidence() {
               {/*-----------------------------------------------------  */}
               {/*------------------- Evidences Type ------------------  */}
               {/*-----------------------------------------------------  */}
-{/* 
-              <Form.Group className="mt-4">
-                    <Form.Label>Evidencia:</Form.Label>
-                    <Typeahead
-                      id="evidences"
-                      labelKey="evidence_type"
-                      onChange={(selected)=>{setSelectedEvidence(selected[0])}}
-                      options={evidences}
-                      placeholder="Evidence"
-                      selected={[selectedEvidence]}
-                    />
+{/*               <Form.Group className="mt-4">
+                <Form.Label>Evidencia:</Form.Label>
+                <Select
+                  id="evidences"
+                  labelKey="label"
+                  defaultValue={options[1]}
+                  onChange={(selectedOption) => {
+                    setSelectedEvidence(selectedOption['value']);
+                    console.log(selectedEvidence);
+                    setValue('evidence_type', selectedOption['value']);
+                  }}
+                  options={options}
+                  placeholder="Seleccionar evidencia"
+                />
               </Form.Group>
-
  */}
+
+
               
 
               {/*-----------------------------------------------------  */}
@@ -142,7 +161,6 @@ export function Register_evidence() {
                                       /* console.log(selectedEvidence) */
                                       setValue('evidence_type', e.target.value)
                                     }}
-                    /* {...register('evidence_type')} */
                     >
                       {evidences.map(opcion => (
                         <option key={opcion.id} value={opcion.id}>{opcion.evidence_type}</option>

@@ -55,7 +55,7 @@ export function Create_report() {
     report_conclusion:	'',
     report_isApproved:	false,
     report_pathToFile: 'path/to/file',	
-    professor_id: "1317858973",	
+    professor_id: "1317858549",	
     semester_id: 1,	
     report_reviewedBy: 1,	
     report_approvedBy: 1,
@@ -141,7 +141,7 @@ export function Create_report() {
                     teaching_report_summary: e.target.value
                   }));
                 }}
-/*                 {...register('teaching_report_summary', { required: true })} */
+/* '                {...register('teaching_report_summary', { required: true })}' */
               />
               {errors.teaching_report_summary && <span>Este campo es obligatorio</span>}
             </Form.Group>
