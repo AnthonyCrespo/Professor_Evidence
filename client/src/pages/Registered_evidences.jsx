@@ -18,31 +18,42 @@ export function Registered_evidences() {
   const [selectedSemester, setSelectedSemester] = useState(1);
   const [documents, setDocuments] = useState([]);
 
+
+  /* ------ Carga de los tipos de actividades + 'TODOS' --------- */
   useEffect(() => {
     async function loadActivitiesType() {
       const res = await getActivitiesType();
       const allOption = { id: 0, activity_type: "Todos" };
       const activitiesWithAllOption = [allOption, ...res.data];
       setActivities(activitiesWithAllOption);
+/*       console.log(activitiesWithAllOption)  |||| VERIFICADO. */
     }
     loadActivitiesType();
   }, []);
 
+  /* ------ Carga de los tipos de evidencias + 'TODOS' --------- */
   useEffect(() => {
     async function loadEvidencesType() {
       const res = await getEvidencesType();
       const allOption = { id: 0, evidence_type: 'Todos', activity_type: 0 };
       let evidencesWithAllOption = [];
+      /* Si tipo de actividad = TODOS */
       if (parseInt(selectedActivity) === 0) {
         evidencesWithAllOption = [allOption, ...res.data];
+      /* En caso contrario */
       } else {
         const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
         evidencesWithAllOption = [allOption, ...filteredEvidences];
       }
       setEvidences(evidencesWithAllOption);
+      setSelectedEvidence(0); /* Arregló el error de que a veces no se podían hacer búsquedas. */
+/*       console.log(evidencesWithAllOption);  */
     }
     loadEvidencesType();
   }, [selectedActivity]);
+
+
+
 
   useEffect(() => {
     async function loadSemesters() {
@@ -180,8 +191,6 @@ export function Registered_evidences() {
           {documents.length > 0 ? (
             documents.map((item) => (
               <tr key={item.id}>
-{/*                 <td>{activities.find((element) => element.id === item.activity_type)?.activity_type}</td>
-                <td>{evidences.find((element) => element.id === item.evidence_type)?.evidence_type}</td> */}
                 <td>{item.activity_type}</td>
                 <td>{item.evidence_type}</td>
                 <td>{item.document_pathToFile}</td>
