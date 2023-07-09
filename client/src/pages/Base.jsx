@@ -21,9 +21,11 @@ export function Base({ children }) {
             {/* ------------  navbar -------------  */}
             <Navbar className="SAED-navbar">
                 <Container className="d-flex justify-content-between align-items-center">
+                <a href="/home"> {/* Agregar el href deseado */}
                     <Navbar.Brand>
                         <img src="/logo.png" alt="logo" width={230} />
                     </Navbar.Brand>
+                </a>
                     <Nav>
                         <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
                         <NavDropdown.Item href="/login">Cerrar Sesion</NavDropdown.Item>
@@ -42,14 +44,14 @@ export function Base({ children }) {
                     <ul className="nav flex-column mt-3">
 
                     {/* -------Home option ------- */}
-                    <li className="nav-item mt-2">
+{/*                     <li className="nav-item mt-2">
                         <a className="nav-link px-2" href="/home">
                         <i className='bi bi-house side-bar-icon'></i>
                         <span className='ms-1 d-none d-sm-inline  side-bar-text'>
                             Home
                         </span>
                         </a>
-                    </li>
+                    </li> */}
                     
                     {/* -------Evidencias option ------- */}
 
