@@ -23,12 +23,14 @@ export function Registered_reports() {
   }, []);
   
   useEffect(() => {
-    const professorId = '1317858973';
+    const professorId = '1317858549';
     const loadReports = async () => {
       /* const response = await getReports(professorId); */
       const response = await getReports();
   
-      const reportsWithSemesterName = response.data.map(report => ({
+      const filteredReports = response.data.filter(report => report.professor_id === professorId);
+  
+      const reportsWithSemesterName = filteredReports.map(report => ({
         ...report,
         semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
       }));
@@ -46,11 +48,12 @@ export function Registered_reports() {
   
   return (
     <Base>
+    <br/>
     <h1>Informes registrados</h1>
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Semester ID</th>
+          <th>Semestre</th>
           <th>Fecha</th>
           <th>Reporte</th>
         </tr>
