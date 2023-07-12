@@ -36,6 +36,7 @@ export const getDocuments = () => tasksApi.get('/Document/');
 /* export const getReports = (professorId) => tasksApi.get(`/Report/?professor_id=${professorId}`); */
 export const getReports = () => tasksApi.get('/Report/');
 
+export const getDocumentByID = (reportId) => tasksApi.get(`/Document/${reportId}/`);
 
 /* ------------------ POST --------------------------- */
 export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence);
