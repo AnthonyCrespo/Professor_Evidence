@@ -10,9 +10,9 @@ from .models import *
 # from django.http import HttpResponse
 
 # Create your views here.
-class UserAccountView(viewsets.ModelViewSet):
-    serializer_class = UserAccountSerializer
-    queryset = UserAccount.objects.all()
+# class UserAccountView(viewsets.ModelViewSet):
+#     serializer_class = UserAccountSerializer
+#     queryset = UserAccount.objects.all()
 
 class SemesterView(viewsets.ModelViewSet):
     serializer_class = SemesterSerializer

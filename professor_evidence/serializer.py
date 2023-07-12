@@ -4,17 +4,17 @@ from djoser.serializers import UserCreateSerializer
 from django.contrib.auth import get_user_model
 
 # Serializers for Users
-User = get_user_model()
+# User = get_user_model()
 
-class UserCreateSerializer(UserCreateSerializer):
-    class Meta(UserCreateSerializer.Meta):
-        model = User
-        fields = ('id', 'email', 'first_name', 'last_name', 'password')
+# class UserCreateSerializer(UserCreateSerializer):
+#     class Meta(UserCreateSerializer.Meta):
+#         model = User
+#         fields = ('id', 'email', 'first_name', 'last_name', 'password')
 
-class UserAccountSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserAccount
-        fields = '__all__'
+# class UserAccountSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = UserAccount
+#         fields = '__all__'
 
 # Serializers for Backend Views
 class SemesterSerializer(serializers.ModelSerializer):

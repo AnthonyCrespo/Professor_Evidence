@@ -1,0 +1,795 @@
+[
+  {
+    "model": "professor_evidence.semester",
+    "pk": 1,
+    "fields": {
+      "semester_name": "SM01_2023",
+      "date_start": "2023-04-17",
+      "date_end": "2023-08-13"
+    }
+  },
+  {
+    "model": "professor_evidence.semester",
+    "pk": 2,
+    "fields": {
+      "semester_name": "SM02_2023",
+      "date_start": "2023-08-28",
+      "date_end": "2023-12-14"
+    }
+  },
+  {
+    "model": "professor_evidence.semester",
+    "pk": 3,
+    "fields": {
+      "semester_name": "SM02_2022",
+      "date_start": "2022-11-07",
+      "date_end": "2023-03-20"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 1,
+    "fields": {
+      "school_name": "Escuela de Ciencias Matemáticas y Tecnología Informática",
+      "school_abbreviation": "ECMTI"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 2,
+    "fields": {
+      "school_name": "Escuela de Ciencias Biológicas e Ingeniería",
+      "school_abbreviation": "ECBI"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 3,
+    "fields": {
+      "school_name": "Escuela de Ciencias Físicas y Nanotecnología",
+      "school_abbreviation": "ECFN"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 4,
+    "fields": {
+      "school_name": "Escuela de Ciencias Químicas e Ingeniería",
+      "school_abbreviation": "ECQI"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 5,
+    "fields": {
+      "school_name": "Escuela de Ciencias Geológicas e Ingeniería",
+      "school_abbreviation": "ECGI"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 1,
+    "fields": {
+      "school_id": 1,
+      "career_name": "Matemáticas"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 2,
+    "fields": {
+      "school_id": 1,
+      "career_name": "Computación"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 3,
+    "fields": {
+      "school_id": 2,
+      "career_name": "Biología"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 4,
+    "fields": {
+      "school_id": 2,
+      "career_name": "Biomedicina"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 5,
+    "fields": {
+      "school_id": 3,
+      "career_name": "Ingenier�a en nanotecnología"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 6,
+    "fields": {
+      "school_id": 3,
+      "career_name": "Física"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 7,
+    "fields": {
+      "school_id": 4,
+      "career_name": "Materiales"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 8,
+    "fields": {
+      "school_id": 4,
+      "career_name": "Química"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 9,
+    "fields": {
+      "school_id": 5,
+      "career_name": "Agroindustria"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 10,
+    "fields": {
+      "school_id": 5,
+      "career_name": "Geología"
+    }
+  },
+  {
+    "model": "professor_evidence.professor_denomination",
+    "pk": 1,
+    "fields": {
+      "denomination": "Docente"
+    }
+  },
+  {
+    "model": "professor_evidence.professor_denomination",
+    "pk": 2,
+    "fields": {
+      "denomination": "Investigador"
+    }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "1317858549",
+    "fields": {
+      "career_id": 8,
+      "professor_degree": "PhD",
+      "professor_names": "Ronald Patricio",
+      "professor_lastnames": "Mendoza N��ez",
+      "professor_denomination": 2
+    }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "1317858973",
+    "fields": {
+      "career_id": 2,
+      "professor_degree": "PhD",
+      "professor_names": "Patricio Joshue",
+      "professor_lastnames": "Mendoza N��ez",
+      "professor_denomination": 1
+    }
+  },
+  {
+    "model": "professor_evidence.semester_school",
+    "pk": 1,
+    "fields": {
+      "semester_id": 1,
+      "school_id": 1,
+      "dean_id": "1317858549"
+    }
+  },
+  {
+    "model": "professor_evidence.semester_school",
+    "pk": 2,
+    "fields": {
+      "semester_id": 1,
+      "school_id": 1,
+      "dean_id": "1317858549"
+    }
+  },
+  {
+    "model": "professor_evidence.semester_career",
+    "pk": 1,
+    "fields": {
+      "career_id": 2,
+      "semester_id": 1,
+      "coordinator_id": "1317858973"
+    }
+  },
+  {
+    "model": "professor_evidence.semester_career",
+    "pk": 2,
+    "fields": {
+      "career_id": 2,
+      "semester_id": 3,
+      "coordinator_id": "1317858549"
+    }
+  },
+  {
+    "model": "professor_evidence.activity_type",
+    "pk": 1,
+    "fields": {
+      "activity_type": "Docencia"
+    }
+  },
+  {
+    "model": "professor_evidence.activity_type",
+    "pk": 2,
+    "fields": {
+      "activity_type": "Vinculaci�n"
+    }
+  },
+  {
+    "model": "professor_evidence.activity_type",
+    "pk": 3,
+    "fields": {
+      "activity_type": "Investigaci�n"
+    }
+  },
+  {
+    "model": "professor_evidence.activity_type",
+    "pk": 4,
+    "fields": {
+      "activity_type": "Gesti�n"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 1,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Impartir clases, seminarios, talleres, entre otros."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 2,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Planificar y actualizar contenidos de clases, seminarios, talleres, entre otros."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 3,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Dise�ar y elaborar material did�ctico, gu�as docentes o syllabus."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 4,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Dise�ar y elaborar textos."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 5,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Orientar y acompa�ar a los estudiantes a trav�s de tutor�as, individuales o grupales."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 6,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Realizar visitas de campo, tutor�as, docencia en servicio y formaci�n dual."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 7,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Llevar a cabo la direcci�n, tutor�as, seguimiento y evaluaci�n de pr�cticas o pasant�as preprofesionales."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 8,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Preparar, elaborar, aplicar y calificar ex�menes, trabajos y pr�cticas."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 9,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Efectuar la direcci�n y tutor�a de trabajos para la obtenci�n del t�tulo."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 10,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Direccionar y participar en proyectos de experimentaci�n e innovaci�n docente."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 11,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Dise�ar e impartir cursos de educaci�n continua o de capacitaci�n y actualizaci�n."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 12,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Participar y organizar colectivos acad�micos de debate, capacitaci�n o intercambio de metodolog�as y experiencias de ense�anza."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 13,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Llevar a cabo el uso pedag�gico de la investigaci�n formativa y la sistematizaci�n como soporte o parte de la ense�anza."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 14,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Coordinar los aprendizajes pr�cticos y de laboratorio."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 15,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Impulsar procesos de cooperaci�n y desarrollo."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 16,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Prestar la asistencia t�cnica, de servicios especializados, as� como la participaci�n en consultor�as que generen beneficio a la colectividad."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 17,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Impartir cursos de educaci�n continua, capacitaci�n, actualizaci�n y certificaci�n de competencias."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 18,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Prestar servicios a la sociedad tales como el an�lisis de laboratorio especializado, el peritaje, la revisi�n t�cnica documental, entre otros."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 19,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Fomentar la constituci�n, desarrollo y fortalecimiento de organizaciones de la sociedad civil, redes y dem�s espacios de participaci�n ciudadana."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 20,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Organizar o participar en actividades de divulgaci�n, democratizaci�n y distribuci�n del saber."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 21,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Promocionar la internacionalizaci�n de la comunidad acad�mica superior e impulso de las relaciones internacionales."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 22,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Desarrollar proyectos de innovaci�n que permitan aplicar los conocimientos generados en las IES, en proyectos productivos o de beneficio social."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 23,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Dar gu�a y seguimiento a estudiantes que participen en proyectos de vinculaci�n y evaluar pr�cticas preprofesionales de servicio comunitario desarrolladas en dichos proyectos."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 24,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Dise�ar, direccionar y ejecutar proyectos de investigaci�n b�sica, aplicada, tecnol�gica y en artes, o proyectos de vinculaci�n articulados a la investigaci�n, que supongan creaci�n, innovaci�n, difusi�n y transferencia de los resultados obtenidos."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 25,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Realizar investigaci�n para la comprensi�n, recuperaci�n, fortalecimiento y potenciaci�n de los saberes ancestrales."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 26,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Dise�ar, elaborar y poner en marcha metodolog�as, instrumentos, protocolos o procedimientos operativos o de investigaci�n."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 27,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Investigar en laboratorios, centros documentales y dem�s instalaciones habilitadas para esta funci�n, as� como en entornos sociales."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 28,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Participar en congresos, seminarios y conferencias para la presentaci�n de avances y resultados de sus investigaciones."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 29,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Participar en congresos, seminarios y conferencias para la presentaci�n de avances y resultados de sus investigaciones."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 30,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Dise�ar y participar en redes y programas de investigaci�n local, nacional e internacional."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 31,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Participar en comit�s o consejos acad�micos y editoriales de revistas cient�ficas y acad�micas indexadas y/o arbitradas."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 32,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Llevar a cabo la difusi�n de resultados y beneficios sociales de la investigaci�n, a trav�s de publicaciones, producciones art�sticas, actuaciones, conciertos, creaci�n u organizaci�n de instalaciones y de exposiciones, entre otros."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 33,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Direccionar o participar en colectivos acad�micos de debate para la presentaci�n de avances y resultados de investigaciones."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 34,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Desempe�ar las funciones como rector, vicerrector o integrante del �rgano colegiado superior."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 35,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Desempe�ar las funciones o cargos de decano, subdecano o similar jerarqu�a."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 36,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Dirigir escuelas, departamentos, centros o institutos de investigaci�n."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 37,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Dirigir y/o coordinar carreras o programas."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 38,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Dirigir y/o gestionar los procesos de docencia, investigaci�n y vinculaci�n con la sociedad en sus distintos niveles de organizaci�n acad�mica e institucional."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 39,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Organizar y/o dirigir eventos acad�micos nacionales o internacionales."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 40,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Desempe�ar cargos tales como: editor acad�mico, director o miembro editorial de una publicaci�n."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 41,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Dise�ar proyectos de carreras y programas de estudios de grado y posgrado."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 42,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar como delegado institucional en organismos p�blicos u otros que forman parte del Sistema de Educaci�n Superior, as� como sociedades cient�ficas o acad�micas."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 43,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar como evaluador o facilitador acad�mico externo del CES, el CACES, el �rgano Rector de la Pol�tica P�blica de Educaci�n Superior u otro organismo p�blico de investigaci�n o desarrollo tecnol�gico."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 44,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar como representante del estamento de profesores e investigadores de acuerdo con el estatuto de la IES particular en las sesiones del �rgano colegiado superior."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 45,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Integrar en calidad de Consejero Acad�mico de los organismos que rigen el Sistema de Educaci�n Superior (CES y CACES); en estos casos, se reconocer� la dedicaci�n como equivalente a tiempo completo."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 46,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Ejercer cargos de nivel jer�rquico superior en el �rgano Rector de la Pol�tica P�blica de Educaci�n Superior; en estos casos se reconocer� la dedicaci�n como equivalente a tiempo completo."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 47,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Formar parte de COMISIONES acad�micas en escuelas."
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 48,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar en capacitaciones de formaci�n pedag�gica."
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 1,
+    "fields": {
+      "professor_id": "1317858973",
+      "activity_type": 2,
+      "evidence_type": 16,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-03",
+      "document_pathToFile": "ISSFA_2023.pdf"
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 2,
+    "fields": {
+      "professor_id": "1317858549",
+      "activity_type": 2,
+      "evidence_type": 19,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-03",
+      "document_pathToFile": "reporteJasper.pdf"
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 3,
+    "fields": {
+      "professor_id": "1317858973",
+      "activity_type": 1,
+      "evidence_type": 1,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-03",
+      "document_pathToFile": "reporteJasper.pdf"
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 4,
+    "fields": {
+      "professor_id": "1317858973",
+      "activity_type": 1,
+      "evidence_type": 2,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-03",
+      "document_pathToFile": "s13007-022-00866-2.pdf"
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 5,
+    "fields": {
+      "professor_id": "1317858973",
+      "activity_type": 1,
+      "evidence_type": 1,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-05",
+      "document_pathToFile": "image.pdf"
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 6,
+    "fields": {
+      "professor_id": "1317858973",
+      "activity_type": 1,
+      "evidence_type": 1,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-05",
+      "document_pathToFile": "icono.png"
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 8,
+    "fields": {
+      "professor_id": "1317858973",
+      "activity_type": 1,
+      "evidence_type": 2,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-05",
+      "document_pathToFile": "image.pdf"
+    }
+  },
+  {
+    "model": "professor_evidence.document",
+    "pk": 9,
+    "fields": {
+      "professor_id": "1317858973",
+      "activity_type": 3,
+      "evidence_type": 31,
+      "semester_id": 1,
+      "document_comment": "",
+      "document_uploadDate": "2023-07-09",
+      "document_pathToFile": "Survey of Few-Shot Object Detection.pdf"
+    }
+  },
+  {
+    "model": "professor_evidence.report",
+    "pk": 10,
+    "fields": {
+      "professor_id": "1317858549",
+      "teaching_report_summary": "Docencia 1",
+      "teaching_report_hoursPerWeek": 1.0,
+      "teaching_report_hoursPerWeekIntersemester": 2.0,
+      "management_report_summary": "gestion",
+      "management_report_hoursPerWeek": 7.0,
+      "management_report_hoursPerWeekIntersemester": 8.0,
+      "vinculation_report_summary": "vinculacion",
+      "vinculationt_report_hoursPerWeek": 3.0,
+      "vinculation_report_hoursPerWeekIntersemester": 4.0,
+      "investigation_report_summary": "investigaci'on",
+      "investigation_report_hoursPerWeek": 5.0,
+      "investigation_report_hoursPerWeekIntersemester": 6.0,
+      "semester_id": 1,
+      "report_name": "nombre_del_reporte",
+      "report_uploadDate": "2023-07-09",
+      "report_professorComment": "comentario del profe",
+      "report_revisorComment": "comentario del revisor",
+      "report_conclusion": "las conclusiones",
+      "report_reviewedBy": 1,
+      "report_approvedBy": 1,
+      "report_isApproved": false,
+      "report_pathToFile": "path/to/file"
+    }
+  },
+  {
+    "model": "professor_evidence.report",
+    "pk": 11,
+    "fields": {
+      "professor_id": "1317858549",
+      "teaching_report_summary": "Docencia",
+      "teaching_report_hoursPerWeek": 1.0,
+      "teaching_report_hoursPerWeekIntersemester": 2.0,
+      "management_report_summary": "Gesti�n",
+      "management_report_hoursPerWeek": 7.0,
+      "management_report_hoursPerWeekIntersemester": 8.0,
+      "vinculation_report_summary": "Vinculaci�n",
+      "vinculationt_report_hoursPerWeek": 3.0,
+      "vinculation_report_hoursPerWeekIntersemester": 4.0,
+      "investigation_report_summary": "Investigaci�n",
+      "investigation_report_hoursPerWeek": 5.0,
+      "investigation_report_hoursPerWeekIntersemester": 6.0,
+      "semester_id": 1,
+      "report_name": "nombre_del_reporte",
+      "report_uploadDate": "2023-07-09",
+      "report_professorComment": "comentario del profe",
+      "report_revisorComment": "comentario del revisor",
+      "report_conclusion": "Conclusiones de este trabajo son",
+      "report_reviewedBy": 1,
+      "report_approvedBy": 1,
+      "report_isApproved": false,
+      "report_pathToFile": "path/to/file"
+    }
+  }
+]

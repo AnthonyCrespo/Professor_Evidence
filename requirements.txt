@@ -1,11 +1,11 @@
 # Django Web Framework
-django
+Django==3.1.4
 
 # Core API
 coreapi
 
 # Django Rest Framework - Used to design API logic
-djangorestframework
+djangorestframework==3.12.2
 
 # Django Cors Headers - Used to enable CORS headers in API responses, and allow requests to be made to your API server from other origins.
 django-cors-headers
@@ -14,28 +14,9 @@ django-cors-headers
 djangorestframework-simplejwt
 
 # Database adapter for developers to connect databases to python
-psycopg2
-psycopg2-binary
-
 djoser
-
-# asgiref
-# certifi
-# cffi
-# chardet
-# cryptography
-# defusedxml
-# django-templated-mail
-# idna
-# oauthlib
-# pycparser
-# PyJWT
-# python3-openid
-# pytz
-# requests
-# requests-oauthlib
-# six
-# social-auth-app-django
-# social-auth-core
-# sqlparse
-# urllib3
+asgiref==3.3.1
+psycopg2==2.8.6
+psycopg2-binary==2.8.6
+pytz==2020.4
+sqlparse==0.4.1
