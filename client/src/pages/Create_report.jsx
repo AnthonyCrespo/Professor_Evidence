@@ -8,7 +8,11 @@ import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
 
 import { getActivitiesType } from '../api/task.api';
-import { createrReport } from '../api/task.api';
+import { createReport } from '../api/task.api';
+import { getReports } from '../api/task.api';
+import { getSemesters } from '../api/task.api';
+
+import { updateReport } from '../api/task.api';
 
 
 import './css/Create_report.css';
@@ -17,10 +21,8 @@ export function Create_report() {
 
 
   const [activities, setActivities] = useState([]);
-  const [selectedActivity, setSelectedActivity] = useState(1);
-  const [evidences, setEvidences] = useState([]);
-  const [selectedEvidence, setSelectedEvidence] = useState(1);
-
+  const [reports, setReports] = useState([]);
+  const [semesters, setSemesters] = useState([]);
 
   const currentDate = new Date();
   const month = currentDate.getMonth() + 1;
@@ -73,6 +75,64 @@ export function Create_report() {
   }, []);
 
 
+
+  useEffect(() => {
+    async function loadSemesters() {
+      const res = await getSemesters();
+      setSemesters(res.data);
+      console.log(res.data);
+    }
+    loadSemesters();
+  }, []);
+
+   useEffect(() => {
+    const professorId = '1317858549';
+    const loadReports = async () => {
+      /* const response = await getReports(professorId); */
+      const response = await getReports();
+  
+      const filteredReports = response.data.filter(report => report.professor_id === professorId);
+  
+      const reportsWithSemesterName = filteredReports.map(report => ({
+        ...report,
+        semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
+      }));
+  
+      setReports(reportsWithSemesterName);
+
+      if (reportsWithSemesterName.length > 0) {
+        const firstReport = reportsWithSemesterName[0];
+        setForm(prevForm => ({
+          ...prevForm,
+          teaching_report_summary: firstReport.teaching_report_summary,
+          teaching_report_hoursPerWeek: firstReport.teaching_report_hoursPerWeek,
+          teaching_report_hoursPerWeekIntersemester: firstReport.teaching_report_hoursPerWeekIntersemester,
+
+          management_report_summary: firstReport.management_report_summary,
+          management_report_hoursPerWeek: firstReport.management_report_hoursPerWeek,
+          management_report_hoursPerWeekIntersemester: firstReport.management_report_hoursPerWeekIntersemester,
+
+          vinculation_report_summary: firstReport.vinculation_report_summary,
+          vinculationt_report_hoursPerWeek: firstReport.vinculationt_report_hoursPerWeek,
+          vinculation_report_hoursPerWeekIntersemester: firstReport.vinculation_report_hoursPerWeekIntersemester,
+
+          investigation_report_summary: firstReport.investigation_report_summary,
+          investigation_report_hoursPerWeek: firstReport.investigation_report_hoursPerWeek,
+          investigation_report_hoursPerWeekIntersemester: firstReport.investigation_report_hoursPerWeekIntersemester,
+          report_conclusion: firstReport.report_conclusion,
+          report_uploadDate: formattedDate,
+        }));
+      }
+      
+    };
+  
+    // Ensure that loadReports runs only after semesters state has been updated
+    if (semesters.length > 0) {
+      loadReports();
+    }
+  }, [semesters]);
+
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -89,10 +149,19 @@ export function Create_report() {
 
   
   const onSubmit = handleSubmit(async () => {
-    console.log(form)
-    await   createrReport (form);
-    navigate("/home/")
-    })
+
+    if (reports.length > 0) {
+          const firstReport = reports[0]; 
+         const existingReportId = firstReport["id"]
+          console.log(existingReportId)
+          await updateReport(existingReportId, form);
+    
+       } else { 
+          // Si no hay un ID de informe existente, crear un nuevo informe
+          await createReport(form);
+        }
+        navigate("/home/");
+      });
   
   
   return (
@@ -101,33 +170,7 @@ export function Create_report() {
 
       
         <Form className="w-50"  onSubmit={onSubmit} encType="multipart/form-data">
-{/*         {activities.map((activity) => (
-          <React.Fragment key={activity.id}>
-            <h2>{activity.activity_type}</h2>
-            <Form.Group className="mt-4">
-              <Form.Label>Resumen:</Form.Label>
-              <Form.Control as="textarea" rows={3} 
-                               value={form.teaching_report_summary}
-                               onChange={(e) => {setForm(prevForm => ({
-                                ...prevForm,
-                                teaching_report_summary: e.target.value
-                              }));
-                                console.log(form)
-                              }}
-              />
-            </Form.Group>
 
-            <Form.Group className="mt-4">
-              <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-              <Form.Control type="number" min="0" max="100" />
-            </Form.Group>
-
-            <Form.Group className="mt-4 mb-4">
-              <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-              <Form.Control type="number" min="0" max="100" />
-            </Form.Group>
-          </React.Fragment>
-        ))} */}
 <Tab.Container defaultActiveKey="docencia">
   <Nav variant="tabs">
     <Nav.Item>
@@ -318,7 +361,7 @@ export function Create_report() {
                                           }));
                                           }}/>
       </Form.Group>
-      <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
+      <Button className="mt-4" variant="primary" type="submit">Generar reporte</Button>
     </Tab.Pane>
     
   </Tab.Content>

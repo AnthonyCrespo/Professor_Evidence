@@ -39,8 +39,11 @@ export const getReports = () => tasksApi.get('/Report/');
 
 /* ------------------ POST --------------------------- */
 export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence);
-export const createrReport = (report) => tasksApi.post("/Report/", report);
+export const createReport = (report) => tasksApi.post("/Report/", report);
 
+
+/* ------------------ UPDATE --------------------------- */
+export const updateReport = (reportId, report) => tasksApi.put(`/Report/${reportId}/`, report);
 
 export const getAllTasks = () => {
     return tasksApi.get("/"); 
