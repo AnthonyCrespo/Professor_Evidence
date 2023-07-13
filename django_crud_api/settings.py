@@ -155,18 +155,18 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-    ]
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.SessionAuthentication',
+#     ]
+# }
 
-# REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 
-#     'rest_framework.schemas.coreapi.AutoSchema'
-#     }
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 
+    'rest_framework.schemas.coreapi.AutoSchema'
+    }
 
 # SIMPLE_JWT = {
 #     'AUTH_HEADER_TYPES': ('JWT',),
