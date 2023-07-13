@@ -252,69 +252,69 @@ export function Registered_evidences() {
     {/* ----------------------------------------------------------------------- */}
     {/* ------------------------ Modal de edición --------------------------- */}
     {/* ----------------------------------------------------------------------- */}
-    <Modal show={showModal} /* onHide={handleCloseModal} */>
-  <Modal.Header closeButton>
-    <Modal.Title>Editar Registro</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-  <Form className="w-80" /* onSubmit={onSubmit_modal} */>
-      <Form.Group className="mt-4">
-        <Form.Label>Tipo de actividad:</Form.Label>
-        <Form.Select
-          value={selectedActivity}
-          onChange={(e) => {
-            setSelectedActivity(e.target.value);
-            setValue_modal('activity_type', e.target.value);
-          }}
-        >
-          {activities.slice(1).map((opcion) => (
-            <option key={opcion.id} value={opcion.id}>
-              {opcion.activity_type}
-            </option>
-          ))}
-        </Form.Select>
-      </Form.Group>
+    <Modal show={showModal} onHide={handleCloseModal}>
+      <Modal.Header closeButton>
+        <Modal.Title>Editar Registro</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <Form className="w-80" /* onSubmit={onSubmit_modal} */>
+          <Form.Group className="mt-4">
+            <Form.Label>Tipo de actividad:</Form.Label>
+            <Form.Select
+              value={selectedActivity}
+              onChange={(e) => {
+                setSelectedActivity(e.target.value);
+                setValue_modal('activity_type', e.target.value);
+              }}
+            >
+              {activities.slice(1).map((opcion) => (
+                <option key={opcion.id} value={opcion.id}>
+                  {opcion.activity_type}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
 
-      <Form.Group className="mt-4">
-        <Form.Label>Evidencia:</Form.Label>
-        <Form.Select
-          value={selectedEvidence}
-          onChange={(e) => {
-            setSelectedEvidence(e.target.value);
-            setValue_modal('evidence_type', e.target.value);
-          }}
-        >
-          {evidences.slice(1).map((opcion) => (
-            <option key={opcion.id} value={opcion.id}>
-              {opcion.evidence_type}
-            </option>
-          ))}
-        </Form.Select>
-      </Form.Group>
+          <Form.Group className="mt-4">
+            <Form.Label>Evidencia:</Form.Label>
+            <Form.Select
+              value={selectedEvidence}
+              onChange={(e) => {
+                setSelectedEvidence(e.target.value);
+                setValue_modal('evidence_type', e.target.value);
+              }}
+            >
+              {evidences.slice(1).map((opcion) => (
+                <option key={opcion.id} value={opcion.id}>
+                  {opcion.evidence_type}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
 
-      <Form.Group className="mt-4">
-        <Form.Label>Documentos de respaldo:</Form.Label>
-        <Form.Control
-          type="file"
-          onChange={(e) => {
-            const file = e.target.files[0];
-            setValue_modal('document_pathToFile', file);
-          }}
-          {...form_modal('document_pathToFile', { required: true })}
-        />
-{/*         {errors_modal?.document_pathToFile && <span>Se requiere subir un documento.</span>} */}
-      </Form.Group>
+          <Form.Group className="mt-4">
+            <Form.Label>Documentos de respaldo:</Form.Label>
+            <Form.Control
+              type="file"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                setValue_modal('document_pathToFile', file);
+              }}
+              {...form_modal('document_pathToFile', { required: true })}
+            />
+    {/*         {errors_modal?.document_pathToFile && <span>Se requiere subir un documento.</span>} */}
+          </Form.Group>
 
+{/*           <Button className="mt-4" variant="primary" type="submit">
+            Guardar Cambios
+          </Button> */}
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
       <Button className="mt-4" variant="primary" type="submit">
         Guardar Cambios
-      </Button>
-    </Form>
-  </Modal.Body>
-  <Modal.Footer>
-    <Button variant="secondary" onClick={handleCloseModal}>
-      Cerrar
-    </Button>
-  </Modal.Footer>
+        </Button>
+      </Modal.Footer>
 </Modal>
 
 
