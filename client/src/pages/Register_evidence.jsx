@@ -178,6 +178,7 @@ export function Register_evidence() {
                   type="file"
                   onChange={(e) => {
                               const file = e.target.files[0];
+                              console.log(file)
                               setValue('document_pathToFile', file);
                               setValue('document_pathToFile', e.target.files[0])
                              }}

@@ -19,12 +19,21 @@ export function Registered_evidences() {
   const [selectedSemester, setSelectedSemester] = useState(1);
   const [documents, setDocuments] = useState([]);
 
+
+  const [activities_modal, setActivities_modal] = useState([]);
+  const [selectedActivity_modal, setSelectedActivity_modal] = useState(1);
+  const [evidences_modal, setEvidences_modal] = useState([]);
+  const [selectedEvidence_modal, setSelectedEvidence_modal] = useState(0);
+  const [documents_modal, setDocuments_modal] = useState([]);
+
   /* -------------------For editing a task ------------------- */
   const [showModal, setShowModal] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
 
 
 
+
+  
   /* ------ Carga de los tipos de actividades + 'TODOS' --------- */
   useEffect(() => {
     async function loadActivitiesType() {
@@ -58,9 +67,33 @@ export function Registered_evidences() {
     loadEvidencesType();
   }, [selectedActivity]);
 
+  /* ------------------------------------------------------------------------------ */
+/* --------------------------- Modal ---------------------------------------------*/
+/* ------------------------------------------------------------------------------ */
+  useEffect(() => {
+    async function loadActivitiesType_modal() {
+      const res = await getActivitiesType();
+      setActivities_modal(res.data);
+      selectedActivity_modal(0);
+/*       console.log(activitiesWithAllOption)  |||| VERIFICADO. */
+    }
+    loadActivitiesType_modal();
+  }, []);
 
 
 
+  useEffect(() => {
+    async function loadEvidencesType_modal() {
+      const res = await getEvidencesType();
+      const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity_modal));
+      setEvidences_modal(filteredEvidences);
+      setSelectedEvidence_modal(0);
+      }
+    loadEvidencesType_modal();
+  }, [selectedActivity_modal]);
+
+
+/* ----------- Carga de los semestres ----------------------- */
   useEffect(() => {
     async function loadSemesters() {
       const res = await getSemesters();
@@ -68,6 +101,8 @@ export function Registered_evidences() {
     }
     loadSemesters();
   }, []);
+
+  /* --------------- Validar las entradas de los formularios ---------------- */
   const {
     register,
     handleSubmit,
@@ -156,6 +191,36 @@ export function Registered_evidences() {
     console.log("Estoy borrando")
   };
   
+
+  const obtenerDocumentoPrevio = () => {
+    // Obtén el path del archivo previamente guardado desde tu base de datos o cualquier otra fuente de datos
+    const pathDocumentoPrevio = obtenerPathDocumentoPrevio(); // Reemplaza esto con tu lógica para obtener el path del documento previo
+  
+    // Verifica si el path del documento previo existe
+    if (!pathDocumentoPrevio) {
+      return null;
+    }
+  
+    // Lee el archivo desde el almacenamiento local del navegador
+    const archivoPrevio = localStorage.getItem(pathDocumentoPrevio);
+  
+    // Si no se encuentra el archivo previo, devuelve null
+    if (!archivoPrevio) {
+      return null;
+    }
+  
+    // Crea un nuevo objeto File utilizando el archivo previo y su nombre
+    const nombreArchivoPrevio = obtenerNombreArchivoDesdePath(pathDocumentoPrevio);
+    const documentoPrevio = new File([archivoPrevio], nombreArchivoPrevio);
+  
+    return documentoPrevio;
+  };
+  
+  // Función auxiliar para obtener el nombre de archivo desde un path
+  const obtenerNombreArchivoDesdePath = (path) => {
+    const partesPath = path.split('/');
+    return partesPath[partesPath.length - 1];
+  };
 
   return (
     <Base>
@@ -261,13 +326,13 @@ export function Registered_evidences() {
           <Form.Group className="mt-4">
             <Form.Label>Tipo de actividad:</Form.Label>
             <Form.Select
-              value={selectedActivity}
+              value={selectedActivity_modal}
               onChange={(e) => {
-                setSelectedActivity(e.target.value);
+                setSelectedActivity_modal(e.target.value);
                 setValue_modal('activity_type', e.target.value);
               }}
             >
-              {activities.slice(1).map((opcion) => (
+              {activities_modal.map((opcion) => (
                 <option key={opcion.id} value={opcion.id}>
                   {opcion.activity_type}
                 </option>
@@ -278,13 +343,13 @@ export function Registered_evidences() {
           <Form.Group className="mt-4">
             <Form.Label>Evidencia:</Form.Label>
             <Form.Select
-              value={selectedEvidence}
+              value={selectedEvidence_modal}
               onChange={(e) => {
-                setSelectedEvidence(e.target.value);
+                setSelectedEvidence_modal(e.target.value);
                 setValue_modal('evidence_type', e.target.value);
               }}
             >
-              {evidences.slice(1).map((opcion) => (
+              {evidences_modal.map((opcion) => (
                 <option key={opcion.id} value={opcion.id}>
                   {opcion.evidence_type}
                 </option>
@@ -297,8 +362,10 @@ export function Registered_evidences() {
             <Form.Control
               type="file"
               onChange={(e) => {
+
                 const file = e.target.files[0];
                 setValue_modal('document_pathToFile', file);
+                console.log(e.target.files[0])
               }}
               {...form_modal('document_pathToFile', { required: true })}
             />
@@ -315,7 +382,7 @@ export function Registered_evidences() {
         Guardar Cambios
         </Button>
       </Modal.Footer>
-</Modal>
+    </Modal>
 
 
     </Base>
