@@ -26,7 +26,7 @@ export function Register_evidence() {
     const [selectedActivity, setSelectedActivity] = useState(1);
     const [evidences, setEvidences] = useState([]);
     const [selectedEvidence, setSelectedEvidence] = useState(1);
-    const [document, setDocument] = useState("");
+    const [document, setDocument] = useState(null);
 
 
     const currentDate = new Date();
@@ -85,20 +85,24 @@ export function Register_evidence() {
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit(async (data) => {
-      const evidence_data = {
+      const formData = new FormData();
+      formData.append('document_pathToFile', data.document_pathToFile[0]);
+  
+      const evidenceData = {
+        professor_id: "1317858973",
+        activity_type: parseInt(selectedActivity),
+        evidence_type: parseInt(selectedEvidence),
+        semester_id: 1,
         document_comment: " ",
         document_uploadDate: formattedDate,
-        document_pathToFile: data.document_pathToFile[0].name,
-        professor_id: "1317858973",
-        activity_type: parseInt(selectedActivity),//parseInt(data.activity_type),
-        evidence_type: parseInt(selectedEvidence),//parseInt(data.evidence_type),
-        semester_id: 1
+        document_pathToFile: data.document_pathToFile[0].name
       };
-
-      console.log(evidence_data)
-      await  createEvidence(evidence_data);
-      navigate("/home/")
-      })
+  
+      evidenceData.uploadedDocument = formData.get('document_pathToFile');
+      console.log(evidenceData)
+      await createEvidence(evidenceData);
+      navigate("/home/");
+    })
 
   return (
     <Base>
@@ -180,7 +184,9 @@ export function Register_evidence() {
                               const file = e.target.files[0];
                               console.log(file)
                               setValue('document_pathToFile', file);
-                              setValue('document_pathToFile', e.target.files[0])
+                              setDocument(file)
+                              console.log(file)
+/*                               setValue('document_pathToFile', e.target.files[0]) */
                              }}
                   {...register('document_pathToFile', { required: true })}
                 />

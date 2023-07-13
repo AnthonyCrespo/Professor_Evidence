@@ -209,3 +209,8 @@ REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
 # AUTH_USER_MODEL = 'professor_evidence.UserAccount'
+
+
+# Archivos multimedia
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

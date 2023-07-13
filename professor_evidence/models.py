@@ -114,6 +114,8 @@ class Evidence_Type(models.Model):
     def __str__(self):
         return self.evidence_type
 
+
+
 class Document(models.Model):
     # document_id = models.CharField(max_length=50)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
@@ -123,6 +125,7 @@ class Document(models.Model):
     document_comment = models.TextField(blank=True)
     document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
     document_pathToFile = models.TextField(max_length=200)
+    uploadedDocument = models.FileField()
     def __str__(self):
         return str(self.id)
 
