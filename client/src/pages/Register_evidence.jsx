@@ -85,8 +85,8 @@ export function Register_evidence() {
     const navigate = useNavigate()
 
     const onSubmit = handleSubmit(async (data) => {
-      const formData = new FormData();
-      formData.append('document_pathToFile', data.document_pathToFile[0]);
+/*       const formData = new FormData();
+      formData.append('uploadedDocument', data.document_pathToFile[0]); */
   
       const evidenceData = {
         professor_id: "1317858973",
@@ -95,11 +95,12 @@ export function Register_evidence() {
         semester_id: 1,
         document_comment: " ",
         document_uploadDate: formattedDate,
-        document_pathToFile: data.document_pathToFile[0].name
+        document_pathToFile: data.document_pathToFile[0].name,
+        uploadedDocument: data.document_pathToFile[0]
       };
   
-      evidenceData.uploadedDocument = formData.get('document_pathToFile');
-      console.log(evidenceData)
+/*       evidenceData.uploadedDocument = formData.get('uploadedDocument');
+      console.log(evidenceData.uploadedDocument) */
       await createEvidence(evidenceData);
       navigate("/home/");
     })
@@ -180,18 +181,23 @@ export function Register_evidence() {
                 <Form.Label>Documentos de respaldo:</Form.Label>
                 <Form.Control
                   type="file"
+                  accept=".pdf"
                   onChange={(e) => {
-                              const file = e.target.files[0];
-                              console.log(file)
-                              setValue('document_pathToFile', file);
-                              setDocument(file)
-                              console.log(file)
-/*                               setValue('document_pathToFile', e.target.files[0]) */
-                             }}
+                    const file = e.target.files[0];
+                    if (file && file.type === 'application/pdf') {
+                      setValue('document_pathToFile', file);
+                      setDocument(file);
+                    } else {
+                      setValue('document_pathToFile', null);
+                      setDocument(null);
+                      // Puedes mostrar un mensaje de error aquí o realizar alguna acción adicional
+                      console.log('Solo se permiten archivos PDF.');
+                    }
+                  }}
                   {...register('document_pathToFile', { required: true })}
                 />
                 {errors.document_pathToFile && <span>Se requiere subir un documento.</span>}
-            </Form.Group>
+              </Form.Group>
 
               <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
           </Form>

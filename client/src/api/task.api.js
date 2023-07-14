@@ -39,9 +39,18 @@ export const getReports = () => tasksApi.get('/Report/');
 export const getDocumentByID = (reportId) => tasksApi.get(`/Document/${reportId}/`);
 
 /* ------------------ POST --------------------------- */
-export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence);
+/* export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence); */
 export const createReport = (report) => tasksApi.post("/Report/", report);
 
+
+export const createEvidence = (evidence) => {
+    return tasksApi.post("/Document/", evidence, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  };
+  
 
 /* ------------------ UPDATE --------------------------- */
 export const updateReport = (reportId, report) => tasksApi.put(`/Report/${reportId}/`, report);

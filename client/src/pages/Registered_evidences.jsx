@@ -74,7 +74,7 @@ export function Registered_evidences() {
     async function loadActivitiesType_modal() {
       const res = await getActivitiesType();
       setActivities_modal(res.data);
-      selectedActivity_modal(0);
+      setSelectedEvidence_modal(0);
 /*       console.log(activitiesWithAllOption)  |||| VERIFICADO. */
     }
     loadActivitiesType_modal();
