@@ -84,6 +84,7 @@ class Professor(models.Model):
     professor_names = models.TextField(max_length=200)
     professor_lastnames = models.TextField(max_length=200)
     professor_denomination = models.ForeignKey(Professor_Denomination, on_delete=models.CASCADE)
+    professor_revisor = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.professor_id)
 
@@ -121,7 +122,8 @@ class Document(models.Model):
     activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
     evidence_type = models.ForeignKey(Evidence_Type, on_delete=models.CASCADE)
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    document_comment = models.TextField(blank=True)
+    document_revisorComment = models.TextField(blank=True, default='')
+    document_professorComment = models.TextField(blank=True, default='')
     document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
     document_pathToFile = models.TextField(max_length=200)
     def get_document_upload_path(self, filename):
@@ -129,7 +131,6 @@ class Document(models.Model):
         activity_id = self.activity_type
         evidence_id = self.evidence_type
         return f"{professor_id}/{activity_id }/{evidence_id}/{filename}"
-
     uploadedDocument = models.FileField(upload_to=get_document_upload_path)
     # uploadedDocument = models.FileField(upload_to="0302616099")
 
