@@ -105,14 +105,14 @@ class Activity_Type(models.Model):
     # activity_type_id = models.CharField(max_length=50)
     activity_type = models.TextField(max_length=200)
     def __str__(self):
-        return self.activity_type
+        return str(self.id)
 
 class Evidence_Type(models.Model):
     # evidence_id = models.CharField(max_length=50)
     activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
     evidence_type = models.CharField(max_length=250)
     def __str__(self):
-        return self.evidence_type
+        return str(self.id)
 
     
 class Document(models.Model):
@@ -126,7 +126,9 @@ class Document(models.Model):
     document_pathToFile = models.TextField(max_length=200)
     def get_document_upload_path(self, filename):
         professor_id = self.professor_id
-        return f"{professor_id}/{filename}"
+        activity_id = self.activity_type
+        evidence_id = self.evidence_type
+        return f"{professor_id}/{activity_id }/{evidence_id}/{filename}"
 
     uploadedDocument = models.FileField(upload_to=get_document_upload_path)
     # uploadedDocument = models.FileField(upload_to="0302616099")
