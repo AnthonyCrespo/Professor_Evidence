@@ -40,6 +40,9 @@ export function Registered_evidences() {
 
 
 
+  const [selectedDocument, setSelectedDocument] = useState(null);
+  const [document, setDocument] = useState(null);
+
   
   /* ------ Carga de los tipos de actividades + 'TODOS' --------- */
   useEffect(() => {
@@ -125,7 +128,10 @@ export function Registered_evidences() {
   } = useForm();
   
 
-
+  const onSubmit_modal = handleSubmit_modal(async (data) => {
+      console.log("estoy haciendo submit desde el modal")
+      console.log(data)
+    })
 
   const onSubmit = handleSubmit(async (data) => {
     const evidence_data = {
@@ -182,9 +188,9 @@ export function Registered_evidences() {
 
   const handleEdit = async (id) => {
     try {
-      const report = await getDocumentByID(id);
-      // Almacena el reporte en una variable o realiza alguna acción con los datos del reporte
-      console.log(report);
+      const document = await getDocumentByID(id);
+      const fileName = document.data.document_pathToFile;
+      setDocument(fileName);
       setEditItemId(id);
       setShowModal(true);
     } catch (error) {
@@ -222,40 +228,6 @@ export function Registered_evidences() {
   };
 
   
-
-  const obtenerDocumentoPrevio = () => {
-    // Obtén el path del archivo previamente guardado desde tu base de datos o cualquier otra fuente de datos
-    const pathDocumentoPrevio = obtenerPathDocumentoPrevio(); // Reemplaza esto con tu lógica para obtener el path del documento previo
-  
-    // Verifica si el path del documento previo existe
-    if (!pathDocumentoPrevio) {
-      return null;
-    }
-  
-    // Lee el archivo desde el almacenamiento local del navegador
-    const archivoPrevio = localStorage.getItem(pathDocumentoPrevio);
-  
-    // Si no se encuentra el archivo previo, devuelve null
-    if (!archivoPrevio) {
-      return null;
-    }
-  
-    // Crea un nuevo objeto File utilizando el archivo previo y su nombre
-    const nombreArchivoPrevio = obtenerNombreArchivoDesdePath(pathDocumentoPrevio);
-    const documentoPrevio = new File([archivoPrevio], nombreArchivoPrevio);
-  
-    return documentoPrevio;
-  };
-  
-  // Función auxiliar para obtener el nombre de archivo desde un path
-  const obtenerNombreArchivoDesdePath = (path) => {
-    const partesPath = path.split('/');
-    return partesPath[partesPath.length - 1];
-  };
-
-
-
-
   return (
     <Base>
       <h1>Evidencias Registradas</h1>
@@ -313,6 +285,9 @@ export function Registered_evidences() {
       </Form>
 
       <br />
+
+
+      
       <h5>Documentos subidos:</h5>
       <div style={{ maxWidth: '80%' }}>
         <Table striped bordered hover>
@@ -358,7 +333,7 @@ export function Registered_evidences() {
         <Modal.Title>Editar Registro</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <Form className="w-80" /* onSubmit={onSubmit_modal} */>
+      <Form className="w-80" onSubmit={onSubmit_modal}>
           <Form.Group className="mt-4">
             <Form.Label>Tipo de actividad:</Form.Label>
             <Form.Select
@@ -393,32 +368,41 @@ export function Registered_evidences() {
             </Form.Select>
           </Form.Group>
 
+
+
+
+
           <Form.Group className="mt-4">
-            <Form.Label>Documentos de respaldo:</Form.Label>
-            <Form.Control
-              type="file"
-              accept=".pdf"
-              onChange={(e) => {
+  <Form.Label>Documentos de respaldo:</Form.Label>
+  <div className="input-group">
+    <input
+      type="file"
+      className="form-control"
+      accept=".pdf"
+      id="document"
+      style={{ display: 'none' }}
+      onChange={(e) => {
+        const file = e.target.files[0];
+        setValue_modal('document_pathToFile', file);
+        setDocument(e.target.files[0].name)
+      }}
+    />
+    <label htmlFor="document" className="input-group-text">
+      {document}
+    </label>
+  </div>
+</Form.Group>
 
-                const file = e.target.files[0];
-                setValue_modal('document_pathToFile', file);
-                console.log(e.target.files[0])
-              }}
-              {...form_modal('document_pathToFile', { required: true })}
-            />
-    {/*         {errors_modal?.document_pathToFile && <span>Se requiere subir un documento.</span>} */}
-          </Form.Group>
 
-{/*           <Button className="mt-4" variant="primary" type="submit">
+          <Button className="mt-4" variant="primary" type="submit">
             Guardar Cambios
-          </Button> */}
-        </Form>
+          </Button>
+          </Form>
       </Modal.Body>
-      <Modal.Footer>
-      <Button className="mt-4" variant="primary" type="submit">
-        Guardar Cambios
-        </Button>
-      </Modal.Footer>
+{/*       <Modal.Footer>
+
+      </Modal.Footer> */}
+
     </Modal>
 
 
