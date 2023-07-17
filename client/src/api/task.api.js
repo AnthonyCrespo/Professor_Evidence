@@ -36,7 +36,7 @@ export const getDocuments = () => tasksApi.get('/Document/');
 /* export const getReports = (professorId) => tasksApi.get(`/Report/?professor_id=${professorId}`); */
 export const getReports = () => tasksApi.get('/Report/');
 
-export const getDocumentByID = (reportId) => tasksApi.get(`/Document/${reportId}/`);
+export const getDocumentByID = (DocumentId) => tasksApi.get(`/Document/${DocumentId}/`);
 
 /* ------------------ POST --------------------------- */
 /* export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence); */
@@ -58,6 +58,18 @@ export const updateReport = (reportId, report) => tasksApi.put(`/Report/${report
 export const getAllTasks = () => {
     return tasksApi.get("/"); 
 }
+
+
+
+/* ------------------ DELETE --------------------------- */
+export const deleteDocumentByID  = (DocumentId) => tasksApi.delete(`/Document/${DocumentId}/`);
+
+
+
+
+
+
+
 
 export const getTask = (id) => tasksApi.get(`/${id}/`);
 

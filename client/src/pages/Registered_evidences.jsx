@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import Container from 'react-bootstrap/Container';
 
 /* ------------- Import Functions from API ------------------ */
-import { getActivitiesType, getEvidencesType, getSemesters, getDocuments, getDocumentByID } from '../api/task.api';
+import { getActivitiesType, getEvidencesType, getSemesters, getDocuments, getDocumentByID, deleteDocumentByID } from '../api/task.api';
 
 export function Registered_evidences() {
   const [activities, setActivities] = useState([]);
@@ -30,6 +30,8 @@ export function Registered_evidences() {
   const [showModal, setShowModal] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
 
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [deleteItemId, setDeleteItemId] = useState(null);
 
 
 
@@ -188,8 +190,23 @@ export function Registered_evidences() {
   
   
   const handleDelete = (id) => {
-    console.log("Estoy borrando")
+    setDeleteItemId(id);
+    setShowConfirmationModal(true);
   };
+
+  const handleConfirmDelete = async () => {
+    await deleteDocumentByID(deleteItemId);
+    setShowConfirmationModal(false);
+    // Actualizar la tabla después de eliminar el registro
+    // const res = await getDocuments();
+    // setDocuments(res.data);
+    onSubmit();
+  };
+
+  const handleCloseConfirmationModal = () => {
+    setShowConfirmationModal(false);
+  };
+
   
 
   const obtenerDocumentoPrevio = () => {
@@ -361,6 +378,7 @@ export function Registered_evidences() {
             <Form.Label>Documentos de respaldo:</Form.Label>
             <Form.Control
               type="file"
+              accept=".pdf"
               onChange={(e) => {
 
                 const file = e.target.files[0];
@@ -383,6 +401,29 @@ export function Registered_evidences() {
         </Button>
       </Modal.Footer>
     </Modal>
+
+
+
+    {/* ----------------------------------------------------------------------- */}
+    {/* ----------------- Modal de confirmación de borrado -------------------- */}
+    {/* ----------------------------------------------------------------------- */}
+
+      <Modal show={showConfirmationModal} onHide={handleCloseConfirmationModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmación de Borrado</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          ¿Desea borrar esta evidencia?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseConfirmationModal}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={handleConfirmDelete}>
+            Borrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
 
     </Base>
