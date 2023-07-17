@@ -8,6 +8,9 @@ import {Typeahead} from 'react-bootstrap-typeahead'
 import { useForm } from 'react-hook-form';
 import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 /* import {ActivitiesType} from '../components/ActivitiesType' */
 /* import {EvidencesType} from '../components/EvidencesType' */
 import './css/Register_evidence.css';
@@ -16,6 +19,7 @@ import './css/Register_evidence.css';
 import { getActivitiesType } from '../api/task.api';
 import { getEvidencesType } from '../api/task.api';
 import { createEvidence } from '../api/task.api';
+
 
 export function Register_evidence() {
 
@@ -54,7 +58,7 @@ export function Register_evidence() {
         const res = await getEvidencesType();
         const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
         setEvidences(filteredEvidences);
-        console.log(evidences)
+        console.log("Estoy cargandooo las evidencias")
       }
       loadEvidencesType();
     }, [selectedActivity]);
@@ -79,7 +83,8 @@ export function Register_evidence() {
       register,
       handleSubmit,
       formState: { errors },
-      setValue
+      setValue,
+      reset
     } = useForm();
 
     const navigate = useNavigate()
@@ -102,7 +107,24 @@ export function Register_evidence() {
 /*       evidenceData.uploadedDocument = formData.get('uploadedDocument');
       console.log(evidenceData.uploadedDocument) */
       await createEvidence(evidenceData);
-      navigate("/home/");
+      //navigate("/home/");
+
+      /* Set form to default values */
+      reset();  
+      setSelectedActivity(1)
+      /* setSelectedEvidence(0) */
+
+      /* Show notification */
+      toast.success('Evidencia registrada existosamente!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 2000, // Duración en milisegundos antes de que la notificación se cierre automáticamente
+        hideProgressBar: true, // Oculta la barra de progreso
+        closeOnClick: true, // Cierra la notificación al hacer clic en ella
+        });
+
+
+
+
     })
 
   return (
@@ -201,6 +223,7 @@ export function Register_evidence() {
 
               <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
           </Form>
+         <ToastContainer />
     </Base>
   );
 }

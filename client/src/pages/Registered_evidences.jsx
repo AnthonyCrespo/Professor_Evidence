@@ -7,8 +7,10 @@ import Table from 'react-bootstrap/Table';
 import { useForm } from 'react-hook-form';
 import Container from 'react-bootstrap/Container';
 
+
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+
 
 
 /* ------------- Import Functions from API ------------------ */
@@ -208,10 +210,9 @@ export function Registered_evidences() {
         // Mostrar la notificación de eliminación exitosa
     toast.success('Evidencia eliminada existosamente!', {
       position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 3000, // Duración en milisegundos antes de que la notificación se cierre automáticamente
+      autoClose: 2000, // Duración en milisegundos antes de que la notificación se cierre automáticamente
       hideProgressBar: true, // Oculta la barra de progreso
       closeOnClick: true, // Cierra la notificación al hacer clic en ella
-      pauseOnHover: true, // Pausa el temporizador de cierre automático al pasar el mouse por encima
     });
     
     onSubmit();
