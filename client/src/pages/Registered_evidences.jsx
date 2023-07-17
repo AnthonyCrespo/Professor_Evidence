@@ -7,6 +7,10 @@ import Table from 'react-bootstrap/Table';
 import { useForm } from 'react-hook-form';
 import Container from 'react-bootstrap/Container';
 
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
+
 /* ------------- Import Functions from API ------------------ */
 import { getActivitiesType, getEvidencesType, getSemesters, getDocuments, getDocumentByID, deleteDocumentByID } from '../api/task.api';
 
@@ -169,6 +173,10 @@ export function Registered_evidences() {
 
     
     setDocuments(documentsWithNames);
+    if (documentsWithNames.length === 0)
+    toast.info('No se encontraron registros!', {
+      position: toast.POSITION.BOTTOM_RIGHT
+  });
   });
 
   const handleEdit = async (id) => {
@@ -197,9 +205,15 @@ export function Registered_evidences() {
   const handleConfirmDelete = async () => {
     await deleteDocumentByID(deleteItemId);
     setShowConfirmationModal(false);
-    // Actualizar la tabla después de eliminar el registro
-    // const res = await getDocuments();
-    // setDocuments(res.data);
+        // Mostrar la notificación de eliminación exitosa
+    toast.success('Evidencia eliminada existosamente!', {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      autoClose: 3000, // Duración en milisegundos antes de que la notificación se cierre automáticamente
+      hideProgressBar: true, // Oculta la barra de progreso
+      closeOnClick: true, // Cierra la notificación al hacer clic en ella
+      pauseOnHover: true, // Pausa el temporizador de cierre automático al pasar el mouse por encima
+    });
+    
     onSubmit();
   };
 
@@ -238,6 +252,9 @@ export function Registered_evidences() {
     const partesPath = path.split('/');
     return partesPath[partesPath.length - 1];
   };
+
+
+
 
   return (
     <Base>
@@ -425,7 +442,7 @@ export function Registered_evidences() {
         </Modal.Footer>
       </Modal>
 
-
+      <ToastContainer />
     </Base>
   );
 }
