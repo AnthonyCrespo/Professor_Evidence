@@ -7,7 +7,6 @@ import Table from 'react-bootstrap/Table';
 import { useForm } from 'react-hook-form';
 import Container from 'react-bootstrap/Container';
 
-
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -316,37 +315,39 @@ export function Registered_evidences() {
       <br />
       <h5>Documentos subidos:</h5>
       <div style={{ maxWidth: '80%' }}>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Actividad</th>
-            <th>Evidencia</th>
-            <th>Documento</th>
-            <th>Fecha</th>
-            <th>Comentario</th>
-          </tr>
-        </thead>
-        <tbody>
-          {documents.length > 0 ? (
-            documents.map((item) => (
-              <tr key={item.id}>
-                <td>{item.activity_type}</td>
-                <td>{item.evidence_type}</td>
-                <td>{item.document_pathToFile}</td>
-                <td>{item.document_uploadDate}</td>
-                <td>{item.document_comment}</td>
-                <td>
-                  <Button variant="primary" onClick={() => handleEdit(item.id)}>Editar</Button>
-                  <Button variant="danger" onClick={() => handleDelete(item.id)}>Borrar</Button>
-                </td>
-              </tr>
-            ))
-          ) : (
+        <Table striped bordered hover>
+          <thead>
             <tr>
+              <th>Actividad</th>
+              <th>Evidencia</th>
+              <th>Documento</th>
+              <th>Fecha</th>
+              <th>Comentario</th>
             </tr>
-          )}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {documents.length > 0 ? (
+              documents.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.activity_type}</td>
+                  <td>{item.evidence_type}</td>
+                  <td>
+                    <a href={item.uploadedDocument}>{item.document_pathToFile}</a>
+                  </td>
+                  <td>{item.document_uploadDate}</td>
+                  <td>{item.document_comment}</td>
+                  <td>
+                    <Button variant="primary" onClick={() => handleEdit(item.id)}>Editar</Button>
+                    <Button variant="danger" onClick={() => handleDelete(item.id)}>Borrar</Button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+              </tr>
+            )}
+          </tbody>
+        </Table>
       </div>
 
     {/* ----------------------------------------------------------------------- */}
