@@ -31,6 +31,7 @@ export function Register_evidence() {
     const [evidences, setEvidences] = useState([]);
     const [selectedEvidence, setSelectedEvidence] = useState(1);
     const [document, setDocument] = useState(null);
+    const [professorComment, setProfessorComment] = useState("");
 
 
     const currentDate = new Date();
@@ -98,7 +99,8 @@ export function Register_evidence() {
         activity_type: parseInt(selectedActivity),
         evidence_type: parseInt(selectedEvidence),
         semester_id: 1,
-        document_comment: " ",
+        document_revisorComment: " ",
+        document_professorComment: professorComment,
         document_uploadDate: formattedDate,
         document_pathToFile: data.document_pathToFile[0].name,
         uploadedDocument: data.document_pathToFile[0]
@@ -113,6 +115,7 @@ export function Register_evidence() {
       /* Set form to default values */
       reset();  
       setSelectedActivity(1)
+      setProfessorComment(" ")
       /* setSelectedEvidence(0) */
 
       /* Show notification */
@@ -221,6 +224,17 @@ export function Register_evidence() {
                 />
                 {errors.document_pathToFile && <span>Se requiere subir un documento.</span>}
               </Form.Group>
+
+              <Form.Group className="mt-4">
+                  <Form.Label>Comentario:</Form.Label>
+                  <Form.Control as="textarea" rows={3} 
+                                  value={professorComment}
+                                  onChange={(e) => {
+                                    setProfessorComment(e.target.value)
+                                  }}
+                  />
+              </Form.Group>
+
 
               <Button className="mt-4" variant="primary" type="submit">Enviar</Button>
           </Form>

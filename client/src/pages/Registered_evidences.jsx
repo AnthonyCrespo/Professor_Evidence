@@ -50,7 +50,7 @@ export function Registered_evidences() {
   /* Para desplegar el nombre del archivo actual en la BD */
   const [document, setDocument] = useState(null);
 
-  
+  const [professorComment, setProfessorComment] = useState("");
 
   const currentDate = new Date();
   const month = currentDate.getMonth() + 1;
@@ -215,6 +215,7 @@ useEffect(() => {
       activity_type: parseInt(selectedActivity_modal),
       evidence_type: parseInt(selectedEvidence_modal),
       document_uploadDate: formattedDate,
+      document_professorComment: professorComment
     };
   
     if (data.document_pathToFile) {
@@ -348,6 +349,7 @@ useEffect(() => {
               <th>Documento</th>
               <th>Fecha</th>
               <th>Comentario</th>
+              <th>Comentario del revisor</th>
             </tr>
           </thead>
           <tbody>
@@ -360,7 +362,8 @@ useEffect(() => {
                     <a href={item.uploadedDocument}>{item.document_pathToFile}</a>
                   </td>
                   <td>{item.document_uploadDate}</td>
-                  <td>{item.document_comment}</td>
+                  <td>{item.document_professorComment}</td>
+                  <td>{item.document_revisorComment}</td>
                   <td>
                     <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
                     <Button variant="danger" onClick={() => handleDelete(item.id)}>Borrar</Button>
@@ -420,29 +423,38 @@ useEffect(() => {
           </Form.Group>
 
 
+        <Form.Group className="mt-4">
+          <Form.Label>Documentos de respaldo:</Form.Label>
+          <div className="input-group">
+            <input
+              type="file"
+              className="form-control"
+              accept=".pdf"
+              id="document"
+              style={{ display: 'none' }}
+              onChange={(e) => {
+                const file = e.target.files[0];
+                setValue_modal('document_pathToFile', file);
+                setDocument(e.target.files[0].name)
+              }}
+            />
+            <label htmlFor="document" className="input-group-text">
+              {document}
+            </label>
+          </div>
+        </Form.Group>
 
+        
+        <Form.Group className="mt-4">
+                  <Form.Label>Comentario:</Form.Label>
+                  <Form.Control as="textarea" rows={3} 
+                                  value={professorComment}
+                                  onChange={(e) => {
+                                    setProfessorComment(e.target.value)
+                                  }}
+                  />
+        </Form.Group>
 
-
-<Form.Group className="mt-4">
-  <Form.Label>Documentos de respaldo:</Form.Label>
-  <div className="input-group">
-    <input
-      type="file"
-      className="form-control"
-      accept=".pdf"
-      id="document"
-      style={{ display: 'none' }}
-      onChange={(e) => {
-        const file = e.target.files[0];
-        setValue_modal('document_pathToFile', file);
-        setDocument(e.target.files[0].name)
-      }}
-    />
-    <label htmlFor="document" className="input-group-text">
-      {document}
-    </label>
-  </div>
-</Form.Group>
 
 
           <Button className="mt-4" variant="primary" type="submit">
