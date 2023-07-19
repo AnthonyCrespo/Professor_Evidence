@@ -1,6 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+
+from django.core.files.storage import default_storage
+from django.http import JsonResponse
+import os
 # Create your models here.
 
 '''
@@ -106,14 +110,14 @@ class Activity_Type(models.Model):
     # activity_type_id = models.CharField(max_length=50)
     activity_type = models.TextField(max_length=200)
     def __str__(self):
-        return str(self.id)
+        return str(self.activity_type)
 
 class Evidence_Type(models.Model):
     # evidence_id = models.CharField(max_length=50)
     activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
     evidence_type = models.CharField(max_length=250)
     def __str__(self):
-        return str(self.id)
+        return str(self.evidence_type)
 
     
 class Document(models.Model):
@@ -134,52 +138,45 @@ class Document(models.Model):
     uploadedDocument = models.FileField(upload_to=get_document_upload_path)
     # uploadedDocument = models.FileField(upload_to="0302616099")
 
+
+
+    def delete(self, *args, **kwargs):
+        # Obtenemos la ruta del archivo
+        file_path = self.uploadedDocument.path
+
+        # Eliminamos el archivo del servidor
+        if default_storage.exists(file_path):
+            default_storage.delete(file_path)
+
+            # Obtenemos el directorio que contiene el archivo
+            file_directory = os.path.dirname(file_path)
+
+            # Verificamos si el directorio está vacío después de eliminar el archivo
+            if not os.listdir(file_directory):
+                # Si está vacío, eliminamos el directorio también
+                os.rmdir(file_directory)
+
+        # Llamamos al método "delete" de la clase padre para eliminar el registro de la tabla
+        super(Document, self).delete(*args, **kwargs)
+        
+    def save(self, *args, **kwargs):
+        # Verificamos si el archivo adjunto ha cambiado
+        if self.id:
+            try:
+                old_document = Document.objects.get(id=self.id)
+                if old_document.uploadedDocument and old_document.uploadedDocument != self.uploadedDocument:
+                    # Si el archivo ha cambiado, eliminamos el archivo anterior del servidor
+                    file_path = old_document.uploadedDocument.path
+                    if default_storage.exists(file_path):
+                        default_storage.delete(file_path)
+            except Document.DoesNotExist:
+                pass
+
+        super(Document, self).save(*args, **kwargs)
+        
     def __str__(self):
         return str(self.id)
 
-# class Activity_Report_Teaching(models.Model):
-#     # activity_report_id = models.CharField(max_length=50)
-#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-#     activity_report_summary = models.TextField(max_length=200)
-#     activity_report_hoursPerWeek = models.FloatField()
-#     activity_report_hoursPerWeekIntersemester = models.FloatField()
-#     def __str__(self):
-#         return str(self.id)
-    
-# class Activity_Report_Investigation(models.Model):
-#     # activity_report_id = models.CharField(max_length=50)
-#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-#     activity_report_summary = models.TextField(max_length=200)
-#     activity_report_hoursPerWeek = models.FloatField()
-#     activity_report_hoursPerWeekIntersemester = models.FloatField()
-#     def __str__(self):
-#         return str(self.id)
-
-# class Activity_Report_Vinculation(models.Model):
-#     # activity_report_id = models.CharField(max_length=50)
-#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-#     activity_report_summary = models.TextField(max_length=200)
-#     activity_report_hoursPerWeek = models.FloatField()
-#     activity_report_hoursPerWeekIntersemester = models.FloatField()
-#     def __str__(self):
-#         return str(self.id)
-
-# class Activity_Report_Management(models.Model):
-#     # activity_report_id = models.CharField(max_length=50)
-#     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-#     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-#     document_id = models.ForeignKey(Document, on_delete=models.CASCADE)
-#     activity_report_summary = models.TextField(max_length=200)
-#     activity_report_hoursPerWeek = models.FloatField()
-#     activity_report_hoursPerWeekIntersemester = models.FloatField()
-#     def __str__(self):
-#         return str(self.id)
 
 class Report(models.Model):
     # report_id = models.CharField(max_length=50)

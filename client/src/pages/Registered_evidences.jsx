@@ -440,7 +440,12 @@ useEffect(() => {
                 setDocument(e.target.files[0].name)
               }}
             />
-            <label htmlFor="document" className="input-group-text">
+            <label htmlFor="document" className="input-group-text" style={{
+                maxWidth: '100%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}>
               {document}
             </label>
           </div>

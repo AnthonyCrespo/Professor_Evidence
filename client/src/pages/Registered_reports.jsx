@@ -56,6 +56,7 @@ export function Registered_reports() {
           <th>Semestre</th>
           <th>Fecha</th>
           <th>Reporte</th>
+          <th>Comentario</th>
         </tr>
       </thead>
       <tbody>
@@ -64,6 +65,7 @@ export function Registered_reports() {
            <td>{item.semester_name}</td>
             <td>{item.report_uploadDate}</td>
             <td>{item.report_name}</td>
+            <td>{item.report_professorComment}</td>
           </tr>
         ))}
       </tbody>
