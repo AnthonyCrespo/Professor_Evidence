@@ -208,10 +208,11 @@ useEffect(() => {
 
 
   const onSubmit_modal = handleSubmit_modal(async (data) => {
-    const { evidence_type_name, activity_type_name, ...updatedData } = evidence_document;
+    //const { evidence_type_name, activity_type_name, ...updatedData } = evidence_document;
   
     const new_evidence_document = {
-      ...updatedData,
+      //...updatedData,
+      id: evidence_document.id,
       activity_type: parseInt(selectedActivity_modal),
       evidence_type: parseInt(selectedEvidence_modal),
       document_uploadDate: formattedDate,
@@ -228,7 +229,7 @@ useEffect(() => {
     console.log(new_evidence_document);
     await updateDocument(new_evidence_document.id, new_evidence_document);
     toast.success('Registro actualizado!', {
-      position: toast.POSITION.BOTTOM_RIGHT
+     position: toast.POSITION.BOTTOM_RIGHT
   });
 
   handleCloseModal()
@@ -251,6 +252,7 @@ useEffect(() => {
   
   const handleCloseModal = () => {
     setShowModal(false);
+    setProfessorComment("")
     //setSelectedEvidence_modal(0)
   };
   

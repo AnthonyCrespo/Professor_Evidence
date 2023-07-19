@@ -56,9 +56,9 @@ export const createEvidence = (evidence) => {
 export const updateReport = (reportId, report) => tasksApi.put(`/Report/${reportId}/`, report);
 //export const updateDocument = (DocumentId, document) => tasksApi.put(`/Document/${DocumentId}/`, document);
 
-
+/* ------------------ PARTIAL --------------------------- */
 export const updateDocument = (DocumentId, document) => {
-    return tasksApi.put(`/Document/${DocumentId}/`, document, {
+    return tasksApi.patch(`/Document/${DocumentId}/`, document, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

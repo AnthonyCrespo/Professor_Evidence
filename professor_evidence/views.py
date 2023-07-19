@@ -53,6 +53,10 @@ class Semester_CareerView(viewsets.ModelViewSet):
 class Activity_TypeView(viewsets.ModelViewSet):
     serializer_class = Activity_TypeSerializer
     queryset = Activity_Type.objects.all()
+    
+# class Document_FileView(viewsets.ModelViewSet):
+#     serializer_class = Document_FileSerializer
+#     queryset = Activity_Type.objects.all()
 
 # class Activity_Report_TeachingView(viewsets.ModelViewSet):
 #     serializer_class = Activity_Report_TeachingSerializer

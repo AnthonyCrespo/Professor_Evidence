@@ -67,6 +67,12 @@ class Evidence_TypeSerializer(serializers.ModelSerializer):
         model = Evidence_Type
         fields = '__all__'
 
+
+# class Document_FileSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Document_File
+#         fields = '__all__'
+
 # class Activity_Report_TeachingSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Activity_Report_Teaching
