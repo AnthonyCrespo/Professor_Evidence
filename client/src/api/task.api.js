@@ -54,11 +54,17 @@ export const createEvidence = (evidence) => {
 
 /* ------------------ UPDATE --------------------------- */
 export const updateReport = (reportId, report) => tasksApi.put(`/Report/${reportId}/`, report);
+//export const updateDocument = (DocumentId, document) => tasksApi.put(`/Document/${DocumentId}/`, document);
 
-export const getAllTasks = () => {
-    return tasksApi.get("/"); 
-}
 
+export const updateDocument = (DocumentId, document) => {
+    return tasksApi.put(`/Document/${DocumentId}/`, document, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  };
+  
 
 
 /* ------------------ DELETE --------------------------- */
@@ -71,15 +77,16 @@ export const deleteDocumentByID  = (DocumentId) => tasksApi.delete(`/Document/${
 
 
 
+
+export const getAllTasks = () => {
+    return tasksApi.get("/"); 
+}
+
 export const getTask = (id) => tasksApi.get(`/${id}/`);
 
-
 export const createTask = (task) => tasksApi.post("/", task);
-
 
 export const deleteTask  = (id) => {
     return tasksApi.delete(`/${id}`);
 }
-
-
 export const updateTask = (id, task) => tasksApi.put(`/${id}/`, task);

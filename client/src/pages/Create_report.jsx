@@ -133,9 +133,9 @@ export function Create_report() {
   }, [semesters]);
 
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  // const handleChange = (e) => {
+  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // }
 
   
   const {

@@ -13,7 +13,13 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 /* ------------- Import Functions from API ------------------ */
-import { getActivitiesType, getEvidencesType, getSemesters, getDocuments, getDocumentByID, deleteDocumentByID } from '../api/task.api';
+import { getActivitiesType, 
+         getEvidencesType, 
+         getSemesters, 
+         getDocuments, 
+         getDocumentByID, 
+         deleteDocumentByID,
+         updateDocument } from '../api/task.api';
 
 export function Registered_evidences() {
   const [activities, setActivities] = useState([]);
@@ -23,13 +29,13 @@ export function Registered_evidences() {
   const [semesters, setSemesters] = useState([]);
   const [selectedSemester, setSelectedSemester] = useState(1);
   const [documents, setDocuments] = useState([]);
-
+  const [evidence_document,  setEvidenceDocument] = useState([]);
 
   const [activities_modal, setActivities_modal] = useState([]);
   const [selectedActivity_modal, setSelectedActivity_modal] = useState(1);
   const [evidences_modal, setEvidences_modal] = useState([]);
-  const [selectedEvidence_modal, setSelectedEvidence_modal] = useState(0);
-  const [documents_modal, setDocuments_modal] = useState([]);
+  const [selectedEvidence_modal, setSelectedEvidence_modal] = useState(1);
+  const [document_modal, setDocument_modal] = useState([]);
 
   /* -------------------For editing a task ------------------- */
   const [showModal, setShowModal] = useState(false);
@@ -41,9 +47,20 @@ export function Registered_evidences() {
 
 
   const [selectedDocument, setSelectedDocument] = useState(null);
+  /* Para desplegar el nombre del archivo actual en la BD */
   const [document, setDocument] = useState(null);
 
   
+
+  const currentDate = new Date();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  const year = currentDate.getFullYear();
+  const formattedMonth = String(month).padStart(2, '0');
+  const formattedDay = String(day).padStart(2, '0');
+  const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+
+
   /* ------ Carga de los tipos de actividades + 'TODOS' --------- */
   useEffect(() => {
     async function loadActivitiesType() {
@@ -51,6 +68,7 @@ export function Registered_evidences() {
       const allOption = { id: 0, activity_type: "Todos" };
       const activitiesWithAllOption = [allOption, ...res.data];
       setActivities(activitiesWithAllOption);
+      setActivities_modal(res.data)
 /*       console.log(activitiesWithAllOption)  |||| VERIFICADO. */
     }
     loadActivitiesType();
@@ -77,30 +95,37 @@ export function Registered_evidences() {
     loadEvidencesType();
   }, [selectedActivity]);
 
-  /* ------------------------------------------------------------------------------ */
+
+
+
+/* ------------------------------------------------------------------------------ */
 /* --------------------------- Modal ---------------------------------------------*/
 /* ------------------------------------------------------------------------------ */
-  useEffect(() => {
-    async function loadActivitiesType_modal() {
-      const res = await getActivitiesType();
-      setActivities_modal(res.data);
-      setSelectedEvidence_modal(0);
-/*       console.log(activitiesWithAllOption)  |||| VERIFICADO. */
-    }
-    loadActivitiesType_modal();
-  }, []);
 
 
 
-  useEffect(() => {
-    async function loadEvidencesType_modal() {
-      const res = await getEvidencesType();
-      const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity_modal));
-      setEvidences_modal(filteredEvidences);
-      setSelectedEvidence_modal(0);
-      }
-    loadEvidencesType_modal();
-  }, [selectedActivity_modal]);
+
+
+
+useEffect(() => {
+  async function loadEvidencesType_modal() {
+    const res = await getEvidencesType();
+    const filteredEvidences = res.data.filter(
+      (opcion) => opcion.activity_type === parseInt(selectedActivity_modal)
+    );
+    setEvidences_modal(filteredEvidences);
+    //console.log(filteredEvidences)
+    if (evidence_document.activity_type == selectedActivity_modal)
+      setSelectedEvidence_modal(evidence_document.evidence_type)
+    else 
+      setSelectedEvidence_modal(filteredEvidences[0].id)
+    //console.log(evidence_document)
+    
+  }
+
+  // Mueve la llamada a loadEvidencesType_modal aquí
+  loadEvidencesType_modal();
+}, [selectedActivity_modal]);
 
 
 /* ----------- Carga de los semestres ----------------------- */
@@ -114,26 +139,19 @@ export function Registered_evidences() {
 
   /* --------------- Validar las entradas de los formularios ---------------- */
   const {
-    register,
     handleSubmit,
     formState: { errors },
     setValue
   } = useForm();
 
   const {
-    register: form_modal,
     handleSubmit: handleSubmit_modal,
-    formState: { errors: errors_modal },
     setValue: setValue_modal
   } = useForm();
   
 
-  const onSubmit_modal = handleSubmit_modal(async (data) => {
-      console.log("estoy haciendo submit desde el modal")
-      console.log(data)
-    })
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async () => {
     const evidence_data = {
       professor_id: "1317858973",
       activity_type: parseInt(selectedActivity),
@@ -172,10 +190,12 @@ export function Registered_evidences() {
         );
       }
     }
+
+
     const documentsWithNames = filteredDocuments.map(document => ({
       ...document,
-      activity_type: activities.find(activity => activity.id === document.activity_type)?.activity_type,
-      evidence_type: evidences.find(evidence => evidence.id === document.evidence_type)?.evidence_type
+      activity_type_name: activities.find(activity => activity.id === document.activity_type)?.activity_type,
+      evidence_type_name: evidences.find(evidence => evidence.id === document.evidence_type)?.evidence_type
     }));
 
     
@@ -186,21 +206,51 @@ export function Registered_evidences() {
   });
   });
 
-  const handleEdit = async (id) => {
-    try {
-      const document = await getDocumentByID(id);
-      const fileName = document.data.document_pathToFile;
-      setDocument(fileName);
-      setEditItemId(id);
-      setShowModal(true);
-    } catch (error) {
-      // Maneja el error de la petición API
-      console.error(error);
+
+  const onSubmit_modal = handleSubmit_modal(async (data) => {
+    const { evidence_type_name, activity_type_name, ...updatedData } = evidence_document;
+  
+    const new_evidence_document = {
+      ...updatedData,
+      activity_type: parseInt(selectedActivity_modal),
+      evidence_type: parseInt(selectedEvidence_modal),
+      document_uploadDate: formattedDate,
+    };
+  
+    if (data.document_pathToFile) {
+      new_evidence_document.document_pathToFile = data.document_pathToFile.name;
+      new_evidence_document.uploadedDocument = data.document_pathToFile;
     }
+  
+    //setEvidenceDocument(new_evidence_document);
+  
+    console.log(new_evidence_document);
+    await updateDocument(new_evidence_document.id, new_evidence_document);
+    toast.success('Registro actualizado!', {
+      position: toast.POSITION.BOTTOM_RIGHT
+  });
+
+  handleCloseModal()
+  onSubmit()
+  });
+  
+
+
+
+  const handleEdit = async (doc) => {
+      setEvidenceDocument(doc)
+      const fileName = doc.document_pathToFile;
+      setDocument(fileName);
+      setEditItemId(doc.id);
+      setSelectedActivity_modal(doc.activity_type)
+      setSelectedEvidence_modal(doc.evidence_type)
+      setShowModal(true);
+
   };
   
   const handleCloseModal = () => {
     setShowModal(false);
+    //setSelectedEvidence_modal(0)
   };
   
   
@@ -304,15 +354,15 @@ export function Registered_evidences() {
             {documents.length > 0 ? (
               documents.map((item) => (
                 <tr key={item.id}>
-                  <td>{item.activity_type}</td>
-                  <td>{item.evidence_type}</td>
+                  <td>{item.activity_type_name}</td>
+                  <td>{item.evidence_type_name}</td>
                   <td>
                     <a href={item.uploadedDocument}>{item.document_pathToFile}</a>
                   </td>
                   <td>{item.document_uploadDate}</td>
                   <td>{item.document_comment}</td>
                   <td>
-                    <Button variant="primary" onClick={() => handleEdit(item.id)}>Editar</Button>
+                    <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
                     <Button variant="danger" onClick={() => handleDelete(item.id)}>Borrar</Button>
                   </td>
                 </tr>
@@ -356,8 +406,9 @@ export function Registered_evidences() {
             <Form.Select
               value={selectedEvidence_modal}
               onChange={(e) => {
-                setSelectedEvidence_modal(e.target.value);
                 setValue_modal('evidence_type', e.target.value);
+                setSelectedEvidence_modal(e.target.value);
+                console.log(e.target.value)
               }}
             >
               {evidences_modal.map((opcion) => (
@@ -372,7 +423,7 @@ export function Registered_evidences() {
 
 
 
-          <Form.Group className="mt-4">
+<Form.Group className="mt-4">
   <Form.Label>Documentos de respaldo:</Form.Label>
   <div className="input-group">
     <input
