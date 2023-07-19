@@ -352,6 +352,7 @@ useEffect(() => {
               <th>Fecha</th>
               <th>Comentario</th>
               <th>Comentario del revisor</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>

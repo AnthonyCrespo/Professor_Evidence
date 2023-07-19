@@ -57,6 +57,7 @@ export function Registered_reports() {
           <th>Fecha</th>
           <th>Reporte</th>
           <th>Comentario</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -66,6 +67,14 @@ export function Registered_reports() {
             <td>{item.report_uploadDate}</td>
             <td>{item.report_name}</td>
             <td>{item.report_professorComment}</td>
+            <td>
+                <button
+                  className="btn btn-success"
+                  onClick={() => handleVisualizarClick(item.id)}
+                >
+                  VISUALIZAR
+                </button>
+            </td>
           </tr>
         ))}
       </tbody>

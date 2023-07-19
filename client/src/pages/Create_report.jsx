@@ -120,8 +120,11 @@ export function Create_report() {
           investigation_report_hoursPerWeek: firstReport.investigation_report_hoursPerWeek,
           investigation_report_hoursPerWeekIntersemester: firstReport.investigation_report_hoursPerWeekIntersemester,
           report_conclusion: firstReport.report_conclusion,
+          report_professorComment: firstReport.report_professorComment,
           report_uploadDate: formattedDate,
         }));
+
+        console.log(firstReport.report_professorComment)
       }
       
     };
@@ -371,7 +374,7 @@ export function Create_report() {
           <Form.Group className="mt-4">
                 <Form.Label>Comentario:</Form.Label>
                 <Form.Control as="textarea" rows={3} 
-                                              value={form.professorComment}
+                                              value={form.report_professorComment}
                                               onChange={(e) => {setForm(prevForm => ({
                                                 ...prevForm,
                                                 report_professorComment: e.target.value
