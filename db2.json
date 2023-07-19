@@ -3,7 +3,7 @@
     "model": "professor_evidence.semester",
     "pk": 1,
     "fields": {
-      "semester_name": "SM01_2023",
+      "semester_name": "SEM123",
       "date_start": "2023-04-17",
       "date_end": "2023-08-13"
     }
@@ -12,7 +12,7 @@
     "model": "professor_evidence.semester",
     "pk": 2,
     "fields": {
-      "semester_name": "SM02_2023",
+      "semester_name": "SEM223",
       "date_start": "2023-08-28",
       "date_end": "2023-12-14"
     }
@@ -21,7 +21,7 @@
     "model": "professor_evidence.semester",
     "pk": 3,
     "fields": {
-      "semester_name": "SM02_2022",
+      "semester_name": "SM222",
       "date_start": "2022-11-07",
       "date_end": "2023-03-20"
     }
@@ -30,8 +30,8 @@
     "model": "professor_evidence.school",
     "pk": 1,
     "fields": {
-      "school_name": "Escuela de Ciencias Matemáticas y Tecnología Informática",
-      "school_abbreviation": "ECMTI"
+      "school_name": "Escuela de Ciencias Matemáticas y Computacionales",
+      "school_abbreviation": "ECMC"
     }
   },
   {
@@ -62,8 +62,8 @@
     "model": "professor_evidence.school",
     "pk": 5,
     "fields": {
-      "school_name": "Escuela de Ciencias Geológicas e Ingeniería",
-      "school_abbreviation": "ECGI"
+      "school_name": "Escuela de Ciencias de la Tierra, Energía y Ambiente",
+      "school_abbreviation": "ECTEA"
     }
   },
   {
@@ -103,7 +103,7 @@
     "pk": 5,
     "fields": {
       "school_id": 3,
-      "career_name": "Ingenier�a en nanotecnología"
+      "career_name": "Nanotecnología"
     }
   },
   {
@@ -168,7 +168,22 @@
       "professor_degree": "PhD",
       "professor_names": "Ronald Patricio",
       "professor_lastnames": "Mendoza N��ez",
-      "professor_denomination": 2
+      "professor_denomination": 2,
+      "isRevisor": false,
+      "isDean": false
+    }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "0302616099",
+    "fields": {
+      "career_id": 2,
+      "professor_degree": "PhD",
+      "professor_names": "Brian Anthony",
+      "professor_lastnames": "Crespo Yaguana",
+      "professor_denomination": 1,
+      "isRevisor": true,
+      "isDean": false
     }
   },
   {
@@ -179,7 +194,9 @@
       "professor_degree": "PhD",
       "professor_names": "Patricio Joshue",
       "professor_lastnames": "Mendoza N��ez",
-      "professor_denomination": 1
+      "professor_denomination": 1,
+      "isRevisor": false,
+      "isDean": true
     }
   },
   {
@@ -229,21 +246,21 @@
     "model": "professor_evidence.activity_type",
     "pk": 2,
     "fields": {
-      "activity_type": "Vinculaci�n"
+      "activity_type": "Vinculación"
     }
   },
   {
     "model": "professor_evidence.activity_type",
     "pk": 3,
     "fields": {
-      "activity_type": "Investigaci�n"
+      "activity_type": "Investigación"
     }
   },
   {
     "model": "professor_evidence.activity_type",
     "pk": 4,
     "fields": {
-      "activity_type": "Gesti�n"
+      "activity_type": "Gestión"
     }
   },
   {
@@ -628,110 +645,6 @@
     "fields": {
       "activity_type": 4,
       "evidence_type": "Participar en capacitaciones de formaci�n pedag�gica."
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 1,
-    "fields": {
-      "professor_id": "1317858973",
-      "activity_type": 2,
-      "evidence_type": 16,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-03",
-      "document_pathToFile": "ISSFA_2023.pdf"
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 2,
-    "fields": {
-      "professor_id": "1317858549",
-      "activity_type": 2,
-      "evidence_type": 19,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-03",
-      "document_pathToFile": "reporteJasper.pdf"
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 3,
-    "fields": {
-      "professor_id": "1317858973",
-      "activity_type": 1,
-      "evidence_type": 1,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-03",
-      "document_pathToFile": "reporteJasper.pdf"
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 4,
-    "fields": {
-      "professor_id": "1317858973",
-      "activity_type": 1,
-      "evidence_type": 2,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-03",
-      "document_pathToFile": "s13007-022-00866-2.pdf"
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 5,
-    "fields": {
-      "professor_id": "1317858973",
-      "activity_type": 1,
-      "evidence_type": 1,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-05",
-      "document_pathToFile": "image.pdf"
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 6,
-    "fields": {
-      "professor_id": "1317858973",
-      "activity_type": 1,
-      "evidence_type": 1,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-05",
-      "document_pathToFile": "icono.png"
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 8,
-    "fields": {
-      "professor_id": "1317858973",
-      "activity_type": 1,
-      "evidence_type": 2,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-05",
-      "document_pathToFile": "image.pdf"
-    }
-  },
-  {
-    "model": "professor_evidence.document",
-    "pk": 9,
-    "fields": {
-      "professor_id": "1317858973",
-      "activity_type": 3,
-      "evidence_type": 31,
-      "semester_id": 1,
-      "document_comment": "",
-      "document_uploadDate": "2023-07-09",
-      "document_pathToFile": "Survey of Few-Shot Object Detection.pdf"
     }
   },
   {

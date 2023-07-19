@@ -3,6 +3,7 @@ import { TasksPage } from './pages/TaskPage'
 import { TaskFormPage } from './pages/TaskFormPage'
 import { LoginPage } from './pages/Login'
 import { HomePage} from './pages/Home'
+import { HomeRevisor} from './pages/Home_Revisor'
 import { Register_evidence } from './pages/Register_evidence'
 import {Navigation} from './components/Navigation'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +21,7 @@ function App() {
 
       <Route path="/" element={<Navigate to="/login"/>}/>
       <Route path="/home" element={<HomePage/>}/>
+      <Route path="/home_revisor" element={<HomeRevisor/>}/>
       <Route path="/registrar_evidencia" element={<Register_evidence/>}/>
       <Route path="/evidencias_registradas" element={<Registered_evidences/>}/>
       <Route path="/crear_informe" element={<Create_report/>}/>

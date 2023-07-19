@@ -10,14 +10,14 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-export function Base({ children }) {
+export function Base_Revisor({ children }) {
   const [isRevisor, setIsRevisor] = useState(true);
   const navigate = useNavigate();
 
   // Función para cambiar entre el modo revisor y el modo normal
   const toggleRevisorMode = () => {
     setIsRevisor((prevState) => !prevState);
-    navigate('/home_revisor');
+    navigate('/home');
   };
 
   return (
@@ -32,17 +32,12 @@ export function Base({ children }) {
             </Navbar.Brand>
           </a>
           <Nav>
-          <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
-            {isRevisor && (
-
-            <NavDropdown.Item onClick={toggleRevisorMode}>
-                  Cambiar a Revisor
-                </NavDropdown.Item>
-
-            )}
-
-          <NavDropdown.Item href="/login">Cerrar Sesion</NavDropdown.Item>
-          </NavDropdown> 
+            <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
+              <NavDropdown.Item onClick={toggleRevisorMode}>
+                  Cambiar a Docente
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/login">Cerrar Sesion</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Container>
       </Navbar>
@@ -52,18 +47,6 @@ export function Base({ children }) {
             <div className='row'>
                 <div className="col-auto min-vh-100" style={{backgroundColor:"RGB(39, 39, 39)"}}>
                     <ul className="nav flex-column mt-3">
-
-                    {/* -------Home option ------- */}
-{/*                     <li className="nav-item mt-2">
-                        <a className="nav-link px-2" href="/home">
-                        <i className='bi bi-house side-bar-icon'></i>
-                        <span className='ms-1 d-none d-sm-inline  side-bar-text'>
-                            Home
-                        </span>
-                        </a>
-                    </li> */}
-                    
-                    {/* -------Evidencias option ------- */}
 
                     <li className="nav-item mt-2">
                         <a className="nav-link px-2">
@@ -75,12 +58,7 @@ export function Base({ children }) {
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item">
                             <a className="nav-link" href="/registrar_evidencia" style={{color:"white"}}>
-                            Registrar Evidencia
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link " href="/evidencias_registradas" style={{color:"white"}}>
-                            Evidencia Registrada
+                            Revisar Evidencia
                             </a>
                         </li>
                         </ul>
@@ -97,12 +75,7 @@ export function Base({ children }) {
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item  side-bar-text">
                             <a className="nav-link" href="/crear_informe" style={{color:"white"}}>
-                            Crear Informe
-                            </a>
-                        </li>
-                        <li className="nav-item  side-bar-text">
-                            <a className="nav-link" href="/informes_registrados" style={{color:"white"}}>
-                            Observar Informe
+                            Revisar Informe
                             </a>
                         </li>
                         </ul>

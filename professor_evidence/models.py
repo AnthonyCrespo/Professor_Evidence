@@ -89,6 +89,8 @@ class Professor(models.Model):
     professor_lastnames = models.TextField(max_length=200)
     professor_denomination = models.ForeignKey(Professor_Denomination, on_delete=models.CASCADE)
     professor_revisor = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
+    isRevisor = models.BooleanField(default = False)
+    isDean = models.BooleanField(default = False)
     def __str__(self):
         return str(self.professor_id)
 
@@ -130,6 +132,7 @@ class Document(models.Model):
     document_professorComment = models.TextField(blank=True, default='')
     document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
     document_pathToFile = models.TextField(max_length=200)
+
     def get_document_upload_path(self, filename):
         professor_id = self.professor_id
         activity_id = self.activity_type
