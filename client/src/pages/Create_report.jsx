@@ -53,8 +53,8 @@ export function Create_report() {
     
     report_name: 'nombre_del_reporte',	
     report_uploadDate: formattedDate,	
-    report_professorComment: 'comentario del profe',	
-    report_revisorComment: 'comentario del revisor',	
+    report_professorComment: '',	
+    report_revisorComment: '',	
     report_conclusion:	'',
     report_isApproved:	false,
     report_pathToFile: 'path/to/file',	

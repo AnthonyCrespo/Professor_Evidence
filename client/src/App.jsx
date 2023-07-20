@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Registered_evidences } from './pages/Registered_evidences'
 import {Create_report} from './pages/Create_report'
 import {Registered_reports} from './pages/Registered_reports'
+
+import {Revisar_Evidence} from './pages/Revisar_Evidence'
 function App() {
 
 
@@ -26,6 +28,7 @@ function App() {
       <Route path="/evidencias_registradas" element={<Registered_evidences/>}/>
       <Route path="/crear_informe" element={<Create_report/>}/>
       <Route path="/informes_registrados" element={<Registered_reports/>}/>
+      <Route path="/revisar_informes" element={<Revisar_Evidence/>}/>
 {/*       <Route path="/" element={<Navigate to="/tasks"/>}/>
         <Route path="/tasks" element={<TasksPage/>}/>
         <Route path="/tasks-create" element={<TaskFormPage/>}/>

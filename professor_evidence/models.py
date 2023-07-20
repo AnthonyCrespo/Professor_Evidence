@@ -112,14 +112,14 @@ class Activity_Type(models.Model):
     # activity_type_id = models.CharField(max_length=50)
     activity_type = models.TextField(max_length=200)
     def __str__(self):
-        return str(self.activity_type)
+        return str(self.id)
 
 class Evidence_Type(models.Model):
     # evidence_id = models.CharField(max_length=50)
     activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
     evidence_type = models.CharField(max_length=250)
     def __str__(self):
-        return str(self.evidence_type)
+        return str(self.id)
 
     
 class Document(models.Model):

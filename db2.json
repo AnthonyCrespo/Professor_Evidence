@@ -182,7 +182,22 @@
       "professor_names": "Brian Anthony",
       "professor_lastnames": "Crespo Yaguana",
       "professor_denomination": 1,
+      "professor_revisor": "1317858973",
       "isRevisor": true,
+      "isDean": false
+    }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "0302616199",
+    "fields": {
+      "career_id": 2,
+      "professor_degree": "PhD",
+      "professor_names": "Luis Alberto",
+      "professor_lastnames": "Gonzales Cueva",
+      "professor_denomination": 1,
+      "professor_revisor": "1317858973",
+      "isRevisor": false,
       "isDean": false
     }
   },
@@ -645,64 +660,6 @@
     "fields": {
       "activity_type": 4,
       "evidence_type": "Participar en capacitaciones de formaci�n pedag�gica."
-    }
-  },
-  {
-    "model": "professor_evidence.report",
-    "pk": 10,
-    "fields": {
-      "professor_id": "1317858549",
-      "teaching_report_summary": "Docencia 1",
-      "teaching_report_hoursPerWeek": 1.0,
-      "teaching_report_hoursPerWeekIntersemester": 2.0,
-      "management_report_summary": "gestion",
-      "management_report_hoursPerWeek": 7.0,
-      "management_report_hoursPerWeekIntersemester": 8.0,
-      "vinculation_report_summary": "vinculacion",
-      "vinculationt_report_hoursPerWeek": 3.0,
-      "vinculation_report_hoursPerWeekIntersemester": 4.0,
-      "investigation_report_summary": "investigaci'on",
-      "investigation_report_hoursPerWeek": 5.0,
-      "investigation_report_hoursPerWeekIntersemester": 6.0,
-      "semester_id": 1,
-      "report_name": "nombre_del_reporte",
-      "report_uploadDate": "2023-07-09",
-      "report_professorComment": "comentario del profe",
-      "report_revisorComment": "comentario del revisor",
-      "report_conclusion": "las conclusiones",
-      "report_reviewedBy": 1,
-      "report_approvedBy": 1,
-      "report_isApproved": false,
-      "report_pathToFile": "path/to/file"
-    }
-  },
-  {
-    "model": "professor_evidence.report",
-    "pk": 11,
-    "fields": {
-      "professor_id": "1317858549",
-      "teaching_report_summary": "Docencia",
-      "teaching_report_hoursPerWeek": 1.0,
-      "teaching_report_hoursPerWeekIntersemester": 2.0,
-      "management_report_summary": "Gesti�n",
-      "management_report_hoursPerWeek": 7.0,
-      "management_report_hoursPerWeekIntersemester": 8.0,
-      "vinculation_report_summary": "Vinculaci�n",
-      "vinculationt_report_hoursPerWeek": 3.0,
-      "vinculation_report_hoursPerWeekIntersemester": 4.0,
-      "investigation_report_summary": "Investigaci�n",
-      "investigation_report_hoursPerWeek": 5.0,
-      "investigation_report_hoursPerWeekIntersemester": 6.0,
-      "semester_id": 1,
-      "report_name": "nombre_del_reporte",
-      "report_uploadDate": "2023-07-09",
-      "report_professorComment": "comentario del profe",
-      "report_revisorComment": "comentario del revisor",
-      "report_conclusion": "Conclusiones de este trabajo son",
-      "report_reviewedBy": 1,
-      "report_approvedBy": 1,
-      "report_isApproved": false,
-      "report_pathToFile": "path/to/file"
     }
   }
 ]

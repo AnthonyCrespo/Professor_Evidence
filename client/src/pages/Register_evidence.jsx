@@ -95,7 +95,7 @@ export function Register_evidence() {
       formData.append('uploadedDocument', data.document_pathToFile[0]); */
   
       const evidenceData = {
-        professor_id: "1317858973",
+        professor_id: "0302616099",//"1317858973",
         activity_type: parseInt(selectedActivity),
         evidence_type: parseInt(selectedEvidence),
         semester_id: 1,
@@ -115,6 +115,7 @@ export function Register_evidence() {
       /* Set form to default values */
       reset();  
       setSelectedActivity(1)
+      setSelectedActivity(evidences[0].id)
       setProfessorComment(" ")
       /* setSelectedEvidence(0) */
 
