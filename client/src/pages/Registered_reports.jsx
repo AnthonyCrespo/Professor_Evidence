@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Base } from './Base';
-import { getReports } from '../api/task.api';
 import Table from 'react-bootstrap/Table';
 
-
+import { getReports } from '../api/task.api';
 import { getSemesters } from '../api/task.api';
 
 
@@ -23,7 +22,7 @@ export function Registered_reports() {
   }, []);
   
   useEffect(() => {
-    const professorId = '1317858549';
+    const professorId = '0302616099';
     const loadReports = async () => {
       /* const response = await getReports(professorId); */
       const response = await getReports();
@@ -57,6 +56,7 @@ export function Registered_reports() {
           <th>Fecha</th>
           <th>Reporte</th>
           <th>Comentario</th>
+          <th>Comentario del Revisor</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -67,6 +67,7 @@ export function Registered_reports() {
             <td>{item.report_uploadDate}</td>
             <td>{item.report_name}</td>
             <td>{item.report_professorComment}</td>
+            <td>{item.report_revisorComment}</td>
             <td>
                 <button
                   className="btn btn-success"

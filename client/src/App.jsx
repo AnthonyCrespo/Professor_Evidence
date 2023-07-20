@@ -12,6 +12,7 @@ import {Create_report} from './pages/Create_report'
 import {Registered_reports} from './pages/Registered_reports'
 
 import {Revisar_Evidence} from './pages/Revisar_Evidence'
+import {Revisar_Report} from './pages/Revisar_Report'
 function App() {
 
 
@@ -29,6 +30,7 @@ function App() {
       <Route path="/crear_informe" element={<Create_report/>}/>
       <Route path="/informes_registrados" element={<Registered_reports/>}/>
       <Route path="/revisar_informes" element={<Revisar_Evidence/>}/>
+      <Route path="/revisar_reportes" element={<Revisar_Report/>}/>
 {/*       <Route path="/" element={<Navigate to="/tasks"/>}/>
         <Route path="/tasks" element={<TasksPage/>}/>
         <Route path="/tasks-create" element={<TaskFormPage/>}/>

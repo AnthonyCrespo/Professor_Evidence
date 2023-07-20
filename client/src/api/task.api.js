@@ -55,7 +55,8 @@ export const createEvidence = (evidence) => {
 
 /* ------------------ UPDATE --------------------------- */
 export const updateReport = (reportId, report) => tasksApi.put(`/Report/${reportId}/`, report);
-//export const updateDocument = (DocumentId, document) => tasksApi.put(`/Document/${DocumentId}/`, document);
+/* ------------------ PARTIAL UPDATE --------------------------- */
+export const updateReportPartial = (reportId, report) => tasksApi.patch(`/Report/${reportId}/`, report);
 
 /* ------------------ PARTIAL --------------------------- */
 export const updateDocument = (DocumentId, document) => {

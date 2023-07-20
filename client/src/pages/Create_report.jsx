@@ -6,6 +6,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 import { getActivitiesType } from '../api/task.api';
 import { createReport } from '../api/task.api';
@@ -58,7 +61,7 @@ export function Create_report() {
     report_conclusion:	'',
     report_isApproved:	false,
     report_pathToFile: 'path/to/file',	
-    professor_id: "1317858549",	
+    professor_id: "0302616099",	
     semester_id: 1,	
     report_reviewedBy: 1,	
     report_approvedBy: 1,
@@ -86,7 +89,7 @@ export function Create_report() {
   }, []);
 
    useEffect(() => {
-    const professorId = '1317858549';
+    const professorId = '0302616099';
     const loadReports = async () => {
       /* const response = await getReports(professorId); */
       const response = await getReports();
@@ -152,19 +155,28 @@ export function Create_report() {
 
   
   const onSubmit = handleSubmit(async () => {
-
-    if (reports.length > 0) {
-          const firstReport = reports[0]; 
-         const existingReportId = firstReport["id"]
-          console.log(existingReportId)
-          await updateReport(existingReportId, form);
-    
-       } else { 
-          // Si no hay un ID de informe existente, crear un nuevo informe
-          await createReport(form);
-        }
-        navigate("/home/");
-      });
+    try {
+      if (reports.length > 0) {
+        const firstReport = reports[0]; 
+        const existingReportId = firstReport["id"];
+        console.log(existingReportId);
+        await updateReport(existingReportId, form);
+        toast.success('Reporte actualizado exitosamente!', {
+          position: toast.POSITION.BOTTOM_RIGHT})
+      } else { 
+        // Si no hay un ID de informe existente, crear un nuevo informe
+        await createReport(form);
+        toast.success('Reporte generado exitosamente!', {
+          position: toast.POSITION.BOTTOM_RIGHT})
+      }
+      //navigate("/home/");
+    } catch (error) {
+      // Capturar y mostrar el error
+      console.error("Error en createReport:", error);
+      // Aquí puedes realizar otras acciones relacionadas con el manejo del error, si es necesario.
+    }
+  });
+  
   
   
   return (
@@ -390,6 +402,7 @@ export function Create_report() {
 
         </Form>
     <br/>
+    <ToastContainer />
     </Base>
   );
 }

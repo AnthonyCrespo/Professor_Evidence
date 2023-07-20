@@ -74,7 +74,7 @@ export function Base_Revisor({ children }) {
                         </a>
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item  side-bar-text">
-                            <a className="nav-link" href="/crear_informe" style={{color:"white"}}>
+                            <a className="nav-link" href="/revisar_reportes" style={{color:"white"}}>
                             Revisar Informe
                             </a>
                         </li>
