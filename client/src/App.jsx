@@ -1,6 +1,4 @@
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import { TasksPage } from './pages/TaskPage'
-import { TaskFormPage } from './pages/TaskFormPage'
 import { LoginPage } from './pages/Login'
 import { HomePage} from './pages/Home'
 import { HomeRevisor} from './pages/Home_Revisor'
@@ -13,30 +11,40 @@ import {Registered_reports} from './pages/Registered_reports'
 
 import {Revisar_Evidence} from './pages/Revisar_Evidence'
 import {Revisar_Report} from './pages/Revisar_Report'
+import Register from './pages/Register';
+
+
+import {Provider} from 'react-redux';
+import store from './store';
+
+
+
+
+
 function App() {
-
-
   return (
-    <BrowserRouter>
-      {/* <Navigation/> */}
-      <Routes>
-      <Route path="/login" element={<LoginPage/>}/>
+    <Provider store={store}>
+        <BrowserRouter>
+          {/* <Navigation/> */}
+          <Routes>
+          <Route exact path="/login" element={<LoginPage/>}/>
+          <Route exact path="/register" element={<Register/>}/>
 
-      <Route path="/" element={<Navigate to="/login"/>}/>
-      <Route path="/home" element={<HomePage/>}/>
-      <Route path="/home_revisor" element={<HomeRevisor/>}/>
-      <Route path="/registrar_evidencia" element={<Register_evidence/>}/>
-      <Route path="/evidencias_registradas" element={<Registered_evidences/>}/>
-      <Route path="/crear_informe" element={<Create_report/>}/>
-      <Route path="/informes_registrados" element={<Registered_reports/>}/>
-      <Route path="/revisar_informes" element={<Revisar_Evidence/>}/>
-      <Route path="/revisar_reportes" element={<Revisar_Report/>}/>
-{/*       <Route path="/" element={<Navigate to="/tasks"/>}/>
-        <Route path="/tasks" element={<TasksPage/>}/>
-        <Route path="/tasks-create" element={<TaskFormPage/>}/>
-        <Route path="/tasks/:id" element={<TaskFormPage/>}/> */}
-      </Routes>
-    </BrowserRouter>
+          <Route exact path="/" element={<Navigate to="/login"/>}/>
+          <Route exact path="/home" element={<HomePage/>}/>
+          <Route exact path="/home_revisor" element={<HomeRevisor/>}/>
+          <Route exact path="/registrar_evidencia" element={<Register_evidence/>}/>
+          <Route exact path="/crear_informe" element={<Create_report/>}/>
+          <Route exact path="/informes_registrados" element={<Registered_reports/>}/>
+          <Route exact path="/revisar_informes" element={<Revisar_Evidence/>}/>
+          <Route exact path="/revisar_reportes" element={<Revisar_Report/>}/>
+    {/*       <Route exact path="/" element={<Navigate to="/tasks"/>}/>
+            <Route exact path="/tasks" element={<TasksPage/>}/>
+            <Route exact path="/tasks-create" element={<TaskFormPage/>}/>
+            <Route exact path="/tasks/:id" element={<TaskFormPage/>}/> */}
+          </Routes>
+        </BrowserRouter>
+    </Provider>
   )
 }
 
