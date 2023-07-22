@@ -25,8 +25,8 @@ class UpdateUserProfileView(APIView):
             data = self.request.data
             first_name = data['first_name']
             last_name = data['last_name']
-            phone = data['phone']
-            city = data['city']
+            # phone = data['phone']
+            # city = data['city']
 
             UserProfile.objects.filter(user=user).update(first_name=first_name, last_name=last_name)
 

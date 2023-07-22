@@ -45,7 +45,6 @@ class SignupView(APIView):
                             user = User.objects.create_user(username=username, password=password)
                             user.save()
                             user = User.objects.get(id=user.id)
-
                             user_profile = UserProfile(user=user, first_name='', last_name='')
                             user_profile.save()
 
@@ -56,35 +55,6 @@ class SignupView(APIView):
                 return Response({ 'error': 'Passwords do not match' })
         except:
                 return Response({ 'error': 'Something went wrong when registering account' })
-
-@method_decorator(csrf_protect, name='dispatch')
-class LoginView(APIView):
-    permission_classes = (permissions.AllowAny, )
-
-    def post(self, request, format=None):
-        data = self.request.data
-
-        username = data['username']
-        password = data['password']
-
-        try:
-            user = auth.authenticate(username=username, password=password)
-
-            if user is not None:
-                auth.login(request, user)
-                return Response({ 'success': 'User authenticated' })
-            else:
-                return Response({ 'error': 'Error Authenticating' })
-        except:
-            return Response({ 'error': 'Something went wrong when logging in' })
-
-class LogoutView(APIView):
-    def post(self, request, format=None):
-        try:
-            auth.logout(request)
-            return Response({ 'success': 'Loggout Out' })
-        except:
-            return Response({ 'error': 'Something went wrong when logging out' })
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFToken(APIView):
@@ -104,6 +74,38 @@ class DeleteAccountView(APIView):
         except:
             return Response({ 'error': 'Something went wrong when trying to delete user' })
         
+
+
+
+@method_decorator(csrf_protect, name='dispatch')
+class LoginView(APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def post(self, request, format=None):
+        data = self.request.data
+
+        username = data['username']
+        password = data['password']
+
+        try:
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return Response({ 'success': 'User authenticated', 'username': username })
+            else:
+                return Response({ 'error': 'Error Authenticating' })
+        except:
+            return Response({ 'error': 'Something went wrong when logging in' })
+
+class LogoutView(APIView):
+    def post(self, request, format=None):
+        try:
+            auth.logout(request)
+            return Response({ 'success': 'Loggout Out' })
+        except:
+            return Response({ 'error': 'Something went wrong when logging out' })
+
 
 class GetUsersView(APIView):
     permission_classes = (permissions.AllowAny, )
