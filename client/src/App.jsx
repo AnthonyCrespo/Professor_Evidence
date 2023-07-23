@@ -36,6 +36,7 @@ function App() {
           <Route exact path="/home" element={<HomePage/>} />
           <Route exact path="/home_revisor" element={<HomeRevisor/>}/>
           <Route exact path="/registrar_evidencia" element={<Register_evidence/>}/>
+          <Route exact path="/evidencias_registradas" element={<Registered_evidences/>}/>
           <Route exact path="/crear_informe" element={<Create_report/>}/>
           <Route exact path="/informes_registrados" element={<Registered_reports/>}/>
           <Route exact path="/revisar_informes" element={<Revisar_Evidence/>}/>
