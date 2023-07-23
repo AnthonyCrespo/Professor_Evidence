@@ -1,11 +1,11 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { register } from '../actions/auth';
 import CSRFToken from '../components/CSRFToken';
 import { checkAuthenticated } from '../actions/auth';
 
-const Register = ({ register, isAuthenticated }) => {
+const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -15,12 +15,11 @@ const Register = ({ register, isAuthenticated }) => {
   const [accountCreated, setAccountCreated] = useState(false);
   const { username, password, re_password } = formData;
 
-
   useEffect(() => {
     checkAuthenticated();
-    //load_user();
-}, []);
+  }, []);
 
+  
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
@@ -31,10 +30,8 @@ const Register = ({ register, isAuthenticated }) => {
           setAccountCreated(true);
       }
   };
-
   if (isAuthenticated)
-  return <Navigate to='/home' />;
-
+      return <Navigate to='/home' />;
 
   else if (accountCreated)
     return <Navigate to='/login' />;
@@ -96,4 +93,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { register })(Register);
+export default connect(mapStateToProps, { checkAuthenticated, register })(Register);

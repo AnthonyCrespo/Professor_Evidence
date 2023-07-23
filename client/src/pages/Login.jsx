@@ -1,24 +1,17 @@
 /* import {TaskList} from '../components/TaskList' */
-
 import React, { useState, useEffect } from 'react';
 import './css/Login.css'; // Archivo CSS para estilos personalizados
 import { Navigate, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import CSRFToken from '../components/CSRFToken';
-
 import { checkAuthenticated } from '../actions/auth';
 
-const LoginPage = ({ login, isAuthenticated}) => {
+const LoginPage = ({ login, isAuthenticated,  checkAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
-
-  useEffect(() => {
-    checkAuthenticated();
-    //load_user();
-}, []);
 
   const { username, password } = formData;
 
@@ -30,9 +23,14 @@ const LoginPage = ({ login, isAuthenticated}) => {
       login(username, password);
   };
 
+  useEffect(() => {
+    checkAuthenticated();
+  }, []);
+
   if (isAuthenticated)
-      return <Navigate to='/home' />;
-      
+    return <Navigate to='/home' />;
+  else
+  console.log("NO ESYTAAAAAAA AUTENTICADOP")    
     return (
     <div className="login-container">
     <header>
@@ -68,6 +66,12 @@ const LoginPage = ({ login, isAuthenticated}) => {
             </div>
             <button className='btn btn-primary mt-3' type='submit'> Ingresar </button>
           </form>
+{/*         <Link to="/home">
+         
+        </Link>
+ */}
+
+
       </div>
     </div>
   );
@@ -77,4 +81,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login})(LoginPage);
+export default connect(mapStateToProps, { checkAuthenticated,login })(LoginPage);
