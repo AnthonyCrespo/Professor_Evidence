@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import { LoginPage } from './pages/Login'
+
 import { HomePage} from './pages/Home'
 import { HomeRevisor} from './pages/Home_Revisor'
 import { Register_evidence } from './pages/Register_evidence'
@@ -12,16 +12,16 @@ import {Registered_reports} from './pages/Registered_reports'
 import {Revisar_Evidence} from './pages/Revisar_Evidence'
 import {Revisar_Report} from './pages/Revisar_Report'
 import Register from './pages/Register';
-
+import  LoginPage from './pages/Login'
 
 import {Provider} from 'react-redux';
 import store from './store';
 
-import axios from 'axios';
+/* import axios from 'axios';
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
-
+ */
 
 
 function App() {

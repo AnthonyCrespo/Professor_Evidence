@@ -9,8 +9,11 @@ import { useNavigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { connect } from 'react-redux';
+import { logout } from '../actions/auth';
 
-export function Base({ children }) {
+
+const Base = ({ children, isAuthenticated, logout }) => {
   const [isRevisor, setIsRevisor] = useState(true);
   const navigate = useNavigate();
 
@@ -41,7 +44,7 @@ export function Base({ children }) {
 
             )}
 
-          <NavDropdown.Item href="/login">Cerrar Sesion</NavDropdown.Item>
+          <NavDropdown.Item onClick={logout} href="/login">Cerrar Sesion</NavDropdown.Item>
           </NavDropdown> 
           </Nav>
         </Container>
@@ -115,3 +118,11 @@ export function Base({ children }) {
     </Container>
   );
 }
+
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+
+export default connect(mapStateToProps, { logout })(Base);

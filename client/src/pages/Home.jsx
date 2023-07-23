@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { Base } from './Base';
+import  Base  from './Base';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'

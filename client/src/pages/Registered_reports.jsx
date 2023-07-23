@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Base } from './Base';
+import  Base  from './Base';
 import Table from 'react-bootstrap/Table';
 
 import { getReports } from '../api/task.api';

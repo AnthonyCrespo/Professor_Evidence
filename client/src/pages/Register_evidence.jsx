@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-import { Base } from './Base';
+import  Base  from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import {Typeahead} from 'react-bootstrap-typeahead'
