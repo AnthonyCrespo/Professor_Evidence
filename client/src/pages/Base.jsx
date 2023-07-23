@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './css/Base.css';
-import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,10 +11,17 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
+import { checkAuthenticated } from '../actions/auth';
+import { load_user } from '../actions/profile';
 
-const Base = ({ children, isAuthenticated, logout }) => {
+const Base = ({ children, checkAuthenticated, logout, load_user }) => {
   const [isRevisor, setIsRevisor] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    checkAuthenticated();
+    load_user();
+}, []);
 
   // Función para cambiar entre el modo revisor y el modo normal
   const toggleRevisorMode = () => {
@@ -125,4 +131,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { logout })(Base);
+export default connect(mapStateToProps, { logout, checkAuthenticated, load_user})(Base);
