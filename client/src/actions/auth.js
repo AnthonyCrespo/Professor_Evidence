@@ -27,7 +27,7 @@ export const register = (username, password, re_password) => async dispatch => {
         dispatch({
           type: REGISTER_FAIL
         });
-        console.log("ERROR1")
+        console.log(res.data.error)
       } else {
         dispatch({
           type: REGISTER_SUCCESS

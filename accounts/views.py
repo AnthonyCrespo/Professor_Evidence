@@ -22,6 +22,8 @@ class CheckAuthenticatedView(APIView):
         except:
             return Response({ 'error': 'Something went wrong when checking authentication status' })
 
+
+#@method_decorator(ensure_csrf_cookie, name='dispatch')
 @method_decorator(csrf_protect, name='dispatch')
 class SignupView(APIView):
     permission_classes = (permissions.AllowAny, )
@@ -35,26 +37,24 @@ class SignupView(APIView):
 
         try:
             if password == re_password:
-                try:
-                    if User.objects.filter(username=username).exists():
-                        return Response({ 'error': 'Username already exists' })
+                if User.objects.filter(username=username).exists():
+                    return Response({ 'error': 'Username already exists' })
+                else:
+                    if len(password) < 6:
+                        return Response({ 'error': 'Password must be at least 6 characters' })
                     else:
-                        if len(password) < 6:
-                            return Response({ 'error': 'Password must be at least 6 characters' })
-                        else:
-                            user = User.objects.create_user(username=username, password=password)
-                            user.save()
-                            user = User.objects.get(id=user.id)
-                            user_profile = UserProfile(user=user, first_name='', last_name='')
-                            user_profile.save()
+                        user = User.objects.create_user(username=username, password=password)
 
-                            return Response({ 'success': 'User created successfully' })
-                except: 
-                    return Response({ 'error': 'Error 2' })
+                        user = User.objects.get(id=user.id)
+
+                        user_profile = UserProfile.objects.create(user=user, first_name='', last_name='')
+
+                        return Response({ 'success': 'User created successfully' })
             else:
                 return Response({ 'error': 'Passwords do not match' })
         except:
                 return Response({ 'error': 'Something went wrong when registering account' })
+
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFToken(APIView):

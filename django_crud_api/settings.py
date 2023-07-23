@@ -14,6 +14,13 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+import mimetypes
+mimetypes.add_type('application/javascript', '.js')
+mimetypes.add_type('text/css', '.css')
+
+# import mimetypes
+# mimetypes.add_type("text/css", ".css", True)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,11 +59,24 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist'
 ]
 
+# MIDDLEWARE = [
+#     'corsheaders.middleware.CorsMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    #"whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -148,14 +168,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
-]
+
+
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'build/'), ]
+
+# The absolute path to the directory where ./manage.py 
+# collectstatic will collect static files for deployment.
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-
+#The URL of which the static files in STATIC_ROOT 
+#directory are served(by Apache or nginx..etc).
+STATIC_URL = 'static/'
 
 # REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 
 #     'rest_framework.schemas.coreapi.AutoSchema'
@@ -208,10 +231,14 @@ REST_FRAMEWORK = {
 
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#CSRF_COOKIE_SECURE = True
 
 # CORS AUTHORIZATION
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+# CORS_ORIGIN_ALLOW_ALL = False
 
+# CORS_ORIGIN_WHITELIST = ["http://localhost:5173","http://localhost:4173"]
+
+# CORS_ALLOW_CREDENTIALS = True
 # AUTH_USER_MODEL = 'professor_evidence.UserAccount'
 
 

@@ -17,6 +17,9 @@ import Register from './pages/Register';
 import {Provider} from 'react-redux';
 import store from './store';
 
+import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
 
 
 
