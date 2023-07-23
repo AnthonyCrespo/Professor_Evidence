@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/Base.css';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -10,7 +10,11 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-export function Base_Revisor({ children }) {
+import { connect } from 'react-redux';
+import { checkAuthenticated } from '../actions/auth';
+import { load_user } from '../actions/profile';
+
+const Base_Revisor = ({ children,  checkAuthenticated, load_user }) => {
   const [isRevisor, setIsRevisor] = useState(true);
   const navigate = useNavigate();
 
@@ -19,6 +23,12 @@ export function Base_Revisor({ children }) {
     setIsRevisor((prevState) => !prevState);
     navigate('/home');
   };
+
+  useEffect(() => {
+    checkAuthenticated();
+    load_user();
+}, []);
+
 
   return (
     <Container fluid>
@@ -88,3 +98,11 @@ export function Base_Revisor({ children }) {
     </Container>
   );
 }
+
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+
+export default connect(mapStateToProps, {checkAuthenticated, load_user})(Base_Revisor);

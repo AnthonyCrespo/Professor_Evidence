@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Base_Revisor } from './Base_Revisor';
+import  Base_Revisor  from './Base_Revisor';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
