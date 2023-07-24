@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import Cookies from 'js-cookie';
 
 /* const tasksApi = axios.create({
     baseURL: 'http://localhost:8000/tasks/api/v1/tasks/'
@@ -47,22 +47,31 @@ export const createReport = (report) => tasksApi.post("/Report/", report);
 export const createEvidence = (evidence) => {
     return tasksApi.post("/Document/", evidence, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'X-CSRFToken': Cookies.get('csrftoken')
       }
     });
   };
   
 
 /* ------------------ UPDATE --------------------------- */
-export const updateReport = (reportId, report) => tasksApi.put(`/Report/${reportId}/`, report);
+export const updateReport = (reportId, report) => tasksApi.put(`/Report/${reportId}/`, report, {
+  headers: {
+    'X-CSRFToken': Cookies.get('csrftoken')
+  }
+});
 /* ------------------ PARTIAL UPDATE --------------------------- */
-export const updateReportPartial = (reportId, report) => tasksApi.patch(`/Report/${reportId}/`, report);
+export const updateReportPartial = (reportId, report) => tasksApi.patch(`/Report/${reportId}/`, report, {
+  headers: {
+    'X-CSRFToken': Cookies.get('csrftoken')
+  }});
 
 /* ------------------ PARTIAL --------------------------- */
 export const updateDocument = (DocumentId, document) => {
     return tasksApi.patch(`/Document/${DocumentId}/`, document, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'X-CSRFToken': Cookies.get('csrftoken')
       }
     });
   };
