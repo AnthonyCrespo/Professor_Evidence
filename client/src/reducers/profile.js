@@ -9,6 +9,7 @@ const initialState = {
     username: '',
     first_name: '',
     last_name: '',
+    ci: '',
 };
 
 export default function(state = initialState, action) {
@@ -22,6 +23,7 @@ export default function(state = initialState, action) {
                 username: payload.username,
                 first_name: payload.profile.first_name,
                 last_name: payload.profile.last_name,
+                ci: payload.profile.ci,
             }
         case LOAD_USER_PROFILE_FAIL:
             return {
@@ -29,6 +31,7 @@ export default function(state = initialState, action) {
                 username: '',
                 first_name: '',
                 last_name: '',
+                ci: '',
             }
         case UPDATE_USER_PROFILE_FAIL:
             return {

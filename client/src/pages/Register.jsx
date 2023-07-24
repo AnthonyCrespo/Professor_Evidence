@@ -9,24 +9,27 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    re_password: ''
+    re_password: '',
+    first_name: '',
+    last_name: '',
+    ci: ''
   });
 
   const [accountCreated, setAccountCreated] = useState(false);
-  const { username, password, re_password } = formData;
+  const { username, password, re_password, first_name, last_name, ci } = formData;
 
   useEffect(() => {
     checkAuthenticated();
   }, []);
 
   
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value.toString() });
 
   const onSubmit = e => {
       e.preventDefault();
 
       if (password === re_password) {
-          register(username, password, re_password);
+          register(username, password, re_password, first_name, last_name, ci);
           setAccountCreated(true);
       }
   };
@@ -43,11 +46,51 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
       <form onSubmit={e => onSubmit(e)}>
         <CSRFToken/>
         <div className='form-group'>
-          <label className='form-label'>Username: </label>
+          <label className='form-label'>Nombre: </label>
           <input
             className='form-control'
             type='text'
-            placeholder='Username*'
+            placeholder='Nombre*'
+            name='first_name'
+            onChange={e => onChange(e)}
+            value={first_name}
+            required
+          />
+        </div>
+
+        <div className='form-group'>
+          <label className='form-label'>Apellido: </label>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Apellido*'
+            name='last_name'
+            onChange={e => onChange(e)}
+            value={last_name}
+            required
+          />
+        </div>
+
+        
+        <div className='form-group'>
+          <label className='form-label'>Cédula de Identidad/Pasaporte: </label>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Cédula de Identidad/Pasaporte*'
+            name='ci'
+            onChange={e => onChange(e)}
+            value={ci}
+            required
+          />
+        </div>
+
+        <div className='form-group'>
+          <label className='form-label'>Nombre de Usuario: </label>
+          <input
+            className='form-control'
+            type='text'
+            placeholder='Nombre de Usuario*'
             name='username'
             onChange={e => onChange(e)}
             value={username}
@@ -55,11 +98,11 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
           />
         </div>
         <div className='form-group'>
-          <label className='form-label mt-3'>Password: </label>
+          <label className='form-label mt-3'>Contraseña: </label>
           <input
             className='form-control'
             type='password'
-            placeholder='Password*'
+            placeholder='Contraseña*'
             name='password'
             onChange={e => onChange(e)}
             value={password}
@@ -68,11 +111,11 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
           />
         </div>
         <div className='form-group'>
-          <label className='form-label mt-3'>Confirm Password: </label>
+          <label className='form-label mt-3'>Confirmar Contraseña: </label>
           <input
             className='form-control'
             type='password'
-            placeholder='Confirm Password*'
+            placeholder='Confirmar Contraseña*'
             name='re_password'
             onChange={e => onChange(e)}
             value={re_password}
@@ -80,10 +123,10 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
             required
           />
         </div>
-        <button className='btn btn-primary mt-3' type='submit'>Register</button>
+        <button className='btn btn-primary mt-3' type='submit'>Registrarse</button>
       </form>
       <p className='mt-3'>
-        Already have an Account? <Link to='/login'>Sign In</Link>
+        Ya tienes una cuenta? <Link to='/login'>Iniciar Sesión</Link>
       </p>
     </div>
   );

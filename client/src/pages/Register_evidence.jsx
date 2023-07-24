@@ -21,9 +21,12 @@ import { getEvidencesType } from '../api/task.api';
 import { createEvidence } from '../api/task.api';
 
 
+import { useSelector } from 'react-redux';
+
 export function Register_evidence() {
 
-
+    const ci = useSelector(state => state.profile.ci);
+    console.log("El CI en register evidence es "+ ci)
     const [options, setOptions] = useState([]);
 
     const [activities, setActivities] = useState([]);
@@ -95,7 +98,7 @@ export function Register_evidence() {
       formData.append('uploadedDocument', data.document_pathToFile[0]); */
   
       const evidenceData = {
-        professor_id: "0302616099",//"1317858973",
+        professor_id: ci, //"0302616099",//"1317858973",
         activity_type: parseInt(selectedActivity),
         evidence_type: parseInt(selectedEvidence),
         semester_id: 1,

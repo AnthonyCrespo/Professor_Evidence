@@ -16,12 +16,13 @@ import { getReports } from '../api/task.api';
 import { getSemesters } from '../api/task.api';
 
 import { updateReport } from '../api/task.api';
-
+import { useSelector } from 'react-redux';
 
 import './css/Create_report.css';
 
 export function Create_report() {
-
+    const ci = useSelector(state => state.profile.ci);
+    //console.log("El CI en create report es "+ ci)
 
   const [activities, setActivities] = useState([]);
   const [reports, setReports] = useState([]);
@@ -61,7 +62,7 @@ export function Create_report() {
     report_conclusion:	'',
     report_isApproved:	false,
     report_pathToFile: 'path/to/file',	
-    professor_id: "0302616099",	
+    professor_id: "",//"",//"0302616099",	
     semester_id: 1,	
     report_reviewedBy: 1,	
     report_approvedBy: 1,
@@ -72,7 +73,7 @@ export function Create_report() {
     async function loadActivitiesType() {
       const res = await getActivitiesType();
       setActivities(res.data);
-      console.log(activities)
+      //console.log(activities)
     }
     loadActivitiesType();
   }, []);
@@ -83,13 +84,15 @@ export function Create_report() {
     async function loadSemesters() {
       const res = await getSemesters();
       setSemesters(res.data);
-      console.log(res.data);
+      //console.log(res.data);
     }
     loadSemesters();
   }, []);
-
+  /* ------------------------------------------------------ */
+  /* ------------- Cargar los reportes ------------------- */
+  /* ------------------------------------------------------- */
    useEffect(() => {
-    const professorId = '0302616099';
+    const professorId = ci;
     const loadReports = async () => {
       /* const response = await getReports(professorId); */
       const response = await getReports();
@@ -107,6 +110,7 @@ export function Create_report() {
         const firstReport = reportsWithSemesterName[0];
         setForm(prevForm => ({
           ...prevForm,
+          professor_id: firstReport.professor_id,
           teaching_report_summary: firstReport.teaching_report_summary,
           teaching_report_hoursPerWeek: firstReport.teaching_report_hoursPerWeek,
           teaching_report_hoursPerWeekIntersemester: firstReport.teaching_report_hoursPerWeekIntersemester,
@@ -126,10 +130,9 @@ export function Create_report() {
           report_professorComment: firstReport.report_professorComment,
           report_uploadDate: formattedDate,
         }));
-
-        console.log(firstReport.report_professorComment)
+        //console.log("Si hay reportes y el ci es " + ci)
       }
-      
+  
     };
   
     // Ensure that loadReports runs only after semesters state has been updated
@@ -151,7 +154,7 @@ export function Create_report() {
     setValue
   } = useForm();
 
-  const navigate = useNavigate()
+/*   const navigate = useNavigate() */
 
   
   const onSubmit = handleSubmit(async () => {
@@ -159,7 +162,8 @@ export function Create_report() {
       if (reports.length > 0) {
         const firstReport = reports[0]; 
         const existingReportId = firstReport["id"];
-        console.log(existingReportId);
+        //console.log("El CI para el update es " + ci);
+        //console.log(form)
         await updateReport(existingReportId, form);
         toast.success('Reporte actualizado exitosamente!', {
           position: toast.POSITION.BOTTOM_RIGHT})

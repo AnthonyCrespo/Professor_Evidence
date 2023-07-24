@@ -5,8 +5,12 @@ import Table from 'react-bootstrap/Table';
 import { getReports } from '../api/task.api';
 import { getSemesters } from '../api/task.api';
 
+import { useSelector } from 'react-redux';
 
 export function Registered_reports() {
+  const ci = useSelector(state => state.profile.ci);
+  console.log("El CI en registered reports es "+ ci)
+
 
   const [reports, setReports] = useState([]);
   const [semesters, setSemesters] = useState([]);
@@ -16,13 +20,13 @@ export function Registered_reports() {
     async function loadSemesters() {
       const res = await getSemesters();
       setSemesters(res.data);
-      console.log(res.data);
+      //console.log(res.data);
     }
     loadSemesters();
   }, []);
   
   useEffect(() => {
-    const professorId = '0302616099';
+    const professorId = ci
     const loadReports = async () => {
       /* const response = await getReports(professorId); */
       const response = await getReports();

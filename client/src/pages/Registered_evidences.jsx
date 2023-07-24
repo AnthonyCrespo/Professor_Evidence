@@ -21,7 +21,17 @@ import { getActivitiesType,
          deleteDocumentByID,
          updateDocument } from '../api/task.api';
 
+
+         
+import { useSelector } from 'react-redux';
+
+
 export function Registered_evidences() {
+
+  const ci = useSelector(state => state.profile.ci);
+  console.log("El CI en registered evidences es "+ ci)
+
+
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(0);
   const [evidences, setEvidences] = useState([]);
@@ -153,7 +163,7 @@ useEffect(() => {
 
   const onSubmit = handleSubmit(async () => {
     const evidence_data = {
-      professor_id: "0302616099",
+      professor_id: ci,//"0302616099",
       activity_type: parseInt(selectedActivity),
       evidence_type: parseInt(selectedEvidence),
       semester_id: parseInt(selectedSemester)

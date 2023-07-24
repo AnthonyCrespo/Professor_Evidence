@@ -54,7 +54,7 @@ export const login = (username, password) => async dispatch => {
 };
 
 
-export const register = (username, password, re_password) => async dispatch => {
+export const register = (username, password, re_password, first_name, last_name, ci) => async dispatch => {
 
     const csrfToken = Cookies.get('csrftoken');
     const config = {
@@ -65,7 +65,7 @@ export const register = (username, password, re_password) => async dispatch => {
         }
     };
 
-    const body = JSON.stringify({ username, password, re_password });
+    const body = JSON.stringify({ username, password, re_password, first_name, last_name, ci });
     try {
       console.log(csrfToken)
       const res = await axios.post('http://localhost:8000/accounts/register', body, config);

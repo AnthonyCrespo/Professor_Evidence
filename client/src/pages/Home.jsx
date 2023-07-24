@@ -9,8 +9,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 
 export function HomePage(){
-    const first_name = useSelector(state => state.profile.first_name);
-    console.log(first_name )
+    const ci = useSelector(state => state.profile.ci);
+    console.log("El CI en Home es "+ ci)
     return (
         <Base>
             <h3 className="text-center mb-3" style={{ marginTop: '30px' }}>
