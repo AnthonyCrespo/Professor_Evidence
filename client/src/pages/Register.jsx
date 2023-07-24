@@ -83,7 +83,7 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
         <button className='btn btn-primary mt-3' type='submit'>Register</button>
       </form>
       <p className='mt-3'>
-{/*         Already have an Account? <Link to='/login'>Sign In</Link> */}
+        Already have an Account? <Link to='/login'>Sign In</Link>
       </p>
     </div>
   );

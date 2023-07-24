@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import CSRFToken from '../components/CSRFToken';
 import { checkAuthenticated } from '../actions/auth';
-
-const LoginPage = ({ login, isAuthenticated,  checkAuthenticated}) => {
+import  Base  from './Base';
+const LoginPage = ({ login, isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -23,15 +23,13 @@ const LoginPage = ({ login, isAuthenticated,  checkAuthenticated}) => {
       login(username, password);
   };
 
-  useEffect(() => {
-    checkAuthenticated();
-  }, []);
 
-  if (isAuthenticated)
-    return <Navigate to='/home' />;
-  else
-  console.log("NO ESYTAAAAAAA AUTENTICADOP")    
+    if (isAuthenticated){
+      console.log("Ya cambio a isAuthenticated")
+      return <Navigate to='/home' />;
+    }
     return (
+    <Base>
     <div className="login-container">
     <header>
       <title>Iniciar Sesión</title>
@@ -66,14 +64,10 @@ const LoginPage = ({ login, isAuthenticated,  checkAuthenticated}) => {
             </div>
             <button className='btn btn-primary mt-3' type='submit'> Ingresar </button>
           </form>
-{/*         <Link to="/home">
-         
-        </Link>
- */}
-
 
       </div>
     </div>
+    </Base>
   );
 }
 
@@ -81,4 +75,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { checkAuthenticated,login })(LoginPage);
+export default connect(mapStateToProps, {login })(LoginPage);

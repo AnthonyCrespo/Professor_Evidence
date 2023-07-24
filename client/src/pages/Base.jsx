@@ -11,11 +11,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
-
 import { checkAuthenticated } from '../actions/auth';
 import { load_user } from '../actions/profile';
 
-const Base = ({ children, checkAuthenticated, logout, load_user }) => {
+const Base = ({ children, checkAuthenticated, logout, load_user}) => {
   const [isRevisor, setIsRevisor] = useState(true);
   const navigate = useNavigate();
 
@@ -127,9 +126,5 @@ const Base = ({ children, checkAuthenticated, logout, load_user }) => {
 }
 
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
-});
 
-
-export default connect(mapStateToProps, { logout, checkAuthenticated, load_user})(Base);
+export default connect(null, { logout, checkAuthenticated, load_user})(Base);
