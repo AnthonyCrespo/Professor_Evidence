@@ -1,0 +1,30 @@
+[
+    {
+        "model": "professor_evidence.activity_type",
+        "pk": 1,
+        "fields": {
+          "activity_type": "Docencia"
+        }
+      },
+      {
+        "model": "professor_evidence.activity_type",
+        "pk": 2,
+        "fields": {
+          "activity_type": "Vinculación"
+        }
+      },
+      {
+        "model": "professor_evidence.activity_type",
+        "pk": 3,
+        "fields": {
+          "activity_type": "Investigación"
+        }
+      },
+      {
+        "model": "professor_evidence.activity_type",
+        "pk": 4,
+        "fields": {
+          "activity_type": "Gestión"
+        }
+      }
+]

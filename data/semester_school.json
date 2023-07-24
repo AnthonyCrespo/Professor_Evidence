@@ -1,0 +1,19 @@
+[  {
+    "model": "professor_evidence.semester_school",
+    "pk": 1,
+    "fields": {
+      "semester_id": 1,
+      "school_id": 1,
+      "dean_id": "1317858549"
+    }
+  },
+  {
+    "model": "professor_evidence.semester_school",
+    "pk": 2,
+    "fields": {
+      "semester_id": 1,
+      "school_id": 1,
+      "dean_id": "1317858549"
+    }
+  }
+]

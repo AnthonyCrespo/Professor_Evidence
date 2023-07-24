@@ -1,0 +1,43 @@
+
+[
+    {
+    "model": "professor_evidence.school",
+    "pk": 1,
+    "fields": {
+      "school_name": "Escuela de Ciencias Matemáticas y Computacionales",
+      "school_abbreviation": "ECMC"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 2,
+    "fields": {
+      "school_name": "Escuela de Ciencias Biológicas e Ingeniería",
+      "school_abbreviation": "ECBI"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 3,
+    "fields": {
+      "school_name": "Escuela de Ciencias Físicas y Nanotecnología",
+      "school_abbreviation": "ECFN"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 4,
+    "fields": {
+      "school_name": "Escuela de Ciencias Químicas e Ingeniería",
+      "school_abbreviation": "ECQI"
+    }
+  },
+  {
+    "model": "professor_evidence.school",
+    "pk": 5,
+    "fields": {
+      "school_name": "Escuela de Ciencias de la Tierra, Energía y Ambiente",
+      "school_abbreviation": "ECTEA"
+    }
+  }
+]

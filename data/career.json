@@ -1,0 +1,82 @@
+[
+    {
+    "model": "professor_evidence.career",
+    "pk": 1,
+    "fields": {
+      "school_id": 1,
+      "career_name": "Matemáticas"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 2,
+    "fields": {
+      "school_id": 1,
+      "career_name": "Computación"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 3,
+    "fields": {
+      "school_id": 2,
+      "career_name": "Biología"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 4,
+    "fields": {
+      "school_id": 2,
+      "career_name": "Biomedicina"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 5,
+    "fields": {
+      "school_id": 3,
+      "career_name": "Nanotecnología"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 6,
+    "fields": {
+      "school_id": 3,
+      "career_name": "Física"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 7,
+    "fields": {
+      "school_id": 4,
+      "career_name": "Materiales"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 8,
+    "fields": {
+      "school_id": 4,
+      "career_name": "Química"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 9,
+    "fields": {
+      "school_id": 5,
+      "career_name": "Agroindustria"
+    }
+  },
+  {
+    "model": "professor_evidence.career",
+    "pk": 10,
+    "fields": {
+      "school_id": 5,
+      "career_name": "Geología"
+    }
+  }
+]

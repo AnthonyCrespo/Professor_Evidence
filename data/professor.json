@@ -1,0 +1,56 @@
+[
+{
+    "model": "professor_evidence.professor",
+    "pk": "1317858549",
+    "fields": {
+      "career_id": 8,
+      "professor_degree": "PhD",
+      "professor_names": "Ronald Patricio",
+      "professor_lastnames": "Mendoza N��ez",
+      "professor_denomination": 2,
+      "isRevisor": false,
+      "isDean": false
+    }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "0302616099",
+    "fields": {
+      "career_id": 2,
+      "professor_degree": "PhD",
+      "professor_names": "Brian Anthony",
+      "professor_lastnames": "Crespo Yaguana",
+      "professor_denomination": 1,
+      "professor_revisor": "1317858973",
+      "isRevisor": true,
+      "isDean": false
+    }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "0302616199",
+    "fields": {
+      "career_id": 2,
+      "professor_degree": "PhD",
+      "professor_names": "Luis Alberto",
+      "professor_lastnames": "Gonzales Cueva",
+      "professor_denomination": 1,
+      "professor_revisor": "1317858973",
+      "isRevisor": false,
+      "isDean": false
+    }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "1317858973",
+    "fields": {
+      "career_id": 2,
+      "professor_degree": "PhD",
+      "professor_names": "Patricio Joshue",
+      "professor_lastnames": "Mendoza N��ez",
+      "professor_denomination": 1,
+      "isRevisor": false,
+      "isDean": true
+    }
+  }
+]

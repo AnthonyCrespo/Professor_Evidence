@@ -1,0 +1,20 @@
+[
+    {
+        "model": "professor_evidence.semester_career",
+        "pk": 1,
+        "fields": {
+          "career_id": 2,
+          "semester_id": 1,
+          "coordinator_id": "1317858973"
+        }
+      },
+      {
+        "model": "professor_evidence.semester_career",
+        "pk": 2,
+        "fields": {
+          "career_id": 2,
+          "semester_id": 3,
+          "coordinator_id": "1317858549"
+        }
+      }
+]

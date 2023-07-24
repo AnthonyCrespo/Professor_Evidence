@@ -1,0 +1,16 @@
+[
+    {
+    "model": "professor_evidence.professor_denomination",
+    "pk": 1,
+    "fields": {
+      "denomination": "Docente"
+    }
+  },
+  {
+    "model": "professor_evidence.professor_denomination",
+    "pk": 2,
+    "fields": {
+      "denomination": "Investigador"
+    }
+  }
+]

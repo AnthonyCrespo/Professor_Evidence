@@ -1,0 +1,29 @@
+[
+    {
+      "model": "professor_evidence.semester",
+      "pk": 1,
+      "fields": {
+        "semester_name": "SEM123",
+        "date_start": "2023-04-17",
+        "date_end": "2023-08-13"
+      }
+    },
+    {
+      "model": "professor_evidence.semester",
+      "pk": 2,
+      "fields": {
+        "semester_name": "SEM223",
+        "date_start": "2023-08-28",
+        "date_end": "2023-12-14"
+      }
+    },
+    {
+      "model": "professor_evidence.semester",
+      "pk": 3,
+      "fields": {
+        "semester_name": "SM222",
+        "date_start": "2022-11-07",
+        "date_end": "2023-03-20"
+      }
+    }
+]
