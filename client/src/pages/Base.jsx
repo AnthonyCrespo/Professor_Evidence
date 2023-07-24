@@ -13,15 +13,39 @@ import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 import { checkAuthenticated } from '../actions/auth';
 import { load_user } from '../actions/profile';
+import { useSelector } from 'react-redux';
+import { getProfessors } from '../api/task.api';
 
 const Base = ({ children, checkAuthenticated, logout, load_user}) => {
-  const [isRevisor, setIsRevisor] = useState(true);
+  const ci = useSelector(state => state.profile.ci);
+
+  //const [isRevisor, setIsRevisor] = useState(true);
+  const [isRevisor, setIsRevisor] = useState(null);
   const navigate = useNavigate();
 
+  /* ------------ Load professor revisor state ------------------------ */
+  useEffect(() => {
+    // Verificar que 'ci' tenga un valor válido antes de llamar a 'loadProfessorRole()'
+    if (ci) {
+      async function loadProfessorRole() {
+        const res = await getProfessors();
+        const professor = res.data.find(professor => professor.professor_id === ci);
+        if (professor) {
+          setIsRevisor(professor.isRevisor); // Cambiar 'profesorEspecifico.isRevisor' a 'profesor.isRevisor'
+          //console.log(professor.isRevisor);
+        } else {
+          console.log('Profesor no encontrado');
+        }
+      }
+      loadProfessorRole();
+    }
+  }, [ci]); // Agregar 'ci' como dependencia
+
+  /* ------------ Check Authenticated State ------------------------ */
   useEffect(() => {
     checkAuthenticated();
     load_user();
-}, []);
+  }, []);
 
   // Función para cambiar entre el modo revisor y el modo normal
   const toggleRevisorMode = () => {

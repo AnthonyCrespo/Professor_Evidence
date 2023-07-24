@@ -30,11 +30,12 @@ class SignupView(APIView):
 
     def post(self, request, format=None):
         data = self.request.data
-
         username = data['username']
         password = data['password']
         re_password  = data['re_password']
-
+        first_name = data['first_name']
+        last_name = data['last_name']
+        ci = data['ci']
         try:
             if password == re_password:
                 if User.objects.filter(username=username).exists():
@@ -47,7 +48,7 @@ class SignupView(APIView):
 
                         user = User.objects.get(id=user.id)
 
-                        user_profile = UserProfile.objects.create(user=user, first_name='', last_name='')
+                        user_profile = UserProfile.objects.create(user=user, first_name=first_name, last_name=last_name, ci = ci)
 
                         return Response({ 'success': 'User created successfully' })
             else:
