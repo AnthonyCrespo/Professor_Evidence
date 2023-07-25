@@ -71,7 +71,7 @@ INSTALLED_APPS = [
 #     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 # ]
 
-DEBUG = False
+DEBUG = True
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
