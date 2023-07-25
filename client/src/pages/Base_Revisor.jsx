@@ -14,10 +14,13 @@ import { connect } from 'react-redux';
 import { checkAuthenticated } from '../actions/auth';
 import { load_user } from '../actions/profile';
 import { logout } from '../actions/auth';
+import { useSelector } from 'react-redux';
+
 import logo from '../resources/logo.png'
 
-
 const Base_Revisor = ({ children, checkAuthenticated, logout, load_user}) => {
+  const name = useSelector(state => state.profile.first_name);
+  const lastname = useSelector(state => state.profile.last_name);
   const [isRevisor, setIsRevisor] = useState(true);
   const navigate = useNavigate();
 
@@ -45,7 +48,7 @@ const Base_Revisor = ({ children, checkAuthenticated, logout, load_user}) => {
             </Navbar.Brand>
           </a>
           <Nav>
-            <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
+          <NavDropdown title={name+" "+lastname} id="evidencias-dropdown">
               <NavDropdown.Item onClick={toggleRevisorMode}>
                   Cambiar a Docente
               </NavDropdown.Item>

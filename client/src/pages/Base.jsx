@@ -21,6 +21,8 @@ import logo from '../resources/logo.png'
 
 const Base = ({ children, checkAuthenticated, logout, load_user}) => {
   const ci = useSelector(state => state.profile.ci);
+  const name = useSelector(state => state.profile.first_name);
+  const lastname = useSelector(state => state.profile.last_name);
 
   //const [isRevisor, setIsRevisor] = useState(true);
   const [isRevisor, setIsRevisor] = useState(null);
@@ -68,7 +70,7 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
             </Navbar.Brand>
           </a>
           <Nav>
-          <NavDropdown title="NOMBRE APELLIDO" id="evidencias-dropdown">
+          <NavDropdown title={name+" "+lastname} id="evidencias-dropdown">
             {isRevisor && (
 
             <NavDropdown.Item onClick={toggleRevisorMode}>

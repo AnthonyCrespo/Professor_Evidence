@@ -225,7 +225,8 @@ useEffect(() => {
       activity_type: parseInt(selectedActivity_modal),
       evidence_type: parseInt(selectedEvidence_modal),
       document_uploadDate: formattedDate,
-      document_professorComment: professorComment
+      document_professorComment: professorComment,
+      document_revisorComment: ""
     };
   
     if (data.document_pathToFile) {
