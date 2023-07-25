@@ -7,11 +7,15 @@ import { login } from '../actions/auth';
 import CSRFToken from '../components/CSRFToken';
 import { checkAuthenticated } from '../actions/auth';
 import  Base  from './Base';
-const LoginPage = ({ login, isAuthenticated}) => {
+const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
+
+  useEffect(() => {
+    checkAuthenticated();
+  }, []);
 
   const { username, password } = formData;
 
@@ -29,7 +33,6 @@ const LoginPage = ({ login, isAuthenticated}) => {
       return <Navigate to='/home' />;
     }
     return (
-    <Base>
     <div className="login-container">
     <header>
       <title>Iniciar Sesión</title>
@@ -67,7 +70,6 @@ const LoginPage = ({ login, isAuthenticated}) => {
 
       </div>
     </div>
-    </Base>
   );
 }
 
@@ -75,4 +77,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, {login })(LoginPage);
+export default connect(mapStateToProps, {checkAuthenticated, login })(LoginPage);

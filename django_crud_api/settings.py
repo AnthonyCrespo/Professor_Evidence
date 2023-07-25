@@ -171,7 +171,9 @@ USE_TZ = True
 
 
 
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'build/'), ]
+STATICFILES_DIRS = [ #os.path.join(BASE_DIR, 'build/'), 
+                    os.path.join(BASE_DIR, 'build/') ]
+
 
 # The absolute path to the directory where ./manage.py 
 # collectstatic will collect static files for deployment.
@@ -180,9 +182,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #directory are served(by Apache or nginx..etc).
 STATIC_URL = 'static/'
 
-REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 
-    'rest_framework.schemas.coreapi.AutoSchema'
-    }
+# REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 
+#     'rest_framework.schemas.coreapi.AutoSchema'
+#     }
 
 
 REST_FRAMEWORK = {

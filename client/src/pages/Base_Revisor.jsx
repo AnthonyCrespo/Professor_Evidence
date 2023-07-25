@@ -13,8 +13,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { connect } from 'react-redux';
 import { checkAuthenticated } from '../actions/auth';
 import { load_user } from '../actions/profile';
+import { logout } from '../actions/auth';
 
-const Base_Revisor = ({ children,  checkAuthenticated, load_user }) => {
+const Base_Revisor = ({ children, checkAuthenticated, logout, load_user}) => {
   const [isRevisor, setIsRevisor] = useState(true);
   const navigate = useNavigate();
 
@@ -46,7 +47,7 @@ const Base_Revisor = ({ children,  checkAuthenticated, load_user }) => {
               <NavDropdown.Item onClick={toggleRevisorMode}>
                   Cambiar a Docente
               </NavDropdown.Item>
-              <NavDropdown.Item href="/login">Cerrar Sesion</NavDropdown.Item>
+              <NavDropdown.Item onClick={logout} href="/login">Cerrar Sesion</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Container>
@@ -100,9 +101,5 @@ const Base_Revisor = ({ children,  checkAuthenticated, load_user }) => {
 }
 
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
-});
 
-
-export default connect(mapStateToProps, {checkAuthenticated, load_user})(Base_Revisor);
+export default connect(null, { logout, checkAuthenticated, load_user})(Base_Revisor);

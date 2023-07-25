@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { useSelector } from 'react-redux';
 
 
 /* ------------- Import Functions from API ------------------ */
@@ -17,12 +17,16 @@ import { getActivitiesType,
          getEvidencesType, 
          getSemesters, 
          getDocuments, 
-         getDocumentByID,
          getProfessors, 
          deleteDocumentByID,
          updateDocument } from '../api/task.api';
 
 export function Revisar_Evidence() {
+
+  const ci = useSelector(state => state.profile.ci);
+  console.log("el ci es "+ ci)
+
+
   const [professors, setProfessors] = useState([]);
   const [selectedProfessor, setSelectedProfessor] = useState(0);
 
@@ -66,19 +70,20 @@ export function Revisar_Evidence() {
   const formattedDay = String(day).padStart(2, '0');
   const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
 
-
-  /* ------ Carga de los profesores bajo supervisión --------- */
-  useEffect(() => {
-    async function loadProfesssors() {
-      const res = await getProfessors();
-      // Filtrar los registros cuyo campo professor_revisor sea igual a "1317858973"
-      const filteredProfessors = res.data.filter((professor) => professor.professor_revisor === "1317858973");
-      setProfessors(filteredProfessors);
-      setSelectedProfessor(filteredProfessors[0].professor_id)
-      //console.log(filteredProfessors[0].professor_id);
+/* ------ Carga de los profesores bajo supervisión --------- */
+useEffect(() => {
+  async function loadProfesssors() {
+    if (!ci) {
+      return; // Si ci no está definido, no se ejecuta la carga de profesores
     }
-    loadProfesssors();
-  }, []);
+    const res = await getProfessors();
+    // Filtrar los registros cuyo campo professor_revisor sea igual a "1317858973"
+    const filteredProfessors = res.data.filter((professor) => professor.professor_revisor === ci);
+    setProfessors(filteredProfessors);
+    setSelectedProfessor(filteredProfessors[0].professor_id)
+  }
+  loadProfesssors();
+}, [ci]); // Agrega ci como dependencia para que se ejecute cuando cambie su valor
   
 
   /* ------ Carga de los tipos de actividades + 'TODOS' --------- */

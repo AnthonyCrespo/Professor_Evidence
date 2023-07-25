@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { useSelector } from 'react-redux';
 
 /* ------------- Import Functions from API ------------------ */
 import { getActivitiesType, 
@@ -24,6 +24,9 @@ import { getActivitiesType,
          updateReportPartial} from '../api/task.api';
 
 export function Revisar_Report() {
+  const ci = useSelector(state => state.profile.ci);
+  console.log("el ci es "+ ci)
+  
   const [professors, setProfessors] = useState([]);
   const [selectedProfessor, setSelectedProfessor] = useState(0);
 
@@ -32,15 +35,9 @@ export function Revisar_Report() {
   const [selectedSemester, setSelectedSemester] = useState(1);
   const [report,  setReport] = useState([]);
 
-  const [activities_modal, setActivities_modal] = useState([]);
-  const [selectedActivity_modal, setSelectedActivity_modal] = useState(1);
-  const [evidences_modal, setEvidences_modal] = useState([]);
-  const [selectedEvidence_modal, setSelectedEvidence_modal] = useState(1);
-  const [document_modal, setDocument_modal] = useState([]);
-
   /* -------------------For editing a task ------------------- */
   const [showModal, setShowModal] = useState(false);
-  const [editItemId, setEditItemId] = useState(null);
+
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
@@ -64,18 +61,21 @@ export function Revisar_Report() {
   const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
 
 
-  /* ------ Carga de los profesores bajo supervisión --------- */
-  useEffect(() => {
-    async function loadProfesssors() {
-      const res = await getProfessors();
-      // Filtrar los registros cuyo campo professor_revisor sea igual a "1317858973"
-      const filteredProfessors = res.data.filter((professor) => professor.professor_revisor === "1317858973");
-      setProfessors(filteredProfessors);
-      setSelectedProfessor(filteredProfessors[0].professor_id)
-      //console.log(filteredProfessors[0].professor_id);
+/* ------ Carga de los profesores bajo supervisión --------- */
+useEffect(() => {
+  async function loadProfesssors() {
+    if (!ci) {
+      return; // Si ci no está definido, no se ejecuta la carga de profesores
     }
-    loadProfesssors();
-  }, []);
+    const res = await getProfessors();
+    // Filtrar los registros cuyo campo professor_revisor sea igual a "1317858973"
+    const filteredProfessors = res.data.filter((professor) => professor.professor_revisor === ci);
+    setProfessors(filteredProfessors);
+    setSelectedProfessor(filteredProfessors[0].professor_id)
+  }
+  loadProfesssors();
+}, [ci]); // Agrega ci como dependencia para que se ejecute cuando cambie su valor
+  
   
 /* ----------- Carga de los semestres ----------------------- */
 useEffect(() => {
