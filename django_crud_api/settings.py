@@ -178,7 +178,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'build/'), 
                     #os.path.join(BASE_DIR, 'build/assets'), 
-                    os.path.join(BASE_DIR, 'build/assets/') ]
+                    os.path.join(BASE_DIR, 'build/static/') ]
 
 # The absolute path to the directory where ./manage.py 
 # collectstatic will collect static files for deployment.
