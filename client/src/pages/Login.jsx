@@ -28,8 +28,7 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
 
       login(username, password);
   };
-
-
+  
     if (isAuthenticated){
       console.log("Ya cambio a isAuthenticated")
       return <Navigate to='/home' />;

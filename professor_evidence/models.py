@@ -132,7 +132,7 @@ class Document(models.Model):
     document_professorComment = models.TextField(blank=True, default='')
     document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
     document_pathToFile = models.TextField(max_length=200)
-    document_approved = models.BooleanField(null=True, default = None)
+    #document_approved = models.BooleanField(null=True, default = None)
 
     def get_document_upload_path(self, filename):
         professor_id = self.professor_id

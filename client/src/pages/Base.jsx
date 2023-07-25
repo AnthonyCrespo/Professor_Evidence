@@ -26,6 +26,7 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
 
   //const [isRevisor, setIsRevisor] = useState(true);
   const [isRevisor, setIsRevisor] = useState(null);
+  const [isDean, setIsDean] = useState(null);
   const navigate = useNavigate();
 
   /* ------------ Load professor revisor state ------------------------ */
@@ -36,7 +37,8 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
         const res = await getProfessors();
         const professor = res.data.find(professor => professor.professor_id === ci);
         if (professor) {
-          setIsRevisor(professor.isRevisor); // Cambiar 'profesorEspecifico.isRevisor' a 'profesor.isRevisor'
+          setIsRevisor(professor.isRevisor);
+          setIsDean(professor.isDean);  // Cambiar 'profesorEspecifico.isRevisor' a 'profesor.isRevisor'
           //console.log(professor.isRevisor);
         } else {
           console.log('Profesor no encontrado');
@@ -58,6 +60,11 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
     navigate('/home_revisor');
   };
 
+  const toggleDeanMode = () => {
+    setIsDean((prevState) => !prevState);
+    navigate('/home_decano');
+  };
+
   return (
     <Container fluid>
       {/* ------------  navbar -------------  */}
@@ -72,11 +79,15 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
           <Nav>
           <NavDropdown title={name+" "+lastname} id="evidencias-dropdown">
             {isRevisor && (
-
             <NavDropdown.Item onClick={toggleRevisorMode}>
                   Cambiar a Revisor
                 </NavDropdown.Item>
+            )}
 
+            {isDean && (
+            <NavDropdown.Item onClick={toggleDeanMode}>
+                  Cambiar a Decano
+                </NavDropdown.Item>
             )}
 
           <NavDropdown.Item onClick={logout} href="/login">Cerrar Sesion</NavDropdown.Item>

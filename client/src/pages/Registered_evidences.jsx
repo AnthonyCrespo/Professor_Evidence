@@ -362,7 +362,7 @@ useEffect(() => {
               <th>Fecha</th>
               <th>Comentario</th>
               <th>Comentario del revisor</th>
-              <th>Estado</th>
+             {/*  <th>Estado</th> */}
               <th>Acciones</th>
             </tr>
           </thead>
@@ -380,7 +380,7 @@ useEffect(() => {
                   <td>{item.document_uploadDate}</td>
                   <td>{item.document_professorComment}</td>
                   <td>{item.document_revisorComment}</td>
-                  <td>{item.document_approved === true ? 'Aprobado' : (item.document_approved === false ? 'No aprobado' : 'En revisión')}</td>
+                  {/* <td>{item.document_approved === true ? 'Aprobado' : (item.document_approved === false ? 'No aprobado' : 'En revisión')}</td> */}
                    {/* Mostrará "APROBADO" si document_approved es true, "NO APROBADO" si es false, y "EN REVISIÓN" si es null */}
                   <td>
                     <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>

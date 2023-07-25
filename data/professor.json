@@ -42,15 +42,15 @@
   },
   {
     "model": "professor_evidence.professor",
-    "pk": "1317858549",
+    "pk": "1234567891",
     "fields": {
-      "career_id": 8,
+      "career_id": 1,
       "professor_degree": "PhD",
-      "professor_names": "Ronald Patricio",
-      "professor_lastnames": "Mendoza N��ez",
-      "professor_denomination": 2,
+      "professor_names": "Franklin",
+      "professor_lastnames": "Camacho",
+      "professor_denomination": 1,
       "isRevisor": false,
-      "isDean": false
+      "isDean": true
     }
   }
 ]
