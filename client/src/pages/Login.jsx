@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import CSRFToken from '../components/CSRFToken';
 import { checkAuthenticated } from '../actions/auth';
-import  Base  from './Base';
+import './css/Login.css'
+
+
 const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: '',

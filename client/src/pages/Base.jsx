@@ -16,6 +16,9 @@ import { load_user } from '../actions/profile';
 import { useSelector } from 'react-redux';
 import { getProfessors } from '../api/task.api';
 
+import logo from '../resources/logo.png'
+
+
 const Base = ({ children, checkAuthenticated, logout, load_user}) => {
   const ci = useSelector(state => state.profile.ci);
 
@@ -61,7 +64,7 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
           <a href="/home">
             {/* Agregar el href deseado */}
             <Navbar.Brand>
-              <img src="/logo.png" alt="logo" width={230} />
+              <img src={logo} alt="logo" width={230} />
             </Navbar.Brand>
           </a>
           <Nav>

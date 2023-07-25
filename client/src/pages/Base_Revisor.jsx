@@ -14,6 +14,8 @@ import { connect } from 'react-redux';
 import { checkAuthenticated } from '../actions/auth';
 import { load_user } from '../actions/profile';
 import { logout } from '../actions/auth';
+import logo from '../resources/logo.png'
+
 
 const Base_Revisor = ({ children, checkAuthenticated, logout, load_user}) => {
   const [isRevisor, setIsRevisor] = useState(true);
@@ -39,7 +41,7 @@ const Base_Revisor = ({ children, checkAuthenticated, logout, load_user}) => {
           <a href="/home">
             {/* Agregar el href deseado */}
             <Navbar.Brand>
-              <img src="/logo.png" alt="logo" width={230} />
+              <img src={logo} alt="logo" width={230} />
             </Navbar.Brand>
           </a>
           <Nav>

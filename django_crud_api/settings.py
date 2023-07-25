@@ -34,7 +34,8 @@ SECRET_KEY = 'django-insecure-2^63&9ykz))bc&b-eoftsjr8q^to&n3319*6syj&3*&$t93-ib
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [  'localhost',
+                    '127.0.0.1']
 
 
 # Application definition
@@ -54,9 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework.authtoken',
-    'rest_framework_simplejwt',
-    'rest_framework_simplejwt.token_blacklist'
+    # 'rest_framework.authtoken',
+    # 'rest_framework_simplejwt',
+    # 'rest_framework_simplejwt.token_blacklist'
 ]
 
 # MIDDLEWARE = [
@@ -70,11 +71,11 @@ INSTALLED_APPS = [
 #     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 # ]
 
-
+DEBUG = False
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    #"whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -171,16 +172,19 @@ USE_TZ = True
 
 
 
-STATICFILES_DIRS = [ #os.path.join(BASE_DIR, 'build/'), 
-                    os.path.join(BASE_DIR, 'build/') ]
+#The URL of which the static files in STATIC_ROOT 
+#directory are served(by Apache or nginx..etc).
+STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'build/'), 
+                    #os.path.join(BASE_DIR, 'build/assets'), 
+                    os.path.join(BASE_DIR, 'build/assets/') ]
 
 # The absolute path to the directory where ./manage.py 
 # collectstatic will collect static files for deployment.
+#only works in Production Mode which is "DEBUG = False"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#The URL of which the static files in STATIC_ROOT 
-#directory are served(by Apache or nginx..etc).
-STATIC_URL = 'static/'
+
 
 # REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 
 #     'rest_framework.schemas.coreapi.AutoSchema'

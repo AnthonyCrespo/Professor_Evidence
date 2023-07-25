@@ -79,7 +79,11 @@ export const updateDocument = (DocumentId, document) => {
 
 
 /* ------------------ DELETE --------------------------- */
-export const deleteDocumentByID  = (DocumentId) => tasksApi.delete(`/Document/${DocumentId}/`);
+export const deleteDocumentByID  = (DocumentId) => tasksApi.delete(`/Document/${DocumentId}/`, {
+  headers: {
+    'X-CSRFToken': Cookies.get('csrftoken')
+  }
+});
 
 
 

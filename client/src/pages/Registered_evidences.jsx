@@ -6,10 +6,9 @@ import Modal from 'react-bootstrap/Modal'
 import Table from 'react-bootstrap/Table';
 import { useForm } from 'react-hook-form';
 import Container from 'react-bootstrap/Container';
-
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
+import './css/Registered_evidences.css';
 
 
 /* ------------- Import Functions from API ------------------ */
@@ -362,13 +361,16 @@ useEffect(() => {
               <th>Fecha</th>
               <th>Comentario</th>
               <th>Comentario del revisor</th>
+              <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {documents.length > 0 ? (
               documents.map((item) => (
-                <tr key={item.id}>
+                <tr
+                key={item.id}
+                >
                   <td>{item.activity_type_name}</td>
                   <td>{item.evidence_type_name}</td>
                   <td>
@@ -377,6 +379,8 @@ useEffect(() => {
                   <td>{item.document_uploadDate}</td>
                   <td>{item.document_professorComment}</td>
                   <td>{item.document_revisorComment}</td>
+                  <td>{item.document_approved === true ? 'Aprobado' : (item.document_approved === false ? 'No aprobado' : 'En revisión')}</td>
+                   {/* Mostrará "APROBADO" si document_approved es true, "NO APROBADO" si es false, y "EN REVISIÓN" si es null */}
                   <td>
                     <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
                     <Button variant="danger" onClick={() => handleDelete(item.id)}>Borrar</Button>

@@ -11,7 +11,8 @@
     padding: 60px;
     border-radius: 20px;
     text-align: center;
-    opacity: 15
+    opacity: 15;
+    width: 30%;
   }
   
   .login-box h2 { /* Iniciar sesion text */

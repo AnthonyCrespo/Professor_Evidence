@@ -1,0 +1,10 @@
+
+/* Estilos para fila aprobada */
+.row-approved {
+    background-color: #c8f7c5; /* Fondo verde */
+  }
+  
+  /* Estilos para fila desaprobada */
+  .row-not-approved {
+    background-color: #f7c5c5; /* Fondo rojo */
+  }
