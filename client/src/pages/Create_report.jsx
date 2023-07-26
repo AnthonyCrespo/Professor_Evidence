@@ -169,6 +169,8 @@ export function Create_report() {
           position: toast.POSITION.BOTTOM_RIGHT})
       } else { 
         // Si no hay un ID de informe existente, crear un nuevo informe
+        //console.log("El CI en create report es "+ ci)
+        form.professor_id = ci;
         await createReport(form);
         toast.success('Reporte generado exitosamente!', {
           position: toast.POSITION.BOTTOM_RIGHT})

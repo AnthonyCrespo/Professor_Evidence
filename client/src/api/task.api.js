@@ -41,7 +41,11 @@ export const getDocumentByID = (DocumentId) => tasksApi.get(`/Document/${Documen
 
 /* ------------------ POST --------------------------- */
 /* export const createEvidence = (evidence) => tasksApi.post("/Document/", evidence); */
-export const createReport = (report) => tasksApi.post("/Report/", report);
+export const createReport = (report) => tasksApi.post("/Report/", report,  {
+  headers: {
+    'X-CSRFToken': Cookies.get('csrftoken')
+  }
+});
 
 
 export const createEvidence = (evidence) => {
