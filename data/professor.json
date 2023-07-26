@@ -36,6 +36,7 @@
       "professor_names": "Patricio Joshue",
       "professor_lastnames": "Mendoza N��ez",
       "professor_denomination": 1,
+      "professor_revisor": "1317858973",
       "isRevisor": true,
       "isDean": false
     }
@@ -49,6 +50,7 @@
       "professor_names": "Franklin",
       "professor_lastnames": "Camacho",
       "professor_denomination": 1,
+      "professor_revisor": "1317858973",
       "isRevisor": false,
       "isDean": true
     }

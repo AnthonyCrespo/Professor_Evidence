@@ -16,38 +16,15 @@ import { useSelector } from 'react-redux';
 
 
 /* ------------- Import Functions from API ------------------ */
-import { getActivitiesType, 
-         getEvidencesType, 
-         getSemesters, 
-         getDocuments, 
+import { getDocuments, 
          getProfessors, 
          getCareers,
-         getSchools,
-         deleteDocumentByID,
-         updateDocument } from '../api/task.api';
+         updateProfessorRevisor} from '../api/task.api';
 
 export function Assign_Reviewer() {
 
   const ci = useSelector(state => state.profile.ci);
-  console.log("el ci es "+ ci)
-
-
-  const [selectedProfessor, setSelectedProfessor] = useState(0);
-
-  const [activities, setActivities] = useState([]);
-  const [selectedActivity, setSelectedActivity] = useState(0);
-  const [evidences, setEvidences] = useState([]);
-  const [selectedEvidence, setSelectedEvidence] = useState(0);
-
-  const [selectedSemester, setSelectedSemester] = useState(1);
-  const [documents, setDocuments] = useState([]);
-  const [evidence_document,  setEvidenceDocument] = useState([]);
-
-  const [activities_modal, setActivities_modal] = useState([]);
-  const [selectedActivity_modal, setSelectedActivity_modal] = useState(1);
-  const [evidences_modal, setEvidences_modal] = useState([]);
-  const [selectedEvidence_modal, setSelectedEvidence_modal] = useState(1);
-
+  //console.log("el ci es "+ ci)
 
   const currentDate = new Date();
   const month = currentDate.getMonth() + 1;
@@ -62,7 +39,7 @@ export function Assign_Reviewer() {
 
   /* -------------- Cargar profesores de la escuela del cual es decano ------ */
   const [deanCareerId, setDeanCareerId] = useState(null);
-  const [deanSchoolId, setDeanSchoolId] = useState(null);
+  //const [deanSchoolId, setDeanSchoolId] = useState(null);
   const [careersInDeanSchool, setCareersInDeanSchool] = useState([]);
   const [professorsInDeanSchool, setProfessorsInDeanSchool] = useState([]);
 
@@ -91,19 +68,19 @@ export function Assign_Reviewer() {
         return; // Si deanCareerId no está definido, no se ejecuta la carga de carreras
       }
       const res = await getCareers();
-      console.log("Las carreras son ")
-      console.log(res.data)
+      //console.log("Las carreras son ")
+      //console.log(res.data)
       const school_id = res.data.filter((career) => career.id === deanCareerId)[0].school_id;
 
-      console.log("El ID de la escuela del decano es  ")
-      console.log(school_id)
-      setDeanSchoolId(school_id)
+      //console.log("El ID de la escuela del decano es  ")
+      //console.log(school_id)
+      //setDeanSchoolId(school_id)
 
       const careers = res.data.filter((career) => career.school_id === school_id);
       setCareersInDeanSchool(careers);
       
-      console.log("Las carreras en la escuelad del decano son ")
-      console.log(careers)
+      //console.log("Las carreras en la escuelad del decano son ")
+      //console.log(careers)
     }
     loadCareersInDeanSchool();
   }, [deanCareerId]); // Agrega deanCareerId como dependencia para que se ejecute cuando cambie su valor
@@ -119,92 +96,22 @@ export function Assign_Reviewer() {
       // Filtrar los registros cuyo campo career_id esté en la lista de carreras de la escuela del decano
       const filteredProfessors = res.data.filter((professor) => careersInDeanSchool.some((career) => professor.career_id === career.id));
       setProfessorsInDeanSchool(filteredProfessors);
-      console.log("Los profesores filtrados de las carreras de la escuela del decano son ")
-      console.log(filteredProfessors)
-      setSelectedProfessor(filteredProfessors[0]?.professor_id || 0);
+      //console.log("Los profesores filtrados de las carreras de la escuela del decano son ")
+      //console.log(filteredProfessors)
+      // Create an object to store the default reviewers for each professor
+      const defaultReviewers = {};
+      // Iterate through the filteredProfessors to get their default reviewers
+      filteredProfessors.forEach((professor) => {
+        defaultReviewers[professor.professor_id] = professor.professor_revisor;
+      });
+      setProfessorReviewers(defaultReviewers);
+
     }
     loadProfessorsInDeanSchool();
   }, [careersInDeanSchool]);
 
 
   
-
-  /* ------ Carga de los tipos de actividades + 'TODOS' --------- */
-  useEffect(() => {
-    async function loadActivitiesType() {
-      const res = await getActivitiesType();
-      const allOption = { id: 0, activity_type: "Todos" };
-      const activitiesWithAllOption = [allOption, ...res.data];
-      setActivities(activitiesWithAllOption);
-      setActivities_modal(res.data)
-/*       console.log(activitiesWithAllOption)  |||| VERIFICADO. */
-    }
-    loadActivitiesType();
-  }, []);
-
-  /* ------ Carga de los tipos de evidencias + 'TODOS' --------- */
-  useEffect(() => {
-    async function loadEvidencesType() {
-      const res = await getEvidencesType();
-      const allOption = { id: 0, evidence_type: 'Todos', activity_type: 0 };
-      let evidencesWithAllOption = [];
-      /* Si tipo de actividad = TODOS */
-      if (parseInt(selectedActivity) === 0) {
-        evidencesWithAllOption = [allOption, ...res.data];
-      /* En caso contrario */
-      } else {
-        const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
-        evidencesWithAllOption = [allOption, ...filteredEvidences];
-      }
-      setEvidences(evidencesWithAllOption);
-      setSelectedEvidence(0); /* Arregló el error de que a veces no se podían hacer búsquedas. */
-/*       console.log(evidencesWithAllOption);  */
-    }
-    loadEvidencesType();
-  }, [selectedActivity]);
-
-
-
-
-/* ------------------------------------------------------------------------------ */
-/* --------------------------- Modal ---------------------------------------------*/
-/* ------------------------------------------------------------------------------ */
-
-
-
-
-
-
-useEffect(() => {
-  async function loadEvidencesType_modal() {
-    const res = await getEvidencesType();
-    const filteredEvidences = res.data.filter(
-      (opcion) => opcion.activity_type === parseInt(selectedActivity_modal)
-    );
-    setEvidences_modal(filteredEvidences);
-    //console.log(filteredEvidences)
-    if (evidence_document.activity_type == selectedActivity_modal)
-      setSelectedEvidence_modal(evidence_document.evidence_type)
-    else 
-      setSelectedEvidence_modal(filteredEvidences[0].id)
-    //console.log(evidence_document)
-    
-  }
-
-  // Mueve la llamada a loadEvidencesType_modal aquí
-  loadEvidencesType_modal();
-}, [selectedActivity_modal]);
-
-
-/* ----------- Carga de los semestres ----------------------- */
-  useEffect(() => {
-    async function loadSemesters() {
-      const res = await getSemesters();
-      setSemesters(res.data);
-    }
-    loadSemesters();
-  }, []);
-
   /* --------------- Validar las entradas de los formularios ---------------- */
   const {
     handleSubmit,
@@ -213,61 +120,40 @@ useEffect(() => {
   } = useForm();
 
   const onSubmit = handleSubmit(async () => {
-    const evidence_data = {
-      professor_id: selectedProfessor,
-      activity_type: parseInt(selectedActivity),
-      evidence_type: parseInt(selectedEvidence),
-      semester_id: parseInt(selectedSemester)
-    };
 
-    const res = await getDocuments();
-    let filteredDocuments = [];
-    if (parseInt(selectedActivity) === 0) {
-      if (parseInt(selectedEvidence) === 0) {
-        filteredDocuments = res.data.filter(document =>
-          document.professor_id === evidence_data.professor_id &&
-          document.semester_id === evidence_data.semester_id
-        );
-      } else {
-        filteredDocuments = res.data.filter(document =>
-          document.professor_id === evidence_data.professor_id &&
-          document.evidence_type === evidence_data.evidence_type &&
-          document.semester_id === evidence_data.semester_id
-        );
-      }
-    } else {
-      if (parseInt(selectedEvidence) === 0) {
-        filteredDocuments = res.data.filter(document =>
-          document.professor_id === evidence_data.professor_id &&
-          document.activity_type === evidence_data.activity_type &&
-          document.semester_id === evidence_data.semester_id
-        );
-      } else {
-        filteredDocuments = res.data.filter(document =>
-          document.professor_id === evidence_data.professor_id &&
-          document.activity_type === evidence_data.activity_type &&
-          document.evidence_type === evidence_data.evidence_type &&
-          document.semester_id === evidence_data.semester_id
-        );
+    //console.log(professorReviewers)
+  // Iterate through professorReviewers and call updateProfessorRevisor for each professor
+    for (const professorId in professorReviewers) {
+      if (professorReviewers.hasOwnProperty(professorId)) {
+        const reviewerId = professorReviewers[professorId];
+        // Call updateProfessorRevisor with professorId and reviewerId
+        //console.log(professorReviewers[professorId])
+        await updateProfessorRevisor(professorId, { professor_revisor: reviewerId });
+        //console.log("Registro actualizado")
       }
     }
 
-
-    const documentsWithNames = filteredDocuments.map(document => ({
-      ...document,
-      activity_type_name: activities.find(activity => activity.id === document.activity_type)?.activity_type,
-      evidence_type_name: evidences.find(evidence => evidence.id === document.evidence_type)?.evidence_type
-    }));
-
-    
-    setDocuments(documentsWithNames);
-    if (documentsWithNames.length === 0)
-    toast.info('No se encontraron registros!', {
+    toast.success('Registros actualizados con éxito!', {
       position: toast.POSITION.BOTTOM_RIGHT
   });
   });
 
 
+
+  /* -------------------------------------------------------------------- */
+  /* -------------------------------------------------------------------- */
+  /* -------------------------------------------------------------------- */
+
+  // New state variable to store selected reviewers for each professor
+  const [professorReviewers, setProfessorReviewers] = useState({});
+
+  // Function to handle the change of the reviewer for a specific professor
+  const handleReviewerChange = (professorId, reviewerId) => {
+    setProfessorReviewers((prevReviewers) => ({
+      ...prevReviewers,
+      [professorId]: reviewerId,
+    }));
+  };
 
 
   return (
@@ -289,11 +175,8 @@ useEffect(() => {
             </Form.Label>
             <Col sm="6">
               <Form.Select
-                value={selectedProfessor}
-                onChange={(e) => {
-                  setSelectedProfessor(e.target.value);
-                  setValue('selected_professor', e.target.value);
-                }}
+                value={professorReviewers[professor.professor_id] || ''}
+                onChange={(e) => handleReviewerChange(professor.professor_id, e.target.value)}
               >
                 {professorsInDeanSchool.map((reviewer) => (
                   <option key={reviewer.professor_id} value={reviewer.professor_id}>
@@ -304,12 +187,14 @@ useEffect(() => {
             </Col>
           </Form.Group>
         ))}
-  
-        <Button className="mt-4" variant="primary" type="submit">Guardar</Button>
+
+        <Button className="mt-4" variant="primary" type="submit">
+          Guardar
+        </Button>
       </Form>
-  
+
       <br />
+      <ToastContainer />
     </Base_Dean>
   );
-  
 }

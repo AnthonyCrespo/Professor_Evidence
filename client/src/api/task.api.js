@@ -72,6 +72,12 @@ export const updateReportPartial = (reportId, report) => tasksApi.patch(`/Report
     'X-CSRFToken': Cookies.get('csrftoken')
   }});
 
+
+export const updateProfessorRevisor = (professorId, professor) => tasksApi.patch(`/Professor/${professorId}/`, professor, {
+  headers: {
+    'X-CSRFToken': Cookies.get('csrftoken')
+  }});
+  
 /* ------------------ PARTIAL --------------------------- */
 export const updateDocument = (DocumentId, document) => {
     return tasksApi.patch(`/Document/${DocumentId}/`, document, {
