@@ -49,7 +49,7 @@
       "professor_names": "Franklin",
       "professor_lastnames": "Camacho",
       "professor_denomination": 1,
-      "isRevisor": false,
+      "isRevisor": true,
       "isDean": true
     }
   }

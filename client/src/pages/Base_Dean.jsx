@@ -15,21 +15,42 @@ import { checkAuthenticated } from '../actions/auth';
 import { load_user } from '../actions/profile';
 import { logout } from '../actions/auth';
 import { useSelector } from 'react-redux';
+import { getProfessors } from '../api/task.api';
 
 import logo from '../resources/logo.png'
 
 const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
+  const ci = useSelector(state => state.profile.ci);
   const name = useSelector(state => state.profile.first_name);
   const lastname = useSelector(state => state.profile.last_name);
-  const [isRevisor, setIsRevisor] = useState(true);
+  const [isRevisor, setIsRevisor] = useState(null);
   const navigate = useNavigate();
+
+    /* ------------ Load professor revisor state ------------------------ */
+  useEffect(() => {
+    // Verificar que 'ci' tenga un valor válido antes de llamar a 'loadProfessorRole()'
+    if (ci) {
+      async function loadProfessorRole() {
+        const res = await getProfessors();
+        const professor = res.data.find(professor => professor.professor_id === ci);
+        if (professor) {
+          setIsRevisor(professor.isRevisor);
+        } else {
+          console.log('Profesor no encontrado');
+        }
+      }
+      loadProfessorRole();
+    }
+  }, [ci]); // Agregar 'ci' como dependencia
 
   // Función para cambiar entre el modo revisor y el modo normal
   const toggleRevisorMode = () => {
     setIsRevisor((prevState) => !prevState);
-    navigate('/home');
+    navigate('/home_revisor');
   };
 
+
+/* ------------ Check Authenticated State ------------------------ */
   useEffect(() => {
     checkAuthenticated();
     load_user();
@@ -52,6 +73,13 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
               <NavDropdown.Item onClick={toggleRevisorMode}>
                   Cambiar a Docente
               </NavDropdown.Item>
+
+                {isRevisor && (
+                <NavDropdown.Item onClick={toggleRevisorMode}>
+                      Cambiar a Revisor
+                    </NavDropdown.Item>
+                )}
+
               <NavDropdown.Item onClick={logout} href="/login">Cerrar Sesion</NavDropdown.Item>
             </NavDropdown>
           </Nav>
