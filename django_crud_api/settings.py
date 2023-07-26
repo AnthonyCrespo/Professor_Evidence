@@ -183,6 +183,8 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'build/'),
 # The absolute path to the directory where ./manage.py 
 # collectstatic will collect static files for deployment.
 #only works in Production Mode which is "DEBUG = False"
+
+DEBUG = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 

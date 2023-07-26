@@ -18,6 +18,8 @@ import { getActivitiesType,
          getSemesters, 
          getDocuments, 
          getProfessors, 
+         getCareers,
+         getSchools,
          deleteDocumentByID,
          updateDocument } from '../api/task.api';
 
@@ -70,20 +72,76 @@ export function Assign_Reviewer() {
   const formattedDay = String(day).padStart(2, '0');
   const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
 
-/* ------ Carga de los profesores bajo supervisión --------- */
-useEffect(() => {
-  async function loadProfesssors() {
-    if (!ci) {
-      return; // Si ci no está definido, no se ejecuta la carga de profesores
+
+
+
+  /* -------------- Cargar profesores de la escuela del cual es decano ------ */
+  const [deanCareerId, setDeanCareerId] = useState(null);
+  const [deanSchoolId, setDeanSchoolId] = useState(null);
+  const [careersInDeanSchool, setCareersInDeanSchool] = useState([]);
+  const [professorsInDeanSchool, setProfessorsInDeanSchool] = useState([]);
+
+
+  /* ------ Carga del career_id del decano ------- */
+  useEffect(() => {
+    async function loadDeanCareerId() {
+      if (!ci) {
+        return; // Si ci no está definido, no se ejecuta la carga del career_id del decano
+      }
+
+      const res = await getProfessors();
+      const deanProfessor = res.data.find((professor) => professor.professor_id === ci);
+      if (deanProfessor) {
+        setDeanCareerId(deanProfessor.career_id);
+      }
     }
-    const res = await getProfessors();
-    // Filtrar los registros cuyo campo professor_revisor sea igual a "1317858973"
-    const filteredProfessors = res.data.filter((professor) => professor.professor_revisor === ci);
-    setProfessors(filteredProfessors);
-    setSelectedProfessor(filteredProfessors[0].professor_id)
-  }
-  loadProfesssors();
-}, [ci]); // Agrega ci como dependencia para que se ejecute cuando cambie su valor
+    loadDeanCareerId();
+  }, [ci]); // Agrega ci como dependencia para que se ejecute cuando cambie su valor
+
+
+  /* ------ Carga de las carreras de la escuela del decano ------- */
+  useEffect(() => {
+    async function loadCareersInDeanSchool() {
+      if (!deanCareerId) {
+        return; // Si deanCareerId no está definido, no se ejecuta la carga de carreras
+      }
+      const res = await getCareers();
+      console.log("Las carreras son ")
+      console.log(res.data)
+      const school_id = res.data.filter((career) => career.id === deanCareerId)[0].school_id;
+
+      console.log("El ID de la escuela del decano es  ")
+      console.log(school_id)
+      setDeanSchoolId(school_id)
+
+      const careers = res.data.filter((career) => career.school_id === school_id);
+      setCareersInDeanSchool(careers);
+      
+      console.log("Las carreras en la escuelad del decano son ")
+      console.log(careers)
+    }
+    loadCareersInDeanSchool();
+  }, [deanCareerId]); // Agrega deanCareerId como dependencia para que se ejecute cuando cambie su valor
+
+  /* ------ Carga de los profesores de las carreras de la escuela del decano ------- */
+  useEffect(() => {
+    async function loadProfessorsInDeanSchool() {
+      if (careersInDeanSchool.length === 0) {
+        return; // Si no hay carreras en la escuela del decano, no se ejecuta la carga de profesores
+      }
+
+      const res = await getProfessors();
+      // Filtrar los registros cuyo campo career_id esté en la lista de carreras de la escuela del decano
+      const filteredProfessors = res.data.filter((professor) => careersInDeanSchool.some((career) => professor.career_id === career.id));
+      setProfessorsInDeanSchool(filteredProfessors);
+      console.log("Los profesores filtrados de las carreras de la escuela del decano son ")
+      console.log(filteredProfessors)
+      setSelectedProfessor(filteredProfessors[0]?.professor_id || 0);
+    }
+    loadProfessorsInDeanSchool();
+  }, [careersInDeanSchool]);
+
+
   
 
   /* ------ Carga de los tipos de actividades + 'TODOS' --------- */
@@ -320,7 +378,7 @@ useEffect(() => {
               setValue('selected_professor', e.target.value);
             }}
           >
-            {professors.map((professor) => (
+            {professorsInDeanSchool.map((professor) => (
               <option key={professor.professor_id} value={professor.professor_id}>
                 {professor.professor_names + " " + professor.professor_lastnames}
               </option>

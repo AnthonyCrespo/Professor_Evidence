@@ -36,6 +36,8 @@ export const getDocuments = () => tasksApi.get('/Document/');
 export const getProfessors = () => tasksApi.get('/Professor/');
 /* export const getReports = (professorId) => tasksApi.get(`/Report/?professor_id=${professorId}`); */
 export const getReports = () => tasksApi.get('/Report/');
+export const getCareers= () => tasksApi.get('/Career/');
+export const getSchools= () => tasksApi.get('/School/');
 
 export const getDocumentByID = (DocumentId) => tasksApi.get(`/Document/${DocumentId}/`);
 
