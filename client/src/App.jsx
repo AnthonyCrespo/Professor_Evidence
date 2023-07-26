@@ -19,6 +19,8 @@ import ProtectedRoute from './hocs/privateRoute'
 import axios from 'axios';
 import {Provider} from 'react-redux';
 import { HomeDean } from './pages/Home_Dean'
+import { Aprobar_Report } from './pages/Aprobar_Report'
+import { Assign_Reviewer } from './pages/Assign_Reviewer'
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
@@ -41,6 +43,8 @@ function App() {
           <Route exact path="/informes_registrados" element={<Registered_reports/>}/>
           <Route exact path="/revisar_informes" element={<Revisar_Evidence/>}/>
           <Route exact path="/revisar_reportes" element={<Revisar_Report/>}/>
+          <Route exact path="/aprobar_reportes" element={<Aprobar_Report/>}/>
+          <Route exact path="/asignar_revisores" element={<Assign_Reviewer/>}/>
           
 
 {/*           <Route

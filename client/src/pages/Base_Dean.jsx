@@ -48,6 +48,9 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
     setIsRevisor((prevState) => !prevState);
     navigate('/home_revisor');
   };
+  const toggleProfessorrMode = () => {
+    navigate('/home');
+  };
 
 
 /* ------------ Check Authenticated State ------------------------ */
@@ -70,7 +73,7 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
           </a>
           <Nav>
           <NavDropdown title={name+" "+lastname} id="evidencias-dropdown">
-              <NavDropdown.Item onClick={toggleRevisorMode}>
+              <NavDropdown.Item onClick={toggleProfessorrMode}>
                   Cambiar a Docente
               </NavDropdown.Item>
 
@@ -101,8 +104,8 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
                         </a>
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item">
-                            <a className="nav-link" href="/revisar_informes" style={{color:"white"}}>
-                            Revisar Evidencias DECANO
+                            <a className="nav-link" href="/asignar_revisores" style={{color:"white"}}>
+                            Asignar Revisores
                             </a>
                         </li>
                         </ul>
@@ -118,8 +121,8 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
                         </a>
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item  side-bar-text">
-                            <a className="nav-link" href="/revisar_reportes" style={{color:"white"}}>
-                            Revisar Informe
+                            <a className="nav-link" href="/aprobar_reportes" style={{color:"white"}}>
+                            Aprobar Informes
                             </a>
                         </li>
                         </ul>
