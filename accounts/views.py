@@ -9,6 +9,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
 
 class CheckAuthenticatedView(APIView):
+    permission_classes = (permissions.AllowAny, )
     def get(self, request, format=None):
         user = self.request.user
 

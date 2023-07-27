@@ -31,7 +31,7 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
     if (result === 'success') {
     }
     else
-      setErrorMessage('Credenciales incorrectas');
+      setErrorMessage('Las credenciales ingresadas son incorrectas.');
   };
   
     if (isAuthenticated){
