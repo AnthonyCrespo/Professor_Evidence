@@ -148,35 +148,34 @@ useEffect(() => {
   const onSubmit = handleSubmit(async () => {
     const report_data = {
       professor_id: selectedProfessor,
-      semester_id: parseInt(selectedSemester)
+      semester_id: parseInt(selectedSemester),
+      report_isApproved: selectedReportState === "Todos" ? null : selectedReportState === "APROBADO",
     };
-
-    const res = await getReports();
-    let filteredReports = [];
-    if (parseInt(selectedProfessor) === 0) {
-        filteredReports = res.data.filter(report =>
-          report.semester_id === report_data.semester_id
-        );
-      } else {
-        filteredReports = res.data.filter(report =>
-            report.professor_id === report_data.professor_id &&
-            report.semester_id === report_data.semester_id
-        );
-      }
-
-      const reportsWithSemesterName = filteredReports.map(report => ({
-        ...report,
-        semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
-      }));
   
-      setReports(reportsWithSemesterName);
-      // /console.log(reportsWithSemesterName);
+    const res = await getReports();
+    let filteredReports = res.data.filter(report => {
+      const isProfessorMatch = parseInt(selectedProfessor) === 0 || report.professor_id === report_data.professor_id;
+      const isSemesterMatch = report.semester_id === report_data.semester_id;
+      const isReportStateMatch =
+        report_data.report_isApproved === null || report.report_isApproved === report_data.report_isApproved;
+  
+      return isProfessorMatch && isSemesterMatch && isReportStateMatch;
+    });
+  
+    const reportsWithSemesterName = filteredReports.map(report => ({
+      ...report,
+      semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
+    }));
+  
+    setReports(reportsWithSemesterName);
     
-    if (filteredReports.length === 0)
-    toast.info('No se encontraron registros!', {
-    position: toast.POSITION.BOTTOM_RIGHT
-        });
+    if (filteredReports.length === 0) {
+      toast.info('No se encontraron registros!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
   });
+  
 
   const [selectedOption, setSelectedOption] = useState("NO APROBADO");
   
@@ -245,10 +244,11 @@ useEffect(() => {
   const redBgStyle = { backgroundColor: "rgb(242, 133, 132)" };
 
   const allProfessorsOption = { professor_id: 0, professor_names: "Todos", professor_lastnames: "" };
+  const [selectedReportState, setSelectedReportState] = useState("Todos");
 
   return (
     <Base_Dean >
-      <h1>Revisar y Aprobar Reportes </h1>
+      <h1>Revisar y Aprobar Informes Finales </h1>
       <Form className="w-50" onSubmit={onSubmit}>
 
       <Form.Group className="mt-4">
@@ -284,6 +284,18 @@ useEffect(() => {
             ))}
           </Form.Select>
         </Form.Group>
+
+        <Form.Group className="mt-4">
+        <Form.Label>Estado del Reporte:</Form.Label>
+        <Form.Select
+          value={selectedReportState}
+          onChange={(e) => setSelectedReportState(e.target.value)}
+        >
+          <option value="Todos">Todos</option>
+          <option value="APROBADO">Aprobado</option>
+          <option value="NO APROBADO">No Aprobado</option>
+        </Form.Select>
+      </Form.Group>
 
         <Button className="mt-4" variant="primary" type="submit">Buscar</Button>
       </Form>
