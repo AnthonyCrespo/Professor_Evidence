@@ -91,19 +91,17 @@ export function Create_report() {
   /* ------------------------------------------------------ */
   /* ------------- Cargar los reportes ------------------- */
   /* ------------------------------------------------------- */
-   useEffect(() => {
-    const professorId = ci;
+  useEffect(() => {
     const loadReports = async () => {
-      /* const response = await getReports(professorId); */
+      const professorId = ci;
       const response = await getReports();
-  
       const filteredReports = response.data.filter(report => report.professor_id === professorId);
-  
+
       const reportsWithSemesterName = filteredReports.map(report => ({
         ...report,
         semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
       }));
-  
+
       setReports(reportsWithSemesterName);
 
       if (reportsWithSemesterName.length > 0) {
@@ -114,15 +112,12 @@ export function Create_report() {
           teaching_report_summary: firstReport.teaching_report_summary,
           teaching_report_hoursPerWeek: firstReport.teaching_report_hoursPerWeek,
           teaching_report_hoursPerWeekIntersemester: firstReport.teaching_report_hoursPerWeekIntersemester,
-
           management_report_summary: firstReport.management_report_summary,
           management_report_hoursPerWeek: firstReport.management_report_hoursPerWeek,
           management_report_hoursPerWeekIntersemester: firstReport.management_report_hoursPerWeekIntersemester,
-
           vinculation_report_summary: firstReport.vinculation_report_summary,
           vinculationt_report_hoursPerWeek: firstReport.vinculationt_report_hoursPerWeek,
           vinculation_report_hoursPerWeekIntersemester: firstReport.vinculation_report_hoursPerWeekIntersemester,
-
           investigation_report_summary: firstReport.investigation_report_summary,
           investigation_report_hoursPerWeek: firstReport.investigation_report_hoursPerWeek,
           investigation_report_hoursPerWeekIntersemester: firstReport.investigation_report_hoursPerWeekIntersemester,
@@ -130,16 +125,14 @@ export function Create_report() {
           report_professorComment: firstReport.report_professorComment,
           report_uploadDate: formattedDate,
         }));
-        //console.log("Si hay reportes y el ci es " + ci)
       }
-  
     };
-  
-    // Ensure that loadReports runs only after semesters state has been updated
-    if (semesters.length > 0) {
+
+    // Ensure that loadReports runs whenever semesters, ci, or reports state changes.
+    if (semesters.length > 0 && ci && reports.length === 0) {
       loadReports();
     }
-  }, [semesters]);
+  }, [semesters, ci, reports]);
 
 
   // const handleChange = (e) => {

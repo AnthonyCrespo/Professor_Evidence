@@ -158,8 +158,9 @@ useEffect(() => {
       const isSemesterMatch = report.semester_id === report_data.semester_id;
       const isReportStateMatch =
         report_data.report_isApproved === null || report.report_isApproved === report_data.report_isApproved;
+      const isReportReviewed = report.report_isReviewed === true; // Check for report_isReviewed === true
   
-      return isProfessorMatch && isSemesterMatch && isReportStateMatch;
+      return isProfessorMatch && isSemesterMatch && isReportStateMatch && isReportReviewed; // Add the condition for isReportReviewed
     });
   
     const reportsWithSemesterName = filteredReports.map(report => ({
@@ -168,13 +169,14 @@ useEffect(() => {
     }));
   
     setReports(reportsWithSemesterName);
-    
+  
     if (filteredReports.length === 0) {
       toast.info('No se encontraron registros!', {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
   });
+  
   
 
   const [selectedOption, setSelectedOption] = useState("NO APROBADO");
