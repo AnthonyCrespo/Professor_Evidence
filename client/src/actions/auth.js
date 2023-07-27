@@ -39,8 +39,8 @@ export const login = (username, password) => async dispatch => {
           dispatch({
               type: LOGIN_SUCCESS
           });
-
           dispatch(load_user());
+          return 'success';
       } else {
           dispatch({
               type: LOGIN_FAIL

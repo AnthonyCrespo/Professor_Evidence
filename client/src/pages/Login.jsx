@@ -10,6 +10,8 @@ import './css/Login.css'
 
 
 const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
+  const [errorMessage, setErrorMessage] = useState('');
+
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -23,10 +25,13 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
-      e.preventDefault();
-
-      login(username, password);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const result = await login(username, password);
+    if (result === 'success') {
+    }
+    else
+      setErrorMessage('Credenciales incorrectas');
   };
   
     if (isAuthenticated){
@@ -65,6 +70,7 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
                         minLength='6'
                         required
                       />
+               {errorMessage && <p className="text-danger">{errorMessage}</p>}
             </div>
             <button className='btn btn-primary mt-3' type='submit'> Ingresar </button>
           </form>
