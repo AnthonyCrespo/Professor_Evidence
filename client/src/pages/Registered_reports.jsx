@@ -40,7 +40,8 @@ export function Registered_reports() {
       loadReports();
     }
   }, [semesters, ci]);
-  
+  const greenBgStyle = { backgroundColor: "rgb(176, 227, 117)" };
+  const redBgStyle = { backgroundColor: "rgb(242, 133, 132)" };
   
   return (
     <Base>
@@ -54,6 +55,8 @@ export function Registered_reports() {
           <th>Reporte</th>
           <th>Comentario</th>
           <th>Comentario del Revisor</th>
+          <th>Estado (Revisor)</th>
+          <th>Estado (Decano)</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -66,6 +69,12 @@ export function Registered_reports() {
                 <td>{item.report_name}</td>
                 <td>{item.report_professorComment}</td>
                 <td>{item.report_revisorComment}</td>
+                <td style={item.report_isReviewed ? greenBgStyle : redBgStyle}>
+              {         item.report_isReviewed   ? "APROBADO" : "NO APROBADO"}
+                    </td>
+                    <td style={item.report_isApproved ? greenBgStyle : redBgStyle}>
+              {         item.report_isApproved   ? "APROBADO" : "NO APROBADO"}
+                    </td>
                 <td>
                   <button
                     className="btn btn-success"
