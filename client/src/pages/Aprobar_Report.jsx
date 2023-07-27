@@ -201,10 +201,13 @@ useEffect(() => {
 
 
   const handleEdit = async (report) => {
-        setReport(report)
-        setEditItemId(report.id);
-        setShowModal(true);
-};
+    setReport(report);
+    setEditItemId(report.id);
+    console.log("El estado actual de aprobacion del reporte es " + report.report_isApproved )
+    setSelectedOption(report.report_isApproved ? "APROBADO" : "NO APROBADO");
+    setShowModal(true);
+  };
+  
   
   const handleCloseModal = () => {
     setShowModal(false);
