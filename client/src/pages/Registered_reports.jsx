@@ -26,27 +26,20 @@ export function Registered_reports() {
   }, []);
   
   useEffect(() => {
-    const professorId = ci
-    const loadReports = async () => {
-      /* const response = await getReports(professorId); */
-      const response = await getReports();
-  
-      const filteredReports = response.data.filter(report => report.professor_id === professorId);
-  
-      const reportsWithSemesterName = filteredReports.map(report => ({
-        ...report,
-        semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
-      }));
-  
-      setReports(reportsWithSemesterName);
-      console.log(reportsWithSemesterName);
-    };
-  
-    // Ensure that loadReports runs only after semesters state has been updated
-    if (semesters.length > 0) {
+    if (semesters.length > 0 && ci) {
+      const loadReports = async () => {
+        const response = await getReports();
+        const filteredReports = response.data.filter(report => report.professor_id === ci);
+        const reportsWithSemesterName = filteredReports.map(report => ({
+          ...report,
+          semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
+        }));
+        setReports(reportsWithSemesterName);
+        console.log(reportsWithSemesterName)
+      };
       loadReports();
     }
-  }, [semesters]);
+  }, [semesters, ci]);
   
   
   return (
@@ -65,23 +58,28 @@ export function Registered_reports() {
         </tr>
       </thead>
       <tbody>
-        {reports.map((item) => (
-          <tr key={item.id}>
-           <td>{item.semester_name}</td>
-            <td>{item.report_uploadDate}</td>
-            <td>{item.report_name}</td>
-            <td>{item.report_professorComment}</td>
-            <td>{item.report_revisorComment}</td>
-            <td>
-                <button
-                  className="btn btn-success"
-                  onClick={() => handleVisualizarClick(item.id)}
-                >
-                  VISUALIZAR
-                </button>
-            </td>
-          </tr>
-        ))}
+      {reports.length > 0 ? (
+            reports.map((item) => (
+              <tr key={item.id}>
+                <td>{item.semester_name}</td>
+                <td>{item.report_uploadDate}</td>
+                <td>{item.report_name}</td>
+                <td>{item.report_professorComment}</td>
+                <td>{item.report_revisorComment}</td>
+                <td>
+                  <button
+                    className="btn btn-success"
+                    onClick={() => handleVisualizarClick(item.id)}
+                  >
+                    VISUALIZAR
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+            </tr>
+          )}
       </tbody>
     </Table>
     </Base>
