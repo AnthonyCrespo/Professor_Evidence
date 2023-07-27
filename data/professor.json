@@ -54,5 +54,19 @@
       "isRevisor": false,
       "isDean": true
     }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "2345678912",
+    "fields": {
+      "career_id": 1,
+      "professor_degree": "PhD",
+      "professor_names": "REVISOR",
+      "professor_lastnames": "2",
+      "professor_denomination": 1,
+      "professor_revisor": "1317858973",
+      "isRevisor": true,
+      "isDean": false
+    }
   }
 ]

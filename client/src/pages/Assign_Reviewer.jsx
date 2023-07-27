@@ -155,6 +155,9 @@ export function Assign_Reviewer() {
     }));
   };
 
+  const revisorProfessors = professorsInDeanSchool.filter((professor) => professor.isRevisor);
+
+
 
   return (
     <Base_Dean>
@@ -178,7 +181,7 @@ export function Assign_Reviewer() {
                 value={professorReviewers[professor.professor_id] || ''}
                 onChange={(e) => handleReviewerChange(professor.professor_id, e.target.value)}
               >
-                {professorsInDeanSchool.map((reviewer) => (
+                {revisorProfessors.map((reviewer) => (
                   <option key={reviewer.professor_id} value={reviewer.professor_id}>
                     {reviewer.professor_names} {reviewer.professor_lastnames}
                   </option>
