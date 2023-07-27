@@ -110,7 +110,8 @@ useEffect(() => {
   const onSubmit = handleSubmit(async () => {
     const report_data = {
       professor_id: selectedProfessor,
-      semester_id: parseInt(selectedSemester)
+      semester_id: parseInt(selectedSemester),
+      report_isReviewed: selectedEstado === "Todos" ? null : selectedEstado === "Aprobado",
     };
 
     const res = await getReports();
@@ -118,29 +119,31 @@ useEffect(() => {
     if (parseInt(selectedProfessor) === 0) {
       const professorsIdsUnderSupervision = professors.map((professor) => professor.professor_id);
 
-        filteredReports = res.data.filter(report =>
-          report.semester_id === report_data.semester_id && 
-          professorsIdsUnderSupervision.includes(report.professor_id)
-        );
-      } else {
-        filteredReports = res.data.filter(report =>
-            report.professor_id === report_data.professor_id &&
-            report.semester_id === report_data.semester_id
-        );
-      }
+      filteredReports = res.data.filter((report) =>
+        report.semester_id === report_data.semester_id &&
+        professorsIdsUnderSupervision.includes(report.professor_id) &&
+        (report_data.report_isReviewed === null || report.report_isReviewed === report_data.report_isReviewed)
+      );
+    } else {
+      filteredReports = res.data.filter((report) =>
+        report.professor_id === report_data.professor_id &&
+        report.semester_id === report_data.semester_id &&
+        (report_data.report_isReviewed === null || report.report_isReviewed === report_data.report_isReviewed)
+      );
+    }
 
-      const reportsWithSemesterName = filteredReports.map(report => ({
-        ...report,
-        semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
-      }));
-  
-      setReports(reportsWithSemesterName);
-      console.log(reportsWithSemesterName);
-    
+    const reportsWithSemesterName = filteredReports.map((report) => ({
+      ...report,
+      semester_name: semesters.find((semester) => semester.id === report.semester_id)?.semester_name,
+    }));
+
+    setReports(reportsWithSemesterName);
+    console.log(reportsWithSemesterName);
+
     if (filteredReports.length === 0)
-    toast.info('No se encontraron registros!', {
-    position: toast.POSITION.BOTTOM_RIGHT
-        });
+      toast.info('No se encontraron registros!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
   });
 
 
@@ -210,6 +213,7 @@ useEffect(() => {
   const [approvalStatus, setApprovalStatus] = useState("NO APROBADO");
   const greenBgStyle = { backgroundColor: "rgb(176, 227, 117)" };
   const redBgStyle = { backgroundColor: "rgb(242, 133, 132)" };
+  const [selectedEstado, setSelectedEstado] = useState("Todos");
   return (
     <Base_Revisor >
       <h1>Revisión de Informes</h1>
@@ -247,7 +251,22 @@ useEffect(() => {
               <option key={opcion.id} value={opcion.id}>{opcion.semester_name}</option>
             ))}
           </Form.Select>
-        </Form.Group>
+      </Form.Group>
+
+      <Form.Group className="mt-4">
+        <Form.Label>Estado:</Form.Label>
+        <Form.Select
+          value={selectedEstado}
+          onChange={(e) => {
+            setSelectedEstado(e.target.value);
+            setValue('estado', e.target.value);
+          }}
+        >
+          <option value="Todos">Todos</option>
+          <option value="Aprobado">Aprobado</option>
+          <option value="No aprobado">No aprobado</option>
+      </Form.Select>
+      </Form.Group>
 
         <Button className="mt-4" variant="primary" type="submit">Buscar</Button>
       </Form>
