@@ -116,8 +116,11 @@ useEffect(() => {
     const res = await getReports();
     let filteredReports = [];
     if (parseInt(selectedProfessor) === 0) {
+      const professorsIdsUnderSupervision = professors.map((professor) => professor.professor_id);
+
         filteredReports = res.data.filter(report =>
-          report.semester_id === report_data.semester_id
+          report.semester_id === report_data.semester_id && 
+          professorsIdsUnderSupervision.includes(report.professor_id)
         );
       } else {
         filteredReports = res.data.filter(report =>
@@ -147,7 +150,8 @@ useEffect(() => {
     const new_report = {
       //...updatedData,
       id: report.id,
-      report_revisorComment: revisorComment
+      report_revisorComment: revisorComment,
+      report_isReviewed: approvalStatus === "APROBADO"
     };
 
     //setEvidenceDocument(new_evidence_document);
@@ -203,7 +207,9 @@ useEffect(() => {
 
   const allProfessorsOption = { professor_id: 0, professor_names: "Todos", professor_lastnames: "" };
   const [professors, setProfessors] = useState([allProfessorsOption]);
-
+  const [approvalStatus, setApprovalStatus] = useState("NO APROBADO");
+  const greenBgStyle = { backgroundColor: "rgb(176, 227, 117)" };
+  const redBgStyle = { backgroundColor: "rgb(242, 133, 132)" };
   return (
     <Base_Revisor >
       <h1>Revisión de Informes</h1>
@@ -261,6 +267,7 @@ useEffect(() => {
                 <th>Reporte</th>
                 <th>Comentario</th>
                 <th>Comentario del revisor</th>
+                <th>Estado</th>
                 <th>Acciones</th>
                 </tr>
             </thead>
@@ -278,6 +285,9 @@ useEffect(() => {
                     <td>{item.report_name}</td>
                     <td>{item.report_professorComment}</td>
                     <td>{item.report_revisorComment}</td>
+                    <td style={item.report_isReviewed ? greenBgStyle : redBgStyle}>
+              {         item.report_isReviewed   ? "APROBADO" : "NO APROBADO"}
+                    </td>
                     <td>
                         <button
                         className="btn btn-success"
@@ -313,6 +323,18 @@ useEffect(() => {
                                   }}
                   />
         </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Estado de Aprobación:</Form.Label>
+        <Form.Select
+          value={approvalStatus}
+          onChange={(e) => setApprovalStatus(e.target.value)}
+        >
+          <option value="APROBADO">APROBADO</option>
+          <option value="NO APROBADO">NO APROBADO</option>
+        </Form.Select>
+      </Form.Group>
+
 
         <Button className="mt-4" variant="primary" type="submit">
             Guardar Cambios
