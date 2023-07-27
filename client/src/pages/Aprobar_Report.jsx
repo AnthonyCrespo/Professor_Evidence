@@ -12,24 +12,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 
 /* ------------- Import Functions from API ------------------ */
-import { getActivitiesType, 
-         getEvidencesType, 
-         getSemesters, 
-         getDocuments, 
-         getDocumentByID,
+import { getSemesters, 
          getProfessors, 
          deleteDocumentByID,
-         updateDocument,
          getReports,  
          getCareers,
-         getSchools,
          updateReportPartial} from '../api/task.api';
 
 export function Aprobar_Report() {
   const ci = useSelector(state => state.profile.ci);
   console.log("el ci es "+ ci)
   
-  const [professors, setProfessors] = useState([]);
   const [selectedProfessor, setSelectedProfessor] = useState(0);
 
 
@@ -39,7 +32,7 @@ export function Aprobar_Report() {
 
   /* -------------------For editing a task ------------------- */
   const [showModal, setShowModal] = useState(false);
-
+  const [editItemId, setEditItemId] = useState(null);
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
@@ -94,13 +87,7 @@ export function Aprobar_Report() {
         return; // Si deanCareerId no está definido, no se ejecuta la carga de carreras
       }
       const res = await getCareers();
-      //console.log("Las carreras son ")
-      //console.log(res.data)
       const school_id = res.data.filter((career) => career.id === deanCareerId)[0].school_id;
-
-      //console.log("El ID de la escuela del decano es  ")
-      //console.log(school_id)
-      //setDeanSchoolId(school_id)
 
       const careers = res.data.filter((career) => career.school_id === school_id);
       setCareersInDeanSchool(careers);
@@ -119,19 +106,10 @@ export function Aprobar_Report() {
       }
 
       const res = await getProfessors();
-      // Filtrar los registros cuyo campo career_id esté en la lista de carreras de la escuela del decano
+
       const filteredProfessors = res.data.filter((professor) => careersInDeanSchool.some((career) => professor.career_id === career.id));
       setProfessorsInDeanSchool(filteredProfessors);
       setSelectedProfessor(filteredProfessors[0]?.professor_id || 0);
-      //console.log("Los profesores filtrados de las carreras de la escuela del decano son ")
-      //console.log(filteredProfessors)
-      // Create an object to store the default reviewers for each professor
-      const defaultReviewers = {};
-      // Iterate through the filteredProfessors to get their default reviewers
-      filteredProfessors.forEach((professor) => {
-        defaultReviewers[professor.professor_id] = professor.professor_revisor;
-      });
-      setProfessorReviewers(defaultReviewers);
 
     }
     loadProfessorsInDeanSchool();
@@ -192,7 +170,7 @@ useEffect(() => {
       }));
   
       setReports(reportsWithSemesterName);
-      console.log(reportsWithSemesterName);
+      // /console.log(reportsWithSemesterName);
     
     if (filteredReports.length === 0)
     toast.info('No se encontraron registros!', {
@@ -200,27 +178,24 @@ useEffect(() => {
         });
   });
 
-
-  const onSubmit_modal = handleSubmit_modal(async (data) => {
-    //const { evidence_type_name, activity_type_name, ...updatedData } = evidence_document;
+  const [selectedOption, setSelectedOption] = useState("NO APROBADO");
   
+  const onSubmit_modal = handleSubmit_modal(async () => {
     const new_report = {
-      //...updatedData,
       id: report.id,
-      report_revisorComment: revisorComment
+      report_isApproved: selectedOption === "APROBADO", // Check if the selected option is "APROBAR" and set isApproved accordingly
     };
-
-    //setEvidenceDocument(new_evidence_document);
-  
+    console.log("La opcion seleccionada es " + selectedOption);
     console.log(new_report);
     await updateReportPartial(new_report.id, new_report);
     toast.success('Registro actualizado!', {
-     position: toast.POSITION.BOTTOM_RIGHT
+      position: toast.POSITION.BOTTOM_RIGHT
+    });
+
+    handleCloseModal();
+    onSubmit();
   });
 
-  handleCloseModal()
-  onSubmit()
-  });
   
 
 
@@ -318,6 +293,7 @@ useEffect(() => {
                 <th>Reporte</th>
                 <th>Comentario</th>
                 <th>Comentario del revisor</th>
+                <th>Estado</th>
                 <th>Acciones</th>
                 </tr>
             </thead>
@@ -329,6 +305,7 @@ useEffect(() => {
                     <td>{item.report_name}</td>
                     <td>{item.report_professorComment}</td>
                     <td>{item.report_revisorComment}</td>
+                    <td>{item.report_isApproved ? "APROBADO" : "NO APROBADO"}</td>
                     <td>
                         <button
                         className="btn btn-success"
@@ -355,15 +332,16 @@ useEffect(() => {
       <Modal.Body>
       <Form className="w-80" onSubmit={onSubmit_modal}>
 
-        <Form.Group className="mt-4">
-                  <Form.Label>Comentario:</Form.Label>
-                  <Form.Control as="textarea" rows={3} 
-                                  value={revisorComment}
-                                  onChange={(e) => {
-                                    setRevisorComment(e.target.value)
-                                  }}
-                  />
-        </Form.Group>
+      <Form.Group>
+              <Form.Label>Seleccionar Aprobación:</Form.Label>
+              <Form.Select
+                value={selectedOption}
+                onChange={(e) => setSelectedOption(e.target.value)}
+              >
+                <option value="APROBADO">APROBADO</option>
+                <option value="NO APROBADO">NO APROBADO</option>
+              </Form.Select>
+      </Form.Group>
 
         <Button className="mt-4" variant="primary" type="submit">
             Guardar Cambios
