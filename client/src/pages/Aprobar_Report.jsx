@@ -108,8 +108,8 @@ export function Aprobar_Report() {
       const res = await getProfessors();
 
       const filteredProfessors = res.data.filter((professor) => careersInDeanSchool.some((career) => professor.career_id === career.id));
-      setProfessorsInDeanSchool(filteredProfessors);
-      setSelectedProfessor(filteredProfessors[0]?.professor_id || 0);
+      setProfessorsInDeanSchool([allProfessorsOption, ...filteredProfessors]);
+      setSelectedProfessor(allProfessorsOption.professor_id); // Establece "Todos" como opción por defecto
 
     }
     loadProfessorsInDeanSchool();
@@ -240,6 +240,12 @@ useEffect(() => {
   };
 
   
+  // Inline styles for green and red backgrounds
+  const greenBgStyle = { backgroundColor: "rgb(176, 227, 117)" };
+  const redBgStyle = { backgroundColor: "rgb(242, 133, 132)" };
+
+  const allProfessorsOption = { professor_id: 0, professor_names: "Todos", professor_lastnames: "" };
+
   return (
     <Base_Dean >
       <h1>Revisar y Aprobar Reportes </h1>
@@ -291,6 +297,7 @@ useEffect(() => {
         <Table striped bordered hover>
             <thead>
                 <tr>
+                <th>Profesor</th> 
                 <th>Semestre</th>
                 <th>Fecha</th>
                 <th>Reporte</th>
@@ -303,12 +310,20 @@ useEffect(() => {
             <tbody>
                 {reports.map((item) => (
                 <tr key={item.id}>
+                    <td>
+                      {/* Mostrar el nombre del profesor */}
+                      {professorsInDeanSchool.find((professor) => professor.professor_id === item.professor_id)?.professor_names +
+                        " " +
+                        professorsInDeanSchool.find((professor) => professor.professor_id === item.professor_id)?.professor_lastnames}
+                    </td>
                     <td>{item.semester_name}</td>
                     <td>{item.report_uploadDate}</td>
                     <td>{item.report_name}</td>
                     <td>{item.report_professorComment}</td>
                     <td>{item.report_revisorComment}</td>
-                    <td>{item.report_isApproved ? "APROBADO" : "NO APROBADO"}</td>
+                    <td style={item.report_isApproved ? greenBgStyle : redBgStyle}>
+              {         item.report_isApproved ? "APROBADO" : "NO APROBADO"}
+                    </td>
                     <td>
                         <button
                         className="btn btn-success"
