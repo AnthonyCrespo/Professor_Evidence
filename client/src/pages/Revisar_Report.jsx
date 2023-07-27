@@ -37,7 +37,7 @@ export function Revisar_Report() {
 
   /* -------------------For editing a task ------------------- */
   const [showModal, setShowModal] = useState(false);
-
+  const [editItemId, setEditItemId] = useState(null);
 
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
@@ -203,7 +203,7 @@ useEffect(() => {
   
   return (
     <Base_Revisor >
-      <h1>Revisión de Evidencias</h1>
+      <h1>Revisión de Informes</h1>
       <Form className="w-50" onSubmit={onSubmit}>
 
       <Form.Group className="mt-4">

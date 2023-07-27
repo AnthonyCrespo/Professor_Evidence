@@ -68,5 +68,18 @@
       "isRevisor": true,
       "isDean": false
     }
+  },
+  {
+    "model": "professor_evidence.professor",
+    "pk": "4444444444",
+    "fields": {
+      "career_id": 3,
+      "professor_degree": "PhD",
+      "professor_names": "PROFESOR",
+      "professor_lastnames": "BIOLOGIA",
+      "professor_denomination": 1,
+      "isRevisor": false,
+      "isDean": false
+    }
   }
 ]
