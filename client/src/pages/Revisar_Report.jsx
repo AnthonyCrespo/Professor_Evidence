@@ -27,7 +27,7 @@ export function Revisar_Report() {
   const ci = useSelector(state => state.profile.ci);
   console.log("el ci es "+ ci)
   
-  const [professors, setProfessors] = useState([]);
+  //const [professors, setProfessors] = useState([]);
   const [selectedProfessor, setSelectedProfessor] = useState(0);
 
 
@@ -70,11 +70,12 @@ useEffect(() => {
     const res = await getProfessors();
     // Filtrar los registros cuyo campo professor_revisor sea igual a "1317858973"
     const filteredProfessors = res.data.filter((professor) => professor.professor_revisor === ci);
-    setProfessors(filteredProfessors);
-    setSelectedProfessor(filteredProfessors[0].professor_id)
+    setProfessors([allProfessorsOption, ...filteredProfessors]);
+    setSelectedProfessor(allProfessorsOption.professor_id); // Establece "Todos" como opción por defecto
   }
   loadProfesssors();
 }, [ci]); // Agrega ci como dependencia para que se ejecute cuando cambie su valor
+
   
   
 /* ----------- Carga de los semestres ----------------------- */
@@ -200,7 +201,9 @@ useEffect(() => {
     setShowConfirmationModal(false);
   };
 
-  
+  const allProfessorsOption = { professor_id: 0, professor_names: "Todos", professor_lastnames: "" };
+  const [professors, setProfessors] = useState([allProfessorsOption]);
+
   return (
     <Base_Revisor >
       <h1>Revisión de Informes</h1>
@@ -252,6 +255,7 @@ useEffect(() => {
         <Table striped bordered hover>
             <thead>
                 <tr>
+                <th>Profesor</th> 
                 <th>Semestre</th>
                 <th>Fecha</th>
                 <th>Reporte</th>
@@ -263,6 +267,12 @@ useEffect(() => {
             <tbody>
                 {reports.map((item) => (
                 <tr key={item.id}>
+                    <td>
+                      {/* Mostrar el nombre del profesor */}
+                      {professors.find((professor) => professor.professor_id === item.professor_id)?.professor_names +
+                        " " +
+                        professors.find((professor) => professor.professor_id === item.professor_id)?.professor_lastnames}
+                    </td>
                     <td>{item.semester_name}</td>
                     <td>{item.report_uploadDate}</td>
                     <td>{item.report_name}</td>
@@ -294,7 +304,7 @@ useEffect(() => {
       <Modal.Body>
       <Form className="w-80" onSubmit={onSubmit_modal}>
 
-        <Form.Group className="mt-4">
+        <Form.Group>
                   <Form.Label>Comentario:</Form.Label>
                   <Form.Control as="textarea" rows={3} 
                                   value={revisorComment}

@@ -220,6 +220,7 @@ class Report(models.Model):
     report_conclusion = models.TextField(max_length=200, blank=True)
     report_reviewedBy = models.ForeignKey(Semester_Career, on_delete=models.CASCADE)
     report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
+    report_isReviewed = models.BooleanField(default = False)
     report_isApproved = models.BooleanField(default = False)
     report_pathToFile = models.TextField(max_length=200)
     def __str__(self):
