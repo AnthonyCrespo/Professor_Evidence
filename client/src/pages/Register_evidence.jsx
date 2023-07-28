@@ -105,7 +105,7 @@ export function Register_evidence() {
         document_revisorComment: " ",
         document_professorComment: professorComment,
         document_uploadDate: formattedDate,
-        document_pathToFile: data.document_pathToFile[0].name,
+        //document_pathToFile: data.document_pathToFile[0].name,
         uploadedDocument: data.document_pathToFile[0],
         //document_approved: null
       };

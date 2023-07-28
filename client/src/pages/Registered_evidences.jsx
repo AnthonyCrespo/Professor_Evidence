@@ -230,7 +230,7 @@ useEffect(() => {
     };
   
     if (data.document_pathToFile) {
-      new_evidence_document.document_pathToFile = data.document_pathToFile.name;
+      //new_evidence_document.document_pathToFile = data.document_pathToFile.name;
       new_evidence_document.uploadedDocument = data.document_pathToFile;
     }
   
@@ -250,16 +250,15 @@ useEffect(() => {
 
 
   const handleEdit = async (doc) => {
-      setEvidenceDocument(doc)
-      const fileName = doc.document_pathToFile;
-      setDocument(fileName);
-      setEditItemId(doc.id);
-      setSelectedActivity_modal(doc.activity_type)
-      setSelectedEvidence_modal(doc.evidence_type)
-      setShowModal(true);
+    setEvidenceDocument(doc)
+    const fileName = doc.uploadedDocument;
+    setDocument(fileName.substring(fileName.lastIndexOf('/') + 1));
+    setEditItemId(doc.id);
+    setSelectedActivity_modal(doc.activity_type)
+    setSelectedEvidence_modal(doc.evidence_type)
+    setShowModal(true);
 
-  };
-  
+};
   const handleCloseModal = () => {
     setShowModal(false);
     setProfessorComment("")
@@ -375,7 +374,9 @@ useEffect(() => {
                   <td>{item.activity_type_name}</td>
                   <td>{item.evidence_type_name}</td>
                   <td>
-                    <a href={item.uploadedDocument}>{item.document_pathToFile}</a>
+                    <a href={item.uploadedDocument} target="_blank">
+                      {item.uploadedDocument.substring(item.uploadedDocument.lastIndexOf('/') + 1)}
+                    </a>
                   </td>
                   <td>{item.document_uploadDate}</td>
                   <td>{item.document_professorComment}</td>

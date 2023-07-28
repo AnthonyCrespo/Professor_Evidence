@@ -245,7 +245,7 @@ useEffect(() => {
     };
   
     if (data.document_pathToFile) {
-      new_evidence_document.document_pathToFile = data.document_pathToFile.name;
+      //new_evidence_document.document_pathToFile = data.document_pathToFile.name;
       new_evidence_document.uploadedDocument = data.document_pathToFile;
     }
   
@@ -259,6 +259,7 @@ useEffect(() => {
 
   handleCloseModal()
   onSubmit()
+  //window.location.reload();
   });
   
 
@@ -266,8 +267,8 @@ useEffect(() => {
 
   const handleEdit = async (doc) => {
       setEvidenceDocument(doc)
-      const fileName = doc.document_pathToFile;
-      setDocument(fileName);
+      const fileName = doc.uploadedDocument;
+      setDocument(fileName.substring(fileName.lastIndexOf('/') + 1));
       setEditItemId(doc.id);
       setSelectedActivity_modal(doc.activity_type)
       setSelectedEvidence_modal(doc.evidence_type)
@@ -408,7 +409,9 @@ useEffect(() => {
                   <td>{item.activity_type_name}</td>
                   <td>{item.evidence_type_name}</td>
                   <td>
-                    <a href={item.uploadedDocument}>{item.document_pathToFile}</a>
+                    <a href={item.uploadedDocument} target="_blank">
+                      {item.uploadedDocument.substring(item.uploadedDocument.lastIndexOf('/') + 1)}
+                    </a>
                   </td>
                   <td>{item.document_uploadDate}</td>
                   <td>{item.document_professorComment}</td>
@@ -473,7 +476,7 @@ useEffect(() => {
 
 
         <Form.Group className="mt-4">
-          <Form.Label>Documentos de respaldo:</Form.Label>
+          <Form.Label>Documento de respaldo:</Form.Label>
           <div className="input-group">
             <input
               type="file"

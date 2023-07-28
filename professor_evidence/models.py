@@ -6,7 +6,7 @@ from django.core.files.storage import default_storage
 from django.http import JsonResponse
 import os
 from django.utils.text import slugify
-
+from datetime import datetime
 # Create your models here.
 
 '''
@@ -134,10 +134,11 @@ class Document(models.Model):
     document_revisorComment = models.TextField(blank=True, default='')
     document_professorComment = models.TextField(blank=True, default='')
     document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
-    document_pathToFile = models.TextField(max_length=200)
+    #document_pathToFile = models.TextField(max_length=200)
     #document_approved = models.BooleanField(null=True, default = None)
 
     def get_document_upload_path(self, filename):
+        current_datetime = datetime.now().strftime('%Y-%m-%d_%H%M%S')
         semester_name = self.semester_id.semester_name
         school_abbreviation = self.professor_id.career_id.school_id.school_abbreviation
         professor_id = self.professor_id.professor_id
@@ -146,7 +147,8 @@ class Document(models.Model):
 
         path = f"{semester_name}/{school_abbreviation}/{professor_id}/{activity_type}/{evidence_type}/"
         filename = path[:-1].replace("/","_")
-        return f"{path}{filename}.pdf"
+        filename_with_datetime = f"{filename}_{current_datetime}"
+        return f"{path}{filename_with_datetime}.pdf"
     
     uploadedDocument = models.FileField(upload_to=get_document_upload_path, max_length = 500)
     # uploadedDocument = models.FileField(upload_to="0302616099")
