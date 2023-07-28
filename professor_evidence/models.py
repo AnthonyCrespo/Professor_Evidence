@@ -143,10 +143,10 @@ class Document(models.Model):
         professor_id = self.professor_id.professor_id
         activity_type = self.activity_type.activity_type
         evidence_type = self.evidence_type.evidence_code
-        filename_slugified = slugify(filename)
 
         path = f"{semester_name}/{school_abbreviation}/{professor_id}/{activity_type}/{evidence_type}/"
-        return f"{path}{filename_slugified}"
+        filename = path[:-1].replace("/","_")
+        return f"{path}{filename}.pdf"
     
     uploadedDocument = models.FileField(upload_to=get_document_upload_path, max_length = 500)
     # uploadedDocument = models.FileField(upload_to="0302616099")
