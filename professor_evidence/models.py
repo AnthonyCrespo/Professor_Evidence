@@ -5,6 +5,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.core.files.storage import default_storage
 from django.http import JsonResponse
 import os
+from django.utils.text import slugify
+
 # Create your models here.
 
 '''
@@ -118,6 +120,7 @@ class Evidence_Type(models.Model):
     # evidence_id = models.CharField(max_length=50)
     activity_type = models.ForeignKey(Activity_Type, on_delete=models.CASCADE)
     evidence_type = models.CharField(max_length=250)
+    evidence_code = models.CharField(max_length=5)
     def __str__(self):
         return str(self.id)
 
@@ -135,11 +138,17 @@ class Document(models.Model):
     #document_approved = models.BooleanField(null=True, default = None)
 
     def get_document_upload_path(self, filename):
-        professor_id = self.professor_id
-        activity_id = self.activity_type
-        evidence_id = self.evidence_type
-        return f"{professor_id}/{activity_id }/{evidence_id}/{filename}"
-    uploadedDocument = models.FileField(upload_to=get_document_upload_path)
+        semester_name = self.semester_id.semester_name
+        school_abbreviation = self.professor_id.career_id.school_id.school_abbreviation
+        professor_id = self.professor_id.professor_id
+        activity_type = self.activity_type.activity_type
+        evidence_type = self.evidence_type.evidence_code
+        filename_slugified = slugify(filename)
+
+        path = f"{semester_name}/{school_abbreviation}/{professor_id}/{activity_type}/{evidence_type}/"
+        return f"{path}{filename_slugified}"
+    
+    uploadedDocument = models.FileField(upload_to=get_document_upload_path, max_length = 500)
     # uploadedDocument = models.FileField(upload_to="0302616099")
 
 
