@@ -62,7 +62,8 @@ export function Register_evidence() {
         const res = await getEvidencesType();
         const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
         setEvidences(filteredEvidences);
-        console.log("Estoy cargandooo las evidencias")
+        setSelectedEvidence(filteredEvidences[0].id);
+        //console.log("Estoy cargandooo las evidencias")
       }
       loadEvidencesType();
     }, [selectedActivity]);
@@ -112,7 +113,6 @@ export function Register_evidence() {
       console.log(evidenceData.uploadedDocument) */
       console.log(evidenceData)
       await createEvidence(evidenceData);
-      //navigate("/home/");
 
       /* Set form to default values */
       reset();  
@@ -165,7 +165,7 @@ export function Register_evidence() {
                     <Form.Select
                     value={selectedEvidence} 
                     onChange={(e) => {setSelectedEvidence(e.target.value)
-                                      /* console.log(selectedEvidence) */
+                                      console.log("El valor objetivo es: " + e.target.value) 
                                       setValue('evidence_type', e.target.value)
                                     }}
                     >
