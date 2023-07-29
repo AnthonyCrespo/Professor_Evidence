@@ -301,19 +301,23 @@ useEffect(() => {
                     </td>
                     <td>{item.semester_name}</td>
                     <td>{item.report_uploadDate}</td>
-                    <td>{item.report_name}</td>
+                    <td>
+                      <a href={item.uploadedReport} target="_blank">
+                        {item.uploadedReport.substring(item.uploadedReport.lastIndexOf('/') + 1)}
+                      </a>
+                    </td>
                     <td>{item.report_professorComment}</td>
                     <td>{item.report_revisorComment}</td>
                     <td style={item.report_isReviewed ? greenBgStyle : redBgStyle}>
               {         item.report_isReviewed   ? "APROBADO" : "NO APROBADO"}
                     </td>
                     <td>
-                        <button
+{/*                         <button
                         className="btn btn-success"
                         onClick={() => handleVisualizarClick(item.id)}
                         >
                         Visualizar
-                        </button>
+                        </button> */}
                         <br/>
                         <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
                     </td>
