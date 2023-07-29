@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -114,6 +115,8 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
                     
                     {/* -------Evidencias option ------- */}
 
+                    {/* -------Evidencias option ------- */}
+
                     <li className="nav-item mt-2">
                         <a className="nav-link px-2">
                         <i className='bi bi-file-text side-bar-icon '></i>
@@ -123,15 +126,16 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
                         </a>
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item">
-                            <a className="nav-link" href="/registrar_evidencia" style={{color:"white"}}>
+                          <Link to="/registrar_evidencia" className="nav-link" style={{ color: 'white' }}>
                             Registrar Evidencia
-                            </a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link " href="/evidencias_registradas" style={{color:"white"}}>
-                            Evidencia Registrada
-                            </a>
+                          <Link to="/evidencias_registradas" className="nav-link" style={{ color: 'white' }}>
+                          Evidencia Registrada
+                          </Link>
                         </li>
+
                         </ul>
                     </li>
 
@@ -144,15 +148,16 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
                         </span>
                         </a>
                         <ul className="nav flex-column ml-3">
-                        <li className="nav-item  side-bar-text">
-                            <a className="nav-link" href="/crear_informe" style={{color:"white"}}>
-                            Crear Informe
-                            </a>
+                        <li className="nav-item">
+                          <Link to="/crear_informe" className="nav-link" style={{ color: 'white' }}>
+                              Crear Informe
+                          </Link>
                         </li>
-                        <li className="nav-item  side-bar-text">
-                            <a className="nav-link" href="/informes_registrados" style={{color:"white"}}>
-                            Observar Informe
-                            </a>
+                        
+                        <li className="nav-item">
+                          <Link to="/informes_registrados" className="nav-link" style={{ color: 'white' }}>
+                              Informes Registrados
+                          </Link>
                         </li>
                         </ul>
                     </li>
