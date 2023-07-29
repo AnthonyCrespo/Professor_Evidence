@@ -66,7 +66,12 @@ export function Registered_reports() {
               <tr key={item.id}>
                 <td>{item.semester_name}</td>
                 <td>{item.report_uploadDate}</td>
-                <td>{item.report_name}</td>
+{/*                 <td>{item.uploadedReport}</td> */}
+                <td>
+                    <a href={item.uploadedReport} target="_blank">
+                      {item.uploadedReport.substring(item.uploadedReport.lastIndexOf('/') + 1)}
+                    </a>
+                  </td>
                 <td>{item.report_professorComment}</td>
                 <td>{item.report_revisorComment}</td>
                 <td style={item.report_isReviewed ? greenBgStyle : redBgStyle}>
