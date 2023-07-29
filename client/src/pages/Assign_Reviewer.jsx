@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { Navigate} from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,7 +25,13 @@ export function Assign_Reviewer() {
 
   const ci = useSelector(state => state.profile.ci);
   //console.log("el ci es "+ ci)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  if (!isAuthenticated){
+    console.log("El usuario no está autenticado.")
+    return <Navigate to='/login' />;
+  }
 
+  
   const currentDate = new Date();
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();

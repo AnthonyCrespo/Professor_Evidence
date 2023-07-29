@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal'
 import Table from 'react-bootstrap/Table';
 import { useForm } from 'react-hook-form';
 import Container from 'react-bootstrap/Container';
-
+import { Navigate} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
@@ -22,7 +22,13 @@ import { getSemesters,
 export function Aprobar_Report() {
   const ci = useSelector(state => state.profile.ci);
   console.log("el ci es "+ ci)
-  
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+    
+  if (!isAuthenticated){
+    console.log("El usuario no está autenticado.")
+    return <Navigate to='/login' />;
+  }
   const [selectedProfessor, setSelectedProfessor] = useState(0);
 
 

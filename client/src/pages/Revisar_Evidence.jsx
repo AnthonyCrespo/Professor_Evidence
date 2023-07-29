@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 
-
 /* ------------- Import Functions from API ------------------ */
 import { getActivitiesType, 
          getEvidencesType, 
