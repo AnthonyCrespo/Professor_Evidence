@@ -46,7 +46,7 @@ export function Register_evidence() {
     const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
     
 
-
+    /* ------------- Load Activities ------------------  */
     useEffect(() => {
       async function loadActivitiesType() {
         const res = await getActivitiesType();
@@ -56,7 +56,7 @@ export function Register_evidence() {
       loadActivitiesType();
     }, []);
   
-
+    /* ------------- Load Evidences ------------------  */
     useEffect(() => {
       async function loadEvidencesType() {
         const res = await getEvidencesType();
@@ -91,8 +91,8 @@ export function Register_evidence() {
       reset
     } = useForm();
 
-    const navigate = useNavigate()
 
+     /* ------------- Submit Evidence -----------------  */
     const onSubmit = handleSubmit(async (data) => {
 /*       const formData = new FormData();
       formData.append('uploadedDocument', data.document_pathToFile[0]); */
@@ -105,25 +105,19 @@ export function Register_evidence() {
         document_revisorComment: " ",
         document_professorComment: professorComment,
         document_uploadDate: formattedDate,
-        //document_pathToFile: data.document_pathToFile[0].name,
         uploadedDocument: data.document_pathToFile[0],
-        //document_approved: null
       };
   
 /*       evidenceData.uploadedDocument = formData.get('uploadedDocument');
       console.log(evidenceData.uploadedDocument) */
       console.log(evidenceData)
-      await createEvidence(evidenceData);
+      //await createEvidence(evidenceData);
       //navigate("/home/");
 
       /* Set form to default values */
       reset();  
       setSelectedActivity(1)
-      setSelectedActivity(evidences[0].id)
       setProfessorComment(" ")
-      /* setSelectedEvidence(0) */
-
-      /* Show notification */
       toast.success('Evidencia registrada existosamente!', {
         position: toast.POSITION.BOTTOM_RIGHT,
         autoClose: 2000, // Duración en milisegundos antes de que la notificación se cierre automáticamente
@@ -161,30 +155,7 @@ export function Register_evidence() {
                 </Form.Select>
                 {errors.activity_type && <span>Debe elegir un tipo de actividad.</span>}
               </Form.Group>
-
-
-              {/*-----------------------------------------------------  */}
-              {/*------------------- Evidences Type ------------------  */}
-              {/*-----------------------------------------------------  */}
-{/*               <Form.Group className="mt-4">
-                <Form.Label>Evidencia:</Form.Label>
-                <Select
-                  id="evidences"
-                  labelKey="label"
-                  defaultValue={options[1]}
-                  onChange={(selectedOption) => {
-                    setSelectedEvidence(selectedOption['value']);
-                    console.log(selectedEvidence);
-                    setValue('evidence_type', selectedOption['value']);
-                  }}
-                  options={options}
-                  placeholder="Seleccionar evidencia"
-                />
-              </Form.Group>
- */}
-
-
-              
+             
 
               {/*-----------------------------------------------------  */}
               {/*------------------- Evidences Type ------------------  */}
