@@ -16,7 +16,6 @@ import { load_user } from '../actions/profile';
 import { logout } from '../actions/auth';
 import { useSelector } from 'react-redux';
 import { getProfessors } from '../api/task.api';
-
 import logo from '../resources/logo.png'
 
 const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
@@ -104,10 +103,11 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
                         </a>
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item">
-                            <a className="nav-link" href="/asignar_revisores" style={{color:"white"}}>
-                            Asignar Revisores
-                            </a>
+                          <Link to="/asignar_revisores" className="nav-link" style={{ color: 'white' }}>
+                          Asignar Revisores
+                          </Link>
                         </li>
+                        
                         </ul>
                     </li>
 
@@ -120,10 +120,10 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
                         </span>
                         </a>
                         <ul className="nav flex-column ml-3">
-                        <li className="nav-item  side-bar-text">
-                            <a className="nav-link" href="/aprobar_reportes" style={{color:"white"}}>
-                            Aprobar Informes
-                            </a>
+                        <li className="nav-item">
+                          <Link to="/aprobar_reportes" className="nav-link" style={{ color: 'white' }}>
+                          Aprobar Informes
+                          </Link>
                         </li>
                         </ul>
                     </li>
