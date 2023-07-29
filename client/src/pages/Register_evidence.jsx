@@ -170,7 +170,7 @@ export function Register_evidence() {
                                     }}
                     >
                       {evidences.map(opcion => (
-                        <option key={opcion.id} value={opcion.id}>{opcion.evidence_type}</option>
+                        <option key={opcion.id} value={opcion.id}>{opcion.evidence_code}</option>
                       ))}
                     </Form.Select>
                     {errors.evidence_type && <span>Debe elegir un tipo de evidencia.</span>}

@@ -129,10 +129,10 @@ export function Create_report() {
     };
 
     // Ensure that loadReports runs whenever semesters, ci, or reports state changes.
-    if (semesters.length > 0 && ci && reports.length === 0) {
+    if (semesters.length > 0 && ci) {
       loadReports();
     }
-  }, [semesters, ci, reports]);
+  }, [semesters, ci]);
 
 
   // const handleChange = (e) => {

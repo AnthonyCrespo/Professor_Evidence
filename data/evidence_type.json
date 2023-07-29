@@ -1,434 +1,434 @@
 [
-    {
-        "model": "professor_evidence.evidence_type",
-        "pk": 1,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Impartir clases, seminarios, talleres, entre otros.",
-          "evidence_code": "D1"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 2,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Planificar y actualizar contenidos de clases, seminarios, talleres, entre otros.",
-          "evidence_code": "D2"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 3,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Dise�ar y elaborar material did�ctico, gu�as docentes o syllabus.",
-          "evidence_code": "D3"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 4,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Dise�ar y elaborar textos.",
-          "evidence_code": "D4"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 5,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Orientar y acompa�ar a los estudiantes a trav�s de tutor�as, individuales o grupales.",
-          "evidence_code": "D5"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 6,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Realizar visitas de campo, tutor�as, docencia en servicio y formaci�n dual.",
-          "evidence_code": "D6"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 7,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Llevar a cabo la direcci�n, tutor�as, seguimiento y evaluaci�n de pr�cticas o pasant�as preprofesionales.",
-          "evidence_code": "D7"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 8,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Preparar, elaborar, aplicar y calificar ex�menes, trabajos y pr�cticas.",
-          "evidence_code": "D8"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 9,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Efectuar la direcci�n y tutor�a de trabajos para la obtenci�n del t�tulo.",
-          "evidence_code": "D9"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 10,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Direccionar y participar en proyectos de experimentaci�n e innovaci�n docente.",
-          "evidence_code": "D10"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 11,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Dise�ar e impartir cursos de educaci�n continua o de capacitaci�n y actualizaci�n.",
-          "evidence_code": "D11"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 12,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Participar y organizar colectivos acad�micos de debate, capacitaci�n o intercambio de metodolog�as y experiencias de ense�anza.",
-          "evidence_code": "D12"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 13,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Llevar a cabo el uso pedag�gico de la investigaci�n formativa y la sistematizaci�n como soporte o parte de la ense�anza.",
-          "evidence_code": "D13"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 14,
-        "fields": {
-          "activity_type": 1,
-          "evidence_type": "Coordinar los aprendizajes pr�cticos y de laboratorio.",
-          "evidence_code": "D14"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 15,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Impulsar procesos de cooperaci�n y desarrollo.",
-          "evidence_code": "V1"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 16,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Prestar la asistencia t�cnica, de servicios especializados, as� como la participaci�n en consultor�as que generen beneficio a la colectividad.",
-          "evidence_code": "V2"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 17,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Impartir cursos de educaci�n continua, capacitaci�n, actualizaci�n y certificaci�n de competencias.",
-          "evidence_code": "V3"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 18,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Prestar servicios a la sociedad tales como el an�lisis de laboratorio especializado, el peritaje, la revisi�n t�cnica documental, entre otros.",
-          "evidence_code": "V4"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 19,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Fomentar la constituci�n, desarrollo y fortalecimiento de organizaciones de la sociedad civil, redes y dem�s espacios de participaci�n ciudadana.",
-          "evidence_code": "V5"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 20,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Organizar o participar en actividades de divulgaci�n, democratizaci�n y distribuci�n del saber.",
-          "evidence_code": "V6"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 21,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Promocionar la internacionalizaci�n de la comunidad acad�mica superior e impulso de las relaciones internacionales.",
-          "evidence_code": "V7"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 22,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Desarrollar proyectos de innovaci�n que permitan aplicar los conocimientos generados en las IES, en proyectos productivos o de beneficio social.",
-          "evidence_code": "V8"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 23,
-        "fields": {
-          "activity_type": 2,
-          "evidence_type": "Dar gu�a y seguimiento a estudiantes que participen en proyectos de vinculaci�n y evaluar pr�cticas preprofesionales de servicio comunitario desarrolladas en dichos proyectos.",
-          "evidence_code": "V9"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 24,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Dise�ar, direccionar y ejecutar proyectos de investigaci�n b�sica, aplicada, tecnol�gica y en artes, o proyectos de vinculaci�n articulados a la investigaci�n, que supongan creaci�n, innovaci�n, difusi�n y transferencia de los resultados obtenidos.",
-          "evidence_code": "I1"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 25,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Realizar investigaci�n para la comprensi�n, recuperaci�n, fortalecimiento y potenciaci�n de los saberes ancestrales.",
-          "evidence_code": "I2"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 26,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Dise�ar, elaborar y poner en marcha metodolog�as, instrumentos, protocolos o procedimientos operativos o de investigaci�n.",
-          "evidence_code": "I3"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 27,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Investigar en laboratorios, centros documentales y dem�s instalaciones habilitadas para esta funci�n, as� como en entornos sociales.",
-          "evidence_code": "I4"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 28,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Participar en congresos, seminarios y conferencias para la presentaci�n de avances y resultados de sus investigaciones.",
-          "evidence_code": "I5"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 29,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Participar en congresos, seminarios y conferencias para la presentaci�n de avances y resultados de sus investigaciones.",
-          "evidence_code": "I6"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 30,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Dise�ar y participar en redes y programas de investigaci�n local, nacional e internacional.",
-          "evidence_code": "I7"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 31,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Participar en comit�s o consejos acad�micos y editoriales de revistas cient�ficas y acad�micas indexadas y/o arbitradas.",
-          "evidence_code": "I8"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 32,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Llevar a cabo la difusi�n de resultados y beneficios sociales de la investigaci�n, a trav�s de publicaciones, producciones art�sticas, actuaciones, conciertos, creaci�n u organizaci�n de instalaciones y de exposiciones, entre otros.",
-          "evidence_code": "I9"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 33,
-        "fields": {
-          "activity_type": 3,
-          "evidence_type": "Direccionar o participar en colectivos acad�micos de debate para la presentaci�n de avances y resultados de investigaciones.",
-          "evidence_code": "I10"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 34,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Desempe�ar las funciones como rector, vicerrector o integrante del �rgano colegiado superior.",
-          "evidence_code": "G1"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 35,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Desempe�ar las funciones o cargos de decano, subdecano o similar jerarqu�a.",
-          "evidence_code": "G2"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 36,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Dirigir escuelas, departamentos, centros o institutos de investigaci�n.",
-          "evidence_code": "G3"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 37,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Dirigir y/o coordinar carreras o programas.",
-          "evidence_code": "G4"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 38,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Dirigir y/o gestionar los procesos de docencia, investigaci�n y vinculaci�n con la sociedad en sus distintos niveles de organizaci�n acad�mica e institucional.",
-          "evidence_code": "G5"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 39,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Organizar y/o dirigir eventos acad�micos nacionales o internacionales.",
-          "evidence_code": "G6"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 40,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Desempe�ar cargos tales como: editor acad�mico, director o miembro editorial de una publicaci�n.",
-          "evidence_code": "G7"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 41,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Dise�ar proyectos de carreras y programas de estudios de grado y posgrado.",
-          "evidence_code": "G8"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 42,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Participar como delegado institucional en organismos p�blicos u otros que forman parte del Sistema de Educaci�n Superior, as� como sociedades cient�ficas o acad�micas.",
-          "evidence_code": "G9"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 43,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Participar como evaluador o facilitador acad�mico externo del CES, el CACES, el �rgano Rector de la Pol�tica P�blica de Educaci�n Superior u otro organismo p�blico de investigaci�n o desarrollo tecnol�gico.",
-          "evidence_code": "G10"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 44,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Participar como representante del estamento de profesores e investigadores de acuerdo con el estatuto de la IES particular en las sesiones del �rgano colegiado superior.",
-          "evidence_code": "G11"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 45,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Integrar en calidad de Consejero Acad�mico de los organismos que rigen el Sistema de Educaci�n Superior (CES y CACES); en estos casos, se reconocer� la dedicaci�n como equivalente a tiempo completo.",
-          "evidence_code": "G12"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 46,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Ejercer cargos de nivel jer�rquico superior en el �rgano Rector de la Pol�tica P�blica de Educaci�n Superior; en estos casos se reconocer� la dedicaci�n como equivalente a tiempo completo.",
-          "evidence_code": "G13"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 47,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Formar parte de COMISIONES acad�micas en escuelas.",
-          "evidence_code": "G14"
-        }
-      },
-      {
-        "model": "professor_evidence.evidence_type",
-        "pk": 48,
-        "fields": {
-          "activity_type": 4,
-          "evidence_type": "Participar en capacitaciones de formaci�n pedag�gica.",
-          "evidence_code": "G15"
-        }
-      }
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 1,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Impartir clases, seminarios, talleres, entre otros.",
+      "evidence_code": "D1"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 2,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Planificar y actualizar contenidos de clases, seminarios, talleres, entre otros.",
+      "evidence_code": "D2"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 3,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Diseñar y elaborar material didáctico, guías docentes o syllabus.",
+      "evidence_code": "D3"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 4,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Diseñar y elaborar textos.",
+      "evidence_code": "D4"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 5,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Orientar y acompañar a los estudiantes a través de tutorías, individuales o grupales.",
+      "evidence_code": "D5"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 6,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Realizar visitas de campo, tutorías, docencia en servicio y formación dual.",
+      "evidence_code": "D6"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 7,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Llevar a cabo la dirección, tutorías, seguimiento y evaluación de prácticas o pasantías preprofesionales.",
+      "evidence_code": "D7"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 8,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Preparar, elaborar, aplicar y calificar exámenes, trabajos y prácticas.",
+      "evidence_code": "D8"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 9,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Efectuar la dirección y tutoría de trabajos para la obtención del título.",
+      "evidence_code": "D9"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 10,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Direccionar y participar en proyectos de experimentación e innovación docente.",
+      "evidence_code": "D10"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 11,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Diseñar e impartir cursos de educación continua o de capacitación y actualización.",
+      "evidence_code": "D11"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 12,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Participar y organizar colectivos académicos de debate, capacitación o intercambio de metodologías y experiencias de enseñanza.",
+      "evidence_code": "D12"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 13,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Llevar a cabo el uso pedagógico de la investigación formativa y la sistematización como soporte o parte de la enseñanza.",
+      "evidence_code": "D13"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 14,
+    "fields": {
+      "activity_type": 1,
+      "evidence_type": "Coordinar los aprendizajes prácticos y de laboratorio.",
+      "evidence_code": "D14"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 15,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Impulsar procesos de cooperación y desarrollo.",
+      "evidence_code": "V1"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 16,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Prestar la asistencia técnica, de servicios especializados, así como la participación en consultorías que generen beneficio a la colectividad.",
+      "evidence_code": "V2"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 17,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Impartir cursos de educación continua, capacitación, actualización y certificación de competencias.",
+      "evidence_code": "V3"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 18,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Prestar servicios a la sociedad tales como el análisis de laboratorio especializado, el peritaje, la revisión técnica documental, entre otros.",
+      "evidence_code": "V4"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 19,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Fomentar la constitución, desarrollo y fortalecimiento de organizaciones de la sociedad civil, redes y demás espacios de participación ciudadana.",
+      "evidence_code": "V5"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 20,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Organizar o participar en actividades de divulgación, democratización y distribución del saber.",
+      "evidence_code": "V6"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 21,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Promocionar la internacionalización de la comunidad académica superior e impulso de las relaciones internacionales.",
+      "evidence_code": "V7"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 22,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Desarrollar proyectos de innovación que permitan aplicar los conocimientos generados en las IES, en proyectos productivos o de beneficio social.",
+      "evidence_code": "V8"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 23,
+    "fields": {
+      "activity_type": 2,
+      "evidence_type": "Dar guía y seguimiento a estudiantes que participen en proyectos de vinculación y evaluar prácticas preprofesionales de servicio comunitario desarrolladas en dichos proyectos.",
+      "evidence_code": "V9"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 24,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Diseñar, direccionar y ejecutar proyectos de investigación básica, aplicada, tecnológica y en artes, o proyectos de vinculación articulados a la investigación, que supongan creación, innovación, difusión y transferencia de los resultados obtenidos.",
+      "evidence_code": "I1"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 25,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Realizar investigación para la comprensión, recuperación, fortalecimiento y potenciación de los saberes ancestrales.",
+      "evidence_code": "I2"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 26,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Diseñar, elaborar y poner en marcha metodologías, instrumentos, protocolos o procedimientos operativos o de investigación.",
+      "evidence_code": "I3"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 27,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Investigar en laboratorios, centros documentales y demás instalaciones habilitadas para esta función, así como en entornos sociales.",
+      "evidence_code": "I4"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 28,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Participar en congresos, seminarios y conferencias para la presentación de avances y resultados de sus investigaciones.",
+      "evidence_code": "I5"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 29,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Participar en congresos, seminarios y conferencias para la presentación de avances y resultados de sus investigaciones.",
+      "evidence_code": "I6"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 30,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Diseñar y participar en redes y programas de investigación local, nacional e internacional.",
+      "evidence_code": "I7"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 31,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Participar en comités o consejos académicos y editoriales de revistas científicas y académicas indexadas y/o arbitradas.",
+      "evidence_code": "I8"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 32,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Llevar a cabo la difusión de resultados y beneficios sociales de la investigación, a través de publicaciones, producciones artísticas, actuaciones, conciertos, creación u organización de instalaciones y de exposiciones, entre otros.",
+      "evidence_code": "I9"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 33,
+    "fields": {
+      "activity_type": 3,
+      "evidence_type": "Direccionar o participar en colectivos académicos de debate para la presentación de avances y resultados de investigaciones.",
+      "evidence_code": "I10"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 34,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Desempeñar las funciones como rector, vicerrector o integrante del órgano colegiado superior.",
+      "evidence_code": "G1"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 35,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Desempeñar las funciones o cargos de decano, subdecano o similar jerarquía.",
+      "evidence_code": "G2"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 36,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Dirigir escuelas, departamentos, centros o institutos de investigación.",
+      "evidence_code": "G3"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 37,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Dirigir y/o coordinar carreras o programas.",
+      "evidence_code": "G4"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 38,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Dirigir y/o gestionar los procesos de docencia, investigación y vinculación con la sociedad en sus distintos niveles de organización académica e institucional.",
+      "evidence_code": "G5"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 39,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Organizar y/o dirigir eventos académicos nacionales o internacionales.",
+      "evidence_code": "G6"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 40,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Desempeñar cargos tales como: editor académico, director o miembro editorial de una publicación.",
+      "evidence_code": "G7"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 41,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Diseñar proyectos de carreras y programas de estudios de grado y posgrado.",
+      "evidence_code": "G8"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 42,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar como delegado institucional en organismos públicos u otros que forman parte del Sistema de Educación Superior, así como sociedades científicas o académicas.",
+      "evidence_code": "G9"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 43,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar como evaluador o facilitador académico externo del CES, el CACES, el órgano Rector de la Política Pública de Educación Superior u otro organismo público de investigación o desarrollo tecnológico.",
+      "evidence_code": "G10"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 44,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar como representante del estamento de profesores e investigadores de acuerdo con el estatuto de la IES particular en las sesiones del órgano colegiado superior.",
+      "evidence_code": "G11"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 45,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Integrar en calidad de Consejero Académico de los organismos que rigen el Sistema de Educación Superior (CES y CACES); en estos casos, se reconocerá la dedicación como equivalente a tiempo completo.",
+      "evidence_code": "G12"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 46,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Ejercer cargos de nivel jerárquico superior en el órgano Rector de la Política Pública de Educación Superior; en estos casos se reconocerá la dedicación como equivalente a tiempo completo.",
+      "evidence_code": "G13"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 47,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Formar parte de COMISIONES académicas en escuelas.",
+      "evidence_code": "G14"
+    }
+  },
+  {
+    "model": "professor_evidence.evidence_type",
+    "pk": 48,
+    "fields": {
+      "activity_type": 4,
+      "evidence_type": "Participar en capacitaciones de formación pedagógica.",
+      "evidence_code": "G15"
+    }
+  }
 ]

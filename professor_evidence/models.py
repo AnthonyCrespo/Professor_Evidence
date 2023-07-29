@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 
 from django.core.files.storage import default_storage
 from django.http import JsonResponse
-import os
+import os, io
 from django.utils.text import slugify
 from datetime import datetime
 # Create your models here.
@@ -234,5 +234,35 @@ class Report(models.Model):
     report_isReviewed = models.BooleanField(default = False)
     report_isApproved = models.BooleanField(default = False)
     report_pathToFile = models.TextField(max_length=200)
+    uploadedReport = models.FileField(upload_to='report_pdfs', max_length=500, blank=True)
+
+    def save(self, *args, **kwargs):
+        # Generate the PDF
+        pdf_buffer = generate_pdf(self)
+
+        # Save the PDF to the FileField
+        self.uploadedReport.save(f"{self.report_name}.pdf", pdf_buffer, save=False)
+
+        super(Report, self).save(*args, **kwargs)
+        
     def __str__(self):
         return self.report_name
+
+
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+
+def generate_pdf(report):
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=letter)
+
+    # Write the report data to the PDF
+    c.drawString(100, 750, "Report Name: {}".format(report.report_name))
+    c.drawString(100, 700, "Teaching Summary: {}".format(report.teaching_report_summary))
+    # Add other fields as needed...
+
+    c.save()
+
+    # Set the buffer's file position to the beginning
+    buffer.seek(0)
+    return buffer
