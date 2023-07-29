@@ -275,7 +275,7 @@ useEffect(() => {
 
 
       
-      <h5>Documentos subidos:</h5>
+      <h5>Informes registrados</h5>
       <div style={{ maxWidth: '80%' }}>
         <Table striped bordered hover>
             <thead>
