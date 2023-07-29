@@ -7,7 +7,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { connect } from 'react-redux';
@@ -103,17 +102,6 @@ const Base = ({ children, checkAuthenticated, logout, load_user}) => {
                 <div className="col-auto min-vh-100" style={{backgroundColor:"RGB(39, 39, 39)"}}>
                     <ul className="nav flex-column mt-3">
 
-                    {/* -------Home option ------- */}
-{/*                     <li className="nav-item mt-2">
-                        <a className="nav-link px-2" href="/home">
-                        <i className='bi bi-house side-bar-icon'></i>
-                        <span className='ms-1 d-none d-sm-inline  side-bar-text'>
-                            Home
-                        </span>
-                        </a>
-                    </li> */}
-                    
-                    {/* -------Evidencias option ------- */}
 
                     {/* -------Evidencias option ------- */}
 

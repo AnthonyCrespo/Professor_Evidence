@@ -105,7 +105,7 @@ const Base_Revisor = ({ children, checkAuthenticated, logout, load_user}) => {
                         </a>
                         <ul className="nav flex-column ml-3">
                         <li className="nav-item">
-                          <Link to="/revisar_reportes" className="nav-link" style={{ color: 'white' }}>
+                          <Link to="/revisar_evidencias" className="nav-link" style={{ color: 'white' }}>
                           Revisar Evidencia
                           </Link>
                         </li>
