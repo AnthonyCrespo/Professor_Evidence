@@ -111,7 +111,7 @@ export function Register_evidence() {
 /*       evidenceData.uploadedDocument = formData.get('uploadedDocument');
       console.log(evidenceData.uploadedDocument) */
       console.log(evidenceData)
-      //await createEvidence(evidenceData);
+      await createEvidence(evidenceData);
       //navigate("/home/");
 
       /* Set form to default values */
