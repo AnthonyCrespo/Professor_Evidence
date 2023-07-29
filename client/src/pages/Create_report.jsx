@@ -3,7 +3,7 @@ import  Base from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,8 +21,14 @@ import { useSelector } from 'react-redux';
 import './css/Create_report.css';
 
 export function Create_report() {
-    const ci = useSelector(state => state.profile.ci);
-    //console.log("El CI en create report es "+ ci)
+  const ci = useSelector(state => state.profile.ci);
+  //console.log("El CI en create report es "+ ci)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    
+  if (!isAuthenticated){
+    console.log("El usuario no está autenticado.")
+    return <Navigate to='/login' />;
+  }
 
   const [activities, setActivities] = useState([]);
   const [reports, setReports] = useState([]);
@@ -175,8 +181,6 @@ export function Create_report() {
       // Aquí puedes realizar otras acciones relacionadas con el manejo del error, si es necesario.
     }
   });
-  
-  
   
   return (
     <Base>

@@ -1,14 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import Base_Revisor from './Base_Revisor';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import logo_saed from '../resources/logo_saed.png'
-
-
+import { Navigate} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export function HomeRevisor(){
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    if (!isAuthenticated){
+        console.log("El usuario no está autenticado.")
+        return <Navigate to='/login' />;
+      }
     return (
         <Base_Revisor >
             <h3 className="text-center mb-3" style={{ marginTop: '30px' }}>

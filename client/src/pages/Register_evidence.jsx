@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import {Typeahead} from 'react-bootstrap-typeahead'
 import { useForm } from 'react-hook-form';
 import Select from 'react-select';
-import { useNavigate } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -27,6 +27,14 @@ export function Register_evidence() {
 
     const ci = useSelector(state => state.profile.ci);
     console.log("El CI en register evidence es "+ ci)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+    
+  if (!isAuthenticated){
+    console.log("El usuario no está autenticado.")
+    return <Navigate to='/login' />;
+  }
+  
     const [options, setOptions] = useState([]);
 
     const [activities, setActivities] = useState([]);
@@ -129,6 +137,7 @@ export function Register_evidence() {
 
 
     })
+
 
   return (
     <Base>

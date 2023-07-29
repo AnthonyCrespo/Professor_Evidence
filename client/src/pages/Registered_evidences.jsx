@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import './css/Registered_evidences.css';
-
+import { Navigate} from 'react-router-dom';
 
 /* ------------- Import Functions from API ------------------ */
 import { getActivitiesType, 
@@ -29,7 +29,12 @@ export function Registered_evidences() {
 
   const ci = useSelector(state => state.profile.ci);
   console.log("El CI en registered evidences es "+ ci)
-
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  
+  if (!isAuthenticated){
+    console.log("El usuario no está autenticado.")
+    return <Navigate to='/login' />;
+  }
 
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(0);
@@ -289,7 +294,6 @@ useEffect(() => {
     setShowConfirmationModal(false);
   };
 
-  
   return (
     <Base>
       <h1>Evidencias Registradas</h1>

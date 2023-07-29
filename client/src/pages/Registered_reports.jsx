@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import  Base  from './Base';
 import Table from 'react-bootstrap/Table';
-
+import { Navigate} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { getReports } from '../api/task.api';
 import { getSemesters } from '../api/task.api';
 
-import { useSelector } from 'react-redux';
 
 export function Registered_reports() {
   const ci = useSelector(state => state.profile.ci);
   console.log("El CI en registered reports es "+ ci)
-
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  if (!isAuthenticated){
+    console.log("El usuario no está autenticado.")
+    return <Navigate to='/login' />;
+  }
 
   const [reports, setReports] = useState([]);
   const [semesters, setSemesters] = useState([]);
@@ -42,7 +46,10 @@ export function Registered_reports() {
   }, [semesters, ci]);
   const greenBgStyle = { backgroundColor: "rgb(176, 227, 117)" };
   const redBgStyle = { backgroundColor: "rgb(242, 133, 132)" };
+ 
   
+
+
   return (
     <Base>
     <br/>
