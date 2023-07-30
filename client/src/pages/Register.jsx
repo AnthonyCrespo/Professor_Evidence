@@ -41,8 +41,7 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
 
   return (
     <div className='container mt-5'>
-      <h1>Register for an Account</h1>
-      <p>Create an account with our Session Auth application</p>
+      <h1>Registrar una nueva cuenta</h1>
       <form onSubmit={e => onSubmit(e)}>
         <CSRFToken/>
         <div className='form-group'>
