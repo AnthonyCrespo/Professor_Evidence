@@ -9,4 +9,4 @@ class UserProfile(models.Model):
     ci = models.CharField(max_length=10, default='')
 
     def __str__(self):
-        return self.first_name
+        return self.first_name + " " + self.last_name

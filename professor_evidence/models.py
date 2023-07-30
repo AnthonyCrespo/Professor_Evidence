@@ -48,7 +48,8 @@ class Professor(models.Model):
     isRevisor = models.BooleanField(default = False)
     isDean = models.BooleanField(default = False)
     def __str__(self):
-        return str(self.professor_id)
+        #return str(self.professor_id)
+        return self.professor_names + " " + self.professor_lastnames
 
 class Semester_School(models.Model):
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
@@ -206,7 +207,7 @@ class Report(models.Model):
         super(Report, self).save(*args, **kwargs)
         
     def __str__(self):
-        return str(self.semester_id.semester_name + '_' + self.professor_id)
+        return str(self.semester_id.semester_name + '_' + str(self.professor_id))
         
 @receiver(pre_delete, sender=Report)
 def delete_report_pdf(sender, instance, **kwargs):

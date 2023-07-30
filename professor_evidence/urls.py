@@ -15,6 +15,7 @@ router.register(r'Document',views.DocumentView, 'Document')
 router.register(r'Evidence_Type',views.Evidence_TypeView, 'Evidence_Type')
 router.register(r'Report',views.ReportView, 'Report')
 router.register(r'Activity_Type',views.Activity_TypeView, 'Activity_Type')
+
 # router.register(r'Document_File',views.Activity_TypeView, 'Document_File')
 # router.register(r'Activity_Report_Teaching',views.Activity_Report_TeachingView, 'Activity_Report_Teaching')
 # router.register(r'Activity_Report_Investigation',views.Activity_Report_InvestigationView, 'Activity_Report_Investigation')
