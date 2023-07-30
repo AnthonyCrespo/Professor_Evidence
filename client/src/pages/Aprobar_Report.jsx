@@ -349,13 +349,6 @@ useEffect(() => {
               {         item.report_isApproved ? "APROBADO" : "NO APROBADO"}
                     </td>
                     <td>
-{/*                         <button
-                        className="btn btn-success"
-                        onClick={() => handleVisualizarClick(item.id)}
-                        >
-                        Visualizar
-                        </button> */}
-                        <br/>
                         <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
                     </td>
                 </tr>
