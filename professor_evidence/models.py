@@ -153,23 +153,26 @@ class Report(models.Model):
     report_reviewedBy = models.ForeignKey(Semester_Career, on_delete=models.CASCADE)
     report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
     # Information about the activities
-    teaching_report_summary = models.TextField(max_length=200)
+    teaching_report_summary = models.TextField(max_length=500)
     teaching_report_hoursPerWeek = models.FloatField()
     teaching_report_hoursPerWeekIntersemester = models.FloatField()
-    management_report_summary = models.TextField(max_length=200)
+    
+    management_report_summary = models.TextField(max_length=500)
     management_report_hoursPerWeek = models.FloatField()
     management_report_hoursPerWeekIntersemester = models.FloatField()
-    vinculation_report_summary = models.TextField(max_length=200)
+    
+    vinculation_report_summary = models.TextField(max_length=500)
     vinculation_report_hoursPerWeek = models.FloatField()
     vinculation_report_hoursPerWeekIntersemester = models.FloatField()
-    investigation_report_summary = models.TextField(max_length=200)
+    
+    investigation_report_summary = models.TextField(max_length=500)
     investigation_report_hoursPerWeek = models.FloatField()
     investigation_report_hoursPerWeekIntersemester = models.FloatField()
     # Report information
     # report_name = models.TextField(max_length=200)
-    report_professorComment = models.TextField(max_length=200, blank=True)
-    report_revisorComment = models.TextField(max_length=200, blank=True)
-    report_conclusion = models.TextField(max_length=200, blank=True)
+    report_professorComment = models.TextField(max_length=350, blank=True)
+    report_revisorComment = models.TextField(max_length=350, blank=True)
+    report_conclusion = models.TextField(max_length=500, blank=True)
     report_uploadDate = models.DateField(auto_now=False, auto_now_add=True)
     report_isReviewed = models.BooleanField(default = False)
     report_isApproved = models.BooleanField(default = False)

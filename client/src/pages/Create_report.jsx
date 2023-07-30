@@ -24,32 +24,43 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const hoursValidation = yup
 .number()
+.typeError("Debe insertar un valor numérico")
 .min(0, 'El número de horas debe ser mayor o igual a 0')
 .max(50, 'El número de horas debe ser menor a 50')
 .required('Este campo es obligatorio')
 
 const schema = yup.object().shape({
-  teaching_report_summary: yup.string().required('Este campo es obligatorio'),
+  teaching_report_summary: yup
+                           .string().required('Este campo es obligatorio')
+                           .max(500, "El campo debe tener máximo 500 caracteres"),
   teaching_report_hoursPerWeek: hoursValidation,
   teaching_report_hoursPerWeekIntersemester: hoursValidation,
 
 
-  management_report_summary: yup.string().required('Este campo es obligatorio'),
+  management_report_summary: yup
+                            .string().required('Este campo es obligatorio')
+                            .max(500, "El campo debe tener máximo 500 caracteres"),
   management_report_hoursPerWeek:hoursValidation,
   management_report_hoursPerWeekIntersemester:hoursValidation,
 
 
-  vinculation_report_summary: yup.string().required('Este campo es obligatorio'),
+  vinculation_report_summary: yup
+                            .string().required('Este campo es obligatorio')
+                            .max(500, "El campo debe tener máximo 500 caracteres"),
   vinculation_report_hoursPerWeek:hoursValidation,
   vinculation_report_hoursPerWeekIntersemester:hoursValidation,
 
 
-  investigation_report_summary: yup.string().required('Este campo es obligatorio'),
+  investigation_report_summary: yup
+                            .string().required('Este campo es obligatorio')
+                            .max(500, "El campo debe tener máximo 500 caracteres"),
   investigation_report_hoursPerWeek:hoursValidation,
   investigation_report_hoursPerWeekIntersemester:hoursValidation,
-
-
-  report_conclusion: yup.string().required('Este campo es obligatorio')
+  report_professorComment:yup.string()
+                             .max(500, "El campo debe tener máximo 350 caracteres"),
+  report_conclusion:yup
+                        .string().required('Este campo es obligatorio')
+                        .max(500, "El campo debe tener máximo 350 caracteres"),
 });
 
 
@@ -558,7 +569,13 @@ export function Create_report() {
                                                 ...prevForm,
                                                 report_professorComment: e.target.value
                                               }));
-                                              }}/>
+                                              }}
+                                              {...register("report_professorComment")}
+                                              />
+                            
+                            {errors.report_professorComment && (
+                              <span className="text-danger">{errors.report_professorComment.message}</span>
+                            )}
           </Form.Group>
           <Button className="mt-4" variant="primary" type="submit">Generar reporte</Button>
         </Tab.Pane>

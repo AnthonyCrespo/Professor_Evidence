@@ -207,7 +207,7 @@ export function Register_evidence() {
                   }}
                   {...register('document_pathToFile', { required: true })}
                 />
-                {errors.document_pathToFile && <span>Se requiere subir un documento.</span>}
+                {errors.document_pathToFile && <span className="text-danger">Se requiere subir un documento.</span>}
               </Form.Group>
 
               <Form.Group className="mt-4">
