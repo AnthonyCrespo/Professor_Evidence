@@ -42,16 +42,16 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
 
     return (
       <div className='register-container'>
-        <h1>Registrar una nueva cuenta</h1>
         <div className="login-box">
+        <h2>Registrar una nueva cuenta</h2>
         <form onSubmit={e => onSubmit(e)}>
           <CSRFToken/>
           <div className='form-group'>
-            <label className='form-label'>Nombre: </label>
+           {/*  <label className='form-label'>Nombre: </label> */}
             <input
               className='form-control'
               type='text'
-              placeholder='Nombre*'
+              placeholder='Nombre'
               name='first_name'
               onChange={e => onChange(e)}
               value={first_name}
@@ -60,11 +60,11 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
           </div>
     
           <div className='form-group'>
-            <label className='form-label'>Apellido: </label>
+{/*             <label className='form-label'>Apellido: </label> */}
             <input
               className='form-control'
               type='text'
-              placeholder='Apellido*'
+              placeholder='Apellido'
               name='last_name'
               onChange={e => onChange(e)}
               value={last_name}
@@ -73,11 +73,11 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
           </div>
     
           <div className='form-group'>
-            <label className='form-label'>Cédula de Identidad/Pasaporte: </label>
+            {/* <label className='form-label'>Cédula de Identidad/Pasaporte: </label> */}
             <input
               className='form-control'
               type='text'
-              placeholder='Cédula de Identidad/Pasaporte*'
+              placeholder='Cédula de Identidad/Pasaporte'
               name='ci'
               onChange={e => onChange(e)}
               value={ci}
@@ -86,11 +86,11 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
           </div>
     
           <div className='form-group'>
-            <label className='form-label'>Nombre de Usuario: </label>
+            {/* <label className='form-label'>Nombre de Usuario: </label> */}
             <input
               className='form-control'
               type='text'
-              placeholder='Nombre de Usuario*'
+              placeholder='Nombre de Usuario'
               name='username'
               onChange={e => onChange(e)}
               value={username}
@@ -99,11 +99,11 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
           </div>
     
           <div className='form-group'>
-            <label className='form-label mt-3'>Contraseña: </label>
+           {/*  <label className='form-label mt-3'>Contraseña: </label> */}
             <input
               className='form-control'
               type='password'
-              placeholder='Contraseña*'
+              placeholder='Contraseña'
               name='password'
               onChange={e => onChange(e)}
               value={password}
@@ -113,11 +113,11 @@ const Register = ({ register, checkAuthenticated, isAuthenticated}) => {
           </div>
     
           <div className='form-group'>
-            <label className='form-label mt-3'>Confirmar Contraseña: </label>
+            {/* <label className='form-label mt-3'>Confirmar Contraseña: </label> */}
             <input
               className='form-control'
               type='password'
-              placeholder='Confirmar Contraseña*'
+              placeholder='Confirmar Contraseña'
               name='re_password'
               onChange={e => onChange(e)}
               value={re_password}

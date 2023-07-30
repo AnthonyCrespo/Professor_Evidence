@@ -9,10 +9,15 @@
   padding: 20px;
 }
 
+.login-box h2 {
+  margin-bottom: 20px;
+  color: RGB(255, 255, 255);
+  font-size: 24px; /* Reducir el tamaño de fuente para dispositivos pequeños */
+}
 
 .login-box {
   background: RGBA(34, 98, 143, 0.8);
-  padding: 30px; /* Reducir el padding para dispositivos pequeños */
+  padding: 40px; /* Reducir el padding para dispositivos pequeños */
   border-radius: 20px;
   text-align: center;
   width: 80%; /* Ajustar el ancho para dispositivos pequeños */
@@ -26,7 +31,7 @@ h1 {
 }
 
 .form-group {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .form-control {
@@ -45,6 +50,17 @@ h1 {
   margin-top: 3rem;
   text-align: center;
 }
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px; /* Reducir el margen para dispositivos pequeños */
+  background: RGBA(255, 255, 255, 0.9);
+  border-radius: 20px;
+  border: 0;
+  font-size: 16px; /* Reducir el tamaño de fuente para dispositivos pequeños */
+}
+
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
