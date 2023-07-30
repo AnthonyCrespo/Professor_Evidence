@@ -64,7 +64,7 @@ export function Registered_reports() {
           <th>Comentario del Revisor</th>
           <th>Estado (Revisor)</th>
           <th>Estado (Decano)</th>
-          <th>Acciones</th>
+          {/* <th>Acciones</th> */}
         </tr>
       </thead>
       <tbody>
@@ -87,14 +87,14 @@ export function Registered_reports() {
                     <td style={item.report_isApproved ? greenBgStyle : redBgStyle}>
               {         item.report_isApproved   ? "APROBADO" : "NO APROBADO"}
                     </td>
-                <td>
+{/*                 <td>
                   <button
                     className="btn btn-success"
                     onClick={() => handleVisualizarClick(item.id)}
                   >
                     VISUALIZAR
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))
           ) : (
