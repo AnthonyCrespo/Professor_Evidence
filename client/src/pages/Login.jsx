@@ -6,8 +6,15 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import CSRFToken from '../components/CSRFToken';
 import { checkAuthenticated } from '../actions/auth';
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import './css/Login.css'
 
+const schema = yup.object().shape({
+  username: yup.string().required('Este campo es obligatorio'),
+  password: yup.string().required('Este campo es obligatorio'),
+});
 
 const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -17,22 +24,35 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
     password: ''
   });
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setValue,
+    getValues
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+
+
   useEffect(() => {
     checkAuthenticated();
   }, []);
 
   const { username, password } = formData;
 
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const result = await login(username, password);
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data)
+    //preventDefault();
+    const result = await login(data.username, data.password);
     if (result === 'success') {
     }
     else
       setErrorMessage('Las credenciales ingresadas son incorrectas.');
-  };
+  });
   
     if (isAuthenticated){
       console.log("Ya cambio a isAuthenticated")
@@ -45,7 +65,7 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
     </header>
       <div className="login-box">
         <h2>Iniciar sesión</h2>
-          <form onSubmit={e => onSubmit(e)}>
+          <form onSubmit={onSubmit}>
           <CSRFToken />
             <div className='form-group'>
               <input
@@ -53,10 +73,19 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
                           type='text'
                           placeholder='Usuario'
                           name='username'
-                          onChange={e => onChange(e)}
-                          value={username}
-                          required
+                          onChange={(e) => {
+                            setValue('username', e.target.value);
+                            setFormData(prevForm => ({
+                              ...prevForm,
+                              username: e.target.value
+                            }));
+                          }}
+                          //value={username}
+                          {...register("username")}
                       />
+                    {errors.username&& (
+                    <span className="text-danger">{errors.username.message}</span>
+                    )}
             </div>
 
             <div className='form-group'>
@@ -65,13 +94,21 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
                         type='password'
                         placeholder='Contraseña'
                         name='password'
-                        onChange={e => onChange(e)}
-                        value={password}
-                        minLength='6'
-                        required
+                        onChange={(e) => {
+                          setValue('password', e.target.value);
+                          setFormData(prevForm => ({
+                            ...prevForm,
+                            password: e.target.value
+                          }));
+                        }}
+                        //value={password}
+                        {...register("password")}
                       />
-               {errorMessage && <p className="text-danger">{errorMessage}</p>}
+                    {errors.password && (
+                    <span className="text-danger">{errors.password.message}</span>
+                    )}
             </div>
+            {errorMessage && <p className="text-danger">{errorMessage}</p>}
             <button className='btn btn-primary mt-3' type='submit'> Ingresar </button>
           </form>
 
