@@ -22,9 +22,17 @@ export function Registered_reports() {
 
   useEffect(() => {
     async function loadSemesters() {
-      const res = await getSemesters();
-      setSemesters(res.data);
-      //console.log(res.data);
+      const res = await getSemesters();      //console.log(res.data);
+          // Filtrar el semestre actual
+      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
+      setSemesters([currentSemester]);
+      if (currentSemester) {
+        // Si se encontró el semestre actual, haz algo con él aquí
+        console.log("Semestre actual:", currentSemester);
+      } else {
+        // Si no se encontró el semestre actual, puedes manejarlo como desees
+        console.log("No se encontró el semestre actual.");
+      }
     }
     loadSemesters();
   }, []);

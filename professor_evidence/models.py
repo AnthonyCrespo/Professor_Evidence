@@ -11,9 +11,10 @@ from django.template.loader import render_to_string
 class Semester(models.Model):
     # Primary Keys are generated automatically
     # semester_id = models.CharField(max_length=50)
-    semester_name = models.TextField(max_length=200, default="SM")
+    semester_name = models.TextField(max_length=200, default="SEM")
     date_start = models.DateField(auto_now=False, auto_now_add=False)
     date_end = models.DateField(auto_now=False, auto_now_add=False)
+    isCurrentSemester = models.BooleanField(default = False)
     def __str__(self):
         return self.semester_name
 
@@ -56,14 +57,14 @@ class Semester_School(models.Model):
     school_id = models.ForeignKey(School, on_delete=models.CASCADE)
     dean_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.dean_id)
+        return str(self.semester_id) + "_" + str(self.dean_id)  + "_" +  str(self.school_id)
 
 class Semester_Career(models.Model):
     career_id = models.ForeignKey(Career, on_delete=models.CASCADE)
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     coordinator_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.coordinator_id)
+        return str(self.semester_id) + "_" + str(self.coordinator_id )  + "_" +  str(self.career_id)
 
 class Activity_Type(models.Model):
     # activity_type_id = models.CharField(max_length=50)

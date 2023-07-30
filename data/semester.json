@@ -5,7 +5,8 @@
       "fields": {
         "semester_name": "SEM123",
         "date_start": "2023-04-17",
-        "date_end": "2023-08-13"
+        "date_end": "2023-08-13",
+        "isCurrentSemester": true
       }
     },
     {
@@ -14,7 +15,8 @@
       "fields": {
         "semester_name": "SEM223",
         "date_start": "2023-08-28",
-        "date_end": "2023-12-14"
+        "date_end": "2023-12-14",
+        "isCurrentSemester": false
       }
     },
     {
@@ -23,7 +25,8 @@
       "fields": {
         "semester_name": "SM222",
         "date_start": "2022-11-07",
-        "date_end": "2023-03-20"
+        "date_end": "2023-03-20",
+        "isCurrentSemester": false
       }
     }
 ]
