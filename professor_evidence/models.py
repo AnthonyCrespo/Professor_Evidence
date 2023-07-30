@@ -224,7 +224,7 @@ class Report(models.Model):
     
     
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    report_name = models.TextField(max_length=200)
+    #report_name = models.TextField(max_length=200)
     report_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
     report_professorComment = models.TextField(max_length=200, blank=True)
     report_revisorComment = models.TextField(max_length=200, blank=True)
@@ -233,7 +233,7 @@ class Report(models.Model):
     report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
     report_isReviewed = models.BooleanField(default = False)
     report_isApproved = models.BooleanField(default = False)
-    report_pathToFile = models.TextField(max_length=200)
+    #report_pathToFile = models.TextField(max_length=200)
     uploadedReport = models.FileField(upload_to='report_pdfs', max_length=500, blank=True)
 
     def save(self, *args, **kwargs):
@@ -241,12 +241,12 @@ class Report(models.Model):
         pdf_buffer = generate_pdf(self)
 
         # Save the PDF to the FileField
-        self.uploadedReport.save(f"{self.report_name}.pdf", pdf_buffer, save=False)
+        self.uploadedReport.save(f"{self.professor_id}_reporte.pdf", pdf_buffer, save=False)
 
         super(Report, self).save(*args, **kwargs)
         
     def __str__(self):
-        return self.report_name
+        return self.uploadedReport.split("/")[-1]
 
 
 from reportlab.lib.pagesizes import letter
@@ -257,7 +257,7 @@ def generate_pdf(report):
     c = canvas.Canvas(buffer, pagesize=letter)
 
     # Write the report data to the PDF
-    c.drawString(100, 750, "Report Name: {}".format(report.report_name))
+    c.drawString(100, 750, "Report Name: {}".format(report.professor_id_id))
     c.drawString(100, 700, "Teaching Summary: {}".format(report.teaching_report_summary))
     # Add other fields as needed...
 

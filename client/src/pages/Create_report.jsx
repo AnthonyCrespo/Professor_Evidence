@@ -95,13 +95,13 @@ export function Create_report() {
     investigation_report_hoursPerWeekIntersemester: 0,
     
     
-    report_name: 'nombre_del_reporte',	
+    //report_name: 'nombre_del_reporte',	
     report_uploadDate: formattedDate,	
     report_professorComment: '',	
     report_revisorComment: '',	
     report_conclusion:	'',
     report_isApproved:	false,
-    report_pathToFile: 'path/to/file',	
+    //report_pathToFile: 'path/to/file',	
     professor_id: "",//"",//"0302616099",	
     semester_id: 1,	
     report_reviewedBy: 1,	
@@ -205,7 +205,9 @@ export function Create_report() {
 
   
   const onSubmit = handleSubmit(async (data) => {
-    //console.log(form)
+/*     if (errors)
+      toast.error('Faltan campos por completar!', {
+        position: toast.POSITION.BOTTOM_RIGHT}) */
     console.log(data)
     try {
       if (reports.length > 0) {
@@ -216,14 +218,16 @@ export function Create_report() {
         await updateReport(existingReportId, data);
         toast.success('Reporte actualizado exitosamente!', {
           position: toast.POSITION.BOTTOM_RIGHT})
+
+
       } else { 
         // Si no hay un ID de informe existente, crear un nuevo informe
         //console.log("El CI en create report es "+ ci)
         form.professor_id = ci;
         data.professor_id = ci;
         await createReport(data);
-        toast.success('Reporte generado exitosamente!', {
-          position: toast.POSITION.BOTTOM_RIGHT})
+          toast.success('Reporte generado exitosamente!', {
+            position: toast.POSITION.BOTTOM_RIGHT})
       }
 
       //navigate("/home/");
