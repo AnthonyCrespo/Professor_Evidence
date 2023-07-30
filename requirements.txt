@@ -15,8 +15,10 @@ djangorestframework-simplejwt
 
 # Database adapter for developers to connect databases to python
 djoser
+reportlab
 # asgiref==3.3.1
 # psycopg2==2.8.6
 # psycopg2-binary==2.8.6
 # pytz==2020.4
 # sqlparse==0.4.1
+whitenoise
