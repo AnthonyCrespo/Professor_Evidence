@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* Set page size to A4 */
+        @page {
+            size: A4;
+            margin-bottom: 2.5cm;
+            margin-top: 2.5cm;
+            margin-left: 2.5cm;
+            margin-right: 2.5cm;
+        }
+
+        header {
+            background-image: url('https://picsum.photos/id/237/200/300');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            height: 120px;
+            /* Adjust the height of the header */
+        }
+
+        /* Define styles for headings */
+        h1 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: rgb(46, 83, 149);
+            text-align: justify;
+        }
+
+        h2 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            color: rgb(46, 83, 149);
+            text-align: justify;
+        }
+
+        /* Define styles for tables */
+        table {
+            width: fit-content;
+            max-width: 50%;
+            border-collapse: collapse;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+            max-width: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            max-width: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Define styles for paragraphs */
+        p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        ul,
+        li {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: right;">Urcuquí, {{report.report_uploadDate}}</h1>
+    <h1 style="text-align: center;">INFORME SOBRE EL DESARROLLO DE ACTIVIDADES SEMESTRALES DEL PERSONAL ACAD&Eacute;MICO
+    </h1>
+    <h1>DATOS INFORMATIVOS</h1>
+    <table style="width: fit-content;">
+        <tbody>
+            <tr>
+                <td><strong>Escuela</strong></td>
+                <td>{{report.professor_id.career_id.school_id.school_name}}</td>
+            </tr>
+            <tr>
+                <td><strong>Carrera o Programa</strong></td>
+                <td>{{report.professor_id.career_id.career_name}}</td>
+            </tr>
+            <tr>
+                <td><strong>Semestre</strong></td>
+                <td>{{report.semester_id.semester_name}}</td>
+            </tr>
+            <tr>
+                <td><strong>Periodo</strong></td>
+                <td>{{report.semester_id.date_start}} - {{report.semester_id.date_end}}</td>
+            </tr>
+            <tr>
+                <td><strong>Docente</strong></td>
+                <td>{{report.professor_id.professor_denomination}} {{report.professor_id.professor_names}}
+                    {{report.professor_id.professor_lastnames}}</td>
+            </tr>
+            <tr>
+                <td><strong>Denominaci&oacute;n</strong></td>
+                <td>{{report.professor_id.professor_denomination}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>OBJETIVO</h1>
+    <p>El presente informe tiene como objetivo, informar al Decanato de la
+        <strong>{{report.professor_id.career_id.school_id.school_name}}</strong> sobre las actividades desarrolladas
+        durante el semestre:
+        <strong>{{report.semester_id.semester_name}}</strong>, periodo (inicio del semestre - fin del intersemestre):
+        <strong>{{report.semester_id.date_start}} - {{report.semester_id.date_end}}</strong> correspondientes a las
+        actividades sustantivas del docente-investigador: docencia,
+        investigaci&oacute;n, vinculaci&oacute;n con la sociedad y gesti&oacute;n educativa ; y presentar las evidencias
+        correspondientes como justificaci&oacute;n de dichas actividades.
+    </p>
+    <h1>BASE LEGAL</h1>
+    <p style="font-style: italic;"><em>De acuerdo a lo establecido en el Artculo 6 del Reglamento Interno de Carrera y
+            Escalaf&oacute;n del Profesor
+            e Investigador de la UITEY, el personal acad&eacute;mico debe cumplir las siguientes actividades: docencia,
+            investigaci&oacute;n, vinculaci&oacute;n con la sociedad, y gesti&oacute;n educativa.</em></p>
+    <p style="font-style: italic;">Art&iacute;culo 7.- Actividades de docencia. - La docencia en la Universidad de
+        Investigaci&oacute;n de
+        Tecnolog&iacute;a Experimental Yachay, comprende las siguientes actividades asignadas por la
+        instituci&oacute;n:</p>
+    <ul style="font-style: italic;">
+        <li>Impartir clases;</li>
+        <li>Planificar y actualizar contenidos de clases, seminarios, talleres, entre otros;</li>
+        <li>Dise&ntilde;ar y elaborar material did&aacute;ctico, gu&iacute;as docentes o syllabus;</li>
+        <li>Dise&ntilde;ar y elaborar libros de texto;</li>
+        <li>Orientar y acompa&ntilde;ar a estudiantes a trav&eacute;s de tutor&iacute;as individuales o grupales en las
+            modalidades de estudio que la IES considere pertinente;</li>
+        <li>Realizar visitas de campo, tutor&iacute;as, docencia en servicio y formaci&oacute;n dual;</li>
+        <li>Dirigir tutor&iacute;as, dar seguimiento y evaluar pr&aacute;cticas o pasant&iacute;as pre profesionales;
+        </li>
+        <li>Preparar, elaborar, aplicar y calificar ex&aacute;menes, trabajos y pr&aacute;cticas;</li>
+        <li>Dirigir trabajos para la obtenci&oacute;n del t&iacute;tulo o grado acad&eacute;mico;</li>
+        <li>Dirigir y participar en proyectos de experimentaci&oacute;n e innovaci&oacute;n docente;</li>
+        <li>Dise&ntilde;ar e impartir cursos de educaci&oacute;n continua o de capacitaci&oacute;n y
+            actualizaci&oacute;n;</li>
+        <li>Participar y organizar colectivos acad&eacute;micos de debate, capacitaci&oacute;n o intercambio de
+            metodolog&iacute;as y experiencias de ense&ntilde;anza;</li>
+        <li>Usar herramientas pedag&oacute;gicas de la investigaci&oacute;n formativa y la sistematizaci&oacute;n como
+            soporte o parte de la ense&ntilde;anza;</li>
+        <li>Participar como profesores en los cursos de nivelaci&oacute;n en el marco del Sistema Nacional de
+            Nivelaci&oacute;n y Admisi&oacute;n;</li>
+        <li>Orientar, capacitar y acompa&ntilde;ar al personal acad&eacute;mico del Sistema Nacional de
+            Nivelaci&oacute;n y Admisi&oacute;n; y,</li>
+        <li>Las dem&aacute;s que definan las universidades y escuelas polit&eacute;cnicas en ejercicio de su
+            autonom&iacute;a responsable, en el marco del desarrollo de la oferta acad&eacute;mica institucional&rdquo;;
+        </li>
+    </ul>
+    <p style="font-style: italic;">Art&iacute;culo 8.- Actividades de investigaci&oacute;n. - La investigaci&oacute;n en
+        la Universidad de
+        Investigaci&oacute;n de Tecnolog&iacute;a Experimental Yachay, comprende las siguientes actividades asignadas
+        por la instituci&oacute;n:</p>
+    <ul style="font-style: italic;">
+        <li>Dise&ntilde;ar, dirigir y/o ejecutar proyectos de investigaci&oacute;n b&aacute;sica, aplicada,
+            tecnol&oacute;gica y en artes, o proyectos de vinculaci&oacute;n articulados a la investigaci&oacute;n, que
+            supongan creaci&oacute;n, innovaci&oacute;n, difusi&oacute;n y transferencia de los resultados obtenidos;
+        </li>
+        <li>Realizar investigaci&oacute;n para la comprensi&oacute;n, recuperaci&oacute;n, fortalecimiento y
+            potenciaci&oacute;n de los saberes ancestrales;</li>
+        <li>Dise&ntilde;ar, elaborar y/o poner en marcha metodolog&iacute;as, instrumentos, protocolos o procedimientos
+            operativos o de investigaci&oacute;n;</li>
+        <li>Investigar en laboratorios, centros documentales y dem&aacute;s instalaciones habilitadas para esta
+            funci&oacute;n, as&iacute; como en entornos sociales, naturales y/o virtuales;</li>
+        <li>Participar en congresos, seminarios y conferencias para la presentaci&oacute;n de avances y resultados de
+            sus investigaciones;</li>
+        <li>Dise&ntilde;ar y/o participar en redes y programas de investigaci&oacute;n local, nacional e internacional;
+        </li>
+        <li>Participar en comit&eacute;s o consejos acad&eacute;micos y editoriales de revistas cient&iacute;ficas y
+            acad&eacute;micas indexadas y/o arbitradas, curadur&iacute;as y/o comit&eacute;s de valoraci&oacute;n de
+            obras relevantes en el campo de las artes;</li>
+        <li>Difundir resultados y beneficios sociales de la investigaci&oacute;n, a trav&eacute;s de publicaciones,
+            producciones art&iacute;sticas, actuaciones, conciertos, creaci&oacute;n u organizaci&oacute;n de
+            instalaciones y de exposiciones, entre otros;</li>
+        <li>Dirigir y/o participar en colectivos acad&eacute;micos de debate para la presentaci&oacute;n de avances y
+            resultados de investigaciones; y,</li>
+        <li>Las dem&aacute;s que definan las universidades y escuelas polit&eacute;cnicas en ejercicio de su
+            autonom&iacute;a responsable, en el &aacute;mbito de las l&iacute;neas de investigaci&oacute;n
+            institucionales y en la ejecuci&oacute;n de proyectos y programas de investigaci&oacute;n debidamente
+            aprobados&rdquo;;</li>
+    </ul>
+    <p style="font-style: italic;">Art&iacute;culo 9.- Actividades de vinculaci&oacute;n con la sociedad. - Las
+        actividades de vinculaci&oacute;n
+        con la sociedad promueven la integraci&oacute;n de la UITEY con su entorno social y territorial para el
+        dise&ntilde;o e implementaci&oacute;n de programas que generen impacto favorable y la soluci&oacute;n a
+        problemas de inter&eacute;s p&uacute;blico y son:</p>
+    <ul style="font-style: italic;">
+        <li>Impulsar procesos de cooperaci&oacute;n y desarrollo;</li>
+        <li>Prestar asistencia t&eacute;cnica, servicios especializados, as&iacute; como participar en
+            consultor&iacute;as que generen beneficio a la colectividad;</li>
+        <li>Impartir cursos de educaci&oacute;n continua, capacitaci&oacute;n, actualizaci&oacute;n y
+            certificaci&oacute;n de competencias;</li>
+        <li>Prestar servicios a la sociedad que no generen beneficio econ&oacute;mico para la universidad o escuela
+            polit&eacute;cnica o para su personal acad&eacute;mico, tales como el an&aacute;lisis de laboratorio
+            especializado, el peritaje judicial, la revisi&oacute;n t&eacute;cnica documental para las instituciones del
+            estado, entre otras. La participaci&oacute;n remunerada en trabajos de consultor&iacute;a institucional no
+            se reconocer&aacute; como actividad de vinculaci&oacute;n dentro de la dedicaci&oacute;n horaria;</li>
+        <li>Fomentar la constituci&oacute;n, desarrollo y fortalecimiento de organizaciones de la sociedad civil, redes
+            y dem&aacute;s espacios de participaci&oacute;n ciudadana;</li>
+        <li>Organizar o participar en actividades de divulgaci&oacute;n, democratizaci&oacute;n y distribuci&oacute;n
+            del saber, circulaci&oacute;n de contenidos art&iacute;sticos y formaci&oacute;n de p&uacute;blicos;</li>
+        <li>Promover la internacionalizaci&oacute;n de la comunidad universitaria y propiciar las relaciones
+            internacionales;</li>
+        <li>Desarrollar proyectos de innovaci&oacute;n que permitan aplicar los conocimientos generados en las
+            instituciones de educaci&oacute;n superior, en proyectos productivos o de beneficio social; y,</li>
+        <li>Las dem&aacute;s que definan las universidades y escuelas polit&eacute;cnicas en ejercicio de su
+            autonom&iacute;a responsable&rdquo;;</li>
+    </ul>
+    <p style="font-style: italic;">Art&iacute;culo 10.- Actividades de gesti&oacute;n educativa. - Se entender&aacute;
+        como actividades de
+        gesti&oacute;n y direcci&oacute;n acad&eacute;mica en la Universidad de Investigaci&oacute;n de
+        Tecnolog&iacute;a Experimental Yachay, las siguientes asignadas por la instituci&oacute;n:</p>
+    <ul style="font-style: italic;">
+        <li>Desempe&ntilde;ar funciones de rector, vicerrector, o integrante del &oacute;rgano colegiado superior;</li>
+        <li>Desempe&ntilde;ar funciones o cargos de decano, subdecano o similar jerarqu&iacute;a;</li>
+        <li>Dirigir escuelas, departamentos, centros o institutos de investigaci&oacute;n;</li>
+        <li>Dirigir y/o coordinar carreras o programas;</li>
+        <li>Dirigir y/o gestionar los procesos de docencia, investigaci&oacute;n y vinculaci&oacute;n con la sociedad en
+            sus distintos niveles de organizaci&oacute;n acad&eacute;mica e institucional;</li>
+        <li>Organizar o dirigir eventos acad&eacute;micos nacionales o internacionales;</li>
+        <li>Desempe&ntilde;ar cargos tales como: editor acad&eacute;mico, director o miembro editorial de una
+            publicaci&oacute;n;</li>
+        <li>Dise&ntilde;ar proyectos de carreras y programas de estudios de grado y posgrado;</li>
+        <li>Integrar en calidad de Consejeros Acad&eacute;micos de los organismos que rigen el Sistema de
+            Educaci&oacute;n Superior (CES y CACES); en estos casos, se reconocer&aacute; la dedicaci&oacute;n como
+            equivalente a tiempo completo;</li>
+        <li>Ejercer cargos de nivel jer&aacute;rquico superior en el &Oacute;rgano Rector de la Pol&iacute;tica
+            P&uacute;blica de Educaci&oacute;n Superior; en estos casos se reconocer&aacute; la dedicaci&oacute;n como
+            equivalente a tiempo completo;</li>
+        <li>Ejercer cargos directivos de car&aacute;cter cient&iacute;fico en los institutos p&uacute;blicos de
+            investigaci&oacute;n;</li>
+        <li>Participar como delegado institucional en organismos p&uacute;blicos u otros que forman parte del Sistema de
+            Educaci&oacute;n Superior, as&iacute; como sociedades cient&iacute;ficas o acad&eacute;micas;</li>
+        <li>Participar como evaluador o facilitador acad&eacute;mico externo del Consejo de Educaci&oacute;n Superior,
+            del Consejo de Acreditaci&oacute;n de la Calidad de la Educaci&oacute;n Superior, del &Oacute;rgano Rector
+            de la Pol&iacute;tica P&uacute;blica de Educaci&oacute;n Superior u otro organismo p&uacute;blico de
+            investigaci&oacute;n o desarrollo tecnol&oacute;gico;</li>
+        <li>Participar como representantes gremiales de acuerdo con el estatuto de la universidad o escuela
+            polit&eacute;cnica en las sesiones del &oacute;rgano colegiado superior; y,</li>
+        <li>Las dem&aacute;s que definan las universidades y escuelas polit&eacute;cnicas en ejercicio de su
+            autonom&iacute;a responsable&rdquo;;</li>
+    </ul>
+    <h1>DESARROLLO</h1>
+    <h1>Docencia</h1>
+    <p>Resumen: {{report.teaching_report_summary}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas: {{report.teaching_report_hoursPerWeek}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas en el intersemestre: {{report.teaching_report_hoursPerWeekIntersemester}}</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <p>Actividades</p>
+                </td>
+                <td>
+                    <p>Enlace</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Evidencias de las Actividades de Docencia</p>
+                </td>
+                <td>
+                    <p>a</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Investigaci&oacute;n</h1>
+    <p>Resumen: {{report.investigation_report_summary}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas: {{report.investigation_report_hoursPerWeek}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas en el intersemestre: {{report.investigation_report_hoursPerWeekIntersemester}}</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <p>Actividades</p>
+                </td>
+                <td>
+                    <p>Enlace</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Evidencias de las Actividades de Investigaci&oacute;n</p>
+                </td>
+                <td>
+                    <p>a</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Vinculaci&oacute;n</h1>
+    <p>Resumen: {{report.vinculation_report_summary}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas: {{report.vinculationt_report_hoursPerWeek}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas en el intersemestre: {{report.vinculation_report_hoursPerWeekIntersemester}}</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <p>Actividades</p>
+                </td>
+                <td>
+                    <p>Enlace</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Evidencias de las Actividades de Vinculaci&oacute;n</p>
+                </td>
+                <td>
+                    <p>a</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Gesti&oacute;n</h1>
+    <p>Resumen: {{report.management_report_summary}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas: {{report.management_report_hoursPerWeek}}</p>
+    <p>N&uacute;mero promedio de horas por semana dedicadas en el intersemestre: {{report.management_report_hoursPerWeekIntersemester}}</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <p>Actividades</p>
+                </td>
+                <td>
+                    <p>Enlace</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Evidencias de las Actividades de Gesti&oacute;n</p>
+                </td>
+                <td>
+                    <p>a</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>CONCLUSIONES</h1>
+    <p>{{report.report_conclusion}}</p>
+    <p><br /><br /></p>
+    <h1>FIRMAS</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <p>Realizado Por:</p>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </td>
+                <td>
+                    <p>Revisado Por:</p>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>{{report.professor_id.professor_denomination}} {{report.professor_id.professor_names}}
+                        {{report.professor_id.professor_lastnames}}</p>
+                </td>
+                <td>
+                    <p>{{report.report_reviewedBy.coordinator_id.professor_denomination}} {{report.report_reviewedBy.coordinator_id.professor_names}}
+                        {{report.report_reviewedBy.coordinator_id.professor_lastnames}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Aprobado Por:</p>
+                    <br /><br /><br /><br /><br /><br /><br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>{{report.report_approvedBy.dean_id.professor_denomination}} {{report.report_approvedBy.dean_id.professor_names}}
+                        {{report.report_approvedBy.dean_id.professor_lastnames}}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><br /><br /><br /><br /></p>
+</body>
+
+</html>

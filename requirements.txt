@@ -15,8 +15,14 @@ djangorestframework-simplejwt
 
 # Database adapter for developers to connect databases to python
 djoser
+
+# PDF Generation
 reportlab
+xhtml2pdf
+
 whitenoise
+
+
 # asgiref==3.3.1
 # psycopg2==2.8.6
 # psycopg2-binary==2.8.6

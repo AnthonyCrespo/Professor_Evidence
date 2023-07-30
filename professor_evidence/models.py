@@ -1,58 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-
-
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from django.core.files.storage import default_storage
-from django.http import JsonResponse
 import os, io
-from django.utils.text import slugify
 from datetime import datetime
-# Create your models here.
+from xhtml2pdf import pisa
+from django.template.loader import render_to_string
 
-'''
-
-Models for the users authentication
-
-'''
-# class UserAccountManager(BaseUserManager):
-#     def create_user(self, email, password=None, **extra_fields):
-#         if not email:
-#             raise ValueError('Users must have an email address')
-
-#         email = self.normalize_email(email)
-#         user = self.model(email=email, **extra_fields)
-
-#         user.set_password(password)
-#         user.save()
-
-#         return user
-
-# class UserAccount(AbstractBaseUser, PermissionsMixin):
-#     email = models.EmailField(max_length=255, unique=True)
-#     first_name = models.CharField(max_length=255)
-#     last_name = models.CharField(max_length=255)
-#     is_active = models.BooleanField(default=True)
-#     is_staff = models.BooleanField(default=False)
-
-#     objects = UserAccountManager()
-
-#     USERNAME_FIELD = 'email'
-#     REQUIRED_FIELDS = ['first_name', 'last_name']
-
-#     def get_full_name(self):
-#         return self.first_name
-
-#     def get_short_name(self):
-#         return self.first_name
-    
-#     def __str__(self):
-#         return self.email
-
-'''
-
-Models for the Registers
-
-'''
 # Table for the Semester to know when does it starts and ends
 class Semester(models.Model):
     # Primary Keys are generated automatically
@@ -145,13 +99,12 @@ class Document(models.Model):
         activity_type = self.activity_type.activity_type
         evidence_type = self.evidence_type.evidence_code
 
-        path = f"{semester_name}/{school_abbreviation}/{professor_id}/{activity_type}/{evidence_type}/"
+        path = f"{semester_name}/{school_abbreviation}/{professor_id}/Evidencias/{activity_type}/{evidence_type}/"
         filename = path[:-1].replace("/","_")
         filename_with_datetime = f"{filename}_{current_datetime}"
         return f"{path}{filename_with_datetime}.pdf"
     
     uploadedDocument = models.FileField(upload_to=get_document_upload_path, max_length = 500)
-    # uploadedDocument = models.FileField(upload_to="0302616099")
 
 
 
@@ -194,74 +147,84 @@ class Document(models.Model):
 
 
 class Report(models.Model):
-    # report_id = models.CharField(max_length=50)
+    # Foreign Keys
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    # activity_report_id = models.ForeignKey(Activity_Report, on_delete=models.CASCADE)
-
-    # Note: Multiple Foreign Keys are not allowed, that is why only 1 activity_report_id will
-    # appear in the class of the report. However, we can manage to include in the final document
-    # all the 4 activities of the professors.
-    
-    # activity_report_teaching_id = models.ForeignKey(Activity_Report_Teaching, verbose_name="Teaching Activity", on_delete=models.CASCADE)
-    # activity_report_management_id = models.ForeignKey(Activity_Report_Management, verbose_name="Management Activity", on_delete=models.CASCADE)
-    # activity_report_vinculation_id = models.ForeignKey(Activity_Report_Vinculation, verbose_name="Vinculation Activity", on_delete=models.CASCADE)
-    # activity_report_investigation_id = models.ForeignKey(Activity_Report_Investigation, verbose_name="Investigation Activity", on_delete=models.CASCADE)
+    report_reviewedBy = models.ForeignKey(Semester_Career, on_delete=models.CASCADE)
+    report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
+    # Information about the activities
     teaching_report_summary = models.TextField(max_length=200)
     teaching_report_hoursPerWeek = models.FloatField()
     teaching_report_hoursPerWeekIntersemester = models.FloatField()
-    
     management_report_summary = models.TextField(max_length=200)
     management_report_hoursPerWeek = models.FloatField()
     management_report_hoursPerWeekIntersemester = models.FloatField()
-    
     vinculation_report_summary = models.TextField(max_length=200)
     vinculation_report_hoursPerWeek = models.FloatField()
     vinculation_report_hoursPerWeekIntersemester = models.FloatField()
-        
     investigation_report_summary = models.TextField(max_length=200)
     investigation_report_hoursPerWeek = models.FloatField()
     investigation_report_hoursPerWeekIntersemester = models.FloatField()
-    
-    
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    #report_name = models.TextField(max_length=200)
-    report_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
+    # Report information
+    # report_name = models.TextField(max_length=200)
     report_professorComment = models.TextField(max_length=200, blank=True)
     report_revisorComment = models.TextField(max_length=200, blank=True)
     report_conclusion = models.TextField(max_length=200, blank=True)
-    report_reviewedBy = models.ForeignKey(Semester_Career, on_delete=models.CASCADE)
-    report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
+    report_uploadDate = models.DateField(auto_now=False, auto_now_add=True)
     report_isReviewed = models.BooleanField(default = False)
     report_isApproved = models.BooleanField(default = False)
-    #report_pathToFile = models.TextField(max_length=200)
-    uploadedReport = models.FileField(upload_to='report_pdfs', max_length=500, blank=True)
+    # report_pathToFile = models.TextField(max_length=200)
+
+    def get_report_upload_path(self, filename):
+        # Use the Semester ID, Professor's ID, and the Report's name to generate the path
+        semester_name = self.semester_id.semester_name
+        school_abbreviation = self.professor_id.career_id.school_id.school_abbreviation
+        professor_id = self.professor_id.professor_id
+        # report_name = instance.report_name
+        path = f"{semester_name}/{school_abbreviation}/{professor_id}/Reporte/"
+        filename = path[:-1].replace("/","_")
+        return f"{path}{filename}.pdf"
+    
+    uploadedReport = models.FileField(upload_to=get_report_upload_path, max_length=500, blank=True)
 
     def save(self, *args, **kwargs):
+
+        if Report.objects.filter(professor_id=self.professor_id).exists():
+            # Delete the existing report before generating a new one
+            existing_report = Report.objects.get(professor_id=self.professor_id)
+            existing_report.delete()
+
         # Generate the PDF
         pdf_buffer = generate_pdf(self)
 
         # Save the PDF to the FileField
-        self.uploadedReport.save(f"{self.professor_id}_reporte.pdf", pdf_buffer, save=False)
+        self.uploadedReport.save(f"{self.semester_id.semester_name}{self.professor_id}.pdf", pdf_buffer, save=False)
 
         super(Report, self).save(*args, **kwargs)
         
     def __str__(self):
-        return self.uploadedReport.split("/")[-1]
-
-
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+        return str(self.semester_id.semester_name + '_' + self.professor_id)
+        
+@receiver(pre_delete, sender=Report)
+def delete_report_pdf(sender, instance, **kwargs):
+    # Function to delete the associated PDF file when a report instance is deleted
+    if instance.uploadedReport:
+        if os.path.isfile(instance.uploadedReport.path):
+            os.remove(instance.uploadedReport.path)
 
 def generate_pdf(report):
     buffer = io.BytesIO()
-    c = canvas.Canvas(buffer, pagesize=letter)
+    # c = canvas.Canvas(buffer, pagesize=letter)
 
-    # Write the report data to the PDF
-    c.drawString(100, 750, "Report Name: {}".format(report.professor_id_id))
-    c.drawString(100, 700, "Teaching Summary: {}".format(report.teaching_report_summary))
-    # Add other fields as needed...
+    # Render the HTML template to a string
+    report_data = render_to_string('report_template.html', {'report': report})
 
-    c.save()
+    # Convert the HTML string to PDF
+    pisa_status = pisa.CreatePDF(report_data, dest=buffer)
+
+    # Check if the PDF conversion was successful
+    if pisa_status.err:
+        raise Exception(f"PDF generation error: {pisa_status.err}")
 
     # Set the buffer's file position to the beginning
     buffer.seek(0)
