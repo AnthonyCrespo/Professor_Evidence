@@ -54,6 +54,7 @@ export function Registered_reports() {
     <Base>
     <br/>
     <h1>Informes registrados</h1>
+    <div className="table-responsive"> 
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -103,6 +104,7 @@ export function Registered_reports() {
           )}
       </tbody>
     </Table>
+    </div>
     </Base>
   );
 }

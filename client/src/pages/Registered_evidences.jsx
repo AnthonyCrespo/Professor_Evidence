@@ -355,51 +355,55 @@ useEffect(() => {
 
       
       <h5>Documentos subidos:</h5>
-      <div style={{ maxWidth: '80%' }}>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Actividad</th>
-              <th>Evidencia</th>
-              <th>Documento</th>
-              <th>Fecha</th>
-              <th>Comentario</th>
-              <th>Comentario del revisor</th>
-             {/*  <th>Estado</th> */}
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {documents.length > 0 ? (
-              documents.map((item) => (
-                <tr
-                key={item.id}
-                >
+
+        {documents.length > 0 ? (
+        <div style={{ maxWidth: '80%' }}>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Tipo de actividad</th>
+                <th>Evidencia</th>
+                <th>Documento</th>
+                <th>Fecha de carga</th>
+                <th>Comentario del profesor</th>
+                <th>Comentario del revisor</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {documents.map((item) => (
+                <tr key={item.id}>
                   <td>{item.activity_type_name}</td>
                   <td>{item.evidence_type_name}</td>
                   <td>
                     <a href={item.uploadedDocument} target="_blank">
-                      {item.uploadedDocument.substring(item.uploadedDocument.lastIndexOf('/') + 1)}
+                      {item.uploadedDocument.substring(
+                        item.uploadedDocument.lastIndexOf('/') + 1
+                      )}
                     </a>
                   </td>
                   <td>{item.document_uploadDate}</td>
                   <td>{item.document_professorComment}</td>
                   <td>{item.document_revisorComment}</td>
                   {/* <td>{item.document_approved === true ? 'Aprobado' : (item.document_approved === false ? 'No aprobado' : 'En revisión')}</td> */}
-                   {/* Mostrará "APROBADO" si document_approved es true, "NO APROBADO" si es false, y "EN REVISIÓN" si es null */}
+                  {/* Mostrará "APROBADO" si document_approved es true, "NO APROBADO" si es false, y "EN REVISIÓN" si es null */}
                   <td>
-                    <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
-                    <Button variant="danger" onClick={() => handleDelete(item.id)}>Borrar</Button>
+                    <Button variant="primary" onClick={() => handleEdit(item)}>
+                      Editar
+                    </Button>
+                    <Button variant="danger" onClick={() => handleDelete(item.id)}>
+                      Borrar
+                    </Button>
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-              </tr>
-            )}
-          </tbody>
-        </Table>
-      </div>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
 
     {/* ----------------------------------------------------------------------- */}
     {/* ------------------------ Modal de edición --------------------------- */}
