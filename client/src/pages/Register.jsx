@@ -12,7 +12,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 const schema = yup.object().shape({
   first_name: yup.string().required('Este campo es obligatorio'),
   last_name: yup.string().required('Este campo es obligatorio'),
-  password: yup.string().required('Este campo es obligatorio'),
   ci: yup.string().required('Este campo es obligatorio'),
   username: yup.string().required('Este campo es obligatorio'),
   password: yup

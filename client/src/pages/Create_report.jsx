@@ -111,12 +111,13 @@ export function Create_report() {
     report_professorComment: '',	
     report_revisorComment: '',	
     report_conclusion:	'',
+    report_isReviewed: false,
     report_isApproved:	false,
     //report_pathToFile: 'path/to/file',	
     professor_id: "",//"",//"0302616099",	
     semester_id: 1,	
-    report_reviewedBy: 1,	
-    report_approvedBy: 1,
+    //report_reviewedBy: 1,	
+    //report_approvedBy: 1,
   });
 
 
@@ -175,6 +176,7 @@ export function Create_report() {
           report_conclusion: firstReport.report_conclusion,
           report_professorComment: firstReport.report_professorComment,
           report_uploadDate: formattedDate,
+          report_isReviewed: firstReport.report_isReviewed
         }));
     // Usamos un bucle para asignar los valores a todos los campos
     for (const fieldName in firstReport) {
@@ -582,7 +584,7 @@ export function Create_report() {
       </Tab.Content>
     </Tab.Container>
           
-        <Button className="mt-4" variant="primary" type="submit">Generar reporte</Button>
+        <Button className="mt-4" variant="primary" type="submit" disabled={form.report_isReviewed} >Generar reporte</Button>
         </Form>
     <br/>
     <ToastContainer />
