@@ -1,6 +1,7 @@
 .login-container {
   background: url('../images/fondo_yt.jpg') center/cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Usar min-height en lugar de height para permitir crecimiento */
@@ -58,4 +59,9 @@
   .login-box button {
     font-size: 14px; /* Reducir el tamaño de fuente para dispositivos muy pequeños */
   }
+}
+p.mt-3 {
+  color: white;
+  margin-top: 3rem;
+  text-align: center;
 }

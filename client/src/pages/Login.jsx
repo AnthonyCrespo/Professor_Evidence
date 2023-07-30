@@ -110,6 +110,9 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
             <button className='btn btn-primary mt-3' type='submit'>Ingresar</button>
           </form>
         </div>
+        <p className='mt-3'>
+          No tienes una cuenta? <Link to='/register'>Regístrate</Link>
+        </p>
       </div>
     );
 }

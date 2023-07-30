@@ -1,0 +1,86 @@
+/* Register.css */
+.register-container {
+  background: url('../images/fondo_registro.jpg') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+
+.login-box {
+  background: RGBA(34, 98, 143, 0.8);
+  padding: 30px; /* Reducir el padding para dispositivos pequeños */
+  border-radius: 20px;
+  text-align: center;
+  width: 80%; /* Ajustar el ancho para dispositivos pequeños */
+  max-width: 400px; /* Agregar un límite máximo para dispositivos muy grandes */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%; /* Change the width to 100% to adjust to the container's width */
+  padding: 2px;
+  font-size: 16px;
+}
+
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.register-container p.mt-3 {
+  color: black;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust font sizes and margins for smaller screens */
+  h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Further adjustments for even smaller screens */
+  h1 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
