@@ -1,46 +1,61 @@
 .login-container {
-    background: url('../images/fondo_yt.jpg') center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .login-box { /* Iniciar sesion box */
-    background: RGBA(34, 98, 143, 0.8);
-    padding: 60px;
-    border-radius: 20px;
-    text-align: center;
-    opacity: 15;
-    width: 30%;
-  }
-  
-  .login-box h2 { /* Iniciar sesion text */
-    margin-bottom: 20px;
-    color: RGB(255,255,255)
-  }
-  
-  .login-box input {  /* Usuario y Contraseña fields */
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 30px;
-    background: RGBA(255,255,255,0.9);
-    border-radius: 20px;
-    border:0px
+  background: url('../images/fondo_yt.jpg') center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Usar min-height en lugar de height para permitir crecimiento */
+}
 
+.login-box {
+  background: RGBA(34, 98, 143, 0.8);
+  padding: 30px; /* Reducir el padding para dispositivos pequeños */
+  border-radius: 20px;
+  text-align: center;
+  width: 80%; /* Ajustar el ancho para dispositivos pequeños */
+  max-width: 400px; /* Agregar un límite máximo para dispositivos muy grandes */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: RGB(255, 255, 255);
+  font-size: 24px; /* Reducir el tamaño de fuente para dispositivos pequeños */
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px; /* Reducir el margen para dispositivos pequeños */
+  background: RGBA(255, 255, 255, 0.9);
+  border-radius: 20px;
+  border: 0;
+  font-size: 16px; /* Reducir el tamaño de fuente para dispositivos pequeños */
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3c3c3c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px; /* Reducir el tamaño de fuente para dispositivos pequeños */
+}
+
+/* Media query para dispositivos pequeños */
+@media (max-width: 576px) {
+  .login-box {
+    width: 90%; /* Ajustar el ancho para dispositivos muy pequeños */
+    padding: 20px; /* Reducir el padding para dispositivos muy pequeños */
   }
-  
-  .login-box button { /* Ingresar button */
-    width: 100%;
-    padding: 10px;
-    background-color: #3c3c3c;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+
+  .login-box h2 {
+    font-size: 20px; /* Reducir el tamaño de fuente para dispositivos muy pequeños */
   }
-  
-  .login-box button:hover { /* Ingresar button hover */
-    background-color: RGB(32, 167, 209)
+
+  .login-box input,
+  .login-box button {
+    font-size: 14px; /* Reducir el tamaño de fuente para dispositivos muy pequeños */
   }
-  
+}

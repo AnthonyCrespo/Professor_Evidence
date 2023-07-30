@@ -59,62 +59,59 @@ const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
       return <Navigate to='/home' />;
     }
     return (
-    <div className="login-container">
-    <header>
-      <title>Iniciar Sesión</title>
-    </header>
-      <div className="login-box">
-        <h2>Iniciar sesión</h2>
+      <div className="login-container">
+        <header>
+          <title>Iniciar Sesión</title>
+        </header>
+        <div className="login-box">
+          <h2>Iniciar sesión</h2>
           <form onSubmit={onSubmit}>
-          <CSRFToken />
+            <CSRFToken />
             <div className='form-group'>
               <input
-                          className='form-control'
-                          type='text'
-                          placeholder='Usuario'
-                          name='username'
-                          onChange={(e) => {
-                            setValue('username', e.target.value);
-                            setFormData(prevForm => ({
-                              ...prevForm,
-                              username: e.target.value
-                            }));
-                          }}
-                          //value={username}
-                          {...register("username")}
-                      />
-                    {errors.username&& (
-                    <span className="text-danger">{errors.username.message}</span>
-                    )}
+                className='form-control'
+                type='text'
+                placeholder='Usuario'
+                name='username'
+                onChange={(e) => {
+                  setValue('username', e.target.value);
+                  setFormData(prevForm => ({
+                    ...prevForm,
+                    username: e.target.value
+                  }));
+                }}
+                {...register("username")}
+              />
+              {errors.username && (
+                <span className="text-danger">{errors.username.message}</span>
+              )}
             </div>
-
+    
             <div className='form-group'>
               <input
-                        className='form-control'
-                        type='password'
-                        placeholder='Contraseña'
-                        name='password'
-                        onChange={(e) => {
-                          setValue('password', e.target.value);
-                          setFormData(prevForm => ({
-                            ...prevForm,
-                            password: e.target.value
-                          }));
-                        }}
-                        //value={password}
-                        {...register("password")}
-                      />
-                    {errors.password && (
-                    <span className="text-danger">{errors.password.message}</span>
-                    )}
+                className='form-control'
+                type='password'
+                placeholder='Contraseña'
+                name='password'
+                onChange={(e) => {
+                  setValue('password', e.target.value);
+                  setFormData(prevForm => ({
+                    ...prevForm,
+                    password: e.target.value
+                  }));
+                }}
+                {...register("password")}
+              />
+              {errors.password && (
+                <span className="text-danger">{errors.password.message}</span>
+              )}
             </div>
             {errorMessage && <p className="text-danger">{errorMessage}</p>}
-            <button className='btn btn-primary mt-3' type='submit'> Ingresar </button>
+            <button className='btn btn-primary mt-3' type='submit'>Ingresar</button>
           </form>
-
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 
 const mapStateToProps = state => ({
