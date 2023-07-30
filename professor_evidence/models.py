@@ -69,7 +69,7 @@ class Activity_Type(models.Model):
     # activity_type_id = models.CharField(max_length=50)
     activity_type = models.TextField(max_length=200)
     def __str__(self):
-        return str(self.id)
+        return str(self.activity_type)
 
 class Evidence_Type(models.Model):
     # evidence_id = models.CharField(max_length=50)
@@ -77,7 +77,7 @@ class Evidence_Type(models.Model):
     evidence_type = models.CharField(max_length=250)
     evidence_code = models.CharField(max_length=5)
     def __str__(self):
-        return str(self.id)
+        return str(self.evidence_code)
 
     
 class Document(models.Model):
@@ -151,8 +151,8 @@ class Report(models.Model):
     # Foreign Keys
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     professor_id = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    report_reviewedBy = models.ForeignKey(Semester_Career, on_delete=models.CASCADE)
-    report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE)
+    report_reviewedBy = models.ForeignKey(Semester_Career, on_delete=models.CASCADE, null=True, default=None )
+    report_approvedBy = models.ForeignKey(Semester_School, on_delete=models.CASCADE, null=True, default=None )
     # Information about the activities
     teaching_report_summary = models.TextField(max_length=500)
     teaching_report_hoursPerWeek = models.FloatField()

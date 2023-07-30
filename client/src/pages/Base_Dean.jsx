@@ -64,12 +64,11 @@ const Base_Dean = ({ children, checkAuthenticated, logout, load_user}) => {
       {/* ------------  navbar -------------  */}
       <Navbar className="SAED-navbar">
         <Container className="d-flex justify-content-between align-items-center">
-          <a href="/home">
-            {/* Agregar el href deseado */}
-            <Navbar.Brand>
-              <img src={logo} alt="logo" width={230} />
-            </Navbar.Brand>
-          </a>
+            <Link to="/home_dean">
+              <Navbar.Brand>
+                <img src={logo} alt="logo" width={230} />
+              </Navbar.Brand>
+            </Link>
           <Nav>
           <NavDropdown title={name+" "+lastname} id="evidencias-dropdown">
               <NavDropdown.Item onClick={toggleProfessorrMode}>
