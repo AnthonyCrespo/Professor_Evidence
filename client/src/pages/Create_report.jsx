@@ -166,9 +166,12 @@ export function Create_report() {
           report_uploadDate: formattedDate,
         }));
     // Usamos un bucle para asignar los valores a todos los campos
-      for (const fieldName in firstReport) {
-          setValue(fieldName, firstReport[fieldName]);
-        }
+    for (const fieldName in firstReport) {
+      // Verificamos si el campo existe en el formulario antes de asignar el valor
+      if (fieldName in form) {
+        setValue(fieldName, firstReport[fieldName]);
+      }
+    }
       }else{
         for (const fieldName in form) {
           setValue(fieldName, form[fieldName]);
@@ -202,9 +205,8 @@ export function Create_report() {
 
   
   const onSubmit = handleSubmit(async (data) => {
-    console.log(form)
+    //console.log(form)
     console.log(data)
-    console.log("el valor en el form es " + getValues("teaching_report_summary"))
     try {
       if (reports.length > 0) {
         const firstReport = reports[0]; 
