@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import  Base from './Base';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import { Navigate} from 'react-router-dom';
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
@@ -19,6 +19,40 @@ import { updateReport } from '../api/task.api';
 import { useSelector } from 'react-redux';
 
 import './css/Create_report.css';
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const hoursValidation = yup
+.number()
+.min(0, 'El número de horas debe ser mayor o igual a 0')
+.max(50, 'El número de horas debe ser menor a 50')
+.required('Este campo es obligatorio')
+
+const schema = yup.object().shape({
+  teaching_report_summary: yup.string().required('Este campo es obligatorio'),
+  teaching_report_hoursPerWeek: hoursValidation,
+  teaching_report_hoursPerWeekIntersemester: hoursValidation,
+
+
+  management_report_summary: yup.string().required('Este campo es obligatorio'),
+  management_report_hoursPerWeek:hoursValidation,
+  management_report_hoursPerWeekIntersemester:hoursValidation,
+
+
+  vinculation_report_summary: yup.string().required('Este campo es obligatorio'),
+  vinculation_report_hoursPerWeek:hoursValidation,
+  vinculation_report_hoursPerWeekIntersemester:hoursValidation,
+
+
+  investigation_report_summary: yup.string().required('Este campo es obligatorio'),
+  investigation_report_hoursPerWeek:hoursValidation,
+  investigation_report_hoursPerWeekIntersemester:hoursValidation,
+
+
+  report_conclusion: yup.string().required('Este campo es obligatorio')
+});
+
+
 
 export function Create_report() {
   const ci = useSelector(state => state.profile.ci);
@@ -53,7 +87,7 @@ export function Create_report() {
     management_report_hoursPerWeekIntersemester: 0,
     
     vinculation_report_summary: "",
-    vinculationt_report_hoursPerWeek: 0,
+    vinculation_report_hoursPerWeek: 0,
     vinculation_report_hoursPerWeekIntersemester: 0,
     
     investigation_report_summary: "",
@@ -122,7 +156,7 @@ export function Create_report() {
           management_report_hoursPerWeek: firstReport.management_report_hoursPerWeek,
           management_report_hoursPerWeekIntersemester: firstReport.management_report_hoursPerWeekIntersemester,
           vinculation_report_summary: firstReport.vinculation_report_summary,
-          vinculationt_report_hoursPerWeek: firstReport.vinculationt_report_hoursPerWeek,
+          vinculation_report_hoursPerWeek: firstReport.vinculation_report_hoursPerWeek,
           vinculation_report_hoursPerWeekIntersemester: firstReport.vinculation_report_hoursPerWeekIntersemester,
           investigation_report_summary: firstReport.investigation_report_summary,
           investigation_report_hoursPerWeek: firstReport.investigation_report_hoursPerWeek,
@@ -131,8 +165,17 @@ export function Create_report() {
           report_professorComment: firstReport.report_professorComment,
           report_uploadDate: formattedDate,
         }));
+    // Usamos un bucle para asignar los valores a todos los campos
+      for (const fieldName in firstReport) {
+          setValue(fieldName, firstReport[fieldName]);
+        }
+      }else{
+        for (const fieldName in form) {
+          setValue(fieldName, form[fieldName]);
+        }
+  
       }
-    };
+    }
 
     // Ensure that loadReports runs whenever semesters, ci, or reports state changes.
     if (semesters.length > 0 && ci) {
@@ -150,30 +193,37 @@ export function Create_report() {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
-  } = useForm();
-
-/*   const navigate = useNavigate() */
+    reset,
+    setValue,
+    getValues
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   
-  const onSubmit = handleSubmit(async () => {
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(form)
+    console.log(data)
+    console.log("el valor en el form es " + getValues("teaching_report_summary"))
     try {
       if (reports.length > 0) {
         const firstReport = reports[0]; 
         const existingReportId = firstReport["id"];
         //console.log("El CI para el update es " + ci);
         //console.log(form)
-        await updateReport(existingReportId, form);
+        await updateReport(existingReportId, data);
         toast.success('Reporte actualizado exitosamente!', {
           position: toast.POSITION.BOTTOM_RIGHT})
       } else { 
         // Si no hay un ID de informe existente, crear un nuevo informe
         //console.log("El CI en create report es "+ ci)
         form.professor_id = ci;
-        await createReport(form);
+        data.professor_id = ci;
+        await createReport(data);
         toast.success('Reporte generado exitosamente!', {
           position: toast.POSITION.BOTTOM_RIGHT})
       }
+
       //navigate("/home/");
     } catch (error) {
       // Capturar y mostrar el error
@@ -212,13 +262,18 @@ export function Create_report() {
   </Nav>
 
   <Tab.Content>
+          {/*---------------------------------------------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
+          {/*---------------------------- Docencia -------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
           <Tab.Pane eventKey="docencia">
           <Form.Group className="mt-4">
                     <Form.Label>Resumen:</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3} 
-                      value={form.teaching_report_summary}
+                      //value =  {getValues("teaching_report_summary")} /* {form.teaching_report_summary} */
                       onChange={(e) => {
                         setValue('teaching_report_summary', e.target.value);
                         setForm(prevForm => ({
@@ -226,148 +281,241 @@ export function Create_report() {
                           teaching_report_summary: e.target.value
                         }));
                       }}
-      /* '                {...register('teaching_report_summary', { required: true })}' */
+                      {...register("teaching_report_summary")}
                     />
-                    {errors.teaching_report_summary && <span>Este campo es obligatorio</span>}
+                      {errors.teaching_report_summary && (
+                          <span className="text-danger">{errors.teaching_report_summary.message}</span>
+                        )}
           </Form.Group>
 
           <Form.Group className="mt-4">
                   <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-                  <Form.Control type="number" min="0" max="100" 
-                                                value={form.teaching_report_hoursPerWeek}
-                                                onChange={(e) => {setForm(prevForm => ({
+                  <Form.Control type="number"
+                                                //value={form.teaching_report_hoursPerWeek}
+                                                onChange={(e) => {
+                                                  setValue('teaching_report_hoursPerWeek', e.target.value);
+                                                  setForm(prevForm => ({
                                                   ...prevForm,
                                                   teaching_report_hoursPerWeek: parseInt(e.target.value)
                                                 }));
-                                                }}/>
+                                                }}
+                                                {...register("teaching_report_hoursPerWeek")}
+                                      />
+
+                        {errors.teaching_report_hoursPerWeek && (
+                          <span className="text-danger">{errors.teaching_report_hoursPerWeek.message}</span>
+                        )}
                 </Form.Group>
 
                 <Form.Group className="mt-4 mb-4">
                   <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-                  <Form.Control type="number" min="0" max="100" 
-                                                value={form.teaching_report_hoursPerWeekIntersemester}
-                                                onChange={(e) => {setForm(prevForm => ({
+                  <Form.Control type="number" 
+                                                //value={form.teaching_report_hoursPerWeekIntersemester}
+                                                onChange={(e) => {
+                                                  setValue('teaching_report_hoursPerWeekIntersemester', e.target.value);
+                                                  setForm(prevForm => ({
                                                 ...prevForm,
                                                 teaching_report_hoursPerWeekIntersemester: parseInt(e.target.value)
                                               }));
                                               }}
+                                              {...register("teaching_report_hoursPerWeekIntersemester")}
                                                               />
+                        {errors.teaching_report_hoursPerWeekIntersemester && (
+                          <span className="text-danger">{errors.teaching_report_hoursPerWeekIntersemester.message}</span>
+                        )}
           </Form.Group>
         </Tab.Pane>
 
-
+          {/*---------------------------------------------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
+          {/*-------------------------- Vinculacion ------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
         <Tab.Pane eventKey="vinculacion">
-                    <Form.Group className="mt-4">
+              <Form.Group className="mt-4">
                       <Form.Label>Resumen:</Form.Label>
-                      <Form.Control as="textarea" rows={3} 
-                                      value={form.vinculation_report_summary}
-                                      onChange={(e) => {setForm(prevForm => ({
-                                        ...prevForm,
-                                        vinculation_report_summary: e.target.value
-                                      }));
-                                      }}
+                      <Form.Control
+                        as="textarea"
+                        rows={3} 
+                        //value =  {getValues("vinculation_report_summary")} /* {form.vinculation_report_summary} */
+                        onChange={(e) => {
+                          setValue('vinculation_report_summary', e.target.value);
+                          setForm(prevForm => ({
+                            ...prevForm,
+                            vinculation_report_summary: e.target.value
+                          }));
+                        }}
+                        {...register("vinculation_report_summary")}
                       />
-                    </Form.Group>
-
-                    <Form.Group className="mt-4">
-                      <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-                      <Form.Control type="number" min="0" max="100" 
-                                                    value={form.vinculationt_report_hoursPerWeek}
-                                                    onChange={(e) => {setForm(prevForm => ({
-                                                      ...prevForm,
-                                                      vinculationt_report_hoursPerWeek: parseInt(e.target.value)
-                                                    }));
-                                                    }}/>
-                    </Form.Group>
-
-                    <Form.Group className="mt-4 mb-4">
-                      <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-                      <Form.Control type="number" min="0" max="100" 
-                                                    value={form.vinculation_report_hoursPerWeekIntersemester}
-                                                    onChange={(e) => {setForm(prevForm => ({
-                                                    ...prevForm,
-                                                    vinculation_report_hoursPerWeekIntersemester: parseInt(e.target.value)
-                                                  }));
-                                                  }}
-                                                                  />
+                        {errors.vinculation_report_summary && (
+                            <span className="text-danger">{errors.vinculation_report_summary.message}</span>
+                          )}
             </Form.Group>
 
-        </Tab.Pane>
-
-
-        <Tab.Pane eventKey="investigacion">
-        <Form.Group className="mt-4">
-                  <Form.Label>Resumen:</Form.Label>
-                  <Form.Control as="textarea" rows={3} 
-                                  value={form.investigation_report_summary}
-                                  onChange={(e) => {setForm(prevForm => ({
-                                    ...prevForm,
-                                    investigation_report_summary: e.target.value
-                                  }));
-                                  }}
-                  />
-                </Form.Group>
-
-                <Form.Group className="mt-4">
-                  <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-                  <Form.Control type="number" min="0" max="100" 
-                                                value={form.investigation_report_hoursPerWeek}
-                                                onChange={(e) => {setForm(prevForm => ({
-                                                  ...prevForm,
-                                                  investigation_report_hoursPerWeek: parseInt(e.target.value)
-                                                }));
-                                                }}/>
-                </Form.Group>
-
-                <Form.Group className="mt-4 mb-4">
-                  <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-                  <Form.Control type="number" min="0" max="100" 
-                                                value={form.investigation_report_hoursPerWeekIntersemester}
-                                                onChange={(e) => {setForm(prevForm => ({
-                                                ...prevForm,
-                                                investigation_report_hoursPerWeekIntersemester: parseInt(e.target.value)
-                                              }));
-                                              }}
-                                                              />
-                </Form.Group>
-        </Tab.Pane>
-
-
-        <Tab.Pane eventKey="gestion">
-          <Form.Group className="mt-4">
-                    <Form.Label>Resumen:</Form.Label>
-                    <Form.Control as="textarea" rows={3} 
-                                    value={form.management_report_summary}
-                                    onChange={(e) => {setForm(prevForm => ({
-                                      ...prevForm,
-                                      management_report_summary: e.target.value
-                                    }));
-                                    }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mt-4">
+            <Form.Group className="mt-4">
                     <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
-                    <Form.Control type="number" min="0" max="100" 
-                                                  value={form.management_report_hoursPerWeek}
-                                                  onChange={(e) => {setForm(prevForm => ({
+                    <Form.Control type="number" 
+                                                  //value={form.vinculation_report_hoursPerWeek}
+                                                  onChange={(e) => {
+                                                    setValue('vinculation_report_hoursPerWeek', e.target.value);
+                                                    setForm(prevForm => ({
                                                     ...prevForm,
-                                                    management_report_hoursPerWeek: parseInt(e.target.value)
+                                                    vinculation_report_hoursPerWeek: parseInt(e.target.value)
                                                   }));
-                                                  }}/>
+                                                  }}
+                                                  {...register("vinculation_report_hoursPerWeek")}
+                                        />
+                              {errors.vinculation_report_hoursPerWeek && (
+                                <span className="text-danger">{errors.vinculation_report_hoursPerWeek.message}</span>
+                              )}
                   </Form.Group>
 
                   <Form.Group className="mt-4 mb-4">
                     <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
-                    <Form.Control type="number" min="0" max="100" 
-                                                  value={form.management_report_hoursPerWeekIntersemester}
-                                                  onChange={(e) => {setForm(prevForm => ({
+                    <Form.Control type="number" 
+                                                  //value={form.vinculation_report_hoursPerWeekIntersemester}
+                                                  onChange={(e) => {
+                                                    setValue('vinculation_report_hoursPerWeekIntersemester', e.target.value);
+                                                    setForm(prevForm => ({
                                                   ...prevForm,
-                                                  management_report_hoursPerWeekIntersemester: parseInt(e.target.value)
+                                                  vinculation_report_hoursPerWeekIntersemester: parseInt(e.target.value)
                                                 }));
                                                 }}
-                                                                />
+                                                {...register("vinculation_report_hoursPerWeekIntersemester")}
+                                          />
+                               {errors.vinculation_report_hoursPerWeekIntersemester && (
+                                <span className="text-danger">{errors.vinculation_report_hoursPerWeekIntersemester.message}</span>
+                              )}
+            </Form.Group>
+
+        </Tab.Pane>
+
+          {/*---------------------------------------------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
+          {/*-------------------------- Investigación-----------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
+          {/*---------------------------------------------------------------------------  */}
+        <Tab.Pane eventKey="investigacion">
+                  <Form.Group className="mt-4">
+                          <Form.Label>Resumen:</Form.Label>
+                          <Form.Control
+                            as="textarea"
+                            rows={3} 
+                            //value =  {getValues("investigation_report_summary")} /* {form.investigation_report_summary} */
+                            onChange={(e) => {
+                              setValue('investigation_report_summary', e.target.value);
+                              setForm(prevForm => ({
+                                ...prevForm,
+                                investigation_report_summary: e.target.value
+                              }));
+                            }}
+                            {...register("investigation_report_summary")}
+                          />
+                            {errors.investigation_report_summary && (
+                                <span className="text-danger">{errors.investigation_report_summary.message}</span>
+                              )}
+                </Form.Group>
+
+                <Form.Group className="mt-4">
+                        <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
+                        <Form.Control type="number"
+                                                      //value={form.investigation_report_hoursPerWeek}
+                                                      onChange={(e) => {
+                                                        setValue('investigation_report_hoursPerWeek', e.target.value);
+                                                        setForm(prevForm => ({
+                                                        ...prevForm,
+                                                        investigation_report_hoursPerWeek: parseInt(e.target.value)
+                                                      }));
+                                                      }}
+                                                      {...register("investigation_report_hoursPerWeek")}
+                                            />
+                            {errors.investigation_report_hoursPerWeek && (
+                              <span className="text-danger">{errors.investigation_report_hoursPerWeek.message}</span>
+                            )}
+              </Form.Group>
+
+              <Form.Group className="mt-4 mb-4">
+                <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
+                <Form.Control type="number"
+                                              //value={form.investigation_report_hoursPerWeekIntersemester}
+                                              onChange={(e) => {
+                                                setValue('investigation_report_hoursPerWeekIntersemester', e.target.value);
+                                                setForm(prevForm => ({
+                                              ...prevForm,
+                                              investigation_report_hoursPerWeekIntersemester: parseInt(e.target.value)
+                                            }));
+                                            }}
+                                            {...register("investigation_report_hoursPerWeekIntersemester")}
+                                                            />
+                            {errors.investigation_report_hoursPerWeekIntersemester && (
+                              <span className="text-danger">{errors.investigation_report_hoursPerWeekIntersemester.message}</span>
+                            )}
+              </Form.Group>
+
+                </Tab.Pane>
+
+                    {/*---------------------------------------------------------------------------  */}
+                    {/*---------------------------------------------------------------------------  */}
+                    {/*----------------------------- Gestión -------------------------------------  */}
+                    {/*---------------------------------------------------------------------------  */}
+                    {/*---------------------------------------------------------------------------  */}
+                  <Tab.Pane eventKey="gestion">
+                  <Form.Group className="mt-4">
+                    <Form.Label>Resumen:</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3} 
+                      //value =  {getValues("management_report_summary")} /* {form.management_report_summary} */
+                      onChange={(e) => {
+                        setValue('management_report_summary', e.target.value);
+                        setForm(prevForm => ({
+                          ...prevForm,
+                          management_report_summary: e.target.value
+                        }));
+                      }}
+                      {...register("management_report_summary")}
+                    />
+                      {errors.management_report_summary && (
+                          <span className="text-danger">{errors.management_report_summary.message}</span>
+                        )}
           </Form.Group>
+
+          <Form.Group className="mt-4">
+                  <Form.Label>Número promedio de horas por semana dedicadas:</Form.Label>
+                  <Form.Control type="number"
+                                                //value={form.management_report_hoursPerWeek}
+                                                onChange={(e) => {
+                                                  setValue('management_report_hoursPerWeek', e.target.value);
+                                                  setForm(prevForm => ({
+                                                  ...prevForm,
+                                                  management_report_hoursPerWeek: parseInt(e.target.value)
+                                                }));
+                                                }}
+                                                {...register("management_report_hoursPerWeek")}
+                                      />
+                                  {errors.management_report_hoursPerWeek && (
+                                    <span className="text-danger">{errors.management_report_hoursPerWeek.message}</span>
+                                  )}
+                </Form.Group>
+
+                <Form.Group className="mt-4 mb-4">
+                  <Form.Label>Número promedio de horas por semana dedicadas en el intersemestre:</Form.Label>
+                  <Form.Control type="number"
+                                                //value={form.management_report_hoursPerWeekIntersemester}
+                                                onChange={(e) => {
+                                                  setValue('management_report_hoursPerWeekIntersemester', e.target.value);
+                                                  setForm(prevForm => ({
+                                                ...prevForm,
+                                                management_report_hoursPerWeekIntersemester: parseInt(e.target.value)
+                                              }));
+                                              }}
+                                              {...register("management_report_hoursPerWeekIntersemester")}
+                                                              />
+                                  {errors.management_report_hoursPerWeekIntersemester && (
+                                    <span className="text-danger">{errors.management_report_hoursPerWeekIntersemester.message}</span>
+                                  )}
+          </Form.Group>
+
         </Tab.Pane>
 
         
@@ -375,12 +523,20 @@ export function Create_report() {
           <Form.Group className="mt-4">
                 <Form.Label>Conclusiones:</Form.Label>
                 <Form.Control as="textarea" rows={3} 
-                                              value={form.report_conclusion}
-                                              onChange={(e) => {setForm(prevForm => ({
+                                              //value={form.report_conclusion}
+                                              onChange={(e) => {
+                                                setValue('report_conclusion', e.target.value);
+                                                setForm(prevForm => ({
                                                 ...prevForm,
                                                 report_conclusion: e.target.value
                                               }));
-                                              }}/>
+                                              }}
+                                              {...register("report_conclusion")}
+                                              />
+
+                            {errors.report_conclusion && (
+                              <span className="text-danger">{errors.report_conclusion.message}</span>
+                            )}
           </Form.Group>
         </Tab.Pane>
 
@@ -389,8 +545,10 @@ export function Create_report() {
           <Form.Group className="mt-4">
                 <Form.Label>Comentario:</Form.Label>
                 <Form.Control as="textarea" rows={3} 
-                                              value={form.report_professorComment}
-                                              onChange={(e) => {setForm(prevForm => ({
+                                              //value={form.report_professorComment}
+                                              onChange={(e) => {
+                                                setValue('report_professorComment', e.target.value);
+                                                setForm(prevForm => ({
                                                 ...prevForm,
                                                 report_professorComment: e.target.value
                                               }));

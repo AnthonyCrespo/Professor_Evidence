@@ -215,7 +215,7 @@ class Report(models.Model):
     management_report_hoursPerWeekIntersemester = models.FloatField()
     
     vinculation_report_summary = models.TextField(max_length=200)
-    vinculationt_report_hoursPerWeek = models.FloatField()
+    vinculation_report_hoursPerWeek = models.FloatField()
     vinculation_report_hoursPerWeekIntersemester = models.FloatField()
         
     investigation_report_summary = models.TextField(max_length=200)
