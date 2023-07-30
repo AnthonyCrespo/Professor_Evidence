@@ -577,13 +577,12 @@ export function Create_report() {
                               <span className="text-danger">{errors.report_professorComment.message}</span>
                             )}
           </Form.Group>
-          <Button className="mt-4" variant="primary" type="submit">Generar reporte</Button>
         </Tab.Pane>
         
       </Tab.Content>
     </Tab.Container>
           
-
+        <Button className="mt-4" variant="primary" type="submit">Generar reporte</Button>
         </Form>
     <br/>
     <ToastContainer />
