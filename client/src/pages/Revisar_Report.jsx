@@ -66,6 +66,7 @@ export function Revisar_Report() {
   const formattedDay = String(day).padStart(2, '0');
   const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
 
+  const [currentSemester, setCurrentSemester] = useState([]);
 
 /* ------ Carga de los profesores bajo supervisión --------- */
 useEffect(() => {
@@ -91,6 +92,7 @@ useEffect(() => {
       setSemesters(res.data);
       const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
       setSelectedSemester(currentSemester.id)
+      setCurrentSemester(currentSemester)
     }
     loadSemesters();
   }, []);
@@ -320,7 +322,11 @@ useEffect(() => {
               {         item.report_isReviewed   ? "APROBADO" : "NO APROBADO"}
                     </td>
                     <td>
-                        <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
+                          {item.semester_id === currentSemester.id && (
+                          <Button variant="primary" onClick={() => handleEdit(item)}>
+                          Editar
+                        </Button>
+                          )}
                     </td>
                 </tr>
                 ))}

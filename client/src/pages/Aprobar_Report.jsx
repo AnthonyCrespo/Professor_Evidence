@@ -68,6 +68,8 @@ export function Aprobar_Report() {
   const [careersInDeanSchool, setCareersInDeanSchool] = useState([]);
   const [professorsInDeanSchool, setProfessorsInDeanSchool] = useState([]);
   
+  const [currentSemester, setCurrentSemester] = useState([]);
+
 
   /* ------ Carga del career_id del decano ------- */
   useEffect(() => {
@@ -129,6 +131,7 @@ useEffect(() => {
       setSemesters(res.data);
       const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
       setSelectedSemester(currentSemester.id)
+      setCurrentSemester(currentSemester)
     }
     loadSemesters();
   }, []);
@@ -352,7 +355,13 @@ useEffect(() => {
               {         item.report_isApproved ? "APROBADO" : "NO APROBADO"}
                     </td>
                     <td>
-                        <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
+
+                    {item.semester_id === currentSemester.id && (
+                    <Button variant="primary" onClick={() => handleEdit(item)}>
+                    Editar
+                  </Button>
+                    )}
+                    
                     </td>
                 </tr>
                 ))}

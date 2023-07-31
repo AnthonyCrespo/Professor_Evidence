@@ -59,6 +59,7 @@ export function Revisar_Evidence() {
   const [deleteItemId, setDeleteItemId] = useState(null);
 
 
+  const [currentSemester, setCurrentSemester] = useState([]);
 
   const [selectedDocument, setSelectedDocument] = useState(null);
   /* Para desplegar el nombre del archivo actual en la BD */
@@ -166,6 +167,7 @@ useEffect(() => {
       setSemesters(res.data);
       const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
       setSelectedSemester(currentSemester.id)
+      setCurrentSemester(currentSemester)
     }
     loadSemesters();
   }, []);
@@ -425,9 +427,12 @@ useEffect(() => {
                   <td>{item.document_professorComment}</td>
                   <td>{item.document_revisorComment}</td>
                   <td>
-                    <Button variant="primary" onClick={() => handleEdit(item)}>Editar</Button>
-                    <Button variant="danger" onClick={() => handleDelete(item.id)}>Borrar</Button>
-                  </td>
+                  {item.semester_id === currentSemester.id && (
+                    <Button variant="primary" onClick={() => handleEdit(item)}>
+                    Editar
+                  </Button>
+                    )}
+                </td>
                 </tr>
               ))
             ) : (
