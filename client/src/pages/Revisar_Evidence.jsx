@@ -254,11 +254,11 @@ useEffect(() => {
       document_revisorComment: revisorComment
     };
   
-    if (data.document_pathToFile) {
+/*     if (data.document_pathToFile) {
       //new_evidence_document.document_pathToFile = data.document_pathToFile.name;
       new_evidence_document.uploadedDocument = data.document_pathToFile;
     }
-  
+   */
     //setEvidenceDocument(new_evidence_document);
   
     console.log(new_evidence_document);
@@ -488,7 +488,7 @@ useEffect(() => {
           </Form.Group>
 
 
-        <Form.Group className="mt-4">
+  {/*       <Form.Group className="mt-4">
           <Form.Label>Documento de respaldo:</Form.Label>
           <div className="input-group">
             <input
@@ -512,7 +512,7 @@ useEffect(() => {
               {document}
             </label>
           </div>
-        </Form.Group>
+        </Form.Group> */}
 
         
         <Form.Group className="mt-4">
