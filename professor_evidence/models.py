@@ -89,7 +89,7 @@ class Document(models.Model):
     semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     document_revisorComment = models.TextField(blank=True, default='')
     document_professorComment = models.TextField(blank=True, default='')
-    document_uploadDate = models.DateField(auto_now=False, auto_now_add=False)
+    document_uploadDate = models.DateField(auto_now=True, auto_now_add=False)
     #document_pathToFile = models.TextField(max_length=200)
     #document_approved = models.BooleanField(null=True, default = None)
 
@@ -175,7 +175,7 @@ class Report(models.Model):
     report_professorComment = models.TextField(max_length=350, blank=True)
     report_revisorComment = models.TextField(max_length=350, blank=True)
     report_conclusion = models.TextField(max_length=500, blank=True)
-    report_uploadDate = models.DateField(auto_now=False, auto_now_add=True)
+    report_uploadDate = models.DateField(default=datetime.now().date())
     report_isReviewed = models.BooleanField(default = False)
     report_isApproved = models.BooleanField(default = False)
     # report_pathToFile = models.TextField(max_length=200)
@@ -215,7 +215,7 @@ class Report(models.Model):
             self.report_approvedBy = None
             
         print(f"valores son {self.report_reviewedBy}   {self.report_approvedBy}")
-        
+        print(f"valores de fecha son {self.report_uploadDate}")
         # Generate the PDF
         pdf_buffer = generate_pdf(self)
 

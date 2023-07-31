@@ -113,7 +113,7 @@ export function Create_report() {
     
     
     //report_name: 'nombre_del_reporte',	
-    report_uploadDate: formattedDate,	
+    //report_uploadDate: formattedDate,	
     report_professorComment: '',	
     report_revisorComment: '',	
     report_conclusion:	'',
@@ -189,7 +189,7 @@ export function Create_report() {
           investigation_report_hoursPerWeekIntersemester: firstReport.investigation_report_hoursPerWeekIntersemester,
           report_conclusion: firstReport.report_conclusion,
           report_professorComment: firstReport.report_professorComment,
-          report_uploadDate: formattedDate,
+          //report_uploadDate: formattedDate,
           report_isReviewed: firstReport.report_isReviewed
         }));
         setReportToUpdateID(firstReport.id)
