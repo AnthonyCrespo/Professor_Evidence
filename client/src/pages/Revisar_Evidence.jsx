@@ -164,6 +164,8 @@ useEffect(() => {
     async function loadSemesters() {
       const res = await getSemesters();
       setSemesters(res.data);
+      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
+      setSelectedSemester(currentSemester.id)
     }
     loadSemesters();
   }, []);

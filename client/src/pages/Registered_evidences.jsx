@@ -149,6 +149,7 @@ useEffect(() => {
       setSemesters(res.data);
       const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
       setCurrentSemester(currentSemester)
+      setSelectedSemester(currentSemester.id)
     }
     loadSemesters();
   }, []);

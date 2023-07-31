@@ -67,7 +67,7 @@ export function Aprobar_Report() {
   //const [deanSchoolId, setDeanSchoolId] = useState(null);
   const [careersInDeanSchool, setCareersInDeanSchool] = useState([]);
   const [professorsInDeanSchool, setProfessorsInDeanSchool] = useState([]);
-
+  
 
   /* ------ Carga del career_id del decano ------- */
   useEffect(() => {
@@ -126,6 +126,8 @@ export function Aprobar_Report() {
 useEffect(() => {
     async function loadSemesters() {
       const res = await getSemesters();
+      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
+      setSelectedSemester(currentSemester.id)
       setSemesters(res.data);
     }
     loadSemesters();
