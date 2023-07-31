@@ -198,7 +198,24 @@ class Report(models.Model):
             # Delete the existing report before generating a new one
             existing_report = Report.objects.get(professor_id=self.professor_id, semester_id=self.semester_id)
             existing_report.delete()
+        
+        
+        try:
+            semester_career = Semester_Career.objects.get(semester_id=self.semester_id, career_id=self.professor_id.career_id)
+            print("EL ID DEL COORDINADOR ES " + str(semester_career))
+            self.report_reviewedBy = semester_career
+        except Semester_Career.DoesNotExist:
+            self.report_reviewedBy = None
 
+        try:
+            semester_school = Semester_School.objects.get(semester_id=self.semester_id, school_id=self.professor_id.career_id.school_id)
+            print("EL ID DEL DECANO ES " + str(semester_school))
+            self.report_approvedBy = semester_school
+        except Semester_School.DoesNotExist:
+            self.report_approvedBy = None
+            
+        print(f"valores son {self.report_reviewedBy}   {self.report_approvedBy}")
+        
         # Generate the PDF
         pdf_buffer = generate_pdf(self)
 

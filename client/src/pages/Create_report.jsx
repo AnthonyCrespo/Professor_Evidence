@@ -89,6 +89,9 @@ export function Create_report() {
 
 
   const [currentSemester, setCurrentSemester] = useState([]);
+  const [deanId, setDeanId] = useState(null);
+  const [coordinatorId, setCoordinatorId] = useState(null);
+
 
   const [form, setForm] = useState({
 
@@ -122,6 +125,8 @@ export function Create_report() {
     //report_reviewedBy: 1,	
     //report_approvedBy: 1,
   });
+
+
 
 
   useEffect(() => {

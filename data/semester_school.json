@@ -15,5 +15,15 @@
       "school_id": 1,
       "dean_id": "1317858549"
     }
+  },
+
+  {
+    "model": "professor_evidence.semester_school",
+    "pk": 3,
+    "fields": {
+      "semester_id": 4,
+      "school_id": 1,
+      "dean_id": "1234567891"
+    }
   }
 ]
