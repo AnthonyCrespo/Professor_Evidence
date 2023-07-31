@@ -92,7 +92,7 @@ export function Registered_evidences() {
   useEffect(() => {
     async function loadEvidencesType() {
       const res = await getEvidencesType();
-      const allOption = { id: 0, evidence_type: 'Todos', activity_type: 0 };
+      const allOption = { id: 0, evidence_code: 'Todos', activity_type: 0 };
       let evidencesWithAllOption = [];
       /* Si tipo de actividad = TODOS */
       if (parseInt(selectedActivity) === 0) {
@@ -211,7 +211,7 @@ useEffect(() => {
     const documentsWithNames = filteredDocuments.map(document => ({
       ...document,
       activity_type_name: activities.find(activity => activity.id === document.activity_type)?.activity_type,
-      evidence_type_name: evidences.find(evidence => evidence.id === document.evidence_type)?.evidence_type
+      evidence_type_name: evidences.find(evidence => evidence.id === document.evidence_type)?.evidence_code
     }));
 
     
@@ -328,7 +328,7 @@ useEffect(() => {
             }}
           >
             {evidences.map(opcion => (
-              <option key={opcion.id} value={opcion.id}>{opcion.evidence_type}</option>
+              <option key={opcion.id} value={opcion.id} title = {opcion.evidence_type}>{opcion.evidence_code}</option>
             ))}
           </Form.Select>
           {errors.evidence_type && <span>Debe elegir un tipo de evidencia.</span>}
