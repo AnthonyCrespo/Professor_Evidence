@@ -390,9 +390,12 @@ useEffect(() => {
                   {/* <td>{item.document_approved === true ? 'Aprobado' : (item.document_approved === false ? 'No aprobado' : 'En revisión')}</td> */}
                   {/* Mostrará "APROBADO" si document_approved es true, "NO APROBADO" si es false, y "EN REVISIÓN" si es null */}
                   <td>
+                  {item.semester_id === currentSemester.id && (
                     <Button variant="primary" onClick={() => handleEdit(item)}>
-                      Editar
-                    </Button>
+                    Editar
+                  </Button>
+                    )}
+
                     {item.semester_id === currentSemester.id && (
                       <Button variant="danger" onClick={() => handleDelete(item.id)}>
                         Borrar
