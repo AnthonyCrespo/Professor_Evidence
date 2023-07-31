@@ -19,6 +19,7 @@ import './css/Register_evidence.css';
 import { getActivitiesType } from '../api/task.api';
 import { getEvidencesType } from '../api/task.api';
 import { createEvidence } from '../api/task.api';
+import { getSemesters } from '../api/task.api';
 
 
 import { useSelector } from 'react-redux';
@@ -53,7 +54,8 @@ export function Register_evidence() {
     const formattedDay = String(day).padStart(2, '0');
     const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
     
-
+    const [currentSemester, setCurrentSemester] = useState([]);
+    const [semesters, setSemesters] = useState([]);
     /* ------------- Load Activities ------------------  */
     useEffect(() => {
       async function loadActivitiesType() {
@@ -76,7 +78,15 @@ export function Register_evidence() {
       loadEvidencesType();
     }, [selectedActivity]);
 
-
+  useEffect(() => {
+    async function loadSemesters() {
+      const res = await getSemesters();
+      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
+      setCurrentSemester(currentSemester)
+      //console.log("El semestre actual es " + currentSemester.id);
+    }
+    loadSemesters();
+  }, []);
 
     useEffect(() => {
       const loadedOptions = evidences.map(evidence => ({
@@ -110,7 +120,7 @@ export function Register_evidence() {
         professor_id: ci, //"0302616099",//"1317858973",
         activity_type: parseInt(selectedActivity),
         evidence_type: parseInt(selectedEvidence),
-        semester_id: 1,
+        semester_id: currentSemester.id,
         document_revisorComment: " ",
         document_professorComment: professorComment,
         document_uploadDate: formattedDate,
