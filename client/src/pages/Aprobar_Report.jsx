@@ -126,9 +126,9 @@ export function Aprobar_Report() {
 useEffect(() => {
     async function loadSemesters() {
       const res = await getSemesters();
+      setSemesters(res.data);
       const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
       setSelectedSemester(currentSemester.id)
-      setSemesters(res.data);
     }
     loadSemesters();
   }, []);
@@ -159,6 +159,7 @@ useEffect(() => {
       semester_id: parseInt(selectedSemester),
       report_isApproved: selectedReportState === "Todos" ? null : selectedReportState === "APROBADO",
     };
+    console.log(report_data)
   
     const res = await getReports();
     let filteredReports = res.data.filter(report => {
