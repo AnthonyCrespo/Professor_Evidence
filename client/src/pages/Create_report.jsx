@@ -78,7 +78,7 @@ export function Create_report() {
   const [activities, setActivities] = useState([]);
   const [reports, setReports] = useState([]);
   const [semesters, setSemesters] = useState([]);
-
+  const [reportToUpdateID, setReportToUpdateID] = useState(null);
   const currentDate = new Date();
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
@@ -86,6 +86,9 @@ export function Create_report() {
   const formattedMonth = String(month).padStart(2, '0');
   const formattedDay = String(day).padStart(2, '0');
   const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+
+
+  const [currentSemester, setCurrentSemester] = useState([]);
 
   const [form, setForm] = useState({
 
@@ -135,8 +138,11 @@ export function Create_report() {
   useEffect(() => {
     async function loadSemesters() {
       const res = await getSemesters();
-      setSemesters(res.data);
-      //console.log(res.data);
+      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
+      setSemesters([currentSemester]);
+      setCurrentSemester(currentSemester)
+      form.semester_id = currentSemester.id
+      //console.log("El semestre actual es " + currentSemester.id);
     }
     loadSemesters();
   }, []);
@@ -147,17 +153,20 @@ export function Create_report() {
     const loadReports = async () => {
       const professorId = ci;
       const response = await getReports();
-      const filteredReports = response.data.filter(report => report.professor_id === professorId);
+      const filteredReports = response.data.filter(report => report.professor_id === professorId &&  report.semester_id === currentSemester.id);
 
       const reportsWithSemesterName = filteredReports.map(report => ({
         ...report,
         semester_name: semesters.find(semester => semester.id === report.semester_id)?.semester_name,
       }));
 
+      console.log("Los reportes de este semestre son")
+      console.log(reportsWithSemesterName)
       setReports(reportsWithSemesterName);
 
       if (reportsWithSemesterName.length > 0) {
         const firstReport = reportsWithSemesterName[0];
+        console.log(firstReport)
         setForm(prevForm => ({
           ...prevForm,
           professor_id: firstReport.professor_id,
@@ -178,6 +187,7 @@ export function Create_report() {
           report_uploadDate: formattedDate,
           report_isReviewed: firstReport.report_isReviewed
         }));
+        setReportToUpdateID(firstReport.id)
     // Usamos un bucle para asignar los valores a todos los campos
     for (const fieldName in firstReport) {
       // Verificamos si el campo existe en el formulario antes de asignar el valor
@@ -224,11 +234,11 @@ export function Create_report() {
     console.log(data)
     try {
       if (reports.length > 0) {
-        const firstReport = reports[0]; 
-        const existingReportId = firstReport["id"];
+        //const firstReport = reports[0]; 
+        //const existingReportId = firstReport["id"];
         //console.log("El CI para el update es " + ci);
-        //console.log(form)
-        await updateReport(existingReportId, data);
+        console.log(reportToUpdateID)
+        await updateReport(reportToUpdateID, data);
         toast.success('Reporte actualizado exitosamente!', {
           position: toast.POSITION.BOTTOM_RIGHT})
 
@@ -238,6 +248,8 @@ export function Create_report() {
         //console.log("El CI en create report es "+ ci)
         form.professor_id = ci;
         data.professor_id = ci;
+        console.log("la data es")
+        console.log(data)
         await createReport(data);
           toast.success('Reporte generado exitosamente!', {
             position: toast.POSITION.BOTTOM_RIGHT})

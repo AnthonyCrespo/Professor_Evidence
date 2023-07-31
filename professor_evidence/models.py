@@ -194,9 +194,9 @@ class Report(models.Model):
 
     def save(self, *args, **kwargs):
 
-        if Report.objects.filter(professor_id=self.professor_id).exists():
+        if Report.objects.filter(professor_id=self.professor_id, semester_id=self.semester_id).exists():
             # Delete the existing report before generating a new one
-            existing_report = Report.objects.get(professor_id=self.professor_id)
+            existing_report = Report.objects.get(professor_id=self.professor_id, semester_id=self.semester_id)
             existing_report.delete()
 
         # Generate the PDF

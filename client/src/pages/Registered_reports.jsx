@@ -18,13 +18,14 @@ export function Registered_reports() {
 
   const [reports, setReports] = useState([]);
   const [semesters, setSemesters] = useState([]);
-
+  const [currentSemester, setCurrentSemester] = useState([]);
 
   useEffect(() => {
     async function loadSemesters() {
       const res = await getSemesters();      //console.log(res.data);
           // Filtrar el semestre actual
-      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
+      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true); //Encuentro el semestre actual
+      setCurrentSemester(currentSemester)
       setSemesters(res.data);
       if (currentSemester) {
         // Si se encontró el semestre actual, haz algo con él aquí
