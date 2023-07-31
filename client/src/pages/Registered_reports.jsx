@@ -25,7 +25,7 @@ export function Registered_reports() {
       const res = await getSemesters();      //console.log(res.data);
           // Filtrar el semestre actual
       const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
-      setSemesters([currentSemester]);
+      setSemesters(res.data);
       if (currentSemester) {
         // Si se encontró el semestre actual, haz algo con él aquí
         console.log("Semestre actual:", currentSemester);
