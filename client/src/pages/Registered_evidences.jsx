@@ -450,8 +450,8 @@ useEffect(() => {
               }}
             >
               {evidences_modal.map((opcion) => (
-                <option key={opcion.id} value={opcion.id}>
-                  {opcion.evidence_type}
+                <option key={opcion.id} value={opcion.id} title = {opcion.evidence_type}>
+                  {opcion.evidence_code}
                 </option>
               ))}
             </Form.Select>
