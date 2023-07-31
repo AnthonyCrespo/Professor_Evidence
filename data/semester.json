@@ -6,7 +6,7 @@
         "semester_name": "SEM123",
         "date_start": "2023-04-17",
         "date_end": "2023-08-13",
-        "isCurrentSemester": false
+        "isCurrentSemester": true
       }
     },
     {
@@ -36,7 +36,7 @@
         "semester_name": "SEM124",
         "date_start": "2022-11-07",
         "date_end": "2023-03-20",
-        "isCurrentSemester": true
+        "isCurrentSemester": false
       }
     }
 ]

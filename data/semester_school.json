@@ -2,7 +2,7 @@
     "model": "professor_evidence.semester_school",
     "pk": 1,
     "fields": {
-      "semester_id": 1,
+      "semester_id": 3,
       "school_id": 1,
       "dean_id": "1317858549"
     }
