@@ -69,11 +69,12 @@ export function Register_evidence() {
     /* ------------- Load Evidences ------------------  */
     useEffect(() => {
       async function loadEvidencesType() {
-        const res = await getEvidencesType();
-        const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
-        setEvidences(filteredEvidences);
-        setSelectedEvidence(filteredEvidences[0].id);
-        //console.log("Estoy cargandooo las evidencias")
+        const res = await getEvidencesType({activity_type:parseInt(selectedActivity)});
+        //const filteredEvidences = res.data.filter(opcion => opcion.activity_type === parseInt(selectedActivity));
+        setEvidences(res.data);
+        setSelectedEvidence(res.data[0].id);
+        console.log("Estoy cargandooo las evidencias")
+        console.log(res.data)
       }
       loadEvidencesType();
     }, [selectedActivity]);

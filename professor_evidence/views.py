@@ -28,7 +28,14 @@ class CareerView(viewsets.ModelViewSet):
 
 class ProfessorView(viewsets.ModelViewSet):
     serializer_class = ProfessorSerializer
-    queryset = Professor.objects.all()
+
+    def get_queryset(self):
+        professor_id = self.request.query_params.get('professor_id', None)
+        if professor_id:
+            queryset = Professor.objects.filter(professor_id=professor_id)
+        else:
+            queryset = Professor.objects.all()
+        return queryset
 
 class Professor_DenominationView(viewsets.ModelViewSet):
     serializer_class = Professor_DenominationSerializer
@@ -75,8 +82,15 @@ class Activity_TypeView(viewsets.ModelViewSet):
 #     queryset = Activity_Report_Management.objects.all()
     
 class Evidence_TypeView(viewsets.ModelViewSet):
-    queryset = Evidence_Type.objects.all()
     serializer_class = Evidence_TypeSerializer
+
+    def get_queryset(self):
+        activity_type = self.request.query_params.get('activity_type', None)
+        if activity_type:
+            queryset = Evidence_Type.objects.filter(activity_type=activity_type)
+        else:
+            queryset = Evidence_Type.objects.all()
+        return queryset
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data, many=isinstance(request.data,list))
