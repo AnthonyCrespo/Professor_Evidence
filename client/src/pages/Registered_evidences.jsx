@@ -58,7 +58,7 @@ export function Registered_evidences() {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
 
-
+  const [currentSemester, setCurrentSemester] = useState([]);
 
   const [selectedDocument, setSelectedDocument] = useState(null);
   /* Para desplegar el nombre del archivo actual en la BD */
@@ -147,6 +147,8 @@ useEffect(() => {
     async function loadSemesters() {
       const res = await getSemesters();
       setSemesters(res.data);
+      const currentSemester = res.data.find(semester => semester.isCurrentSemester === true);
+      setCurrentSemester(currentSemester)
     }
     loadSemesters();
   }, []);
@@ -391,9 +393,11 @@ useEffect(() => {
                     <Button variant="primary" onClick={() => handleEdit(item)}>
                       Editar
                     </Button>
-                    <Button variant="danger" onClick={() => handleDelete(item.id)}>
-                      Borrar
-                    </Button>
+                    {item.semester_id === currentSemester.id && (
+                      <Button variant="danger" onClick={() => handleDelete(item.id)}>
+                        Borrar
+                      </Button>
+                    )}
                   </td>
                 </tr>
               ))}
