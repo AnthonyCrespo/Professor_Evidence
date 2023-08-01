@@ -399,7 +399,7 @@ useEffect(() => {
 
       
       <h5>Documentos subidos:</h5>
-      <div style={{ maxWidth: '80%' }}>
+      <div className="table-responsive" style={{ maxWidth: '90%' }}>
         <Table striped bordered hover>
           <thead>
             <tr>

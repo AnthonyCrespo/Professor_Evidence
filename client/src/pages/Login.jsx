@@ -18,6 +18,10 @@ const schema = yup.object().shape({
 
 const LoginPage = ({ login, checkAuthenticated,  isAuthenticated}) => {
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const [formData, setFormData] = useState({
     username: '',

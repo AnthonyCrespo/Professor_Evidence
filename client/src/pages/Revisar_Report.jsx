@@ -286,8 +286,8 @@ useEffect(() => {
 
       
       <h5>Informes registrados</h5>
-      <div style={{ maxWidth: '80%' }}>
-        <Table striped bordered hover>
+      <div className="table-responsive" style={{ maxWidth: '90%' }}>
+          <Table striped bordered hover>
             <thead>
                 <tr>
                 <th>Profesor</th> 

@@ -131,7 +131,7 @@ const Base_Revisor = ({ children, checkAuthenticated, logout, load_user}) => {
                     </ul>
                 </div>
                 {/*------------- sidebar ends -------------*/}
-        <div className="col d-flex flex-column align-items-center mt-3">{children}</div>
+        <div className="col d-flex flex-column align-items-center mt-3" style={{ overflowX: "auto" }}>{children}</div>
       </div>
     </Container>
   );
