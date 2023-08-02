@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.signals import pre_delete
+from django.utils import timezone
 from django.dispatch import receiver
 from django.core.files.storage import default_storage
 import os, io
@@ -175,7 +176,8 @@ class Report(models.Model):
     report_professorComment = models.TextField(max_length=350, blank=True)
     report_revisorComment = models.TextField(max_length=350, blank=True)
     report_conclusion = models.TextField(max_length=500, blank=True)
-    report_uploadDate = models.DateField(default=datetime.now().date())
+    # report_uploadDate = models.DateField(default=datetime.now().date())
+    report_uploadDate = models.DateField(auto_now=True, auto_now_add=False)
     report_isReviewed = models.BooleanField(default = False)
     report_isApproved = models.BooleanField(default = False)
     # report_pathToFile = models.TextField(max_length=200)

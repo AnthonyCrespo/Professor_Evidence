@@ -1,0 +1,1328 @@
+[
+    {
+        "model": "professor_evidence.semester",
+        "pk": 1,
+        "fields": {
+            "semester_name": "SEM123",
+            "date_start": "2023-04-17",
+            "date_end": "2023-08-13",
+            "isCurrentSemester": false
+        }
+    },
+    {
+        "model": "professor_evidence.semester",
+        "pk": 2,
+        "fields": {
+            "semester_name": "SEM223",
+            "date_start": "2023-08-28",
+            "date_end": "2023-12-14",
+            "isCurrentSemester": false
+        }
+    },
+    {
+        "model": "professor_evidence.semester",
+        "pk": 3,
+        "fields": {
+            "semester_name": "SM222",
+            "date_start": "2022-11-07",
+            "date_end": "2023-03-20",
+            "isCurrentSemester": false
+        }
+    },
+    {
+        "model": "professor_evidence.semester",
+        "pk": 4,
+        "fields": {
+            "semester_name": "SEM124",
+            "date_start": "2022-11-07",
+            "date_end": "2023-03-20",
+            "isCurrentSemester": true
+        }
+    },
+    {
+        "model": "professor_evidence.school",
+        "pk": 1,
+        "fields": {
+            "school_name": "Escuela de Ciencias Matemáticas y Computacionales",
+            "school_abbreviation": "ECMC"
+        }
+    },
+    {
+        "model": "professor_evidence.school",
+        "pk": 2,
+        "fields": {
+            "school_name": "Escuela de Ciencias Biológicas e Ingeniería",
+            "school_abbreviation": "ECBI"
+        }
+    },
+    {
+        "model": "professor_evidence.school",
+        "pk": 3,
+        "fields": {
+            "school_name": "Escuela de Ciencias Físicas y Nanotecnología",
+            "school_abbreviation": "ECFN"
+        }
+    },
+    {
+        "model": "professor_evidence.school",
+        "pk": 4,
+        "fields": {
+            "school_name": "Escuela de Ciencias Químicas e Ingeniería",
+            "school_abbreviation": "ECQI"
+        }
+    },
+    {
+        "model": "professor_evidence.school",
+        "pk": 5,
+        "fields": {
+            "school_name": "Escuela de Ciencias de la Tierra, Energía y Ambiente",
+            "school_abbreviation": "ECTEA"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 1,
+        "fields": {
+            "school_id": 1,
+            "career_name": "Matemáticas"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 2,
+        "fields": {
+            "school_id": 1,
+            "career_name": "Computación"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 3,
+        "fields": {
+            "school_id": 2,
+            "career_name": "Biología"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 4,
+        "fields": {
+            "school_id": 2,
+            "career_name": "Biomedicina"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 5,
+        "fields": {
+            "school_id": 3,
+            "career_name": "Nanotecnología"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 6,
+        "fields": {
+            "school_id": 3,
+            "career_name": "Física"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 7,
+        "fields": {
+            "school_id": 4,
+            "career_name": "Materiales"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 8,
+        "fields": {
+            "school_id": 4,
+            "career_name": "Química"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 9,
+        "fields": {
+            "school_id": 5,
+            "career_name": "Agroindustria"
+        }
+    },
+    {
+        "model": "professor_evidence.career",
+        "pk": 10,
+        "fields": {
+            "school_id": 5,
+            "career_name": "Geología"
+        }
+    },
+    {
+        "model": "professor_evidence.professor_denomination",
+        "pk": 1,
+        "fields": {
+            "denomination": "Docente"
+        }
+    },
+    {
+        "model": "professor_evidence.professor_denomination",
+        "pk": 2,
+        "fields": {
+            "denomination": "Investigador"
+        }
+    },
+    {
+        "model": "professor_evidence.professor",
+        "pk": "0302616099",
+        "fields": {
+            "career_id": 2,
+            "professor_degree": "PhD",
+            "professor_names": "Brian Anthony",
+            "professor_lastnames": "Crespo Yaguana",
+            "professor_denomination": 1,
+            "professor_revisor": "1317858973",
+            "isRevisor": false,
+            "isDean": false
+        }
+    },
+    {
+        "model": "professor_evidence.professor",
+        "pk": "0302616199",
+        "fields": {
+            "career_id": 2,
+            "professor_degree": "PhD",
+            "professor_names": "Luis Alberto",
+            "professor_lastnames": "Gonzales Cueva",
+            "professor_denomination": 1,
+            "professor_revisor": "1317858973",
+            "isRevisor": false,
+            "isDean": false
+        }
+    },
+    {
+        "model": "professor_evidence.professor",
+        "pk": "1234567891",
+        "fields": {
+            "career_id": 1,
+            "professor_degree": "PhD",
+            "professor_names": "Franklin",
+            "professor_lastnames": "Camacho",
+            "professor_denomination": 1,
+            "professor_revisor": "1317858973",
+            "isRevisor": false,
+            "isDean": true
+        }
+    },
+    {
+        "model": "professor_evidence.professor",
+        "pk": "1317858549",
+        "fields": {
+            "career_id": 8,
+            "professor_degree": "PhD",
+            "professor_names": "Ronald Patricio",
+            "professor_lastnames": "Mendoza Núñez",
+            "professor_denomination": 2,
+            "professor_revisor": null,
+            "isRevisor": false,
+            "isDean": false
+        }
+    },
+    {
+        "model": "professor_evidence.professor",
+        "pk": "1317858973",
+        "fields": {
+            "career_id": 2,
+            "professor_degree": "PhD",
+            "professor_names": "Patricio Joshue",
+            "professor_lastnames": "Mendoza Núñez",
+            "professor_denomination": 1,
+            "professor_revisor": "1317858973",
+            "isRevisor": true,
+            "isDean": false
+        }
+    },
+    {
+        "model": "professor_evidence.professor",
+        "pk": "2345678912",
+        "fields": {
+            "career_id": 1,
+            "professor_degree": "PhD",
+            "professor_names": "REVISOR",
+            "professor_lastnames": "2",
+            "professor_denomination": 1,
+            "professor_revisor": "1317858973",
+            "isRevisor": true,
+            "isDean": false
+        }
+    },
+    {
+        "model": "professor_evidence.professor",
+        "pk": "4444444444",
+        "fields": {
+            "career_id": 3,
+            "professor_degree": "PhD",
+            "professor_names": "PROFESOR",
+            "professor_lastnames": "BIOLOGIA",
+            "professor_denomination": 1,
+            "professor_revisor": null,
+            "isRevisor": false,
+            "isDean": false
+        }
+    },
+    {
+        "model": "professor_evidence.semester_school",
+        "pk": 1,
+        "fields": {
+            "semester_id": 3,
+            "school_id": 1,
+            "dean_id": "1317858549"
+        }
+    },
+    {
+        "model": "professor_evidence.semester_school",
+        "pk": 2,
+        "fields": {
+            "semester_id": 1,
+            "school_id": 1,
+            "dean_id": "1317858549"
+        }
+    },
+    {
+        "model": "professor_evidence.semester_school",
+        "pk": 3,
+        "fields": {
+            "semester_id": 4,
+            "school_id": 1,
+            "dean_id": "1234567891"
+        }
+    },
+    {
+        "model": "professor_evidence.semester_career",
+        "pk": 1,
+        "fields": {
+            "career_id": 2,
+            "semester_id": 1,
+            "coordinator_id": "1317858973"
+        }
+    },
+    {
+        "model": "professor_evidence.semester_career",
+        "pk": 2,
+        "fields": {
+            "career_id": 2,
+            "semester_id": 3,
+            "coordinator_id": "1317858549"
+        }
+    },
+    {
+        "model": "professor_evidence.semester_career",
+        "pk": 3,
+        "fields": {
+            "career_id": 2,
+            "semester_id": 4,
+            "coordinator_id": "1234567891"
+        }
+    },
+    {
+        "model": "professor_evidence.activity_type",
+        "pk": 1,
+        "fields": {
+            "activity_type": "Docencia"
+        }
+    },
+    {
+        "model": "professor_evidence.activity_type",
+        "pk": 2,
+        "fields": {
+            "activity_type": "Vinculación"
+        }
+    },
+    {
+        "model": "professor_evidence.activity_type",
+        "pk": 3,
+        "fields": {
+            "activity_type": "Investigación"
+        }
+    },
+    {
+        "model": "professor_evidence.activity_type",
+        "pk": 4,
+        "fields": {
+            "activity_type": "Gestión"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 1,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Impartir clases, seminarios, talleres, entre otros.",
+            "evidence_code": "D1"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 2,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Planificar y actualizar contenidos de clases, seminarios, talleres, entre otros.",
+            "evidence_code": "D2"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 3,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Diseñar y elaborar material didáctico, guías docentes o syllabus.",
+            "evidence_code": "D3"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 4,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Diseñar y elaborar textos.",
+            "evidence_code": "D4"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 5,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Orientar y acompañar a los estudiantes a través de tutorías, individuales o grupales.",
+            "evidence_code": "D5"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 6,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Realizar visitas de campo, tutorías, docencia en servicio y formación dual.",
+            "evidence_code": "D6"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 7,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Llevar a cabo la dirección, tutorías, seguimiento y evaluación de prácticas o pasantías preprofesionales.",
+            "evidence_code": "D7"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 8,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Preparar, elaborar, aplicar y calificar exámenes, trabajos y prácticas.",
+            "evidence_code": "D8"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 9,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Efectuar la dirección y tutoría de trabajos para la obtención del título.",
+            "evidence_code": "D9"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 10,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Direccionar y participar en proyectos de experimentación e innovación docente.",
+            "evidence_code": "D10"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 11,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Diseñar e impartir cursos de educación continua o de capacitación y actualización.",
+            "evidence_code": "D11"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 12,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Participar y organizar colectivos académicos de debate, capacitación o intercambio de metodologías y experiencias de enseñanza.",
+            "evidence_code": "D12"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 13,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Llevar a cabo el uso pedagógico de la investigación formativa y la sistematización como soporte o parte de la enseñanza.",
+            "evidence_code": "D13"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 14,
+        "fields": {
+            "activity_type": 1,
+            "evidence_type": "Coordinar los aprendizajes prácticos y de laboratorio.",
+            "evidence_code": "D14"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 15,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Impulsar procesos de cooperación y desarrollo.",
+            "evidence_code": "V1"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 16,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Prestar la asistencia técnica, de servicios especializados, así como la participación en consultorías que generen beneficio a la colectividad.",
+            "evidence_code": "V2"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 17,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Impartir cursos de educación continua, capacitación, actualización y certificación de competencias.",
+            "evidence_code": "V3"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 18,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Prestar servicios a la sociedad tales como el análisis de laboratorio especializado, el peritaje, la revisión técnica documental, entre otros.",
+            "evidence_code": "V4"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 19,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Fomentar la constitución, desarrollo y fortalecimiento de organizaciones de la sociedad civil, redes y demás espacios de participación ciudadana.",
+            "evidence_code": "V5"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 20,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Organizar o participar en actividades de divulgación, democratización y distribución del saber.",
+            "evidence_code": "V6"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 21,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Promocionar la internacionalización de la comunidad académica superior e impulso de las relaciones internacionales.",
+            "evidence_code": "V7"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 22,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Desarrollar proyectos de innovación que permitan aplicar los conocimientos generados en las IES, en proyectos productivos o de beneficio social.",
+            "evidence_code": "V8"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 23,
+        "fields": {
+            "activity_type": 2,
+            "evidence_type": "Dar guía y seguimiento a estudiantes que participen en proyectos de vinculación y evaluar prácticas preprofesionales de servicio comunitario desarrolladas en dichos proyectos.",
+            "evidence_code": "V9"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 24,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Diseñar, direccionar y ejecutar proyectos de investigación básica, aplicada, tecnológica y en artes, o proyectos de vinculación articulados a la investigación, que supongan creación, innovación, difusión y transferencia de los resultados obtenidos.",
+            "evidence_code": "I1"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 25,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Realizar investigación para la comprensión, recuperación, fortalecimiento y potenciación de los saberes ancestrales.",
+            "evidence_code": "I2"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 26,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Diseñar, elaborar y poner en marcha metodologías, instrumentos, protocolos o procedimientos operativos o de investigación.",
+            "evidence_code": "I3"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 27,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Investigar en laboratorios, centros documentales y demás instalaciones habilitadas para esta función, así como en entornos sociales.",
+            "evidence_code": "I4"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 28,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Participar en congresos, seminarios y conferencias para la presentación de avances y resultados de sus investigaciones.",
+            "evidence_code": "I5"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 29,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Participar en congresos, seminarios y conferencias para la presentación de avances y resultados de sus investigaciones.",
+            "evidence_code": "I6"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 30,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Diseñar y participar en redes y programas de investigación local, nacional e internacional.",
+            "evidence_code": "I7"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 31,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Participar en comités o consejos académicos y editoriales de revistas científicas y académicas indexadas y/o arbitradas.",
+            "evidence_code": "I8"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 32,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Llevar a cabo la difusión de resultados y beneficios sociales de la investigación, a través de publicaciones, producciones artísticas, actuaciones, conciertos, creación u organización de instalaciones y de exposiciones, entre otros.",
+            "evidence_code": "I9"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 33,
+        "fields": {
+            "activity_type": 3,
+            "evidence_type": "Direccionar o participar en colectivos académicos de debate para la presentación de avances y resultados de investigaciones.",
+            "evidence_code": "I10"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 34,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Desempeñar las funciones como rector, vicerrector o integrante del órgano colegiado superior.",
+            "evidence_code": "G1"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 35,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Desempeñar las funciones o cargos de decano, subdecano o similar jerarquía.",
+            "evidence_code": "G2"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 36,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Dirigir escuelas, departamentos, centros o institutos de investigación.",
+            "evidence_code": "G3"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 37,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Dirigir y/o coordinar carreras o programas.",
+            "evidence_code": "G4"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 38,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Dirigir y/o gestionar los procesos de docencia, investigación y vinculación con la sociedad en sus distintos niveles de organización académica e institucional.",
+            "evidence_code": "G5"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 39,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Organizar y/o dirigir eventos académicos nacionales o internacionales.",
+            "evidence_code": "G6"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 40,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Desempeñar cargos tales como: editor académico, director o miembro editorial de una publicación.",
+            "evidence_code": "G7"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 41,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Diseñar proyectos de carreras y programas de estudios de grado y posgrado.",
+            "evidence_code": "G8"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 42,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar como delegado institucional en organismos públicos u otros que forman parte del Sistema de Educación Superior, así como sociedades científicas o académicas.",
+            "evidence_code": "G9"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 43,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar como evaluador o facilitador académico externo del CES, el CACES, el órgano Rector de la Política Pública de Educación Superior u otro organismo público de investigación o desarrollo tecnológico.",
+            "evidence_code": "G10"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 44,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar como representante del estamento de profesores e investigadores de acuerdo con el estatuto de la IES particular en las sesiones del órgano colegiado superior.",
+            "evidence_code": "G11"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 45,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Integrar en calidad de Consejero Académico de los organismos que rigen el Sistema de Educación Superior (CES y CACES); en estos casos, se reconocerá la dedicación como equivalente a tiempo completo.",
+            "evidence_code": "G12"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 46,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Ejercer cargos de nivel jerárquico superior en el órgano Rector de la Política Pública de Educación Superior; en estos casos se reconocerá la dedicación como equivalente a tiempo completo.",
+            "evidence_code": "G13"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 47,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Formar parte de COMISIONES académicas en escuelas.",
+            "evidence_code": "G14"
+        }
+    },
+    {
+        "model": "professor_evidence.evidence_type",
+        "pk": 48,
+        "fields": {
+            "activity_type": 4,
+            "evidence_type": "Participar en capacitaciones de formación pedagógica.",
+            "evidence_code": "G15"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 2,
+        "fields": {
+            "professor_id": "0302616199",
+            "activity_type": 1,
+            "evidence_type": 3,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "La primera evidencia de Luis.",
+            "document_uploadDate": "2023-07-24",
+            "uploadedDocument": "0302616199/1/3/Web_Programming___Report_3_compressed_2.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 7,
+        "fields": {
+            "professor_id": "0302616199",
+            "activity_type": 3,
+            "evidence_type": 29,
+            "semester_id": 1,
+            "document_revisorComment": "Evidencia correcta.",
+            "document_professorComment": "Subi mi segunda evidencia.",
+            "document_uploadDate": "2023-07-25",
+            "uploadedDocument": "0302616199/3/29/VGG.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 61,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 1,
+            "evidence_type": 1,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Docencia/D1/SEM123_ECMC_0302616099_Docencia_D1_2023-07-29_010429.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 62,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 1,
+            "evidence_type": 2,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Docencia/D2/SEM123_ECMC_0302616099_Docencia_D2_2023-07-29_010458.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 63,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 4,
+            "evidence_type": 34,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Gestión/G1/SEM123_ECMC_0302616099_Gestión_G1_2023-07-29_010516.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 64,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 1,
+            "evidence_type": 1,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Docencia/D1/SEM123_ECMC_0302616099_Docencia_D1_2023-07-29_010526.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 65,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 3,
+            "evidence_type": 28,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Investigación/I5/SEM123_ECMC_0302616099_Investigación_I5_2023-07-29_010548.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 66,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 3,
+            "evidence_type": 25,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Investigación/I2/SEM123_ECMC_0302616099_Investigación_I2_2023-07-29_010558.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 67,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 3,
+            "evidence_type": 32,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Investigación/I9/SEM123_ECMC_0302616099_Investigación_I9_2023-07-29_010611.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 68,
+        "fields": {
+            "professor_id": "1317858973",
+            "activity_type": 1,
+            "evidence_type": 1,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/1317858973/Docencia/D1/SEM123_ECMC_1317858973_Docencia_D1_2023-07-29_010951.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 69,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 1,
+            "evidence_type": 1,
+            "semester_id": 1,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-29",
+            "uploadedDocument": "SEM123/ECMC/0302616099/Docencia/D1/SEM123_ECMC_0302616099_Docencia_D1_2023-07-29_195044.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 70,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 1,
+            "evidence_type": 2,
+            "semester_id": 4,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-08-01",
+            "uploadedDocument": "SEM124/ECMC/0302616099/Evidencias/Docencia/D1/SEM124_ECMC_0302616099_Evidencias_Docencia_D1_2023-07-31_014102.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 71,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 2,
+            "evidence_type": 15,
+            "semester_id": 4,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-31",
+            "uploadedDocument": "SEM124/ECMC/0302616099/Evidencias/Vinculación/V1/SEM124_ECMC_0302616099_Evidencias_Vinculación_V1_2023-07-31_091452.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 72,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 1,
+            "evidence_type": 5,
+            "semester_id": 4,
+            "document_revisorComment": "",
+            "document_professorComment": "",
+            "document_uploadDate": "2023-07-31",
+            "uploadedDocument": "SEM124/ECMC/0302616099/Evidencias/Docencia/D5/SEM124_ECMC_0302616099_Evidencias_Docencia_D5_2023-07-31_115348.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.document",
+        "pk": 73,
+        "fields": {
+            "professor_id": "0302616099",
+            "activity_type": 1,
+            "evidence_type": 1,
+            "semester_id": 4,
+            "document_revisorComment": "",
+            "document_professorComment": "hgfgjhhg",
+            "document_uploadDate": "2023-07-31",
+            "uploadedDocument": "SEM124/ECMC/0302616099/Evidencias/Docencia/D1/SEM124_ECMC_0302616099_Evidencias_Docencia_D1_2023-07-31_133815.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.report",
+        "pk": 5,
+        "fields": {
+            "semester_id": 1,
+            "professor_id": "1317858973",
+            "report_reviewedBy": 1,
+            "report_approvedBy": 1,
+            "teaching_report_summary": "awded",
+            "teaching_report_hoursPerWeek": 0.0,
+            "teaching_report_hoursPerWeekIntersemester": 0.0,
+            "management_report_summary": "awd",
+            "management_report_hoursPerWeek": 0.0,
+            "management_report_hoursPerWeekIntersemester": 0.0,
+            "vinculation_report_summary": "awd",
+            "vinculation_report_hoursPerWeek": 0.0,
+            "vinculation_report_hoursPerWeekIntersemester": 0.0,
+            "investigation_report_summary": "awd",
+            "investigation_report_hoursPerWeek": 0.0,
+            "investigation_report_hoursPerWeekIntersemester": 0.0,
+            "report_professorComment": "awd",
+            "report_revisorComment": "",
+            "report_conclusion": "awd",
+            "report_uploadDate": "2023-07-31",
+            "report_isReviewed": true,
+            "report_isApproved": true,
+            "uploadedReport": "SEM123/ECMC/1317858973/Reporte/SEM123_ECMC_1317858973_Reporte.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.report",
+        "pk": 15,
+        "fields": {
+            "semester_id": 4,
+            "professor_id": "1317858973",
+            "report_reviewedBy": 3,
+            "report_approvedBy": 3,
+            "teaching_report_summary": "fdfgdfgdfgdfgdfgdfgdfgdfgdfg",
+            "teaching_report_hoursPerWeek": 0.0,
+            "teaching_report_hoursPerWeekIntersemester": 0.0,
+            "management_report_summary": "sfdsdf",
+            "management_report_hoursPerWeek": 0.0,
+            "management_report_hoursPerWeekIntersemester": 0.0,
+            "vinculation_report_summary": "dasffd",
+            "vinculation_report_hoursPerWeek": 0.0,
+            "vinculation_report_hoursPerWeekIntersemester": 0.0,
+            "investigation_report_summary": "fsdsdf",
+            "investigation_report_hoursPerWeek": 0.0,
+            "investigation_report_hoursPerWeekIntersemester": 0.0,
+            "report_professorComment": "",
+            "report_revisorComment": "",
+            "report_conclusion": "sdffsdsdf",
+            "report_uploadDate": "2023-07-31",
+            "report_isReviewed": false,
+            "report_isApproved": false,
+            "uploadedReport": "SEM124/ECMC/1317858973/Reporte/SEM124_ECMC_1317858973_Reporte.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.report",
+        "pk": 20,
+        "fields": {
+            "semester_id": 4,
+            "professor_id": "0302616099",
+            "report_reviewedBy": 3,
+            "report_approvedBy": 3,
+            "teaching_report_summary": "DFGDFGDFGyrtrtrtyytrytrtyr",
+            "teaching_report_hoursPerWeek": 1.0,
+            "teaching_report_hoursPerWeekIntersemester": 2.0,
+            "management_report_summary": "DGFDFGDFG",
+            "management_report_hoursPerWeek": 7.0,
+            "management_report_hoursPerWeekIntersemester": 8.0,
+            "vinculation_report_summary": "DFGDFGDFG",
+            "vinculation_report_hoursPerWeek": 3.0,
+            "vinculation_report_hoursPerWeekIntersemester": 4.0,
+            "investigation_report_summary": "DFGDFGDGF",
+            "investigation_report_hoursPerWeek": 5.0,
+            "investigation_report_hoursPerWeekIntersemester": 6.0,
+            "report_professorComment": "DFGDFGDFGdfg",
+            "report_revisorComment": "hgfhggfhhgffhghgf",
+            "report_conclusion": "DFGDFGDFG",
+            "report_uploadDate": "2023-07-31",
+            "report_isReviewed": true,
+            "report_isApproved": true,
+            "uploadedReport": "SEM124/ECMC/0302616099/Reporte/SEM124_ECMC_0302616099_Reporte_glpXA1w.pdf"
+        }
+    },
+    {
+        "model": "professor_evidence.report",
+        "pk": 21,
+        "fields": {
+            "semester_id": 1,
+            "professor_id": "0302616099",
+            "report_reviewedBy": 1,
+            "report_approvedBy": 2,
+            "teaching_report_summary": "dgfgfdfg",
+            "teaching_report_hoursPerWeek": 0.0,
+            "teaching_report_hoursPerWeekIntersemester": 0.0,
+            "management_report_summary": "dfgfgdgf",
+            "management_report_hoursPerWeek": 0.0,
+            "management_report_hoursPerWeekIntersemester": 0.0,
+            "vinculation_report_summary": "dfgdfgdfg",
+            "vinculation_report_hoursPerWeek": 0.0,
+            "vinculation_report_hoursPerWeekIntersemester": 0.0,
+            "investigation_report_summary": "dfgfdggdf",
+            "investigation_report_hoursPerWeek": 0.0,
+            "investigation_report_hoursPerWeekIntersemester": 0.0,
+            "report_professorComment": "dfgdfg",
+            "report_revisorComment": "Aprobado.",
+            "report_conclusion": "dfgfgddfg",
+            "report_uploadDate": "2023-07-31",
+            "report_isReviewed": true,
+            "report_isApproved": true,
+            "uploadedReport": "SEM123/ECMC/0302616099/Reporte/SEM123_ECMC_0302616099_Reporte_OnYeTdp.pdf"
+        }
+    },
+    {
+        "model": "user_profile.userprofile",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "first_name": "Anthony",
+            "last_name": "Crespo",
+            "ci": "0302616099"
+        }
+    },
+    {
+        "model": "user_profile.userprofile",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "first_name": "Luis",
+            "last_name": "Gonzales",
+            "ci": "0302616199"
+        }
+    },
+    {
+        "model": "user_profile.userprofile",
+        "pk": 3,
+        "fields": {
+            "user": 3,
+            "first_name": "Patricio",
+            "last_name": "Mendoza",
+            "ci": "1317858973"
+        }
+    },
+    {
+        "model": "user_profile.userprofile",
+        "pk": 4,
+        "fields": {
+            "user": 4,
+            "first_name": "Franklin",
+            "last_name": "Camacho",
+            "ci": "1234567891"
+        }
+    },
+    {
+        "model": "user_profile.userprofile",
+        "pk": 5,
+        "fields": {
+            "user": 5,
+            "first_name": "REVISOR",
+            "last_name": "2",
+            "ci": "2345678912"
+        }
+    },
+    {
+        "model": "user_profile.userprofile",
+        "pk": 6,
+        "fields": {
+            "user": 6,
+            "first_name": "PROFESOR",
+            "last_name": "BIOLOGIA",
+            "ci": "4444444444"
+        }
+    },
+    {
+        "model": "user_profile.userprofile",
+        "pk": 7,
+        "fields": {
+            "user": 8,
+            "first_name": "Anthony2",
+            "last_name": "Crespo2",
+            "ci": "123456789"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$VAN39chziqhO$vuqFz4dVwOO0UeMOGcH2tsZT8puSUZ8dxzW3ebO9mN4=",
+            "last_login": "2023-08-01T14:16:21.636Z",
+            "is_superuser": false,
+            "username": "brian.crespo",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-07-24T16:56:36.763Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$WNmdgHjhbkKu$wfGTkgBtJxxV1BcOY64Uu1LwvwxJMXy0FmjYolfe0lA=",
+            "last_login": "2023-07-25T17:43:39.284Z",
+            "is_superuser": false,
+            "username": "luis.gonzales",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-07-25T02:45:49.441Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$oZPS0oeVZNCa$WhtRynsa+vmkSIo5ODsIHUhpH9GGxG0nFL6+5xytR08=",
+            "last_login": "2023-08-01T13:48:48.458Z",
+            "is_superuser": false,
+            "username": "patricio.mendoza",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-07-25T02:46:56.693Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$2aBYy8eyT7sJ$cOGO7uFAEiBjsRhkm5lyV29iY8+i45m+Z5MCIf8mdKo=",
+            "last_login": "2023-08-01T13:47:10.896Z",
+            "is_superuser": false,
+            "username": "franklin.camacho",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-07-25T23:51:36.329Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$Br2nU30xyyDN$E8wAj4PlutG8vq89Pa55Frc7yGl32NXhLUj79H+zGl4=",
+            "last_login": "2023-07-27T00:34:23.316Z",
+            "is_superuser": false,
+            "username": "revisor2",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-07-27T00:34:16.187Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$Gkz3Y9Dqkzjo$Usy6hD47U6yJlLeAws/GhF05h/cVK6GX1fqF3H5YK/c=",
+            "last_login": "2023-07-27T04:39:58.048Z",
+            "is_superuser": false,
+            "username": "profesor.biologia",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-07-27T04:39:52.722Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$zpFpDiYVFgyO$IqpKZavCmCJdh7hFgrAB2jKL3qq4A4oquRIVqcv+pPQ=",
+            "last_login": "2023-07-31T14:08:16.882Z",
+            "is_superuser": true,
+            "username": "anthony",
+            "first_name": "",
+            "last_name": "",
+            "email": "anthony.crespoy@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-07-30T19:56:28.455Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$yRwkzbIXK3qd$Xr5JoG4zNasUTUGLr79/SalH4ddGxvyf7+54Jah4+84=",
+            "last_login": "2023-07-30T21:03:40.913Z",
+            "is_superuser": false,
+            "username": "anthony.crespo21",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-07-30T21:02:08.150Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
