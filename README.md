@@ -34,6 +34,7 @@ Finally, to run the project execute:
 python manage.py runserver
 ```
 By default, Django app run on `http://127.0.0.1:8000/`, however, we need to use `localhost:8000` instead.
+Additionally, we have registered 3 users, one for each role. In this sense, we have test users brian.crespo, patricio.mendoza, and franklin.camacho with professor, reviewer, and dean roles respectively, and password 123456 in all the cases.
 
 **Note:** If a change is made in the frontend it is necessary to execute `npm run build` in order to see the changes reflected.
 ## Contact
