@@ -13,9 +13,9 @@ For simplicity in running this project, the current branch makes use of SQLite. 
 * [React](https://es.react.dev/)
 * [Django](https://www.djangoproject.com/)
 * [PostgresQL](https://www.postgresql.org/)
-* [Python 3.11](https://www.python.org/)
+* [Python 3](https://www.python.org/)
 
-
+**Note: ** The project has been developed and tested using `node.js v19.2.0` and Python `3.11`.
 ### Usage
 
 Clone the current repository with:
