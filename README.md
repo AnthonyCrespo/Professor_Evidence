@@ -8,7 +8,7 @@ The application was developed by Anthony Crespo, and Patricio Mendoza, students 
 
 
 For simplicity in running this project, the current branch makes use of SQLite. However, the project configured with PostgreSQL can be found in the branch
-[PostgreSQL](/Professor_Evidence/tree/PostgreSQL)
+[PostgreSQL](https://github.com/AnthonyCrespo/Professor_Evidence/tree/PostgreSQL)
 ## Requirements
 * [React](https://es.react.dev/)
 * [Django](https://www.djangoproject.com/)
