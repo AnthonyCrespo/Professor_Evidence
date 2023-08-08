@@ -33,7 +33,7 @@ Finally, to run the project execute:
 ```
 python manage.py runserver
 ```
-By default, Django app run on `localhost:8000`, however, we need to use `http://127.0.0.1:8000/` instead.
+By default, Django app run on `http://127.0.0.1:8000/`, however, we need to use `localhost:8000` instead.
 
 **Note:** If a change is made in the frontend it is necessary to execute `npm run build` in order to see the changes reflected.
 ## Contact
